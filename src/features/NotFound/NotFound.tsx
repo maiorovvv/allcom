@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import './_404.scss';
 
 const NotFound: React.FC = (): JSX.Element => {
 	return (
