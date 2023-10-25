@@ -34,7 +34,7 @@
     29. Newsletter popup css
 */
 
-// @import "global";
+@import "elements/global";
 // @import "elements/header";
 // @import "elements/slider";
 // @import "elements/product";
@@ -42,7 +42,8 @@
 // @import "elements/blog";
 // @import "elements/testimonial";
 // @import "elements/shipping";
-// @import "elements/footer";
+//@import "elements/footer";
+@import "./features/Footer/scss/Footer.module.scss"
 // @import "elements/quickview";
 // @import "elements/accordion";
 // @import "elements/portfolio";
