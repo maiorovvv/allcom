@@ -1,10 +1,7 @@
 // import './App.sass';
 
-import Footer from './features/Footer/Footer';
-
 function App(): JSX.Element {
-	//return <div> Hello World </div>;
-	return <Footer />;
+	return <div> Hello World </div>;
 }
 
 export default App;
