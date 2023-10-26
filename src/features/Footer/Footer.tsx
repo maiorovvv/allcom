@@ -1,7 +1,7 @@
 // import React from 'react';
 
 import Copyright from './Copyright';
-import MainFooter from './MainFooter';
+import MainFooter from './MainContainerFooter';
 import './scss/Footer.module.scss';
 import 'bootstrap/dist/css/bootstrap.css';
 
