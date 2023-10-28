@@ -20,10 +20,10 @@ const NotFound: React.FC = (): JSX.Element => {
 								src={image404}
 								alt="404 error / page not found"
 							/>
-							<h2 className="error__content--title">Opps! We did not find this page</h2>
-							<p className="error__content--desc">But you can return to the main page</p>
+							<h2 className="error__content--title">{t('content_title')}</h2>
+							<p className="error__content--desc">{t('content_desc')}</p>
 							<Link className="error__content--btn primary__btn" to="/index">
-								{t('linkBackToHome')}
+								{t('link_back_to_home')}
 							</Link>
 						</div>
 					</div>
