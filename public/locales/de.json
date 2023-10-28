@@ -1,5 +1,22 @@
 {
 	"404-page": {
 		"linkBackToHome": "Zurück zur Startseite"
+	},
+	"footer": {
+		"about": "Über Uns",
+		"about_us_text": "Lorem ipsum dolor sit amet, consectetur adipisici ti elit seddo eiusmod tempor incididunt utlabore et dolore magna aliqua enim ad minim veniam quisnostrud exercitation ullamco Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime expedita omnis placeat quibusdam ducimus in quae",
+		"follow": "Folgen Sie Uns",
+		"my_account": "Mein Konto",
+		"shopping_cart": "Einkaufswagen",
+		"login": "Anmeldung",
+		"register": "Registrieren",
+		"wishlist": "Wunschzettel",
+		"categories": "Kategorien",
+		"contact_us": "Kontaktiere Uns",
+		"portfolio": "Portfolio",
+		"privacy_policy": "Datenschutzrichtlinie",
+		"copyright": "Urheberrechte © 2023",
+		"title": "Suruchi",
+		"reserved": ". Alle Rechte vorbehalten."
 	}
 }

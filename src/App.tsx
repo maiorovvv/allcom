@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import NotFound from './features/NotFound/NotFound';
+import Footer from './components/Footer/Footer';
 
 const locales = {
 	en: { title: 'English' },
@@ -27,6 +28,7 @@ function App(): JSX.Element {
 			</ul>
 
 			<NotFound />
+			<Footer />
 		</div>
 	);
 }

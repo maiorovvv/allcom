@@ -34,7 +34,11 @@
     29. Newsletter popup css
 */
 
-// @import "global";
+@import "./App.scss";
+@import "./components/Footer/Footer.module.scss";
+@import 'bootstrap/dist/css/bootstrap.css';
+
+
 // @import "elements/header";
 // @import "elements/slider";
 // @import "elements/product";

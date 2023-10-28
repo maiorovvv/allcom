@@ -12,5 +12,6 @@
 	"cSpell.words": ["airbnb", "allcom", "languagedetector", "sсss"],
 	"[typescriptreact]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	}
+	},
+	"files.eol": "\n"
 }
