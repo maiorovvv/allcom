@@ -1,5 +1,7 @@
 {
 	"404-page": {
+		"contentTitle": "Upps! Wir haben diese Seite nicht gefunden",
+		"contentDesc": "Sie können jedoch zur Hauptseite zurückkehren",
 		"linkBackToHome": "Zurück zur Startseite"
 	},
 	"footer": {

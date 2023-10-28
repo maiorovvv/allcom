@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import NotFound from './features/NotFound/NotFound';
+import NotFound from './components/NotFound/NotFound';
 import Footer from './components/Footer/Footer';
 
 const locales = {
