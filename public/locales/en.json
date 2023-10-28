@@ -1,8 +1,8 @@
 {
 	"404-page": {
-		"contentTitle": "Opps! We did not find this page",
-		"contentDesc": "But you can return to the main page",
-		"linkBackToHome": "Back To Home"
+		"content_title": "Opps! We did not find this page",
+		"content_desc": "But you can return to the main page",
+		"link_back_to_home": "Back To Home"
 	},
 	"footer": {
 		"about": "About Us",
