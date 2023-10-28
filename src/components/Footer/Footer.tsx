@@ -1,33 +1,16 @@
 import './Footer.module.scss';
-
-const ABOUT = 'About Us';
-const ABOUT_US_TEXT =
-	'Lorem ipsum dolor sit amet, consectetur adipisici ti elit seddo eiusmod tempor incididunt utlabore et dolore magna aliqua enim ad minim veniam quisnostrud exercitation ullamco Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime expedita omnis placeat quibusdam ducimus in quae';
-const FOLLOW = 'Follow Us';
-const MY_ACCOUNT = 'My Account';
-const SHOPPING_CART = 'Shopping Cart';
-const LOGIN = 'Login';
-const REGISTER = 'Register';
-const CHECKOUT = 'Checkout';
-const WISHLIST = 'Wishlist';
-const CATEGORIES = 'Categories';
-const CONTACT_US = 'Contact Us';
-const PORTFOLIO = 'Portfolio';
-const PRIVACY_POLICY = 'Privacy Policy';
-const COMPARE = 'Compare';
-const FREQUENTLY = 'Frequently';
-const COPYRIGTH = 'Copyright © 2022';
-const TITLE = 'Suruchi';
-const RESERVED = '. All Rights Reserved.Design By Suruchi';
+import { useTranslation } from 'react-i18next';
 
 const Footer: React.FC = (): JSX.Element => {
+	const { t } = useTranslation('footer');
+
 	return (
 		<footer className="footer__section bg__black">
 			<div className="container-fluid ">
 				<div className="main__footer d-flex justify-content-evenly">
 					<div className="footer__widget footer__widget--width">
 						<h2 className="footer__widget--title text-ofwhite h3">
-							{ABOUT}
+							{t('about')}
 							<button className="footer__widget--button" aria-label="footer widget button">
 								<svg
 									className="footer__widget--title__arrowdown--icon"
@@ -45,9 +28,11 @@ const Footer: React.FC = (): JSX.Element => {
 							</button>
 						</h2>
 						<div className="footer__widget--inner">
-							<p className="footer__widget--desc text-ofwhite mb-20 container">{ABOUT_US_TEXT}</p>
+							<p className="footer__widget--desc text-ofwhite mb-20 container">
+								{t('about_us_text')}
+							</p>
 							<div className="footer__social">
-								<h3 className="social__title text-ofwhite h4 mb-15">{FOLLOW}</h3>
+								<h3 className="social__title text-ofwhite h4 mb-15">{t('follow')}</h3>
 								<ul className="social__shear d-flex">
 									<li className="social__shear--list">
 										<a
@@ -148,7 +133,7 @@ const Footer: React.FC = (): JSX.Element => {
 					<div className="footer__widget--menu__wrapper d-flex footer__widget--width">
 						<div className="footer__widget">
 							<h2 className="footer__widget--title text-ofwhite h3">
-								{MY_ACCOUNT}
+								{t('my_account')}
 								<button className="footer__widget--button" aria-label="footer widget button">
 									<svg
 										className="footer__widget--title__arrowdown--icon"
@@ -168,39 +153,34 @@ const Footer: React.FC = (): JSX.Element => {
 							<ul className="footer__widget--menu footer__widget--inner">
 								<li className="footer__widget--menu__list">
 									<a className="footer__widget--menu__text" href="my-account.html">
-										{MY_ACCOUNT}
+										{t('my_account')}
 									</a>
 								</li>
 								<li className="footer__widget--menu__list">
 									<a className="footer__widget--menu__text" href="cart.html">
-										{SHOPPING_CART}
+										{t('shopping_cart')}
 									</a>
 								</li>
 								<li className="footer__widget--menu__list">
 									<a className="footer__widget--menu__text" href="login.html">
-										{LOGIN}
+										{t('login')}
 									</a>
 								</li>
 								<li className="footer__widget--menu__list">
 									<a className="footer__widget--menu__text" href="login.html">
-										{REGISTER}
-									</a>
-								</li>
-								<li className="footer__widget--menu__list">
-									<a className="footer__widget--menu__text" href="checkout.html">
-										{CHECKOUT}
+										{t('register')}
 									</a>
 								</li>
 								<li className="footer__widget--menu__list">
 									<a className="footer__widget--menu__text" href="wishlist.html">
-										{WISHLIST}
+										{t('wishlist')}
 									</a>
 								</li>
 							</ul>
 						</div>
 						<div className="footer__widget">
 							<h2 className="footer__widget--title text-ofwhite h3">
-								{CATEGORIES}
+								{t('categories')}
 								<button className="footer__widget--button" aria-label="footer widget button">
 									<svg
 										className="footer__widget--title__arrowdown--icon"
@@ -220,32 +200,22 @@ const Footer: React.FC = (): JSX.Element => {
 							<ul className="footer__widget--menu footer__widget--inner">
 								<li className="footer__widget--menu__list">
 									<a className="footer__widget--menu__text" href="about.html">
-										{ABOUT}
+										{t('about')}
 									</a>
 								</li>
 								<li className="footer__widget--menu__list">
 									<a className="footer__widget--menu__text" href="contact.html">
-										{CONTACT_US}
+										{t('contact_us')}
 									</a>
 								</li>
 								<li className="footer__widget--menu__list">
 									<a className="footer__widget--menu__text" href="portfolio.html">
-										{PORTFOLIO}
+										{t('portfolio')}
 									</a>
 								</li>
 								<li className="footer__widget--menu__list">
 									<a className="footer__widget--menu__text" href="privacy-policy.html">
-										{PRIVACY_POLICY}
-									</a>
-								</li>
-								<li className="footer__widget--menu__list">
-									<a className="footer__widget--menu__text" href="compare.html">
-										{COMPARE}
-									</a>
-								</li>
-								<li className="footer__widget--menu__list">
-									<a className="footer__widget--menu__text" href="faq.html">
-										{FREQUENTLY}
+										{t('privacy_policy')}
 									</a>
 								</li>
 							</ul>
@@ -254,11 +224,11 @@ const Footer: React.FC = (): JSX.Element => {
 				</div>
 				<div className="footer__bottom d-flex justify-content-center align-items-center">
 					<p className="copyright__content text-ofwhite m-0">
-						{COPYRIGTH}{' '}
+						{t('copyright')}{' '}
 						<a className="copyright__content--link" href="index.html">
-							{TITLE}
+							{t('title')}
 						</a>{' '}
-						{RESERVED}
+						{t('reserved')}
 					</p>
 				</div>
 			</div>

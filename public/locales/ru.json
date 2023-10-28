@@ -1,5 +1,22 @@
 {
 	"404-page": {
 		"linkBackToHome": "Вернуться на главную"
+	},
+	"footer": {
+		"about": "О Нас",
+		"about_us_text": "Lorem ipsum dolor sit amet, consectetur adipisici ti elit seddo eiusmod tempor incididunt utlabore et dolore magna aliqua enim ad minim veniam quisnostrud exercitation ullamco Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime expedita omnis placeat quibusdam ducimus in quae",
+		"follow": "Подписывайтесь на нас",
+		"my_account": "Мой Аккаунт",
+		"shopping_cart": "Корзина",
+		"login": "Логин",
+		"register": "Регистрация",
+		"wishlist": "Список Желаний",
+		"categories": "Категории",
+		"contact_us": "Связаться с нами",
+		"portfolio": "Портфолио",
+		"privacy_policy": "Политика Конфиденциальности",
+		"copyright": "Авторские права © 2023",
+		"title": "Suruchi",
+		"reserved": ". Все права защищены."
 	}
 }
