@@ -768,8 +768,22 @@
 .my_icon {
   position: relative;
   width: fit-content;
-  
 }
+
+.items__count_header {
+  position: absolute;
+  right: -1.2rem;
+  top: -1rem;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1rem;
+  line-height: 2rem;
+  background: var(--secondary-color);
+  text-align: center;
+  border-radius: 50%;
+  color: var(--white-color);
+}
+
 .items__count {
   position: absolute;
   right: -1.2rem;

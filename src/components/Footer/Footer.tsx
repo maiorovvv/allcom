@@ -179,7 +179,7 @@ const Footer: React.FC = (): JSX.Element => {
 							</ul>
 						</div>
 						<div className="footer__widget">
-							<h2 className="footer__widget--title text-ofwhite h3 cla">
+							<h2 className="footer__widget--title text-ofwhite h3">
 								{t('categories')}
 								<button className="footer__widget--button" aria-label="footer widget button">
 									<svg

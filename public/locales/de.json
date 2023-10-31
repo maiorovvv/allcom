@@ -1,10 +1,12 @@
 {
 	"404-page": {
-		"linkBackToHome": "Zurück zur Startseite"
+		"content_title": "Upps! Wir haben diese Seite nicht gefunden",
+		"content_desc": "Sie können jedoch zur Hauptseite zurückkehren",
+		"link_back_to_home": "Zurück zur Startseite"
 	},
 	"footer": {
 		"about": "Über Uns",
-		"about_us_text": "Lorem ipsum dolor sit amet, consectetur adipisici ti elit seddo eiusmod tempor incididunt utlabore et dolore magna aliqua enim ad minim veniam quisnostrud exercitation ullamco Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime expedita omnis placeat quibusdam ducimus in quae",
+		"about_us_text": "Auktionshaus Allcom Die Seite befindet sich derzeit in der Entwicklung. Vielen Dank für Ihre Geduld und Ihr Verständnis!!!",
 		"follow": "Folgen Sie Uns",
 		"my_account": "Mein Konto",
 		"shopping_cart": "Einkaufswagen",
@@ -16,7 +18,7 @@
 		"portfolio": "Portfolio",
 		"privacy_policy": "Datenschutzrichtlinie",
 		"copyright": "Urheberrechte © 2023",
-		"title": "Suruchi",
+		"title": "Allcom",
 		"reserved": ". Alle Rechte vorbehalten."
 	},
 	"header" : {
@@ -27,12 +29,25 @@
 		"contact_us": "Kontakt",
 		"about": "Über Uns",
 		"faq": "FAQ",
-		"auction": "Auction",
+		"auction": "Auktion",
 		"categories": "Kategorien",
 		"search": "Suchen",
 		"cart": "Cart",
 		"shopping_cart": "Einkaufswagen",
-		"wishlist": "Wunschzettel"
+		"wishlist": "Wunschzettel",
+		"my_account": "Mein Konto",
+		"search_products": "Produktsuche",
+		"search_here": "Suche Hier",
+		"sub_total": "Zwischensumme:",
+		"total_sum": "Gesamt:",
+		"agreement": "Ich stimme dem zu",
+		"privacy_policy": "Datenschutzrichtlinie",
+		"view_cart": "Warenkorb ansehen",
+		"checkout": "Bestellen"
+
+
+
+
 
 	}
 }
