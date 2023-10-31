@@ -10,13 +10,28 @@
 		"shopping_cart": "Корзина",
 		"login": "Авторизоваться",
 		"register": "Регистрация",
-		"wishlist": "Список Желаний",
+		"wishlist": "Избранное",
 		"categories": "Категории",
-		"contact_us": "Связаться с нами",
+		"contact_us": "Контакты",
 		"portfolio": "Портфолио",
 		"privacy_policy": "Политика Конфиденциальности",
 		"copyright": "Авторские права © 2023",
 		"title": "Suruchi",
 		"reserved": ". Все права защищены."
+	},
+	"header" : {
+		"welcome": "Добро пожаловать в интернет-магазин Netmark",
+		"language": "Русский",
+		"about": "О Нас",
+		"login": "Авторизоваться",
+		"register": "Регистрация",
+		"contact_us": "Контакты",
+		"faq": "Вопросы",
+		"auction": "Аукцион",
+		"categories": "Категории",
+		"search": "Поиск",
+		"shopping_cart": "Корзина",
+		"wishlist": "Избранное"
+
 	}
 }

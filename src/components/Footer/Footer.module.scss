@@ -3,6 +3,7 @@
     padding-bottom: 7rem;
   }
 }
+
 .main__footer {
   border-bottom: 1px solid #dddddd;
   padding: 6rem 0 2rem;
@@ -171,6 +172,10 @@
   @media only screen and (max-width: 767px) {
     visibility: visible;
   }
+}
+
+.about_width {
+  max-width: 60%;
 }
 .footer__widget--inner {
   @media only screen and (max-width: 767px) {

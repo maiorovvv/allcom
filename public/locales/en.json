@@ -18,5 +18,19 @@
 		"copyright": "Copyright © 2023",
 		"title": "Suruchi",
 		"reserved": ". All Rights Reserved."
+	},
+	"header" : {
+		"welcome": "Welcome to Netmark online Store",
+		"language": "Englisch",
+		"about": "About Us",
+		"faq": "FAQ",
+		"contact_us": "Contact",
+		"register": "Register",
+		"auction": "Auction",
+		"categories": "Categories",
+		"search": "Search",
+		"shopping_cart": "Shopping Cart",
+		"wishlist": "Wishlist"
+
 	}
 }

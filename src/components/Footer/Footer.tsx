@@ -8,7 +8,7 @@ const Footer: React.FC = (): JSX.Element => {
 		<footer className="footer__section bg__black">
 			<div className="container-fluid ">
 				<div className="main__footer d-flex justify-content-evenly">
-					<div className="footer__widget footer__widget--width">
+					<div className="footer__widget footer__widget--width about_width">
 						<h2 className="footer__widget--title text-ofwhite h3">
 							{t('about')}
 							<button className="footer__widget--button" aria-label="footer widget button">
@@ -179,7 +179,7 @@ const Footer: React.FC = (): JSX.Element => {
 							</ul>
 						</div>
 						<div className="footer__widget">
-							<h2 className="footer__widget--title text-ofwhite h3">
+							<h2 className="footer__widget--title text-ofwhite h3 cla">
 								{t('categories')}
 								<button className="footer__widget--button" aria-label="footer widget button">
 									<svg

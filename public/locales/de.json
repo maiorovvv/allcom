@@ -12,11 +12,27 @@
 		"register": "Registrieren",
 		"wishlist": "Wunschzettel",
 		"categories": "Kategorien",
-		"contact_us": "Kontaktiere Uns",
+		"contact_us": "Kontakt",
 		"portfolio": "Portfolio",
 		"privacy_policy": "Datenschutzrichtlinie",
 		"copyright": "Urheberrechte © 2023",
 		"title": "Suruchi",
 		"reserved": ". Alle Rechte vorbehalten."
+	},
+	"header" : {
+		"welcome": "Willkommen im Netmark Online-Shop",
+		"language": "Deutsch",
+		"login": "Anmeldung",
+		"register": "Registrieren",
+		"contact_us": "Kontakt",
+		"about": "Über Uns",
+		"faq": "FAQ",
+		"auction": "Auction",
+		"categories": "Kategorien",
+		"search": "Suchen",
+		"cart": "Cart",
+		"shopping_cart": "Einkaufswagen",
+		"wishlist": "Wunschzettel"
+
 	}
 }
