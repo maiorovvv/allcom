@@ -34,11 +34,11 @@
     29. Newsletter popup css
 */
 
-@import "./App.scss";
-@import "./components/Footer/Footer.module.scss";
+@import './App.scss';
+@import './components/Footer/Footer.module.scss';
+@import './components/NotFound/NotFound.module.scss';
 @import 'bootstrap/dist/css/bootstrap.css';
 @import './components/Header/Header.module.scss';
-
 
 // @import "elements/header";
 // @import "elements/slider";
@@ -61,7 +61,6 @@
 // @import "elements/cart-page";
 // @import "elements/checkout";
 // @import "elements/my-account";
-@import './features/NotFound/NotFound.module.scss';
 // @import "elements/login";
 // @import "elements/compare";
 // @import "elements/faq";
