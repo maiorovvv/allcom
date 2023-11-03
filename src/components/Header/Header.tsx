@@ -66,7 +66,7 @@ const Header: React.FC = () => {
 										<img
 											className="main__logo--img"
 											src="assets/img/logo/nav-log.png"
-											alt="logo-img"
+											alt="logo"
 										></img>
 									</a>
 								</h1>
@@ -379,7 +379,7 @@ const Header: React.FC = () => {
 				<div className="header__bottom">
 					<div className="container-fluid">
 						<div className="row align-items-center position__relative justify-content-between">
-							<div className="col-xxl-5 col-xl-6 col-lg-6 col-md-4 col-3">
+							<div className="col-xxl-7 col-xl-7 col-lg-7 col-md-4 col-3">
 								<div className="header__menu d-none d-lg-block">
 									<nav className="header__menu--navigation">
 										<ul className="d-flex">
@@ -401,6 +401,11 @@ const Header: React.FC = () => {
 											<li className="header__menu--items style2">
 												<a className="header__menu--link" href="contact.html">
 													{t('register')}{' '}
+												</a>
+											</li>
+											<li className="header__menu--items style2">
+												<a className="header__menu--link" href="contact.html">
+													{t('add_product')}{' '}
 												</a>
 											</li>
 											<li className="header__menu--items style2">

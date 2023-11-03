@@ -614,7 +614,6 @@
 
 .main__logo {
   &--img {
-    max-width: 120px;
     @media only screen and (min-width: 480px) {
       max-width: 155px;
     }
@@ -965,7 +964,7 @@
       }
     }
     &:hover {
-      & .header__menu--link {
+      & .header__menu--link {   
         color: var(--secondary-color);
       }
       & .header__sub--menu {
