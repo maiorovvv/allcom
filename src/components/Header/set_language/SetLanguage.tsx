@@ -9,12 +9,10 @@ type IProps = {
 const SetLanguage: React.FC<IProps> = (isOpen): JSX.Element => {
 	const locales = {
 		en: { title: 'English' },
-		de: { title: 'German' },
-		ru: { title: 'Russian' },
+		de: { title: 'Deutsch' },
+		ru: { title: 'Русский' },
 	};
 	const { i18n } = useTranslation();
-
-	const { t } = useTranslation('header');
 
 	const [isActive, seetIsActive] = useState(false);
 
@@ -29,7 +27,7 @@ const SetLanguage: React.FC<IProps> = (isOpen): JSX.Element => {
 							seetIsActive(!isActive);
 						}}
 					>
-						{t('language')}
+						{locales[i18n.language as keyof typeof locales].title}
 					</span>
 					<div className={`dropdown__language ${isActive ? 'active' : ''}`}>
 						<ul>

@@ -1,22 +1,65 @@
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Header.module.scss';
 import SetLanguage from './set_language/SetLanguage';
 
-const Header: React.FC = (): JSX.Element => {
+const Header: React.FC = () => {
 	const { t } = useTranslation('header');
-	const [countItemsInCart, setCountItemsInCart] = useState(5);
-	const [countItemsInWishlist, setCountItemsInWishlist] = useState(0);
+	const [countItemsInCart, setCountItemsInCart] = useState<number>(5);
+	const [countItemsInWishlist, setCountItemsInWishlist] = useState<number>(0);
 	const [offcanvasIsActive, setOffcanvasIsActive] = useState<boolean>(false);
 	const [minicartIsActive, setMinicartIsActive] = useState<boolean>(false);
 	const [searchBoxIsActive, setSearchBoxIsActive] = useState<boolean>(false);
+	const [isScrolled, setIsScrolled] = useState<boolean>(false);
+
+	const scrollToTop = (): void => {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		});
+	};
+
+	useEffect(() => {
+		const handleScroll = (): void => {
+			if (window.scrollY > 50) {
+				setIsScrolled(true);
+			} else {
+				setIsScrolled(false);
+			}
+		};
+
+		window.addEventListener('scroll', handleScroll);
+	}, []);
 
 	return (
 		<>
 			<header className="header__section">
-				<div className="main__header header__sticky">
+				<div className={`main__header header__sticky ${isScrolled ? 'sticky' : ''}`}>
 					<div className="container-fluid">
 						<div className="main__header--inner position__relative d-flex justify-content-between align-items-center">
+							<div className="offcanvas__header--menu__open open">
+								<div
+									className="offcanvas__header--menu__open--btn"
+									data-offcanvas
+									onClick={() => setOffcanvasIsActive(!offcanvasIsActive)}
+								>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										className="ionicon offcanvas__header--menu__open--svg"
+										viewBox="0 0 512 512"
+									>
+										<path
+											fill="currentColor"
+											stroke="currentColor"
+											strokeLinecap="round"
+											strokeMiterlimit="10"
+											strokeWidth="32"
+											d="M80 160h352M80 256h352M80 352h352"
+										/>
+									</svg>
+									<span className="visually-hidden">Menu Open</span>
+								</div>
+							</div>
 							<div className="main__logo">
 								<h1 className="main__logo--title">
 									<a className="main__logo--link" href="index.html">
@@ -33,7 +76,7 @@ const Header: React.FC = (): JSX.Element => {
 									<div className="header__select--categories select">
 										<select className="header__select--inner">
 											<option selected value="1">
-												All Categories
+												{t('all_categories')}
 											</option>
 											<option value="2">Accessories</option>
 											<option value="3">Accessories & More</option>
@@ -45,7 +88,7 @@ const Header: React.FC = (): JSX.Element => {
 										<label>
 											<input
 												className="header__search--input"
-												placeholder="Keyword here..."
+												placeholder={t('keyword_here')}
 												type="text"
 											></input>
 										</label>
@@ -178,70 +221,199 @@ const Header: React.FC = (): JSX.Element => {
 									</li>
 								</ul>
 							</div>
-						</div>
-					</div>
-					<div className="header__bottom">
-						<div className="container-fluid">
-							<div className="row align-items-center position__relative justify-content-between">
-								<div className="col-xxl-5 col-xl-6 col-lg-6 col-md-4 col-3">
-									<div className="offcanvas__header--menu__open open">
+							<div className="header__menu d-none header__sticky--block d-lg-block">
+								<nav className="header__menu--navigation">
+									<ul className="d-flex">
+										<li className="header__menu--items style2">
+											<a className="header__menu--link" href="about.html">
+												{t('about')}{' '}
+											</a>
+										</li>
+										<li className="header__menu--items style2">
+											<a className="header__menu--link" href="contact.html">
+												{t('contact_us')}{' '}
+											</a>
+										</li>
+										<li className="header__menu--items style2">
+											<a className="header__menu--link" href="contact.html">
+												{t('faq')}{' '}
+											</a>
+										</li>
+										<li className="header__menu--items style2">
+											<a className="header__menu--link" href="contact.html">
+												{t('register')}{' '}
+											</a>
+										</li>
+										<li className="header__menu--items style2">
+											<a className="header__menu--link" href="contact.html">
+												{t('auction')}{' '}
+											</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+							<div className="header__account header__account2 header__sticky--block">
+								<ul className="d-flex">
+									<li className="header__account--items header__account2--items  header__account--search__items d-none d-lg-block">
 										<div
-											className="offcanvas__header--menu__open--btn"
-											data-offcanvas
-											onClick={() => setOffcanvasIsActive(!offcanvasIsActive)}
+											className="header__account--btn search__open--btn"
+											onClick={() => setSearchBoxIsActive(!searchBoxIsActive)}
+											data-offcanvas=""
 										>
 											<svg
+												className="header__search--button__svg"
 												xmlns="http://www.w3.org/2000/svg"
-												className="ionicon offcanvas__header--menu__open--svg"
+												width="26.51"
+												height="23.443"
 												viewBox="0 0 512 512"
 											>
 												<path
-													fill="currentColor"
+													d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"
+													fill="none"
+													stroke="currentColor"
+													strokeMiterlimit="10"
+													strokeWidth="32"
+												></path>
+												<path
+													fill="none"
 													stroke="currentColor"
 													strokeLinecap="round"
 													strokeMiterlimit="10"
 													strokeWidth="32"
-													d="M80 160h352M80 256h352M80 352h352"
-												/>
+													d="M338.29 338.29L448 448"
+												></path>
 											</svg>
-											<span className="visually-hidden">Menu Open</span>
+											<span className="visually-hidden">Search</span>
 										</div>
-									</div>
-									<div className="header__menu d-none d-lg-block">
-										<nav className="header__menu--navigation">
-											<ul className="d-flex">
-												<li className="header__menu--items style2">
-													<a className="header__menu--link" href="about.html">
-														{t('about')}{' '}
-													</a>
-												</li>
-												<li className="header__menu--items style2">
-													<a className="header__menu--link" href="contact.html">
-														{t('contact_us')}{' '}
-													</a>
-												</li>
-												<li className="header__menu--items style2">
-													<a className="header__menu--link" href="contact.html">
-														{t('faq')}{' '}
-													</a>
-												</li>
-												<li className="header__menu--items style2">
-													<a className="header__menu--link" href="contact.html">
-														{t('register')}{' '}
-													</a>
-												</li>
-												<li className="header__menu--items style2">
-													<a className="header__menu--link" href="contact.html">
-														{t('auction')}{' '}
-													</a>
-												</li>
-											</ul>
-										</nav>
-									</div>
+									</li>
+									<li className="header__account--items header__account2--items">
+										<a className="header__account--btn" href="my-account.html">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width="26.51"
+												height="23.443"
+												viewBox="0 0 512 512"
+											>
+												<path
+													d="M344 144c-3.92 52.87-44 96-88 96s-84.15-43.12-88-96c-4-55 35-96 88-96s92 42 88 96z"
+													fill="none"
+													stroke="currentColor"
+													strokeLinecap="round"
+													strokeLinejoin="round"
+													strokeWidth="32"
+												></path>
+												<path
+													d="M256 304c-87 0-175.3 48-191.64 138.6C62.39 453.52 68.57 464 80 464h352c11.44 0 17.62-10.48 15.65-21.4C431.3 352 343 304 256 304z"
+													fill="none"
+													stroke="currentColor"
+													strokeMiterlimit="10"
+													strokeWidth="32"
+												></path>
+											</svg>
+											<span className="visually-hidden">My Account</span>
+										</a>
+									</li>
+									<li className="header__account--items header__account2--items d-none d-lg-block">
+										<a className="header__account--btn" href="wishlist.html">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width="28.51"
+												height="23.443"
+												viewBox="0 0 512 512"
+											>
+												<path
+													d="M352.92 80C288 80 256 144 256 144s-32-64-96.92-64c-52.76 0-94.54 44.14-95.08 96.81-1.1 109.33 86.73 187.08 183 252.42a16 16 0 0018 0c96.26-65.34 184.09-143.09 183-252.42-.54-52.67-42.32-96.81-95.08-96.81z"
+													fill="none"
+													stroke="currentColor"
+													strokeLinecap="round"
+													strokeLinejoin="round"
+													strokeWidth="32"
+												></path>
+											</svg>
+											<span className="items__count  wishlist style2">{countItemsInWishlist}</span>
+										</a>
+									</li>
+									<li className="header__account--items header__account2--items">
+										<div
+											className="header__account--btn minicart__open--btn"
+											onClick={() => setMinicartIsActive(!minicartIsActive)}
+											data-offcanvas=""
+										>
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width="26.51"
+												height="23.443"
+												viewBox="0 0 14.706 13.534"
+											>
+												<g transform="translate(0 0)">
+													<g>
+														<path
+															data-name="Path 16787"
+															d="M4.738,472.271h7.814a.434.434,0,0,0,.414-.328l1.723-6.316a.466.466,0,0,0-.071-.4.424.424,0,0,0-.344-.179H3.745L3.437,463.6a.435.435,0,0,0-.421-.353H.431a.451.451,0,0,0,0,.9h2.24c.054.257,1.474,6.946,1.555,7.33a1.36,1.36,0,0,0-.779,1.242,1.326,1.326,0,0,0,1.293,1.354h7.812a.452.452,0,0,0,0-.9H4.74a.451.451,0,0,1,0-.9Zm8.966-6.317-1.477,5.414H5.085l-1.149-5.414Z"
+															transform="translate(0 -463.248)"
+															fill="currentColor"
+														></path>
+														<path
+															data-name="Path 16788"
+															d="M5.5,478.8a1.294,1.294,0,1,0,1.293-1.353A1.325,1.325,0,0,0,5.5,478.8Zm1.293-.451a.452.452,0,1,1-.431.451A.442.442,0,0,1,6.793,478.352Z"
+															transform="translate(-1.191 -466.622)"
+															fill="currentColor"
+														></path>
+														<path
+															data-name="Path 16789"
+															d="M13.273,478.8a1.294,1.294,0,1,0,1.293-1.353A1.325,1.325,0,0,0,13.273,478.8Zm1.293-.451a.452.452,0,1,1-.431.451A.442.442,0,0,1,14.566,478.352Z"
+															transform="translate(-2.875 -466.622)"
+															fill="currentColor"
+														></path>
+													</g>
+												</g>
+											</svg>
+											<span className="items__count style2">{countItemsInCart}</span>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div className="header__bottom">
+					<div className="container-fluid">
+						<div className="row align-items-center position__relative justify-content-between">
+							<div className="col-xxl-5 col-xl-6 col-lg-6 col-md-4 col-3">
+								<div className="header__menu d-none d-lg-block">
+									<nav className="header__menu--navigation">
+										<ul className="d-flex">
+											<li className="header__menu--items style2">
+												<a className="header__menu--link" href="about.html">
+													{t('about')}{' '}
+												</a>
+											</li>
+											<li className="header__menu--items style2">
+												<a className="header__menu--link" href="contact.html">
+													{t('contact_us')}{' '}
+												</a>
+											</li>
+											<li className="header__menu--items style2">
+												<a className="header__menu--link" href="contact.html">
+													{t('faq')}{' '}
+												</a>
+											</li>
+											<li className="header__menu--items style2">
+												<a className="header__menu--link" href="contact.html">
+													{t('register')}{' '}
+												</a>
+											</li>
+											<li className="header__menu--items style2">
+												<a className="header__menu--link" href="contact.html">
+													{t('auction')}{' '}
+												</a>
+											</li>
+										</ul>
+									</nav>
 								</div>
-								<div className="col-xxl-5 col-xl-4 col-lg-3 col-md-4 col-3 d-flex justify-content-end">
-									<SetLanguage isOpen={'d-none'} />
-								</div>
+							</div>
+							<div className="col-xxl-5 col-xl-4 col-lg-3 col-md-4 col-3 d-flex justify-content-end">
+								<SetLanguage isOpen={'d-none'} />
 							</div>
 						</div>
 					</div>
@@ -644,6 +816,18 @@ const Header: React.FC = (): JSX.Element => {
 					</button>
 				</div>
 			</header>
+			<button onClick={scrollToTop} id="scroll__top" className={`${isScrolled ? 'active' : ''}`}>
+				<svg xmlns="http://www.w3.org/2000/svg" className="ionicon" viewBox="0 0 512 512">
+					<path
+						fill="none"
+						stroke="currentColor"
+						strokeLinecap="round"
+						strokeLinejoin="round"
+						strokeWidth="48"
+						d="M112 244l144-144 144 144M256 120v292"
+					/>
+				</svg>
+			</button>
 		</>
 	);
 };

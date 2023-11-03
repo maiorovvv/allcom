@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next';
 import NotFound from './components/NotFound/NotFound';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
