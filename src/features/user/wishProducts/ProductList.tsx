@@ -49,10 +49,10 @@ const ProductList = (): JSX.Element => {
 							</table>
 							<div className="cart__continue__shopping d-flex justify-content-between">
 								<a className="cart__continue__shopping--link" href="index.html">
-									Continue shopping
+									{t('continue_shopping')}
 								</a>
 								<a className="cart__continue__shopping--clear" href="shop.html">
-									View All Products
+									{t('view_all_products')}
 								</a>
 							</div>
 						</div>

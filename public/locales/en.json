@@ -1,9 +1,11 @@
 {
 	"products": {
-		"add_to_cart": "Add To Cart",
+		"add_to_cart": "add to cart",
 		"color": "color",
+		"continue_shopping": "continue shopping",
 		"price": "price",
 		"product": "product",
+		"view_all_products": "view all products",
 		"weight": "weight"
 	},
 	"footer": {

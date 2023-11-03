@@ -1,9 +1,11 @@
 {
 	"products": {
 		"add_to_cart": "in den Warenkorb",
+		"continue_shopping": "weiter einkaufen",
 		"color": "Farbe",
 		"price": "Preis",
 		"product": "Produkt",
+		"view_all_products": "alle Produkte ansehen",
 		"weight": "Gewicht"
 	},
 	"footer": {

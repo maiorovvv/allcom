@@ -1,9 +1,11 @@
 {
 	"products": {
 		"add_to_cart": "добавить в корзину",
+		"continue_shopping": "продолжить покупки",
 		"color": "цвет",
 		"price": "цена",
 		"product": "продукт",
+		"view_all_products": "просмотреть все продукты",
 		"weight": "вес"
 	},
 	"footer": {
