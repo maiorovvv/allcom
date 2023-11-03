@@ -1,8 +1,10 @@
 {
-	"404-page": {
-		"content_title": "Opps! We did not find this page",
-		"content_desc": "But you can return to the main page",
-		"link_back_to_home": "Back To Home"
+	"products": {
+		"add_to_cart": "Add To Cart",
+		"color": "color",
+		"price": "price",
+		"product": "product",
+		"weight": "weight"
 	},
 	"footer": {
 		"about": "About Us",
@@ -20,5 +22,10 @@
 		"copyright": "Copyright © 2023",
 		"title": "Allcom",
 		"reserved": ". All Rights Reserved."
+	},
+	"404-page": {
+		"content_title": "Opps! We did not find this page",
+		"content_desc": "But you can return to the main page",
+		"link_back_to_home": "Back To Home"
 	}
 }
