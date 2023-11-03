@@ -1,8 +1,12 @@
 {
-	"404-page": {
-		"content_title": "Opps! We did not find this page",
-		"content_desc": "But you can return to the main page",
-		"link_back_to_home": "Back To Home"
+	"products": {
+		"add_to_cart": "add to cart",
+		"color": "color",
+		"continue_shopping": "continue shopping",
+		"price": "price",
+		"product": "product",
+		"view_all_products": "view all products",
+		"weight": "weight"
 	},
 	"footer": {
 		"about": "About Us",
@@ -45,5 +49,10 @@
 		"all_categories": "All Categories",
 		"keyword_here": "Keyword here...",
 		"add_product": "Add Product"
+	},
+	"404-page": {
+		"content_title": "Opps! We did not find this page",
+		"content_desc": "But you can return to the main page",
+		"link_back_to_home": "Back To Home"
 	}
 }
