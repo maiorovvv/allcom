@@ -6,7 +6,8 @@
 		"price": "цена",
 		"product": "продукт",
 		"view_all_products": "просмотреть все продукты",
-		"weight": "вес"
+		"weight": "вес",
+		"wishlist": "Избранное"
 	},
 	"footer": {
 		"about": "О Нас",

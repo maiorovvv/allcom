@@ -6,7 +6,8 @@
 		"price": "Preis",
 		"product": "Produkt",
 		"view_all_products": "alle Produkte ansehen",
-		"weight": "Gewicht"
+		"weight": "Gewicht",
+		"wishlist": "Mein Merkzettel"
 	},
 	"footer": {
 		"about": "Über Uns",
@@ -16,7 +17,7 @@
 		"shopping_cart": "Einkaufswagen",
 		"login": "Anmeldung",
 		"register": "Registrieren",
-		"wishlist": "Wunschzettel",
+		"wishlist": "Merkzettel",
 		"categories": "Kategorien",
 		"contact_us": "Kontakt",
 		"portfolio": "Portfolio",
