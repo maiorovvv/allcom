@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
-import './Header.module.scss';
 import SetLanguage from './set_language/SetLanguage';
 
 const Header: React.FC = () => {
