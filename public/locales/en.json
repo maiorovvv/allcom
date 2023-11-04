@@ -14,7 +14,7 @@
 		"about_us_text": "Auction house Allcom The site is currently under development. Thank you for your patience and understanding!!!",
 		"follow": "Follow Us",
 		"my_account": "My Account",
-		"shopping_cart": "Shopping Cart",
+		"cart": "Shopping Cart",
 		"login": "Login",
 		"register": "Register",
 		"wishlist": "Wishlist",
@@ -26,7 +26,7 @@
 		"title": "Allcom",
 		"reserved": ". All Rights Reserved."
 	},
-	"header" : {
+	"header": {
 		"welcome": "Welcome to Netmark online Store",
 		"about": "About Us",
 		"faq": "FAQ",
@@ -35,7 +35,7 @@
 		"auction": "Auction",
 		"categories": "Categories",
 		"search": "Search",
-		"shopping_cart": "Shopping Cart",
+		"cart": "Shopping Cart",
 		"wishlist": "Wishlist",
 		"my_account": "My Account",
 		"search_products": "Search Products",

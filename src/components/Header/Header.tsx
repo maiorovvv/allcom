@@ -215,7 +215,7 @@ const Header: React.FC = () => {
 												</svg>
 												<span className="items__count_header">{countItemsInCart}</span>
 											</div>
-											<span className="header__account--btn__text">{t('shopping_cart')}</span>
+											<span className="header__account--btn__text">{t('cart')}</span>
 										</div>
 									</li>
 								</ul>
@@ -578,7 +578,7 @@ const Header: React.FC = () => {
 									<span className="items__count">{countItemsInCart}</span>
 								</div>
 
-								<span className="offcanvas__stikcy--toolbar__label">{t('shopping_cart')}</span>
+								<span className="offcanvas__stikcy--toolbar__label">{t('cart')}</span>
 							</div>
 						</li>
 						<li className="offcanvas__stikcy--toolbar__list">
@@ -609,7 +609,7 @@ const Header: React.FC = () => {
 				<div className={`offCanvas__minicart ${minicartIsActive ? 'active' : ''}`}>
 					<div className="minicart__header ">
 						<div className="minicart__header--top d-flex justify-content-between align-items-center">
-							<h2 className="minicart__title h3">{t('shopping_cart')}</h2>
+							<h2 className="minicart__title h3">{t('cart')}</h2>
 							<button
 								onClick={() => setMinicartIsActive(!minicartIsActive)}
 								className="minicart__close--btn"

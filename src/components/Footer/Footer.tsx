@@ -157,7 +157,7 @@ const Footer: React.FC = (): JSX.Element => {
 								</li>
 								<li className="footer__widget--menu__list">
 									<a className="footer__widget--menu__text" href="cart.html">
-										{t('shopping_cart')}
+										{t('cart')}
 									</a>
 								</li>
 								<li className="footer__widget--menu__list">
