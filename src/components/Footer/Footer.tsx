@@ -29,9 +29,7 @@ const Footer: React.FC = (): JSX.Element => {
 							</button>
 						</h2>
 						<div className="footer__widget--inner">
-							<p className="footer__widget--desc text-ofwhite mb-20 container">
-								{t('about_us_text')}
-							</p>
+							<p className="footer__widget--desc text-ofwhite mb-20">{t('about_us_text')}</p>
 							<div className="footer__social">
 								<h3 className="social__title text-ofwhite h4 mb-15">{t('follow')}</h3>
 								<ul className="social__shear d-flex">
