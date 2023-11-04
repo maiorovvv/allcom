@@ -6,7 +6,8 @@
 		"price": "price",
 		"product": "product",
 		"view_all_products": "view all products",
-		"weight": "weight"
+		"weight": "weight",
+		"wishlist": "Wishlist"
 	},
 	"footer": {
 		"about": "About Us",

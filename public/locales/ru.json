@@ -6,7 +6,8 @@
 		"price": "цена",
 		"product": "продукт",
 		"view_all_products": "просмотреть все продукты",
-		"weight": "вес"
+		"weight": "вес",
+		"wishlist": "Избранное"
 	},
 	"footer": {
 		"about": "О Нас",
@@ -16,7 +17,7 @@
 		"shopping_cart": "Корзина",
 		"login": "Авторизоваться",
 		"register": "Регистрация",
-		"wishlist": "Список Желаний",
+		"wishlist": "Избранное",
 		"categories": "Категории",
 		"contact_us": "Связаться с нами",
 		"portfolio": "Портфолио",
