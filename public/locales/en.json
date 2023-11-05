@@ -50,6 +50,17 @@
 		"keyword_here": "Keyword here...",
 		"add_product": "Add Product"
 	},
+	"categories": {
+		"category_1": "Laptops and computers",
+		"category_2": "Smartphones, TV and electronics",
+		"category_3": "Large household appliances",
+		"category_4": "Home and clothing care",
+		"category_5": "Built-in technology",
+		"category_6": "Kitchen appliances",
+		"category_7": "beauty and health",
+		"category_8": "Furniture",
+		"category_9": "Clothing, shoes and accessories"
+	},
 	"404-page": {
 		"content_title": "Opps! We did not find this page",
 		"content_desc": "But you can return to the main page",

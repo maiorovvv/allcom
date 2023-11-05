@@ -37,9 +37,9 @@
 @import 'bootstrap/dist/css/bootstrap.css';
 
 @import './App.scss';
-@import './components/Footer/Footer.module.scss';
+@import './assets/scss/elements/footer.module';
 @import './components/NotFound/NotFound.module.scss';
-@import './components/Header/Header.module.scss';
+@import './assets/scss/elements/header.module';
 
 // @import "elements/header";
 // @import "elements/slider";

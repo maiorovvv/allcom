@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import SetLanguage from './set_language/SetLanguage';
+import SelectComponent from './components/SelectComponent';
 
 const Header: React.FC = () => {
 	const { t } = useTranslation('header');
@@ -72,17 +73,7 @@ const Header: React.FC = () => {
 							</div>
 							<div className="header__search--widget header__sticky--none d-none d-lg-block mb-15">
 								<form className="d-flex header__search--form" action="#">
-									<div className="header__select--categories select">
-										<select className="header__select--inner">
-											<option selected value="1">
-												{t('all_categories')}
-											</option>
-											<option value="2">Accessories</option>
-											<option value="3">Accessories & More</option>
-											<option value="4">Camera & Video </option>
-											<option value="5">Butters & Eggs </option>
-										</select>
-									</div>
+									<SelectComponent />
 									<div className="header__search--box">
 										<label>
 											<input
