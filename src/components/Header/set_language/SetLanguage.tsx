@@ -34,7 +34,7 @@ const SetLanguage: React.FC<IProps> = (isOpen): JSX.Element => {
 							{Object.keys(locales).map((locale) => (
 								<li
 									key={locale}
-									className="language__text language_trans language_style"
+									className="language__text language_trans header_language_style"
 									style={{
 										fontWeight: i18n.resolvedLanguage === locale ? 'bold' : 'normal',
 									}}
