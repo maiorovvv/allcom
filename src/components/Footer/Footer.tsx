@@ -1,14 +1,12 @@
 import { useTranslation } from 'react-i18next';
 
-import './Footer.module.scss';
-
 const Footer: React.FC = (): JSX.Element => {
 	const { t } = useTranslation('footer');
 
 	return (
 		<footer className="footer__section bg__black">
 			<div className="container-fluid ">
-				<div className="main__footer d-flex justify-content-evenly">
+				<div className="footer__main d-flex justify-content-evenly">
 					<div className="footer__widget footer__widget--width">
 						<h2 className="footer__widget--title text-ofwhite h3">
 							{t('about')}
@@ -29,15 +27,15 @@ const Footer: React.FC = (): JSX.Element => {
 							</button>
 						</h2>
 						<div className="footer__widget--inner">
-							<p className="footer__widget--desc text-ofwhite mb-20 container">
-								{t('about_us_text')}
-							</p>
+							<p className="footer__widget--desc text-ofwhite mb-20">{t('about_us_text')}</p>
 							<div className="footer__social">
-								<h3 className="social__title text-ofwhite h4 mb-15">{t('follow')}</h3>
-								<ul className="social__shear d-flex">
-									<li className="social__shear--list">
+								<h3 className="footer__footer_social__title text-ofwhite h4 mb-15">
+									{t('follow')}
+								</h3>
+								<ul className="footer__social__shear d-flex">
+									<li className="footer__social__shear--list">
 										<a
-											className="social__shear--list__icon"
+											className="footer__social__shear--list__icon"
 											target="_blank"
 											href="https://www.facebook.com"
 											rel="noreferrer"
@@ -58,9 +56,9 @@ const Footer: React.FC = (): JSX.Element => {
 											<span className="visually-hidden">Facebook</span>
 										</a>
 									</li>
-									<li className="social__shear--list">
+									<li className="footer__social__shear--list">
 										<a
-											className="social__shear--list__icon"
+											className="footer__social__shear--list__icon"
 											target="_blank"
 											href="https://twitter.com"
 											rel="noreferrer"
@@ -81,9 +79,9 @@ const Footer: React.FC = (): JSX.Element => {
 											<span className="visually-hidden">Twitter</span>
 										</a>
 									</li>
-									<li className="social__shear--list">
+									<li className="footer__social__shear--list">
 										<a
-											className="social__shear--list__icon"
+											className="footer__social__shear--list__icon"
 											target="_blank"
 											href="https://www.instagram.com"
 											rel="noreferrer"
@@ -104,9 +102,9 @@ const Footer: React.FC = (): JSX.Element => {
 											<span className="visually-hidden">Instagram</span>
 										</a>
 									</li>
-									<li className="social__shear--list">
+									<li className="footer__social__shear--list">
 										<a
-											className="social__shear--list__icon"
+											className="footer__social__shear--list__icon"
 											target="_blank"
 											href="https://www.youtube.com"
 											rel="noreferrer"
@@ -159,7 +157,7 @@ const Footer: React.FC = (): JSX.Element => {
 								</li>
 								<li className="footer__widget--menu__list">
 									<a className="footer__widget--menu__text" href="cart.html">
-										{t('shopping_cart')}
+										{t('cart')}
 									</a>
 								</li>
 								<li className="footer__widget--menu__list">
@@ -224,9 +222,9 @@ const Footer: React.FC = (): JSX.Element => {
 					</div>
 				</div>
 				<div className="footer__bottom d-flex justify-content-center align-items-center">
-					<p className="copyright__content text-ofwhite m-0">
+					<p className="footer__copyright__content text-ofwhite m-0">
 						{t('copyright')}{' '}
-						<a className="copyright__content--link" href="index.html">
+						<a className="footer__copyright__content--link" href="index.html">
 							{t('title')}
 						</a>{' '}
 						{t('reserved')}
