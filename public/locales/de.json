@@ -1,8 +1,13 @@
 {
-	"404-page": {
-		"content_title": "Upps! Wir haben diese Seite nicht gefunden",
-		"content_desc": "Sie können jedoch zur Hauptseite zurückkehren",
-		"link_back_to_home": "Zurück zur Startseite"
+	"products": {
+		"add_to_cart": "in den Warenkorb",
+		"continue_shopping": "weiter einkaufen",
+		"color": "Farbe",
+		"price": "Preis",
+		"product": "Produkt",
+		"view_all_products": "alle Produkte ansehen",
+		"weight": "Gewicht",
+		"wishlist": "Mein Merkzettel"
 	},
 	"footer": {
 		"about": "Über Uns",
@@ -12,7 +17,7 @@
 		"shopping_cart": "Einkaufswagen",
 		"login": "Anmeldung",
 		"register": "Registrieren",
-		"wishlist": "Wunschzettel",
+		"wishlist": "Merkzettel",
 		"categories": "Kategorien",
 		"contact_us": "Kontaktiere Uns",
 		"portfolio": "Portfolio",
@@ -20,5 +25,10 @@
 		"copyright": "Urheberrechte © 2023",
 		"title": "Allcom",
 		"reserved": ". Alle Rechte vorbehalten."
+	},
+	"404-page": {
+		"content_title": "Upps! Wir haben diese Seite nicht gefunden",
+		"content_desc": "Sie können jedoch zur Hauptseite zurückkehren",
+		"link_back_to_home": "Zurück zur Startseite"
 	}
 }
