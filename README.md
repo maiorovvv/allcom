@@ -29,21 +29,21 @@ const Products = (): JSX.Element => {…
 
 # path with react-router 
 
+[http://localhost:5173/allcom/#/](http://localhost:5173/allcom/#/)
+
 ```sh
 http://localhost:5173/allcom/#/
 ```
 
 # scss 
 
-```sh
-https://www.youtube.com/watch?v=yzCJwpJrmb4
-```
+[video about scss](https://www.youtube.com/watch?v=yzCJwpJrmb4)
+
 
 # template
 
-```sh
-https://bootstraptema.ru/stuff/templates_bootstrap/shop/suruchi/7-1-0-5980
-```
+[template](https://bootstraptema.ru/stuff/templates_bootstrap/shop/suruchi/7-1-0-5980)
+
 
 # vite-template-redux
 
