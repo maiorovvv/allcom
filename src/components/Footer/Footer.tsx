@@ -9,7 +9,7 @@ const Footer: React.FC = (): JSX.Element => {
 				<div className="footer__main d-flex justify-content-evenly">
 					<div className="footer__widget footer__widget--width">
 						<h2 className="footer__widget--title text-ofwhite h3">
-							{t('about')}
+							{t('about_us')}
 							<button className="footer__widget--button" aria-label="footer widget button">
 								<svg
 									className="footer__widget--title__arrowdown--icon"
@@ -199,7 +199,7 @@ const Footer: React.FC = (): JSX.Element => {
 							<ul className="footer__widget--menu footer__widget--inner">
 								<li className="footer__widget--menu__list">
 									<a className="footer__widget--menu__text" href="about.html">
-										{t('about')}
+										{t('about_us')}
 									</a>
 								</li>
 								<li className="footer__widget--menu__list">

@@ -10,7 +10,7 @@
 		"wishlist": "Mein Merkzettel"
 	},
 	"footer": {
-		"about": "Über Uns",
+		"about_us": "Über Uns",
 		"about_us_text": "Auktionshaus Allcom Die Seite befindet sich derzeit in der Entwicklung. Vielen Dank für Ihre Geduld und Ihr Verständnis!!!",
 		"follow": "Folgen Sie Uns",
 		"my_account": "Mein Konto",
@@ -31,7 +31,7 @@
 		"login": "Einloggen",
 		"register": "Registrieren",
 		"contact_us": "Kontakt",
-		"about": "Über Uns",
+		"about_us": "Über Uns",
 		"faq": "FAQ",
 		"auction": "Auktion",
 		"categories": "Kategorien",
