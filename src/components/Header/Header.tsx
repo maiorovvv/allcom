@@ -10,6 +10,8 @@ import Human2Icon from '../../img/svg/human2.svg?react';
 import CrossIcon from '../../img/svg/cross.svg?react';
 import Cross2Icon from '../../img/svg/cross2.svg?react';
 import UpArrowIcon from '../../img/svg/up_arrow.svg?react';
+import LinesIcon from '../../img/svg/3lines.svg?react';
+
 import NavBarHeader from '../NavBarHeader/NavBarHeader';
 
 const Header: React.FC = () => {
@@ -52,20 +54,7 @@ const Header: React.FC = () => {
 									data-offcanvas
 									onClick={() => setOffcanvasIsActive(!offcanvasIsActive)}
 								>
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										className="ionicon offcanvas__header--menu__open--svg"
-										viewBox="0 0 512 512"
-									>
-										<path
-											fill="currentColor"
-											stroke="currentColor"
-											strokeLinecap="round"
-											strokeMiterlimit="10"
-											strokeWidth="32"
-											d="M80 160h352M80 256h352M80 352h352"
-										/>
-									</svg>
+									<LinesIcon />
 									<span className="visually-hidden">Menu Open</span>
 								</div>
 							</div>

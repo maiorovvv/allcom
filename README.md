@@ -35,6 +35,36 @@ const Products = (): JSX.Element => {…
 http://localhost:5173/allcom/#/
 ```
 
+# import svg files 
+
+We use [vite-plugin-svgr](https://github.com/pd4d10/vite-plugin-svgr#readme)
+
+1) Create file in /img/svg/heart.svg
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [create new branch](#create-new-branch)
+- [FRONTEND import rules:](#frontend-import-rules)
+- [path with react-router](#path-with-react-router)
+- [import svg files](#import-svg-files)
+- [scss](#scss)
+- [template](#template)
+- [vite-template-redux](#vite-template-redux)
+  - [Goals](#goals)
+  - [Scripts](#scripts)
+  - [Inspiration](#inspiration)
+
+<!-- /code_chunk_output -->
+
+
+
+
+```sh
+import HeartIcon from '../../img/svg/heart.svg?react';
+```
+
 # scss 
 
 [video about scss](https://www.youtube.com/watch?v=yzCJwpJrmb4)
