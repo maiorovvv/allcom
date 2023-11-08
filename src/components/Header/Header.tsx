@@ -1,7 +1,18 @@
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
-import SetLanguage from './set_language/SetLanguage';
-import SelectComponent from './components/SelectComponent';
+
+import SetLanguage from './SetLanguage/SetLanguage';
+import CategorySelect from './CategorySelect/CategorySelect';
+import HeartIcon from '../../img/svg/heart.svg?react';
+import CartIcon from '../../img/svg/cart_icon.svg?react';
+import HumanIcon from '../../img/svg/human.svg?react';
+import Human2Icon from '../../img/svg/human2.svg?react';
+import CrossIcon from '../../img/svg/cross.svg?react';
+import Cross2Icon from '../../img/svg/cross2.svg?react';
+import UpArrowIcon from '../../img/svg/up_arrow.svg?react';
+import LinesIcon from '../../img/svg/3lines.svg?react';
+
+import NavBarHeader from '../NavBarHeader/NavBarHeader';
 
 const Header: React.FC = () => {
 	const { t } = useTranslation('header');
@@ -43,20 +54,7 @@ const Header: React.FC = () => {
 									data-offcanvas
 									onClick={() => setOffcanvasIsActive(!offcanvasIsActive)}
 								>
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										className="ionicon offcanvas__header--menu__open--svg"
-										viewBox="0 0 512 512"
-									>
-										<path
-											fill="currentColor"
-											stroke="currentColor"
-											strokeLinecap="round"
-											strokeMiterlimit="10"
-											strokeWidth="32"
-											d="M80 160h352M80 256h352M80 352h352"
-										/>
-									</svg>
+									<LinesIcon />
 									<span className="visually-hidden">Menu Open</span>
 								</div>
 							</div>
@@ -73,7 +71,7 @@ const Header: React.FC = () => {
 							</div>
 							<div className="header__search--widget header__sticky--none d-none d-lg-block mb-15">
 								<form className="d-flex header__search--form" action="#">
-									<SelectComponent />
+									<CategorySelect />
 									<div className="header__search--box">
 										<label>
 											<input
@@ -118,49 +116,14 @@ const Header: React.FC = () => {
 								<ul className="d-flex">
 									<li className="header__account--items">
 										<a className="header__account--btn" href="my-account.html">
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												width="26.51"
-												height="23.443"
-												viewBox="0 0 512 512"
-											>
-												<path
-													d="M344 144c-3.92 52.87-44 96-88 96s-84.15-43.12-88-96c-4-55 35-96 88-96s92 42 88 96z"
-													fill="none"
-													stroke="currentColor"
-													strokeLinecap="round"
-													strokeLinejoin="round"
-													strokeWidth="32"
-												/>
-												<path
-													d="M256 304c-87 0-175.3 48-191.64 138.6C62.39 453.52 68.57 464 80 464h352c11.44 0 17.62-10.48 15.65-21.4C431.3 352 343 304 256 304z"
-													fill="none"
-													stroke="currentColor"
-													strokeMiterlimit="10"
-													strokeWidth="32"
-												/>
-											</svg>
+											<HumanIcon />
 											<span className="header__account--btn__text">{t('my_account')}</span>
 										</a>
 									</li>
 									<li className="header__account--items d-none d-lg-block">
 										<div className="header__account--btn cont_icons">
 											<div className="my_icon">
-												<svg
-													xmlns="http://www.w3.org/2000/svg"
-													width="28.51"
-													height="23.443"
-													viewBox="0 0 512 512"
-												>
-													<path
-														d="M352.92 80C288 80 256 144 256 144s-32-64-96.92-64c-52.76 0-94.54 44.14-95.08 96.81-1.1 109.33 86.73 187.08 183 252.42a16 16 0 0018 0c96.26-65.34 184.09-143.09 183-252.42-.54-52.67-42.32-96.81-95.08-96.81z"
-														fill="none"
-														stroke="currentColor"
-														strokeLinecap="round"
-														strokeLinejoin="round"
-														strokeWidth="32"
-													></path>
-												</svg>
+												<HeartIcon />
 												<span className="items__count_header">{countItemsInWishlist}</span>
 											</div>
 											<span className="header__account--btn__text">{t('wishlist')}</span>
@@ -175,35 +138,7 @@ const Header: React.FC = () => {
 												className="header__account--btn minicart__open--btn my_icon"
 												data-offcanvas
 											>
-												<svg
-													xmlns="http://www.w3.org/2000/svg"
-													width="26.51"
-													height="23.443"
-													viewBox="0 0 14.706 13.534"
-												>
-													<g transform="translate(0 0)">
-														<g>
-															<path
-																data-name="Path 16787"
-																d="M4.738,472.271h7.814a.434.434,0,0,0,.414-.328l1.723-6.316a.466.466,0,0,0-.071-.4.424.424,0,0,0-.344-.179H3.745L3.437,463.6a.435.435,0,0,0-.421-.353H.431a.451.451,0,0,0,0,.9h2.24c.054.257,1.474,6.946,1.555,7.33a1.36,1.36,0,0,0-.779,1.242,1.326,1.326,0,0,0,1.293,1.354h7.812a.452.452,0,0,0,0-.9H4.74a.451.451,0,0,1,0-.9Zm8.966-6.317-1.477,5.414H5.085l-1.149-5.414Z"
-																transform="translate(0 -463.248)"
-																fill="currentColor"
-															/>
-															<path
-																data-name="Path 16788"
-																d="M5.5,478.8a1.294,1.294,0,1,0,1.293-1.353A1.325,1.325,0,0,0,5.5,478.8Zm1.293-.451a.452.452,0,1,1-.431.451A.442.442,0,0,1,6.793,478.352Z"
-																transform="translate(-1.191 -466.622)"
-																fill="currentColor"
-															/>
-															<path
-																data-name="Path 16789"
-																d="M13.273,478.8a1.294,1.294,0,1,0,1.293-1.353A1.325,1.325,0,0,0,13.273,478.8Zm1.293-.451a.452.452,0,1,1-.431.451A.442.442,0,0,1,14.566,478.352Z"
-																transform="translate(-2.875 -466.622)"
-																fill="currentColor"
-															/>
-														</g>
-													</g>
-												</svg>
+												<CartIcon />
 												<span className="items__count_header">{countItemsInCart}</span>
 											</div>
 											<span className="header__account--btn__text">{t('cart')}</span>
@@ -216,7 +151,7 @@ const Header: React.FC = () => {
 									<ul className="d-flex">
 										<li className="header__menu--items style2">
 											<a className="header__menu--link" href="about.html">
-												{t('about')}{' '}
+												{t('about_us')}{' '}
 											</a>
 										</li>
 										<li className="header__menu--items style2">
@@ -278,48 +213,13 @@ const Header: React.FC = () => {
 									</li>
 									<li className="header__account--items header__account2--items">
 										<a className="header__account--btn" href="my-account.html">
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												width="26.51"
-												height="23.443"
-												viewBox="0 0 512 512"
-											>
-												<path
-													d="M344 144c-3.92 52.87-44 96-88 96s-84.15-43.12-88-96c-4-55 35-96 88-96s92 42 88 96z"
-													fill="none"
-													stroke="currentColor"
-													strokeLinecap="round"
-													strokeLinejoin="round"
-													strokeWidth="32"
-												></path>
-												<path
-													d="M256 304c-87 0-175.3 48-191.64 138.6C62.39 453.52 68.57 464 80 464h352c11.44 0 17.62-10.48 15.65-21.4C431.3 352 343 304 256 304z"
-													fill="none"
-													stroke="currentColor"
-													strokeMiterlimit="10"
-													strokeWidth="32"
-												></path>
-											</svg>
+											<HumanIcon />
 											<span className="visually-hidden">My Account</span>
 										</a>
 									</li>
 									<li className="header__account--items header__account2--items d-none d-lg-block">
 										<a className="header__account--btn" href="wishlist.html">
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												width="28.51"
-												height="23.443"
-												viewBox="0 0 512 512"
-											>
-												<path
-													d="M352.92 80C288 80 256 144 256 144s-32-64-96.92-64c-52.76 0-94.54 44.14-95.08 96.81-1.1 109.33 86.73 187.08 183 252.42a16 16 0 0018 0c96.26-65.34 184.09-143.09 183-252.42-.54-52.67-42.32-96.81-95.08-96.81z"
-													fill="none"
-													stroke="currentColor"
-													strokeLinecap="round"
-													strokeLinejoin="round"
-													strokeWidth="32"
-												></path>
-											</svg>
+											<HeartIcon />
 											<span className="items__count  wishlist style2">{countItemsInWishlist}</span>
 										</a>
 									</li>
@@ -366,53 +266,7 @@ const Header: React.FC = () => {
 						</div>
 					</div>
 				</div>
-				<div className="header__bottom">
-					<div className="container-fluid">
-						<div className="row align-items-center position__relative justify-content-between">
-							<div className="col-xxl-7 col-xl-7 col-lg-7 col-md-4 col-3">
-								<div className="header__menu d-none d-lg-block">
-									<nav className="header__menu--navigation">
-										<ul className="d-flex">
-											<li className="header__menu--items style2">
-												<a className="header__menu--link" href="about.html">
-													{t('about')}{' '}
-												</a>
-											</li>
-											<li className="header__menu--items style2">
-												<a className="header__menu--link" href="contact.html">
-													{t('contact_us')}{' '}
-												</a>
-											</li>
-											<li className="header__menu--items style2">
-												<a className="header__menu--link" href="contact.html">
-													{t('faq')}{' '}
-												</a>
-											</li>
-											<li className="header__menu--items style2">
-												<a className="header__menu--link" href="contact.html">
-													{t('register')}{' '}
-												</a>
-											</li>
-											<li className="header__menu--items style2">
-												<a className="header__menu--link" href="contact.html">
-													{t('add_product')}{' '}
-												</a>
-											</li>
-											<li className="header__menu--items style2">
-												<a className="header__menu--link" href="contact.html">
-													{t('auction')}{' '}
-												</a>
-											</li>
-										</ul>
-									</nav>
-								</div>
-							</div>
-							<div className="col-xxl-5 col-xl-4 col-lg-3 col-md-4 col-3 d-flex justify-content-end">
-								<SetLanguage isOpen={'d-none'} />
-							</div>
-						</div>
-					</div>
-				</div>
+				<NavBarHeader />
 
 				{/* offcanvas_header_cloce */}
 
@@ -433,7 +287,7 @@ const Header: React.FC = () => {
 							<ul className="offcanvas__menu_ul">
 								<li className="offcanvas__menu_li">
 									<a className="header__menu--link" href="about.html">
-										{t('about')}{' '}
+										{t('about_us')}{' '}
 									</a>
 								</li>
 								<li className="offcanvas__menu_li">
@@ -463,28 +317,7 @@ const Header: React.FC = () => {
 									href="login.html"
 								>
 									<span className="offcanvas__account--items__icon">
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											width="20.51"
-											height="19.443"
-											viewBox="0 0 512 512"
-										>
-											<path
-												d="M344 144c-3.92 52.87-44 96-88 96s-84.15-43.12-88-96c-4-55 35-96 88-96s92 42 88 96z"
-												fill="none"
-												stroke="currentColor"
-												strokeLinecap="round"
-												strokeLinejoin="round"
-												strokeWidth="32"
-											/>
-											<path
-												d="M256 304c-87 0-175.3 48-191.64 138.6C62.39 453.52 68.57 464 80 464h352c11.44 0 17.62-10.48 15.65-21.4C431.3 352 343 304 256 304z"
-												fill="none"
-												stroke="currentColor"
-												strokeMiterlimit="10"
-												strokeWidth="32"
-											/>
-										</svg>
+										<Human2Icon />
 									</span>
 									<span className="offcanvas__account--items__label">Login / Register</span>
 								</a>
@@ -607,20 +440,7 @@ const Header: React.FC = () => {
 								aria-label="minicart close button"
 								data-offcanvas
 							>
-								<svg
-									className="minicart__close--icon"
-									xmlns="http://www.w3.org/2000/svg"
-									viewBox="0 0 512 512"
-								>
-									<path
-										fill="currentColor"
-										stroke="currentColor"
-										strokeLinecap="round"
-										strokeLinejoin="round"
-										strokeWidth="32"
-										d="M368 368L144 144M368 144L144 368"
-									/>
-								</svg>
+								<Cross2Icon />
 							</button>
 						</div>
 					</div>
@@ -782,7 +602,7 @@ const Header: React.FC = () => {
 										strokeWidth="32"
 										d="M338.29 338.29L448 448"
 									/>
-								</svg>{' '}
+								</svg>
 							</button>
 						</form>
 					</div>
@@ -792,36 +612,12 @@ const Header: React.FC = () => {
 						aria-label="search close button"
 						data-offcanvas
 					>
-						<svg
-							className="predictive__search--close__icon"
-							xmlns="http://www.w3.org/2000/svg"
-							width="40.51"
-							height="30.443"
-							viewBox="0 0 512 512"
-						>
-							<path
-								fill="currentColor"
-								stroke="currentColor"
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth="32"
-								d="M368 368L144 144M368 144L144 368"
-							/>
-						</svg>
+						<CrossIcon />
 					</button>
 				</div>
 			</header>
 			<button onClick={scrollToTop} id="scroll__top" className={`${isScrolled ? 'active' : ''}`}>
-				<svg xmlns="http://www.w3.org/2000/svg" className="ionicon" viewBox="0 0 512 512">
-					<path
-						fill="none"
-						stroke="currentColor"
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						strokeWidth="48"
-						d="M112 244l144-144 144 144M256 120v292"
-					/>
-				</svg>
+				<UpArrowIcon />
 			</button>
 		</>
 	);

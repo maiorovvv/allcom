@@ -10,7 +10,7 @@
 		"wishlist": "Wishlist"
 	},
 	"footer": {
-		"about": "About Us",
+		"about_us": "About Us",
 		"about_us_text": "Auction house Allcom The site is currently under development. Thank you for your patience and understanding!!!",
 		"follow": "Follow Us",
 		"my_account": "My Account",
@@ -28,7 +28,7 @@
 	},
 	"header": {
 		"welcome": "Welcome to Netmark online Store",
-		"about": "About Us",
+		"about_us": "About Us",
 		"faq": "FAQ",
 		"contact_us": "Contact",
 		"register": "Register",
