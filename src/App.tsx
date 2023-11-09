@@ -1,8 +1,10 @@
+import { Route, Routes } from 'react-router-dom';
+
 import NotFound from './components/NotFound/NotFound';
 import Products from './features/user/wishProducts/ProductList';
-
-import { Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
+import Header from './components/Header/Header';
+import MyAccount from './components/MyAccount/MyAccount';
 
 function App(): JSX.Element {
 	return (
@@ -15,6 +17,8 @@ function App(): JSX.Element {
 					<Route path="*" element={<NotFound />} />
 				</Route>
 			</Routes>
+			<Header />
+			<MyAccount />
 		</>
 	);
 }

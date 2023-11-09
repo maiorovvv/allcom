@@ -65,5 +65,24 @@
 		"content_title": "Upps! Wir haben diese Seite nicht gefunden",
 		"content_desc": "Sie können jedoch zur Hauptseite zurückkehren",
 		"link_back_to_home": "Zurück zur Startseite"
+	},
+	"my_account": {
+		"account_details": "Kontodetails",
+		"my_profile": "Mein Profil",
+		"log_out": "Ausloggen",
+		"wishlist": "Merkzettel",
+		"dashboard": "Dashboard",
+		"about_me": "Über mich"
+
+	},
+	"about_me": {
+		"submit": "Absenden",
+		"first_name": "Vorname",
+		"last_name": "Nachname",
+		"user_name": "Nutzername",
+		"email": "Email",
+		"password": "Password",
+		"about_me": "Über mich",
+		"address": "Adresse"
 	}
 }
