@@ -71,6 +71,8 @@
 		"log_out": "Log Out",
 		"wishlist": "Wishlist",
 		"dashboard": "Dashboard",
+		"change_password": "Change password",
+		"cart": "Shopping Cart",
 		"about_me": "About me"
 	},
 	"about_me": {
@@ -80,8 +82,15 @@
 		"last_name": "Last name",
 		"user_name": "User name",
 		"email": "Email",
-		"password": "Password",
 		"about_me": "About me",
-		"address": "Address"
+		"address": "Address",
+		"date_of_birth": "Date of Birth"
+	},
+	"change_password": {
+		"submit": "Submit",
+		"new_password": "New password",
+		"confirm_password": "Confirm password",
+		"change_password": "Change password",
+		"old_password": "Old password"
 	}
 }

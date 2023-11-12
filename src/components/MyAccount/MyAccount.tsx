@@ -1,255 +1,51 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { NavLink, Route, Routes, useNavigate } from 'react-router-dom';
+
 import AboutMeDetails from './components/AboutMeDetails';
+import ChangePassword from './components/ChangePassword';
+import Products from '../../features/user/wishProducts/ProductList';
 
 const MyAccount: FC = (): JSX.Element => {
 	const { t } = useTranslation('my_account');
 
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		navigate('/user/my_account/dashboard');
+	}, []);
+
 	return (
 		<section className="my__account--section section--padding">
 			<div className="container">
-				<div className="my__account--section__inner border-radius-10 d-flex">
-					<div className="account__left--sidebar">
-						<h2 className="account__content--title h3 mb-20">{t('my_profile')}</h2>
-						<ul className="account__menu">
-							<li className="account__menu--list active">
-								<div>{t('dashboard')}</div>
-							</li>
-							<li className="account__menu--list">
+				<div className="my__account--section__inner border-radius-10">
+					<div className="my_account__left--sidebar">
+						<h2 className="my_account__content--title h3 mb-20">{t('my_profile')}</h2>
+						<div className="my_account__menu">
+							<NavLink to="/user/my_account/cart" className="my_account__menu--list">
+								<div>{t('cart')}</div>
+							</NavLink>
+							<NavLink to="/user/my_account/products" className="my_account__menu--list">
 								<div>{t('wishlist')}</div>
-							</li>
-							<li className="account__menu--list">
+							</NavLink>
+							<NavLink to="2" className="my_account__menu--list">
 								<div>{t('log_out')}</div>
-							</li>
-							<li className="account__menu--list">
+							</NavLink>
+							<NavLink to="/user/my_account/about_me" className="my_account__menu--list">
 								<div>{t('about_me')}</div>
-							</li>
-						</ul>
+							</NavLink>
+							<NavLink to="/user/my_account/change_password" className="my_account__menu--list">
+								<div>{t('change_password')}</div>
+							</NavLink>
+						</div>
 					</div>
-					<div className="account__wrapper">
-						<div className="account__content">
-							<h2 className="account__content--title h3 mb-20">{t('about_me')}</h2>
-							{/* <div className="account__table--area">
-								<table className="account__table">
-									<thead className="account__table--header">
-										<tr className="account__table--header__child">
-											<th className="account__table--header__child--items">Order</th>
-											<th className="account__table--header__child--items">Date</th>
-											<th className="account__table--header__child--items">Payment Status</th>
-											<th className="account__table--header__child--items">Fulfillment Status</th>
-											<th className="account__table--header__child--items">Total</th>
-										</tr>
-									</thead>
-									<tbody className="account__table--body mobile__none">
-										<tr className="account__table--body__child">
-											<td className="account__table--body__child--items">#2014</td>
-											<td className="account__table--body__child--items">February 06, 2022</td>
-											<td className="account__table--body__child--items">Paid</td>
-											<td className="account__table--body__child--items">Unfulfilled</td>
-											<td className="account__table--body__child--items">$40.00 USD</td>
-										</tr>
-										<tr className="account__table--body__child">
-											<td className="account__table--body__child--items">#2024</td>
-											<td className="account__table--body__child--items">February 06, 2022</td>
-											<td className="account__table--body__child--items">Paid</td>
-											<td className="account__table--body__child--items">Fulfilled</td>
-											<td className="account__table--body__child--items">$44.00 USD</td>
-										</tr>
-										<tr className="account__table--body__child">
-											<td className="account__table--body__child--items">#2164</td>
-											<td className="account__table--body__child--items">February 06, 2022</td>
-											<td className="account__table--body__child--items">Paid</td>
-											<td className="account__table--body__child--items">Unfulfilled</td>
-											<td className="account__table--body__child--items">$36.00 USD</td>
-										</tr>
-										<tr className="account__table--body__child">
-											<td className="account__table--body__child--items">#2345</td>
-											<td className="account__table--body__child--items">February 06, 2022</td>
-											<td className="account__table--body__child--items">Paid</td>
-											<td className="account__table--body__child--items">Unfulfilled</td>
-											<td className="account__table--body__child--items">$87.00 USD</td>
-										</tr>
-										<tr className="account__table--body__child">
-											<td className="account__table--body__child--items">#1244</td>
-											<td className="account__table--body__child--items">February 06, 2022</td>
-											<td className="account__table--body__child--items">Paid</td>
-											<td className="account__table--body__child--items">Fulfilled</td>
-											<td className="account__table--body__child--items">$66.00 USD</td>
-										</tr>
-										<tr className="account__table--body__child">
-											<td className="account__table--body__child--items">#3455</td>
-											<td className="account__table--body__child--items">February 06, 2022</td>
-											<td className="account__table--body__child--items">Paid</td>
-											<td className="account__table--body__child--items">Fulfilled</td>
-											<td className="account__table--body__child--items">$55.00 USD</td>
-										</tr>
-										<tr className="account__table--body__child">
-											<td className="account__table--body__child--items">#4566</td>
-											<td className="account__table--body__child--items">February 06, 2022</td>
-											<td className="account__table--body__child--items">Paid</td>
-											<td className="account__table--body__child--items">Unfulfilled</td>
-											<td className="account__table--body__child--items">$87.00 USD</td>
-										</tr>
-									</tbody>
-									<tbody className="account__table--body mobile__block">
-										<tr className="account__table--body__child">
-											<td className="account__table--body__child--items">
-												<strong>Order</strong>
-												<span>#2014</span>
-											</td>
-											<td className="account__table--body__child--items">
-												<strong>Date</strong>
-												<span>November 24, 2022</span>
-											</td>
-											<td className="account__table--body__child--items">
-												<strong>Payment Status</strong>
-												<span>Paid</span>
-											</td>
-											<td className="account__table--body__child--items">
-												<strong>Fulfillment Status</strong>
-												<span>Unfulfilled</span>
-											</td>
-											<td className="account__table--body__child--items">
-												<strong>Total</strong>
-												<span>$40.00 USD</span>
-											</td>
-										</tr>
-										<tr className="account__table--body__child">
-											<td className="account__table--body__child--items">
-												<strong>Order</strong>
-												<span>#2014</span>
-											</td>
-											<td className="account__table--body__child--items">
-												<strong>Date</strong>
-												<span>November 24, 2022</span>
-											</td>
-											<td className="account__table--body__child--items">
-												<strong>Payment Status</strong>
-												<span>Paid</span>
-											</td>
-											<td className="account__table--body__child--items">
-												<strong>Fulfillment Status</strong>
-												<span>Unfulfilled</span>
-											</td>
-											<td className="account__table--body__child--items">
-												<strong>Total</strong>
-												<span>$40.00 USD</span>
-											</td>
-										</tr>
-										<tr className="account__table--body__child">
-											<td className="account__table--body__child--items">
-												<strong>Order</strong>
-												<span>#2014</span>
-											</td>
-											<td className="account__table--body__child--items">
-												<strong>Date</strong>
-												<span>November 24, 2022</span>
-											</td>
-											<td className="account__table--body__child--items">
-												<strong>Payment Status</strong>
-												<span>Paid</span>
-											</td>
-											<td className="account__table--body__child--items">
-												<strong>Fulfillment Status</strong>
-												<span>Unfulfilled</span>
-											</td>
-											<td className="account__table--body__child--items">
-												<strong>Total</strong>
-												<span>$40.00 USD</span>
-											</td>
-										</tr>
-										<tr className="account__table--body__child">
-											<td className="account__table--body__child--items">
-												<strong>Order</strong>
-												<span>#2014</span>
-											</td>
-											<td className="account__table--body__child--items">
-												<strong>Date</strong>
-												<span>November 24, 2022</span>
-											</td>
-											<td className="account__table--body__child--items">
-												<strong>Payment Status</strong>
-												<span>Paid</span>
-											</td>
-											<td className="account__table--body__child--items">
-												<strong>Fulfillment Status</strong>
-												<span>Unfulfilled</span>
-											</td>
-											<td className="account__table--body__child--items">
-												<strong>Total</strong>
-												<span>$40.00 USD</span>
-											</td>
-										</tr>
-										<tr className="account__table--body__child">
-											<td className="account__table--body__child--items">
-												<strong>Order</strong>
-												<span>#2014</span>
-											</td>
-											<td className="account__table--body__child--items">
-												<strong>Date</strong>
-												<span>November 24, 2022</span>
-											</td>
-											<td className="account__table--body__child--items">
-												<strong>Payment Status</strong>
-												<span>Paid</span>
-											</td>
-											<td className="account__table--body__child--items">
-												<strong>Fulfillment Status</strong>
-												<span>Unfulfilled</span>
-											</td>
-											<td className="account__table--body__child--items">
-												<strong>Total</strong>
-												<span>$40.00 USD</span>
-											</td>
-										</tr>
-										<tr className="account__table--body__child">
-											<td className="account__table--body__child--items">
-												<strong>Order</strong>
-												<span>#2014</span>
-											</td>
-											<td className="account__table--body__child--items">
-												<strong>Date</strong>
-												<span>November 24, 2022</span>
-											</td>
-											<td className="account__table--body__child--items">
-												<strong>Payment Status</strong>
-												<span>Paid</span>
-											</td>
-											<td className="account__table--body__child--items">
-												<strong>Fulfillment Status</strong>
-												<span>Unfulfilled</span>
-											</td>
-											<td className="account__table--body__child--items">
-												<strong>Total</strong>
-												<span>$40.00 USD</span>
-											</td>
-										</tr>
-										<tr className="account__table--body__child">
-											<td className="account__table--body__child--items">
-												<strong>Order</strong>
-												<span>#2014</span>
-											</td>
-											<td className="account__table--body__child--items">
-												<strong>Date</strong>
-												<span>November 24, 2022</span>
-											</td>
-											<td className="account__table--body__child--items">
-												<strong>Payment Status</strong>
-												<span>Paid</span>
-											</td>
-											<td className="account__table--body__child--items">
-												<strong>Fulfillment Status</strong>
-												<span>Unfulfilled</span>
-											</td>
-											<td className="account__table--body__child--items">
-												<strong>Total</strong>
-												<span>$40.00 USD</span>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div> */}
-							<AboutMeDetails />
+					<div className="my_account__wrapper">
+						<div className="my_account__content">
+							<Routes>
+								<Route path="products" element={<Products />} />
+								<Route path="about_me" element={<AboutMeDetails />} />
+								<Route path="change_password" element={<ChangePassword />} />
+							</Routes>
 						</div>
 					</div>
 				</div>

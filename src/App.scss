@@ -36,6 +36,11 @@
 	--secondary-color: #b79e8c;
 }
 
+.active {
+	color: var(--secondary-color) !important;
+	cursor: default !important;
+}
+
 /* Common Style */
 *,
 *::after,
@@ -1262,7 +1267,7 @@ select {
 	z-index: 99;
 	outline: none;
 	background-color: var(--secondary-color);
-	color: var(--white-color);
+	color: var(--white-color) !important;
 	box-shadow: 0 2px 22px rgba(0, 0, 0, 0.16);
 	cursor: pointer;
 	transform: translateY(50px);

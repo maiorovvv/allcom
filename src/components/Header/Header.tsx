@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import SetLanguage from './SetLanguage/SetLanguage';
 import CategorySelect from './CategorySelect/CategorySelect';
@@ -11,7 +12,6 @@ import CrossIcon from '../../img/svg/cross.svg?react';
 import Cross2Icon from '../../img/svg/cross2.svg?react';
 import UpArrowIcon from '../../img/svg/up_arrow.svg?react';
 import LinesIcon from '../../img/svg/3lines.svg?react';
-
 import NavBarHeader from '../NavBarHeader/NavBarHeader';
 
 const Header: React.FC = () => {
@@ -115,10 +115,10 @@ const Header: React.FC = () => {
 							<div className="header__account header__sticky--none">
 								<ul className="d-flex">
 									<li className="header__account--items">
-										<a className="header__account--btn" href="my-account.html">
+										<NavLink className="header__account--btn" to="/user/my_account">
 											<HumanIcon />
 											<span className="header__account--btn__text">{t('my_account')}</span>
-										</a>
+										</NavLink>
 									</li>
 									<li className="header__account--items d-none d-lg-block">
 										<div className="header__account--btn cont_icons">
@@ -212,10 +212,10 @@ const Header: React.FC = () => {
 										</div>
 									</li>
 									<li className="header__account--items header__account2--items">
-										<a className="header__account--btn" href="my-account.html">
+										<NavLink className="header__account--btn" to={'user/my_account'}>
 											<HumanIcon />
 											<span className="visually-hidden">My Account</span>
-										</a>
+										</NavLink>
 									</li>
 									<li className="header__account--items header__account2--items d-none d-lg-block">
 										<a className="header__account--btn" href="wishlist.html">
@@ -430,7 +430,7 @@ const Header: React.FC = () => {
 					</ul>
 				</div>
 
-				<div className={`offCanvas__minicart ${minicartIsActive ? 'active' : ''}`}>
+				<div className={`offCanvas__minicart ${minicartIsActive ? 'active_window' : ''}`}>
 					<div className="minicart__header ">
 						<div className="minicart__header--top d-flex justify-content-between align-items-center">
 							<h2 className="minicart__title h3">{t('cart')}</h2>
@@ -564,7 +564,7 @@ const Header: React.FC = () => {
 					</div>
 				</div>
 
-				<div className={`predictive__search--box ${searchBoxIsActive ? 'active' : ''}`}>
+				<div className={`predictive__search--box ${searchBoxIsActive ? 'active_window' : ''}`}>
 					<div className="predictive__search--box__inner">
 						<h2 className="predictive__search--title">{t('search_products')}</h2>
 						<form className="predictive__search--form" action="#">

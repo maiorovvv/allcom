@@ -32,7 +32,7 @@ const SetLanguage: React.FC<IProps> = (isOpen): JSX.Element => {
 					>
 						{localeTitle}
 					</span>
-					<div className={`dropdown__language ${isActive ? 'active' : ''}`}>
+					<div className={`dropdown__language ${isActive ? 'active_window' : ''}`}>
 						<ul>
 							{Object.keys(locales).map((locale) => (
 								<li

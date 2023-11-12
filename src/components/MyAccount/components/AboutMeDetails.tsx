@@ -1,14 +1,16 @@
 import { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+
 import Spinner from '../../Spinner/Spinner';
 import { RootState } from '../../../app/store';
 import { loadUser } from '../UserSlice';
 import User from '../types/User';
-import Pensil from '../../../img/pencil.svg';
+import PencilIcon from '../../../img/svg/pencil.svg?react';
 
 const AboutMeDetails: FC = (): JSX.Element => {
 	const { t } = useTranslation('about_me');
+
 	const loading = useAppSelector((state: RootState) => state.userDate.loading);
 	const dispatch = useAppDispatch();
 	useEffect(() => {
@@ -16,18 +18,32 @@ const AboutMeDetails: FC = (): JSX.Element => {
 	}, []);
 
 	const user: User | null = useAppSelector((state: RootState) => state.userDate.user);
-	const {
-		name: { firstname = '', lastname = '' } = {},
-		username = '',
-		email = '',
-		password = '',
-		address: { city = '', street = '', number = '' } = {},
-	} = user || {};
 
-	// const [isHiddenPassword, setIsHiddenPassword] = useState<boolean>(true);
-	// function generateStars(count: number): string {
-	// 	return '*'.repeat(count);
-	// }
+	const [isActiveDetails, setIsActiveDetails] = useState(true);
+
+	const [handleFirstname, setHandleFirstname] = useState('');
+	const [handleLastname, setHandleLastname] = useState('');
+	const [handleUsername, setHandleUsername] = useState('');
+	const [handleDateOfBirth, setHandleDateOfBirth] = useState('');
+	const [handleAddress, setHandleAddress] = useState('');
+	const [handleEmail, setHandleEmail] = useState('');
+
+	useEffect(() => {
+		if (user) {
+			const {
+				name: { firstname = '', lastname = '' } = {},
+				username = '',
+				email = '',
+				address: { city = '', street = '', number = '' } = {},
+			} = user;
+
+			setHandleFirstname(firstname);
+			setHandleLastname(lastname);
+			setHandleUsername(username);
+			setHandleEmail(email);
+			setHandleAddress(`${city}, ${street}, ${number}`);
+		}
+	}, [user]);
 
 	if (loading)
 		return (
@@ -37,100 +53,77 @@ const AboutMeDetails: FC = (): JSX.Element => {
 		);
 
 	return (
-		<div className="about_me">
-			<form action="#" className="about_me--inner">
-				<label className="about_me--text_style" htmlFor="acdetails-firstname">
-					{t('first_name')}
-				</label>
-				<input
-					className="about_me--input"
-					type="text"
-					value={firstname}
-					id="acdetails-firstname"
-					disabled
-				></input>
-				{Pensil}
-				{/* <button onClick={() => }>copy</button> */}
-
-				<label className="about_me--text_style" htmlFor="acdetails-lastname">
-					{t('last_name')}
-				</label>
-				<input
-					className="about_me--input"
-					type="text"
-					value={lastname}
-					id="acdetails-lastname"
-					disabled
-				></input>
-				<label className="about_me--text_style" htmlFor="acdetails-displayname">
-					{t('user_name')}
-				</label>
-				<input
-					className="about_me--input"
-					type="text"
-					value={username}
-					id="acdetails-displayname"
-					disabled
-				></input>
-				{/* <label className="about_me--text_style" htmlFor="acdetails-email">
-					{t('email')}
-				</label>
-				<input className="about_me--input" type="email" value={email} id="acdetails-email"></input>
-				<label className="about_me--text_style" htmlFor="acdetails-password">
-					{t('password')}
-				</label>
-				<input
-					className="about_me--input"
-					type="password"
-					value={password}
-					id="acdetails-password"
-				></input> */}
-				<label className="about_me--text_style" htmlFor="acdetails-address">
-					{t('address')}
-				</label>
-				<input
-					className="about_me--input"
-					type="text"
-					value={`${city}, ${street}, ${number}`}
-					id="acdetails-address"
-					disabled
-				></input>
-				<button className="about_me--btn primary__btn" type="submit">
-					{t('submit')}
-				</button>
-			</form>
-
-			{/* commit */}
-
-			{/* <form>
-				<div className="mb-3">
-					<label htmlFor="exampleInputEmail1" className="form-label">
-						Email address
-					</label>
+		<>
+			{/* <h2 className="my_account__content--title h3 mb-20">{t('about_me')}</h2> */}
+			<div className="about_me">
+				<form action="#" className="about_me--inner">
+					<label className="about_me--text_style">{t('first_name')}</label>
 					<input
-						type="email"
-						className="form-control"
-						id="exampleInputEmail1"
-						aria-describedby="emailHelp"
+						className="about_me--input"
+						type="text"
+						value={handleFirstname}
+						id="acdetails-firstname"
+						disabled={isActiveDetails}
+						onChange={(e) => setHandleFirstname(e.target.value)}
 					></input>
-				</div>
-				<div className="mb-3">
-					<label htmlFor="exampleInputPassword1" className="form-label">
-						Password
-					</label>
-					<input type="password" className="form-control" id="exampleInputPassword1"></input>
-				</div>
-				<div className="mb-3 form-check">
-					<input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
-					<label className="form-check-label" htmlFor="exampleCheck1">
-						Check me out
-					</label>
-				</div>
-				<button type="submit" className="btn btn-primary">
-					Submit
-				</button>
-			</form> */}
-		</div>
+
+					<label className="about_me--text_style">{t('last_name')}</label>
+					<input
+						className="about_me--input"
+						type="text"
+						value={handleLastname}
+						id="acdetails-lastname"
+						disabled={isActiveDetails}
+						onChange={(e) => setHandleLastname(e.target.value)}
+					></input>
+					<label className="about_me--text_style">{t('user_name')}</label>
+					<input
+						className="about_me--input"
+						type="text"
+						value={handleUsername}
+						id="acdetails-displayname"
+						disabled={isActiveDetails}
+						onChange={(e) => setHandleUsername(e.target.value)}
+					></input>
+					<label className="about_me--text_style">{t('date_of_birth')}</label>
+					<input
+						className="about_me--input"
+						type="text"
+						value={handleDateOfBirth}
+						id="acdetails-displayname"
+						disabled={isActiveDetails}
+						onChange={(e) => setHandleDateOfBirth(e.target.value)}
+					></input>
+					<label className="about_me--text_style">{t('email')}</label>
+					<input
+						className="about_me--input"
+						type="email"
+						value={handleEmail}
+						id="acdetails-email"
+						disabled={isActiveDetails}
+						onChange={(e) => setHandleEmail(e.target.value)}
+					></input>
+					<label className="about_me--text_style">{t('address')}</label>
+					<input
+						className="about_me--input"
+						type="text"
+						value={handleAddress}
+						id="acdetails-address"
+						disabled={isActiveDetails}
+						onChange={(e) => setHandleAddress(e.target.value)}
+					></input>
+					<div className="d-flex justify-content-between align-items-center">
+						<button className="about_me--btn primary__btn" type="submit">
+							{t('submit')}
+						</button>
+						<PencilIcon
+							onClick={() => setIsActiveDetails(!isActiveDetails)}
+							className="about_me__pencil"
+						/>
+					</div>
+				</form>
+			</div>
+		</>
 	);
 };
 
