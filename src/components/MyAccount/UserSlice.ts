@@ -21,9 +21,11 @@ export const userSlice = createSlice({
 			.addCase(loadUser.fulfilled, (state, action) => {
 				state.user = action.payload;
 				state.loading = false;
+			})
+			.addCase(loadUser.rejected, (state) => {
+				state.loading = false;
 			});
 	},
 });
 
-// export const { setUser } = userSlice.actions;
 export default userSlice.reducer;

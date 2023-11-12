@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import Spinner from '../../Spinner/Spinner';
 import { RootState } from '../../../app/store';
 import { loadUser } from '../UserSlice';
-import User from '../types/User';
+import UserType from '../types/User';
 import PencilIcon from '../../../img/svg/pencil.svg?react';
 
 const AboutMeDetails: FC = (): JSX.Element => {
@@ -17,7 +17,7 @@ const AboutMeDetails: FC = (): JSX.Element => {
 		dispatch(loadUser());
 	}, []);
 
-	const user: User | null = useAppSelector((state: RootState) => state.userDate.user);
+	const user: UserType | null = useAppSelector((state: RootState) => state.userDate.user);
 
 	const [isActiveDetails, setIsActiveDetails] = useState(true);
 
@@ -54,7 +54,6 @@ const AboutMeDetails: FC = (): JSX.Element => {
 
 	return (
 		<>
-			{/* <h2 className="my_account__content--title h3 mb-20">{t('about_me')}</h2> */}
 			<div className="about_me">
 				<form action="#" className="about_me--inner">
 					<label className="about_me--text_style">{t('first_name')}</label>
