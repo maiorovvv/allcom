@@ -9,7 +9,16 @@
 	"prettier.printWidth": 100,
 	"editor.tabSize": 2,
 	"editor.codeActionsOnSave": ["source.formatDocument", "source.fixAll.eslint"],
-	"cSpell.words": ["airbnb", "allcom", "languagedetector", "predeploy", "sсss", "svgr"],
+	"cSpell.words": [
+		"airbnb",
+		"allcom",
+		"baner",
+		"languagedetector",
+		"maintitle",
+		"predeploy",
+		"svgr",
+		"sсss"
+	],
 	"[typescriptreact]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
