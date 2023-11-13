@@ -53,7 +53,7 @@ const ChangePassword: FC = (): JSX.Element => {
 							onClick={() =>
 								togglePassInput(typeOldPassword, setTypeOldPassword, setIconOldPassword)
 							}
-							className="change_password__input_password_icon"
+							className="change_password__input_icon"
 						>
 							{iconOldPassword}
 						</span>
@@ -76,7 +76,7 @@ const ChangePassword: FC = (): JSX.Element => {
 							onClick={() =>
 								togglePassInput(typeNewPassword, setTypeNewPassword, setIconNewPassword)
 							}
-							className="change_password__input_password_icon"
+							className="change_password__input_icon"
 						>
 							{iconNewPassword}
 						</span>
@@ -99,7 +99,7 @@ const ChangePassword: FC = (): JSX.Element => {
 							onClick={() =>
 								togglePassInput(typeConfirmPassword, setTypeConfirmPassword, setIconConfirmPassword)
 							}
-							className="change_password__input_password_icon"
+							className="change_password__input_icon"
 						>
 							{iconConfirmPassword}
 						</span>
