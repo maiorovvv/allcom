@@ -1,8 +1,8 @@
 import { useState, FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import EyeIcon from '../../../img/svg/eye.svg?react';
-import EyeSlashIcon from '../../../img/svg/eye_slash.svg?react';
+import EyeIcon from '../../../img/svg/eye_paasord.svg?react';
+import EyeSlashIcon from '../../../img/svg/eye_slash_password.svg?react';
 
 const ChangePassword: FC = (): JSX.Element => {
 	const { t } = useTranslation('change_password');
