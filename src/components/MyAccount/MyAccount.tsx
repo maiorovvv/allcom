@@ -2,7 +2,7 @@ import { FC, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink, Route, Routes, useNavigate } from 'react-router-dom';
 
-import AboutMeDetails from './components/AboutMeDetails';
+import AboutMe from './components/AboutMe';
 import ChangePassword from './components/ChangePassword';
 import Products from '../../features/user/wishProducts/ProductList';
 
@@ -12,7 +12,7 @@ const MyAccount: FC = (): JSX.Element => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		navigate('/user/my_account/dashboard');
+		navigate('/user/my_account/about_me');
 	}, []);
 
 	return (
@@ -43,7 +43,7 @@ const MyAccount: FC = (): JSX.Element => {
 						<div className="my_account__content">
 							<Routes>
 								<Route path="products" element={<Products />} />
-								<Route path="about_me" element={<AboutMeDetails />} />
+								<Route path="about_me" element={<AboutMe />} />
 								<Route path="change_password" element={<ChangePassword />} />
 							</Routes>
 						</div>

@@ -8,16 +8,8 @@ import { loadUser } from '../UserSlice';
 import UserType from '../types/User';
 import PencilIcon from '../../../img/svg/pencil.svg?react';
 
-const AboutMeDetails: FC = (): JSX.Element => {
+const AboutMe: FC = (): JSX.Element => {
 	const { t } = useTranslation('about_me');
-
-	const loading = useAppSelector((state: RootState) => state.userDate.loading);
-	const dispatch = useAppDispatch();
-	useEffect(() => {
-		dispatch(loadUser());
-	}, []);
-
-	const user: UserType | null = useAppSelector((state: RootState) => state.userDate.user);
 
 	const [isActiveDetails, setIsActiveDetails] = useState(true);
 
@@ -27,6 +19,14 @@ const AboutMeDetails: FC = (): JSX.Element => {
 	const [handleDateOfBirth, setHandleDateOfBirth] = useState('');
 	const [handleAddress, setHandleAddress] = useState('');
 	const [handleEmail, setHandleEmail] = useState('');
+
+	const loading = useAppSelector((state: RootState) => state.userDate.loading);
+	const dispatch = useAppDispatch();
+	useEffect(() => {
+		dispatch(loadUser());
+	}, []);
+
+	const user: UserType | null = useAppSelector((state: RootState) => state.userDate.user);
 
 	useEffect(() => {
 		if (user) {
@@ -61,7 +61,6 @@ const AboutMeDetails: FC = (): JSX.Element => {
 						className="about_me--input"
 						type="text"
 						value={handleFirstname}
-						id="acdetails-firstname"
 						disabled={isActiveDetails}
 						onChange={(e) => setHandleFirstname(e.target.value)}
 					></input>
@@ -71,7 +70,6 @@ const AboutMeDetails: FC = (): JSX.Element => {
 						className="about_me--input"
 						type="text"
 						value={handleLastname}
-						id="acdetails-lastname"
 						disabled={isActiveDetails}
 						onChange={(e) => setHandleLastname(e.target.value)}
 					></input>
@@ -80,7 +78,6 @@ const AboutMeDetails: FC = (): JSX.Element => {
 						className="about_me--input"
 						type="text"
 						value={handleUsername}
-						id="acdetails-displayname"
 						disabled={isActiveDetails}
 						onChange={(e) => setHandleUsername(e.target.value)}
 					></input>
@@ -89,7 +86,6 @@ const AboutMeDetails: FC = (): JSX.Element => {
 						className="about_me--input"
 						type="text"
 						value={handleDateOfBirth}
-						id="acdetails-displayname"
 						disabled={isActiveDetails}
 						onChange={(e) => setHandleDateOfBirth(e.target.value)}
 					></input>
@@ -98,7 +94,6 @@ const AboutMeDetails: FC = (): JSX.Element => {
 						className="about_me--input"
 						type="email"
 						value={handleEmail}
-						id="acdetails-email"
 						disabled={isActiveDetails}
 						onChange={(e) => setHandleEmail(e.target.value)}
 					></input>
@@ -107,7 +102,6 @@ const AboutMeDetails: FC = (): JSX.Element => {
 						className="about_me--input"
 						type="text"
 						value={handleAddress}
-						id="acdetails-address"
 						disabled={isActiveDetails}
 						onChange={(e) => setHandleAddress(e.target.value)}
 					></input>
@@ -125,5 +119,4 @@ const AboutMeDetails: FC = (): JSX.Element => {
 		</>
 	);
 };
-
-export default AboutMeDetails;
+export default AboutMe;
