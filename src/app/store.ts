@@ -1,5 +1,6 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import userProductsReducer from '../features/user/wishProducts/productsSlice';
+import productsReducer from '../features/products/productsSlice';
 import userDateReducer from '../components/MyAccount/UserSlice';
 // import counterReducer from '../features/counter/counterSlice';
 
@@ -7,7 +8,7 @@ export const store = configureStore({
 	reducer: {
 		userProducts: userProductsReducer,
 		userDate: userDateReducer,
-		// counter: counterReducer,
+		products: productsReducer,
 	},
 });
 

@@ -1,4 +1,15 @@
 {
+	"home": {
+		"header": "Produkte",
+		"add_to_card": " + In den Korb",
+		"wishlist": "Merkzettel"
+	},
+	"baner": {
+		"view_auctions": "Auktionen ansehen",
+		"main_text_part1": "Finden Sie selbst neue",
+		"main_text_part2": "Auktionsgegenstände!!",
+		"button": "Auktion anzeigen"
+	},
 	"products": {
 		"add_to_cart": "in den Warenkorb",
 		"continue_shopping": "weiter einkaufen",

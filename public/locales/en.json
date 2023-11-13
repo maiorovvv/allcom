@@ -1,4 +1,15 @@
 {
+	"home": {
+		"header": "Products",
+		"add_to_card": " + Add to cart",
+		"wishlist": "Wishlist"
+	},
+	"baner": {
+		"view_auctions": "View auctions",
+		"main_text_part1": "Find new Auction lots",
+		"main_text_part2": "for yourself!!",
+		"button": "Show Auction"
+	},
 	"products": {
 		"add_to_cart": "add to cart",
 		"color": "color",

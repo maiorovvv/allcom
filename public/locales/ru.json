@@ -1,4 +1,15 @@
 {
+	"home": {
+		"header": "Товары",
+		"add_to_card": " + В корзину",
+		"wishlist": "Избранное"
+	},
+	"baner": {
+		"view_auctions": "Текущие аукционы",
+		"main_text_part1": "Найди для себя новые",
+		"main_text_part2": "аукционные лоты!!",
+		"button": "Показать аукцион"
+	},
 	"products": {
 		"add_to_cart": "добавить в корзину",
 		"continue_shopping": "продолжить покупки",
