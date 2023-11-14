@@ -103,7 +103,7 @@ const Header: React.FC = () => {
 													? 'active__nav_link header__account--btn'
 													: 'header__account--btn cont_icons'
 											}
-											to="/user/my_account"
+											to="/user/my_account/about_me"
 										>
 											<HumanIcon />
 											<span className="header__account--btn__text">{t('my_account')}</span>
