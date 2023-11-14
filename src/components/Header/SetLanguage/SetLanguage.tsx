@@ -16,7 +16,7 @@ const SetLanguage: React.FC<IProps> = (isOpen): JSX.Element => {
 	const { i18n } = useTranslation();
 
 	const [isActive, setIsActive] = useState(false);
-	const languageKey = i18n.language;
+	const languageKey = i18n.language?.split('-')[0];
 	const localeTitle = locales[languageKey as keyof typeof locales]?.title;
 
 	return (
