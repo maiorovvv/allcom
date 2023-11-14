@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 
-import Arrow from '../../../img/svg/poster_arrow.svg?react';
+import RightArrow from '../../../img/svg/right_arrow.svg?react';
 
 const Poster: React.FC = (): JSX.Element => {
 	const { t } = useTranslation('poster');
@@ -20,7 +20,7 @@ const Poster: React.FC = (): JSX.Element => {
 								</h2>
 								<NavLink className="poster_slider__btn primary__btn" to="/auction">
 									{t('button')}
-									<Arrow />
+									<RightArrow />
 								</NavLink>
 							</div>
 						</div>
