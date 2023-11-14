@@ -30,7 +30,6 @@ const ProductList = (): JSX.Element => {
 			<div className="container">
 				<div className="cart__section--inner">
 					<form action="#">
-						<h2 className="cart__title mb-40">{t('wishlist')}</h2>
 						<div className="cart__table">
 							<table className="cart__table--inner">
 								<thead className="cart__table--header">

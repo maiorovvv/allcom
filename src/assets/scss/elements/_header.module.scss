@@ -203,7 +203,7 @@
 	transform: translateX(-50%) translateY(-50%);
 	background-color: var(--black-color);
 }
-.offcanvas__sub_menu_toggle:not(.active)::after {
+.offcanvas__sub_menu_toggle:not(.active_window)::after {
 	transform: translateX(-50%) translateY(-50%) rotate(90deg);
 }
 .offcanvas__account--items {
@@ -242,7 +242,7 @@
 	margin-bottom: 15px;
 	transition: var(--transition);
 	background: var(--white-color);
-	&.active {
+	&.active_window {
 		opacity: 1;
 		visibility: visible;
 		margin-bottom: 8px;
@@ -270,7 +270,7 @@
 		margin-bottom: 15px;
 		transition: var(--transition);
 		background: var(--white-color);
-		&.active {
+		&.active_window {
 			opacity: 1;
 			visibility: visible;
 			margin-bottom: 8px;
@@ -515,7 +515,7 @@
 	margin-top: 28px;
 	transition: var(--transition);
 	background: var(--white-color);
-	&.active {
+	&.active_window {
 		opacity: 1;
 		visibility: visible;
 		margin-top: 17px;
@@ -595,7 +595,7 @@
 	margin-top: 28px;
 	transition: var(--transition);
 	background: var(--white-color);
-	&.active {
+	&.active_window {
 		opacity: 1;
 		visibility: visible;
 		margin-top: 17px;
@@ -773,6 +773,9 @@
 				display: none;
 			}
 		}
+		&.active {
+			color: var(--secondary-color);
+		}
 	}
 }
 .search__open--btn {
@@ -859,7 +862,7 @@
 		z-index: 999;
 		transition: all 0.3s ease 0s;
 		transform: translateY(-100%);
-		&.active {
+		&.active_window {
 			opacity: 1;
 			visibility: visible;
 			transform: translateY(0);
@@ -1095,7 +1098,7 @@
 	transform: translateX(100%);
 	overflow-y: auto;
 	box-shadow: 0 0 15px rgba(5, 0, 0, 0.1);
-	&.active {
+	&.active_window {
 		opacity: 1;
 		visibility: visible;
 		transform: translateX(0);

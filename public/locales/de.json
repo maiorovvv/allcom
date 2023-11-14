@@ -76,5 +76,33 @@
 		"content_title": "Upps! Wir haben diese Seite nicht gefunden",
 		"content_desc": "Sie können jedoch zur Hauptseite zurückkehren",
 		"link_back_to_home": "Zurück zur Startseite"
+	},
+	"my_account": {
+		"account_details": "Kontodetails",
+		"my_profile": "Mein Profil",
+		"log_out": "Abmelden",
+		"wishlist": "Merkzettel",
+		"change_password": "Password ändern",
+		"dashboard": "Dashboard",
+		"cart": "Warenkorb",
+		"about_me": "Über mich"
+
+	},
+	"about_me": {
+		"submit": "Absenden",
+		"first_name": "Vorname",
+		"last_name": "Nachname",
+		"user_name": "Nutzername",
+		"email": "Email",
+		"about_me": "Über mich",
+		"address": "Adresse",
+		"date_of_birth": "Geburtsdatum"
+	},
+	"change_password": {
+		"submit": "Absenden",
+		"new_password": "Neu Password",
+		"confirm_password": "Bestätige das Passwort",
+		"change_password": "Password ändern",
+		"old_password": "Altes Passwort"
 	}
 }

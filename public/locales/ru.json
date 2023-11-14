@@ -77,5 +77,31 @@
 		"content_title": "Упс! Мы не нашли эту страницу",
 		"content_desc": "Но вы можете вернуться на главную страницу",
 		"link_back_to_home": "Вернуться на главную"
+	},
+	"my_account": {
+		"my_profile": "Мой профиль",
+		"log_out": "Выйти",
+		"wishlist": "Избранное",
+		"dashboard": "Недамборд",
+		"change_password": "Изменить пароль",
+		"cart": "Корзина",
+		"about_me": "Обо мне"
+	},
+	"about_me": {
+		"submit": "Отправить",
+		"account_details": "Детали учетной записи",
+		"first_name": "Имя",
+		"last_name": "Фамилия",
+		"user_name": "Имя пользователя",
+		"about_me": "Обо мне",
+		"address": "Адрес",
+		"date_of_birth": "Дата рождения"
+	},
+	"change_password": {
+		"submit": "Отправить",
+		"new_password": "Новый пароль",
+		"confirm_password": "Подтвердите пароль",
+		"change_password": "Изменить пароль",
+		"old_password": "Старый пароль"
 	}
 }
