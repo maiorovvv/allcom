@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { RootState } from '../../app/store';
 import { loadProducts } from './productsSlice';
-import Baner from './baner/Baner';
+import Poster from './poster/Poster';
 import Basket from '../../img/svg/cart_icon.svg?react';
 import Heart from '../../img/svg/heart.svg?react';
 import Eye from '../../img/svg/eye.svg?react';
@@ -28,7 +28,7 @@ const Products: React.FC = (): JSX.Element => {
 		);
 	return (
 		<main className="main__content_wrapper">
-			<Baner /> <br />
+			<Poster /> <br />
 			<br />
 			<section className="product__section section--padding pt-0">
 				<div className="container-fluid">
