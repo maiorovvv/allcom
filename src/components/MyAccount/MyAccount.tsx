@@ -12,7 +12,7 @@ const MyAccount: FC = (): JSX.Element => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		navigate('/user/my_account/about_me');
+		navigate('/user/my_account/products');
 	}, []);
 
 	return (

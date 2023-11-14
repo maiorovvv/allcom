@@ -41,12 +41,12 @@
 @import './components/NotFound/NotFound.module.scss';
 @import './assets/scss/elements/header.module';
 @import './assets/scss/elements/my_account';
-@import'./assets/scss/elements/about_me_details';
-@import'./assets/scss/elements/change_password';
+@import './assets/scss/elements/about_me_details';
+@import './assets/scss/elements/change_password';
 
 // @import "elements/header";
-@import "./assets/scss/elements/_baner.scss";
-@import "./assets/scss/elements/_products.scss";
+@import './assets/scss/elements/_poster.scss';
+@import './assets/scss/elements/_products.scss';
 // @import "elements/slider";
 // @import "elements/product";
 // @import "elements/banner";
@@ -64,7 +64,7 @@
 // @import "elements/product-details";
 // @import "elements/blog-details";
 // @import "elements/contact";
-@import "./assets/scss/elements/cart-page";
+@import './assets/scss/elements/cart-page';
 // @import "elements/checkout";
 // @import "elements/my-account";
 // @import "elements/login";
@@ -73,6 +73,3 @@
 // @import "elements/preloader";
 // @import "elements/privacy-policy";
 // @import "elements/newsletter-popup";
-
-
-

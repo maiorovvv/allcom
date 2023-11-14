@@ -4,7 +4,7 @@
 		"add_to_card": " + In den Korb",
 		"wishlist": "Merkzettel"
 	},
-	"baner": {
+	"poster": {
 		"view_auctions": "Auktionen ansehen",
 		"main_text_part1": "Finden Sie selbst neue",
 		"main_text_part2": "Auktionsgegenstände!!",
@@ -86,7 +86,6 @@
 		"dashboard": "Dashboard",
 		"cart": "Warenkorb",
 		"about_me": "Über mich"
-
 	},
 	"about_me": {
 		"submit": "Absenden",
