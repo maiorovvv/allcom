@@ -48,6 +48,7 @@ const ChangePassword: FC = (): JSX.Element => {
 							value={handlePassword}
 							id="old-password"
 							onChange={(e) => setHandlePassword(e.target.value)}
+							required
 						></input>
 						<span
 							onClick={() =>
@@ -71,6 +72,7 @@ const ChangePassword: FC = (): JSX.Element => {
 							value={handleNewPassword}
 							id="password"
 							onChange={(e) => setHandleNewPassword(e.target.value)}
+							required
 						></input>
 						<span
 							onClick={() =>
@@ -94,6 +96,7 @@ const ChangePassword: FC = (): JSX.Element => {
 							value={handleNewConfirmPassword}
 							id="confirm-password"
 							onChange={(e) => setHandleNewConfirmPassword(e.target.value)}
+							required
 						></input>
 						<span
 							onClick={() =>

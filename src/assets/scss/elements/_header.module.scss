@@ -773,6 +773,9 @@
 				display: none;
 			}
 		}
+		&.active {
+			color: var(--secondary-color);
+		}
 	}
 }
 .search__open--btn {

@@ -63,6 +63,7 @@ const AboutMe: FC = (): JSX.Element => {
 						value={handleFirstname}
 						disabled={isActiveDetails}
 						onChange={(e) => setHandleFirstname(e.target.value)}
+						required
 					></input>
 
 					<label className="about_me--text_style">{t('last_name')}</label>
@@ -72,6 +73,7 @@ const AboutMe: FC = (): JSX.Element => {
 						value={handleLastname}
 						disabled={isActiveDetails}
 						onChange={(e) => setHandleLastname(e.target.value)}
+						required
 					></input>
 					<label className="about_me--text_style">{t('user_name')}</label>
 					<input
@@ -80,6 +82,7 @@ const AboutMe: FC = (): JSX.Element => {
 						value={handleUsername}
 						disabled={isActiveDetails}
 						onChange={(e) => setHandleUsername(e.target.value)}
+						required
 					></input>
 					<label className="about_me--text_style">{t('date_of_birth')}</label>
 					<input
@@ -88,6 +91,7 @@ const AboutMe: FC = (): JSX.Element => {
 						value={handleDateOfBirth}
 						disabled={isActiveDetails}
 						onChange={(e) => setHandleDateOfBirth(e.target.value)}
+						required
 					></input>
 					<label className="about_me--text_style">{t('email')}</label>
 					<input
@@ -96,6 +100,7 @@ const AboutMe: FC = (): JSX.Element => {
 						value={handleEmail}
 						disabled={isActiveDetails}
 						onChange={(e) => setHandleEmail(e.target.value)}
+						required
 					></input>
 					<label className="about_me--text_style">{t('address')}</label>
 					<input
@@ -104,6 +109,7 @@ const AboutMe: FC = (): JSX.Element => {
 						value={handleAddress}
 						disabled={isActiveDetails}
 						onChange={(e) => setHandleAddress(e.target.value)}
+						required
 					></input>
 					<div className="d-flex justify-content-between align-items-center">
 						<button className="about_me--btn primary__btn" type="submit">

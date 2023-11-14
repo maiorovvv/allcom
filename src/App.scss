@@ -36,7 +36,7 @@
 	--secondary-color: #b79e8c;
 }
 
-.active {
+.active__nav_link {
 	color: var(--secondary-color) !important;
 	cursor: default !important;
 }
@@ -1267,7 +1267,7 @@ select {
 	z-index: 99;
 	outline: none;
 	background-color: var(--secondary-color);
-	color: var(--white-color) !important;
+	color: var(--white-color);
 	box-shadow: 0 2px 22px rgba(0, 0, 0, 0.16);
 	cursor: pointer;
 	transform: translateY(50px);

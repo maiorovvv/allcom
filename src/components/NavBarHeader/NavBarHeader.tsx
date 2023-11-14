@@ -16,32 +16,62 @@ const NavBarHeader: FC = (): JSX.Element => {
 							<nav className="header__menu--navigation">
 								<ul className="d-flex">
 									<li className="header__menu--items style2">
-										<NavLink className="header__menu--link" to="/about">
+										<NavLink
+											className={({ isActive }) =>
+												isActive ? 'active__nav_link header__menu--link' : 'header__menu--link'
+											}
+											to="/about"
+										>
 											{t('about_us')}
 										</NavLink>
 									</li>
 									<li className="header__menu--items style2">
-										<NavLink className="header__menu--link" to="/contact">
+										<NavLink
+											className={({ isActive }) =>
+												isActive ? 'active__nav_link header__menu--link' : 'header__menu--link'
+											}
+											to="/contact"
+										>
 											{t('contact_us')}
 										</NavLink>
 									</li>
 									<li className="header__menu--items style2">
-										<NavLink className="header__menu--link" to="/faq">
+										<NavLink
+											className={({ isActive }) =>
+												isActive ? 'active__nav_link header__menu--link' : 'header__menu--link'
+											}
+											to="/faq"
+										>
 											{t('faq')}
 										</NavLink>
 									</li>
 									<li className="header__menu--items style2">
-										<NavLink className="header__menu--link" to="/register">
+										<NavLink
+											className={({ isActive }) =>
+												isActive ? 'active__nav_link header__menu--link' : 'header__menu--link'
+											}
+											to="/register"
+										>
 											{t('register')}
 										</NavLink>
 									</li>
 									<li className="header__menu--items style2">
-										<NavLink className="header__menu--link" to="/products/addnew">
+										<NavLink
+											className={({ isActive }) =>
+												isActive ? 'active__nav_link header__menu--link' : 'header__menu--link'
+											}
+											to="/products/addnew"
+										>
 											{t('add_product')}
 										</NavLink>
 									</li>
 									<li className="header__menu--items style2">
-										<NavLink className="header__menu--link" to="/auction">
+										<NavLink
+											className={({ isActive }) =>
+												isActive ? 'active__nav_link header__menu--link' : 'header__menu--link'
+											}
+											to="/auction"
+										>
 											{t('auction')}
 										</NavLink>
 									</li>

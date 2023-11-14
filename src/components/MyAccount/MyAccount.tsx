@@ -22,19 +22,44 @@ const MyAccount: FC = (): JSX.Element => {
 					<div className="my_account__left--sidebar">
 						<h2 className="my_account__content--title h3 mb-20">{t('my_profile')}</h2>
 						<div className="my_account__menu">
-							<NavLink to="/user/my_account/cart" className="my_account__menu--list">
+							<NavLink
+								to="/user/my_account/cart"
+								className={({ isActive }) =>
+									isActive ? 'active__nav_link my_account__menu--list' : 'my_account__menu--list'
+								}
+							>
 								<div>{t('cart')}</div>
 							</NavLink>
-							<NavLink to="/user/my_account/products" className="my_account__menu--list">
+							<NavLink
+								to="/user/my_account/products"
+								className={({ isActive }) =>
+									isActive ? 'active__nav_link my_account__menu--list' : 'my_account__menu--list'
+								}
+							>
 								<div>{t('wishlist')}</div>
 							</NavLink>
-							<NavLink to="2" className="my_account__menu--list">
+							<NavLink
+								to="2"
+								className={({ isActive }) =>
+									isActive ? 'active__nav_link my_account__menu--list' : 'my_account__menu--list'
+								}
+							>
 								<div>{t('log_out')}</div>
 							</NavLink>
-							<NavLink to="/user/my_account/about_me" className="my_account__menu--list">
+							<NavLink
+								to="/user/my_account/about_me"
+								className={({ isActive }) =>
+									isActive ? 'active__nav_link my_account__menu--list' : 'my_account__menu--list'
+								}
+							>
 								<div>{t('about_me')}</div>
 							</NavLink>
-							<NavLink to="/user/my_account/change_password" className="my_account__menu--list">
+							<NavLink
+								to="/user/my_account/change_password"
+								className={({ isActive }) =>
+									isActive ? 'active__nav_link my_account__menu--list' : 'my_account__menu--list'
+								}
+							>
 								<div>{t('change_password')}</div>
 							</NavLink>
 						</div>

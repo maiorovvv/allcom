@@ -78,9 +78,6 @@
 		&:hover {
 			color: var(--secondary-color);
 		}
-		&.active {
-			color: var(--secondary-color);
-		}
 		@media only screen and (min-width: 992px) {
 			font-size: 1.6rem;
 		}
