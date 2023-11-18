@@ -18,7 +18,10 @@
 		"predeploy",
 		"reduxjs",
 		"svgr",
-		"sсss"
+		"creditials",
+		"languagedetector",
+		"scss",
+		"signup"
 	],
 	"[typescriptreact]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"

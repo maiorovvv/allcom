@@ -150,5 +150,22 @@
 		"confirm_password": "Подтвердите пароль",
 		"change_password": "Изменить пароль",
 		"old_password": "Старый пароль"
+	},
+	"LoginPage": {
+		"login": "Авторизоваться",
+		"header_desc": "Войдите, если вы постоянный клиент.",
+		"placeholder_email": "Email Адрес",
+		"placeholder_password": "Пароль",
+		"placeholder_confirm_password": "Повторите Пароль",
+		"remember_me": "Запомнить меня",
+		"forgot_your_password": "Забыли Ваш Пароль?",
+		"or": "ИЛИ",
+		"dont_have_account": "У вас нет учетной записи?",
+		"sign_up_now": "Зарегистрироваться сейчас",
+		"create_account": "Создать Учётную Запись",
+		"register_here_text": "Зарегистрируйтесь далее, если вы новый клиент",
+		"username": "Имя пользователя",
+		"submit_register": "Отправить и Зарегистрироваться",
+		"i_have_read_text": "Я прочитал и согласен с условиями использования"
 	}
 }

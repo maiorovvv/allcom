@@ -149,5 +149,22 @@
 		"confirm_password": "Bestätige das Passwort",
 		"change_password": "Password ändern",
 		"old_password": "Altes Passwort"
+	},
+	"LoginPage": {
+		"login": "Anmeldung",
+		"header_desc": "Bitte beachten Sie, dass Sie mehr Kunden haben.",
+		"placeholder_email": "Email Adresse",
+		"placeholder_password": "Passwort",
+		"placeholder_confirm_password": "Bestätige das Passwort",
+		"remember_me": "Erinnere dich an mich",
+		"forgot_your_password": "Haben Sie Ihr Passwort vergessen?",
+		"or": "ODER",
+		"dont_have_account": "Sie haben kein Konto?",
+		"sign_up_now": "Jetzt registrieren",
+		"create_account": "Ein Konto erstellen",
+		"register_here_text": "Registrieren Sie sich hier, wenn Sie Neukunde sind",
+		"username": "Nutzername",
+		"submit_register": "Einreichen und registrieren",
+		"i_have_read_text": "Ich habe die Allgemeinen Geschäftsbedingungen gelesen und stimme ihnen zu"
 	}
 }
