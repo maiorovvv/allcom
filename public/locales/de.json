@@ -1,4 +1,15 @@
 {
+	"home": {
+		"header": "Produkte",
+		"add_to_card": " + In den Korb",
+		"wishlist": "Merkzettel"
+	},
+	"poster": {
+		"view_auctions": "Auktionen ansehen",
+		"main_text_part1": "Finden Sie selbst neue",
+		"main_text_part2": "Auktionsgegenstände!!",
+		"button": "Auktion anzeigen"
+	},
 	"products": {
 		"add_to_cart": "in den Warenkorb",
 		"continue_shopping": "weiter einkaufen",
@@ -10,7 +21,7 @@
 		"wishlist": "Mein Merkzettel"
 	},
 	"footer": {
-		"about": "Über Uns",
+		"about_us": "Über Uns",
 		"about_us_text": "Auktionshaus Allcom Die Seite befindet sich derzeit in der Entwicklung. Vielen Dank für Ihre Geduld und Ihr Verständnis!!!",
 		"follow": "Folgen Sie Uns",
 		"my_account": "Mein Konto",
@@ -31,7 +42,7 @@
 		"login": "Einloggen",
 		"register": "Registrieren",
 		"contact_us": "Kontakt",
-		"about": "Über Uns",
+		"about_us": "Über Uns",
 		"faq": "FAQ",
 		"auction": "Auktion",
 		"categories": "Kategorien",
@@ -65,5 +76,32 @@
 		"content_title": "Upps! Wir haben diese Seite nicht gefunden",
 		"content_desc": "Sie können jedoch zur Hauptseite zurückkehren",
 		"link_back_to_home": "Zurück zur Startseite"
+	},
+	"my_account": {
+		"account_details": "Kontodetails",
+		"my_profile": "Mein Profil",
+		"log_out": "Abmelden",
+		"wishlist": "Merkzettel",
+		"change_password": "Password ändern",
+		"dashboard": "Dashboard",
+		"cart": "Warenkorb",
+		"about_me": "Über mich"
+	},
+	"about_me": {
+		"submit": "Absenden",
+		"first_name": "Vorname",
+		"last_name": "Nachname",
+		"user_name": "Nutzername",
+		"email": "Email",
+		"about_me": "Über mich",
+		"address": "Adresse",
+		"date_of_birth": "Geburtsdatum"
+	},
+	"change_password": {
+		"submit": "Absenden",
+		"new_password": "Neu Password",
+		"confirm_password": "Bestätige das Passwort",
+		"change_password": "Password ändern",
+		"old_password": "Altes Passwort"
 	}
 }

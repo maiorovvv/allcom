@@ -7,7 +7,7 @@ type Options = {
 	label: string;
 };
 
-const SelectComponent: FC = (): JSX.Element => {
+const CategorySelect: FC = (): JSX.Element => {
 	const { t } = useTranslation('categories');
 
 	const selectOptions: Options[] = [
@@ -33,4 +33,4 @@ const SelectComponent: FC = (): JSX.Element => {
 	);
 };
 
-export default SelectComponent;
+export default CategorySelect;

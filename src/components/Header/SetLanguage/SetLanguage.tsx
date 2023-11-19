@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import language_icon from '../../../img/language_icon.svg';
+
+import language_icon from '../../../img/svg/language_icon.svg';
 
 type IProps = {
 	isOpen: string;
@@ -14,7 +15,9 @@ const SetLanguage: React.FC<IProps> = (isOpen): JSX.Element => {
 	};
 	const { i18n } = useTranslation();
 
-	const [isActive, seetIsActive] = useState(false);
+	const [isActive, setIsActive] = useState(false);
+	const languageKey = i18n.language?.split('-')[0];
+	const localeTitle = locales[languageKey as keyof typeof locales]?.title;
 
 	return (
 		<div className={`language__currency ${isOpen.isOpen} d-lg-block`}>
@@ -24,12 +27,12 @@ const SetLanguage: React.FC<IProps> = (isOpen): JSX.Element => {
 					<span
 						className="language_text_set"
 						onClick={() => {
-							seetIsActive(!isActive);
+							setIsActive(!isActive);
 						}}
 					>
-						{locales[i18n.language as keyof typeof locales].title}
+						{localeTitle}
 					</span>
-					<div className={`dropdown__language ${isActive ? 'active' : ''}`}>
+					<div className={`dropdown__language ${isActive ? 'active_window' : ''}`}>
 						<ul>
 							{Object.keys(locales).map((locale) => (
 								<li
@@ -40,7 +43,7 @@ const SetLanguage: React.FC<IProps> = (isOpen): JSX.Element => {
 									}}
 									onClick={() => {
 										i18n.changeLanguage(locale);
-										seetIsActive(!isActive);
+										setIsActive(!isActive);
 									}}
 								>
 									{locales[locale as keyof typeof locales].title}

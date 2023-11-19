@@ -1,17 +1,20 @@
-import Footer from './components/Footer/Footer';
+import { Route, Routes } from 'react-router-dom';
+
 import NotFound from './components/NotFound/NotFound';
-import Products from './features/user/wishProducts/ProductList';
-import SelectLocale from './components/SelectLocale/SelectLocale';
-import Header from './components/Header/Header';
+import Home from './features/products/Products';
+import Layout from './components/Layout';
+import MyAccount from './components/MyAccount/MyAccount';
 
 function App(): JSX.Element {
 	return (
 		<>
-			<Header />
-			<SelectLocale />
-			<Products />
-			<NotFound />
-			<Footer />
+			<Routes>
+				<Route path="/" element={<Layout />}>
+					<Route index element={<Home />} />
+					<Route path="user/my_account/*" element={<MyAccount />} />
+					<Route path="*" element={<NotFound />} />
+				</Route>
+			</Routes>
 		</>
 	);
 }

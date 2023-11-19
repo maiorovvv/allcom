@@ -1,4 +1,15 @@
 {
+	"home": {
+		"header": "Products",
+		"add_to_card": " + Add to cart",
+		"wishlist": "Wishlist"
+	},
+	"poster": {
+		"view_auctions": "View auctions",
+		"main_text_part1": "Find new Auction lots",
+		"main_text_part2": "for yourself!!",
+		"button": "Show Auction"
+	},
 	"products": {
 		"add_to_cart": "add to cart",
 		"color": "color",
@@ -10,7 +21,7 @@
 		"wishlist": "Wishlist"
 	},
 	"footer": {
-		"about": "About Us",
+		"about_us": "About Us",
 		"about_us_text": "Auction house Allcom The site is currently under development. Thank you for your patience and understanding!!!",
 		"follow": "Follow Us",
 		"my_account": "My Account",
@@ -28,7 +39,7 @@
 	},
 	"header": {
 		"welcome": "Welcome to Netmark online Store",
-		"about": "About Us",
+		"about_us": "About Us",
 		"faq": "FAQ",
 		"contact_us": "Contact",
 		"register": "Register",
@@ -65,5 +76,32 @@
 		"content_title": "Opps! We did not find this page",
 		"content_desc": "But you can return to the main page",
 		"link_back_to_home": "Back To Home"
+	},
+	"my_account": {
+		"my_profile": "My Profile",
+		"log_out": "Log Out",
+		"wishlist": "Wishlist",
+		"dashboard": "Dashboard",
+		"change_password": "Change password",
+		"cart": "Shopping Cart",
+		"about_me": "About me"
+	},
+	"about_me": {
+		"submit": "Submit",
+		"account_details": "Account Details",
+		"first_name": "First name",
+		"last_name": "Last name",
+		"user_name": "User name",
+		"email": "Email",
+		"about_me": "About me",
+		"address": "Address",
+		"date_of_birth": "Date of Birth"
+	},
+	"change_password": {
+		"submit": "Submit",
+		"new_password": "New password",
+		"confirm_password": "Confirm password",
+		"change_password": "Change password",
+		"old_password": "Old password"
 	}
 }

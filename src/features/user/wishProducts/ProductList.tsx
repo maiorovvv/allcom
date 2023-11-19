@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
@@ -29,7 +30,6 @@ const ProductList = (): JSX.Element => {
 			<div className="container">
 				<div className="cart__section--inner">
 					<form action="#">
-						<h2 className="cart__title mb-40">{t('wishlist')}</h2>
 						<div className="cart__table">
 							<table className="cart__table--inner">
 								<thead className="cart__table--header">
@@ -48,9 +48,9 @@ const ProductList = (): JSX.Element => {
 								</tbody>
 							</table>
 							<div className="cart__continue__shopping d-flex justify-content-between">
-								<a className="cart__continue__shopping--link" href="index.html">
+								<NavLink className="cart__continue__shopping--link" to="/">
 									{t('continue_shopping')}
-								</a>
+								</NavLink>
 								<a className="cart__continue__shopping--clear" href="shop.html">
 									{t('view_all_products')}
 								</a>

@@ -22,7 +22,7 @@ const NotFound: React.FC = (): JSX.Element => {
 							/>
 							<h2 className="error__content--title">{t('content_title')}</h2>
 							<p className="error__content--desc">{t('content_desc')}</p>
-							<Link className="error__content--btn primary__btn" to="/index">
+							<Link className="error__content--btn primary__btn" to="/">
 								{t('link_back_to_home')}
 							</Link>
 						</div>

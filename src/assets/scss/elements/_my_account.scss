@@ -1,0 +1,102 @@
+/*
+    22. My account page css
+*/
+
+.my__account--section {
+
+	&__inner {
+		display: flex;
+		flex-direction: column;
+		background: var(--white-color);
+		box-shadow: 0 2px 22px rgba(0, 0, 0, 0.16);
+		padding: 3rem 2rem;
+		@media only screen and (min-width: 1199px) {
+			padding: 5rem 4rem;
+		}
+		@media only screen and (max-width: 991px) {
+			flex-direction: column;
+		}
+	}
+}
+
+.my_account__left--sidebar {
+	@media only screen and (min-width: 1199px) {
+		padding-right: 5rem;
+		margin-right: 5rem;
+	}
+	@media only screen and (max-width: 991px) {
+		width: 100%;
+		padding-right: 0;
+		margin-right: 0;
+		border-right: 0;
+		padding-bottom: 2.5rem;
+	}
+}
+.my_account__wrapper {
+	margin: 0 auto;
+	width: calc(100% - 18rem);
+	@media only screen and (min-width: 1199px) {
+		width: calc(100% - 23rem);
+	}
+	@media only screen and (max-width: 991px) {
+		width: 100%;
+	}
+}
+
+.my_account__menu {
+  display: flex;
+	flex-flow: wrap;
+	width: 100%;
+	justify-content: space-around;
+	margin-top: 3%;
+	@media only screen and (max-width: 991px) {
+		margin-right: 3rem;
+		width: 100%;
+		display: flex;
+		justify-content: space-around;
+    flex-direction: row;
+	}
+	@media only screen and (max-width: 767px) {
+		width: 100%;
+		display: flex;
+		flex-flow: wrap;
+	}
+	@media only screen and (max-width: 767px) {
+		width: 100%;
+		margin: 0 auto;
+	}
+	&--list {
+		font-size: 1.5rem;
+		line-height: 2.5rem;
+		font-weight: 600;
+		cursor: pointer;
+		transition: var(--transition);
+		margin-bottom: 1.5rem;
+		&:last-child {
+			margin-bottom: 0;
+		}
+		&:hover {
+			color: var(--secondary-color);
+		}
+		@media only screen and (min-width: 992px) {
+			font-size: 1.6rem;
+		}
+	}
+}
+
+.my_account__content {
+	margin-top: 3%;
+
+	&--title {
+		border-bottom: 1px solid var(--border-color);
+		font-weight: 600;
+		padding-bottom: 1%;
+		width: 25%;
+		@media only screen and (max-width: 767px) {
+			width: 30%;
+		}
+		@media only screen and (max-width: 479px) {
+			width: 40%;
+		}
+	}
+}

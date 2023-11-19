@@ -36,6 +36,11 @@
 	--secondary-color: #b79e8c;
 }
 
+.active__nav_link {
+	color: var(--secondary-color) !important;
+	cursor: default !important;
+}
+
 /* Common Style */
 *,
 *::after,
