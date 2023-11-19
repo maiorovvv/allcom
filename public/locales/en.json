@@ -20,6 +20,16 @@
 		"weight": "weight",
 		"wishlist": "Wishlist"
 	},
+	"ProductDetails": {
+		"add_to_cart": "добавить в корзину",
+		"by_it_now": "купить сейчас",
+		"wishlist": "Избранное",
+		"color": "цвет",
+		"price": "цена",
+		"product": "продукт",
+		"view_all_products": "просмотреть все продукты",
+		"weight": "вес"
+	},
 	"footer": {
 		"about_us": "About Us",
 		"about_us_text": "Auction house Allcom The site is currently under development. Thank you for your patience and understanding!!!",

@@ -1,12 +1,37 @@
-import * as React from 'react';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useEffect, useRef } from 'react';
+import { NavLink } from 'react-router-dom';
 
-import './ProductDetails.module.scss';
+import SwiperCore from 'swiper/core';
+import { Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.css';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { RootState } from '../../app/store';
+import Spinner from '../Spinner/Spinner';
+import { loadProduct } from './productDetailsSlice';
+
+import SearchIcon from '../../img/svg/search_icon.svg?react';
+import Heart from '../../img/svg/heart.svg?react';
+
+SwiperCore.use([Navigation]);
 
 const ProductDetails: React.FC = (): JSX.Element => {
 	const { t } = useTranslation('ProductDetails');
+	const loading = useAppSelector((state: RootState) => state.product.loading);
+	const product = useAppSelector((state: RootState) => state.product.product);
+	const dispatch = useAppDispatch();
+	useEffect(() => {
+		dispatch(loadProduct());
+	}, []);
+	const thumbsSwiper = useRef<SwiperCore | null>(null);
 
+	if (loading)
+		return (
+			<div className="text-center">
+				<Spinner />
+			</div>
+		);
 	return (
 		<div>
 			<section className="breadcrumb__section breadcrumb__bg">
@@ -22,7 +47,7 @@ const ProductDetails: React.FC = (): JSX.Element => {
 										</a>
 									</li>
 									<li className="breadcrumb__content--menu__items">
-										<span className="text-white">Product Details</span>
+										<span className="text-white"> / Product Details</span>
 									</li>
 								</ul>
 							</div>
@@ -37,361 +62,73 @@ const ProductDetails: React.FC = (): JSX.Element => {
 						<div className="col">
 							<div className="product__details--media">
 								<div className="product__media--preview swiper">
-									<div className="swiper-wrapper">
-										<div className="swiper-slide">
-											<div className="product__media--preview__items">
-												<a
-													className="product__media--preview__items--link glightbox"
-													data-gallery="product-media-preview"
-													href="assets/img/product/big-product2.jpg"
-												>
-													<img
-														className="product__media--preview__items--img"
-														src="assets/img/product/big-product2.jpg"
-														alt="product-media-img"
-													/>
-												</a>
-												<div className="product__media--view__icon">
+									<Swiper
+										spaceBetween={10}
+										navigation={{ nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }}
+										thumbs={{ swiper: thumbsSwiper.current }}
+									>
+										{product.images.map((image, index) => (
+											<SwiperSlide key={index}>
+												<div className="product__media--preview__items">
 													<a
-														className="product__media--view__icon--link glightbox"
-														href="assets/img/product/big-product2.jpg"
+														className="product__media--preview__items--link glightbox"
 														data-gallery="product-media-preview"
+														href={image}
 													>
-														<svg
-															className="product__media--view__icon--svg"
-															xmlns="http://www.w3.org/2000/svg"
-															width="22.51"
-															height="22.443"
-															viewBox="0 0 512 512"
-														>
-															<path
-																d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"
-																fill="none"
-																stroke="currentColor"
-																strokeMiterlimit="10"
-																strokeWidth="32"
-															></path>
-															<path
-																fill="none"
-																stroke="currentColor"
-																strokeLinecap="round"
-																strokeMiterlimit="10"
-																strokeWidth="32"
-																d="M338.29 338.29L448 448"
-															></path>
-														</svg>
+														<img
+															className="product__media--preview__items--img"
+															src={image}
+															alt={`product-media-img-${index}`}
+														/>
 													</a>
-												</div>
-											</div>
-										</div>
-										<div className="swiper-slide">
-											<div className="product__media--preview__items">
-												<a
-													className="product__media--preview__items--link glightbox"
-													data-gallery="product-media-preview"
-													href="assets/img/product/big-product1.jpg"
-												>
-													<img
-														className="product__media--preview__items--img"
-														src="assets/img/product/big-product1.jpg"
-														alt="product-media-img"
-													/>
-												</a>
-												<div className="product__media--view__icon">
-													<a
-														className="product__media--view__icon--link glightbox"
-														href="assets/img/product/big-product1.jpg"
-														data-gallery="product-media-preview"
-													>
-														<svg
-															className="product__media--view__icon--svg"
-															xmlns="http://www.w3.org/2000/svg"
-															width="22.51"
-															height="22.443"
-															viewBox="0 0 512 512"
+													<div className="product__media--view__icon">
+														<a
+															className="product__media--view__icon--link glightbox"
+															href={image}
+															data-gallery="product-media-preview"
 														>
-															<path
-																d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"
-																fill="none"
-																stroke="currentColor"
-																strokeMiterlimit="10"
-																strokeWidth="32"
-															></path>
-															<path
-																fill="none"
-																stroke="currentColor"
-																strokeLinecap="round"
-																strokeMiterlimit="10"
-																strokeWidth="32"
-																d="M338.29 338.29L448 448"
-															></path>
-														</svg>
-													</a>
+															<SearchIcon />
+														</a>
+													</div>
 												</div>
-											</div>
-										</div>
-										<div className="swiper-slide">
-											<div className="product__media--preview__items">
-												<a
-													className="product__media--preview__items--link glightbox"
-													data-gallery="product-media-preview"
-													href="assets/img/product/big-product3.jpg"
-												>
-													<img
-														className="product__media--preview__items--img"
-														src="assets/img/product/big-product3.jpg"
-														alt="product-media-img"
-													/>
-												</a>
-												<div className="product__media--view__icon">
-													<a
-														className="product__media--view__icon--link glightbox"
-														href="assets/img/product/big-product3.jpg"
-														data-gallery="product-media-preview"
-													>
-														<svg
-															className="product__media--view__icon--svg"
-															xmlns="http://www.w3.org/2000/svg"
-															width="22.51"
-															height="22.443"
-															viewBox="0 0 512 512"
-														>
-															<path
-																d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"
-																fill="none"
-																stroke="currentColor"
-																strokeMiterlimit="10"
-																strokeWidth="32"
-															></path>
-															<path
-																fill="none"
-																stroke="currentColor"
-																strokeLinecap="round"
-																strokeMiterlimit="10"
-																strokeWidth="32"
-																d="M338.29 338.29L448 448"
-															></path>
-														</svg>
-													</a>
-												</div>
-											</div>
-										</div>
-										<div className="swiper-slide">
-											<div className="product__media--preview__items">
-												<a
-													className="product__media--preview__items--link glightbox"
-													data-gallery="product-media-preview"
-													href="assets/img/product/big-product4.jpg"
-												>
-													<img
-														className="product__media--preview__items--img"
-														src="assets/img/product/big-product4.jpg"
-														alt="product-media-img"
-													/>
-												</a>
-												<div className="product__media--view__icon">
-													<a
-														className="product__media--view__icon--link glightbox"
-														href="assets/img/product/big-product4.jpg"
-														data-gallery="product-media-preview"
-													>
-														<svg
-															className="product__media--view__icon--svg"
-															xmlns="http://www.w3.org/2000/svg"
-															width="22.51"
-															height="22.443"
-															viewBox="0 0 512 512"
-														>
-															<path
-																d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"
-																fill="none"
-																stroke="currentColor"
-																strokeMiterlimit="10"
-																strokeWidth="32"
-															></path>
-															<path
-																fill="none"
-																stroke="currentColor"
-																strokeLinecap="round"
-																strokeMiterlimit="10"
-																strokeWidth="32"
-																d="M338.29 338.29L448 448"
-															></path>
-														</svg>
-													</a>
-												</div>
-											</div>
-										</div>
-										<div className="swiper-slide">
-											<div className="product__media--preview__items">
-												<a
-													className="product__media--preview__items--link glightbox"
-													data-gallery="product-media-preview"
-													href="assets/img/product/big-product5.jpg"
-												>
-													<img
-														className="product__media--preview__items--img"
-														src="assets/img/product/big-product5.jpg"
-														alt="product-media-img"
-													/>
-												</a>
-												<div className="product__media--view__icon">
-													<a
-														className="product__media--view__icon--link glightbox"
-														href="assets/img/product/big-product5.jpg"
-														data-gallery="product-media-preview"
-													>
-														<svg
-															className="product__media--view__icon--svg"
-															xmlns="http://www.w3.org/2000/svg"
-															width="22.51"
-															height="22.443"
-															viewBox="0 0 512 512"
-														>
-															<path
-																d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"
-																fill="none"
-																stroke="currentColor"
-																strokeMiterlimit="10"
-																strokeWidth="32"
-															></path>
-															<path
-																fill="none"
-																stroke="currentColor"
-																strokeLinecap="round"
-																strokeMiterlimit="10"
-																strokeWidth="32"
-																d="M338.29 338.29L448 448"
-															></path>
-														</svg>
-													</a>
-												</div>
-											</div>
-										</div>
-										<div className="swiper-slide">
-											<div className="product__media--preview__items">
-												<a
-													className="product__media--preview__items--link glightbox"
-													data-gallery="product-media-preview"
-													href="assets/img/product/big-product6.jpg"
-												>
-													<img
-														className="product__media--preview__items--img"
-														src="assets/img/product/big-product6.jpg"
-														alt="product-media-img"
-													/>
-												</a>
-												<div className="product__media--view__icon">
-													<a
-														className="product__media--view__icon--link glightbox"
-														href="assets/img/product/big-product6.jpg"
-														data-gallery="product-media-preview"
-													>
-														<svg
-															className="product__media--view__icon--svg"
-															xmlns="http://www.w3.org/2000/svg"
-															width="22.51"
-															height="22.443"
-															viewBox="0 0 512 512"
-														>
-															<path
-																d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"
-																fill="none"
-																stroke="currentColor"
-																strokeMiterlimit="10"
-																strokeWidth="32"
-															></path>
-															<path
-																fill="none"
-																stroke="currentColor"
-																strokeLinecap="round"
-																strokeMiterlimit="10"
-																strokeWidth="32"
-																d="M338.29 338.29L448 448"
-															></path>
-														</svg>
-													</a>
-												</div>
-											</div>
-										</div>
-									</div>
+											</SwiperSlide>
+										))}
+									</Swiper>
 								</div>
 								<div className="product__media--nav swiper">
-									<div className="swiper-wrapper">
-										<div className="swiper-slide">
-											<div className="product__media--nav__items">
-												<img
-													className="product__media--nav__items--img"
-													src="assets/img/product/small-product7.png"
-													alt="product-nav-img"
-												/>
-											</div>
-										</div>
-										<div className="swiper-slide">
-											<div className="product__media--nav__items">
-												<img
-													className="product__media--nav__items--img"
-													src="assets/img/product/small-product8.png"
-													alt="product-nav-img"
-												/>
-											</div>
-										</div>
-										<div className="swiper-slide">
-											<div className="product__media--nav__items">
-												<img
-													className="product__media--nav__items--img"
-													src="assets/img/product/small-product9.png"
-													alt="product-nav-img"
-												/>
-											</div>
-										</div>
-										<div className="swiper-slide">
-											<div className="product__media--nav__items">
-												<img
-													className="product__media--nav__items--img"
-													src="assets/img/product/small-product10.png"
-													alt="product-nav-img"
-												/>
-											</div>
-										</div>
-										<div className="swiper-slide">
-											<div className="product__media--nav__items">
-												<img
-													className="product__media--nav__items--img"
-													src="assets/img/product/small-product11.png"
-													alt="product-nav-img"
-												/>
-											</div>
-										</div>
-										<div className="swiper-slide">
-											<div className="product__media--nav__items">
-												<img
-													className="product__media--nav__items--img"
-													src="assets/img/product/small-product12.png"
-													alt="product-nav-img"
-												/>
-											</div>
-										</div>
-									</div>
-									<div className="swiper__nav--btn swiper-button-next"></div>
-									<div className="swiper__nav--btn swiper-button-prev"></div>
+									<Swiper
+										spaceBetween={10}
+										slidesPerView={3}
+										navigation={{ nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }}
+										onSwiper={(swiper) => (thumbsSwiper.current = swiper)}
+									>
+										{product.images.map((thumbnail, index) => (
+											<SwiperSlide key={index}>
+												<div className="product__media--nav__items">
+													<img
+														className="product__media--nav__items--img"
+														src={thumbnail}
+														alt={`product-nav-img-${index}`}
+													/>
+												</div>
+											</SwiperSlide>
+										))}
+									</Swiper>
+									<div className="swiper-button-next"></div>
+									<div className="swiper-button-prev"></div>
 								</div>
 							</div>
 						</div>
 						<div className="col">
 							<div className="product__details--info">
 								<form action="#">
-									<h2 className="product__details--info__title mb-15">Oversize Cotton Dress</h2>
+									<h2 className="product__details--info__title mb-15">{product.title}</h2>
 									<div className="product__details--info__price mb-10">
-										<span className="current__price">$110</span>
+										<span className="current__price">${product.price}</span>
 										<span className="price__divided"></span>
-										<span className="old__price">$178</span>
+										<span className="old__price"></span>
 									</div>
-									<p className="product__details--info__desc mb-15">
-										Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut numquam ullam is
-										recusandae laborum explicabo id sequi quisquam, ab sunt deleniti quidem ea animi
-										facilis quod nostrum odit! Repellendus voluptas suscipit cum harum dolor sciunt.
-									</p>
+									<p className="product__details--info__desc mb-15">{product.description}</p>
 									<div className="product__variant">
 										<div className="product__variant--list quantity d-flex align-items-center mb-20">
 											<div className="quantity__box">
@@ -427,26 +164,13 @@ const ProductDetails: React.FC = (): JSX.Element => {
 											<a
 												className="variant__wishlist--icon mb-15"
 												href="wishlist.html"
-												title="Add to wishlist"
+												title={t('wishlist')}
 											>
-												<svg
-													className="quickview__variant--wishlist__svg"
-													xmlns="http://www.w3.org/2000/svg"
-													viewBox="0 0 512 512"
-												>
-													<path
-														d="M352.92 80C288 80 256 144 256 144s-32-64-96.92-64c-52.76 0-94.54 44.14-95.08 96.81-1.1 109.33 86.73 187.08 183 252.42a16 16 0 0018 0c96.26-65.34 184.09-143.09 183-252.42-.54-52.67-42.32-96.81-95.08-96.81z"
-														fill="none"
-														stroke="currentColor"
-														strokeLinecap="round"
-														strokeLinejoin="round"
-														strokeWidth="32"
-													/>
-												</svg>
-												Add to Wishlist
+												<Heart />
+												{t('wishlist')}
 											</a>
 											<button className="variant__buy--now__btn primary__btn" type="submit">
-												Buy it now
+												{t('by_it_now')}
 											</button>
 										</div>
 										<div className="product__details--info__meta">

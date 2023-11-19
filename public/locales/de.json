@@ -20,6 +20,16 @@
 		"weight": "Gewicht",
 		"wishlist": "Mein Merkzettel"
 	},
+	"ProductDetails": {
+		"add_to_cart": "добавить в корзину",
+		"by_it_now": "купить сейчас",
+		"wishlist": "Избранное",
+		"color": "цвет",
+		"price": "цена",
+		"product": "продукт",
+		"view_all_products": "просмотреть все продукты",
+		"weight": "вес"
+	},
 	"footer": {
 		"about_us": "Über Uns",
 		"about_us_text": "Auktionshaus Allcom Die Seite befindet sich derzeit in der Entwicklung. Vielen Dank für Ihre Geduld und Ihr Verständnis!!!",
