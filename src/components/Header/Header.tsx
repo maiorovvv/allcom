@@ -42,7 +42,7 @@ const Header: React.FC = () => {
 				setIsScrolled(false);
 			}
 		};
-
+		//TODO
 		window.addEventListener('scroll', handleScroll);
 	}, []);
 
@@ -268,6 +268,7 @@ const Header: React.FC = () => {
 									<span className="offcanvas__account--items__label">Login / Register</span>
 								</a>
 							</div>
+							{/* //TODO isOpen={''} */}
 							<SetLanguage isOpen={''} />
 						</nav>
 					</div>

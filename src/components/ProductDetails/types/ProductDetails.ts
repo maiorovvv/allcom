@@ -1,6 +1,4 @@
 export default interface ProductDetails {
-	//https://dummyjson.com/products/1
-	//next data
 	id: number;
 	title: string;
 	brand: string;

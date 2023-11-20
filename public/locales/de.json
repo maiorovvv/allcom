@@ -21,14 +21,19 @@
 		"wishlist": "Mein Merkzettel"
 	},
 	"ProductDetails": {
-		"add_to_cart": "добавить в корзину",
-		"by_it_now": "купить сейчас",
-		"wishlist": "Избранное",
-		"color": "цвет",
-		"price": "цена",
-		"product": "продукт",
-		"view_all_products": "просмотреть все продукты",
-		"weight": "вес"
+		"link_back_to_home": "Zurück zur Startseite",
+		"product_details": "Produktdetails",
+		"add_to_card": "in den Warenkorb",
+		"by_it_now": "kaufe jetzt",
+		"wishlist": "Mein Merkzettel",
+		"color": "Farbe",
+		"price": "Preis",
+		"brand": "Marke",
+		"category": "Kategorie",
+		"shipping": "Lieferung",
+		"payment": "Zahlung",
+		"return": "Zurückkehren",
+		"support": "Unterstützung"
 	},
 	"footer": {
 		"about_us": "Über Uns",

@@ -38,7 +38,7 @@
 
 @import './App.scss';
 @import './assets/scss/elements/footer.module';
-@import './components/NotFound/NotFound.module.scss';
+@import './assets/scss/elements/_notFound.module.scss';
 @import './assets/scss/elements/header.module';
 @import './assets/scss/elements/my_account';
 @import './assets/scss/elements/about_me_details';
@@ -47,7 +47,7 @@
 // @import "elements/header";
 @import './assets/scss/elements/_poster.scss';
 @import './assets/scss/elements/_products.scss';
-@import './assets/scss/elements/productDetails.module.scss';
+@import './assets/scss/elements/_productDetails.module';
 // @import "elements/slider";
 // @import "elements/product";
 // @import "elements/banner";

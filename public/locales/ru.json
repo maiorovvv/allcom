@@ -21,14 +21,19 @@
 		"wishlist": "Избранное"
 	},
 	"ProductDetails": {
-		"add_to_cart": "добавить в корзину",
+		"link_back_to_home": "Вернуться на главную",
+		"product_details": "Детали продукта",
+		"add_to_card": "добавить в корзину",
 		"by_it_now": "купить сейчас",
 		"wishlist": "Избранное",
-		"color": "цвет",
-		"price": "цена",
-		"product": "продукт",
-		"view_all_products": "просмотреть все продукты",
-		"weight": "вес"
+		"color": "Цвет",
+		"price": "Цена",
+		"brand": "Бренд",
+		"category": "Категория",
+		"shipping": "Доставка",
+		"payment": "Оплата",
+		"return": "Возврат",
+		"support": "Поддержка"
 	},
 	"footer": {
 		"about_us": "О Нас",

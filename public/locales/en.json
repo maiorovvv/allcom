@@ -21,14 +21,19 @@
 		"wishlist": "Wishlist"
 	},
 	"ProductDetails": {
-		"add_to_cart": "добавить в корзину",
-		"by_it_now": "купить сейчас",
-		"wishlist": "Избранное",
-		"color": "цвет",
-		"price": "цена",
-		"product": "продукт",
-		"view_all_products": "просмотреть все продукты",
-		"weight": "вес"
+		"link_back_to_home": "Back To Home",
+		"product_details": "Product Details",
+		"add_to_card": "add to card",
+		"by_it_now": "by it now",
+		"wishlist": "Wishlist",
+		"color": "Color",
+		"price": "Price",
+		"brand": "Brand",
+		"category": "Category",
+		"shipping": "Shipping",
+		"payment": "Payment",
+		"return": "Return",
+		"support": "Support"
 	},
 	"footer": {
 		"about_us": "About Us",
