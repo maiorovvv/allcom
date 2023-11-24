@@ -20,6 +20,33 @@
 		"weight": "Gewicht",
 		"wishlist": "Mein Merkzettel"
 	},
+	"ProductDetails": {
+		"link_back_to_home": "Zurück zur Startseite",
+		"product_details": "Produktdetails",
+		"add_to_card": "in den Warenkorb",
+		"by_it_now": "kaufe jetzt",
+		"wishlist": "Mein Merkzettel",
+		"color": "Farbe",
+		"price": "Preis",
+		"brand": "Marke",
+		"category": "Kategorie",
+		"shipping": "Lieferung",
+		"payment": "Zahlung",
+		"return": "Zurückkehren",
+		"support": "Unterstützung"
+	},
+	"Shipping": {
+		"in_developing": "In Bearbeitung..."
+	},
+	"Payment": {
+		"in_developing": "In Bearbeitung..."
+	},
+	"Return": {
+		"in_developing": "In Bearbeitung..."
+	},
+	"Support": {
+		"in_developing": "In Bearbeitung..."
+	},
 	"footer": {
 		"about_us": "Über Uns",
 		"about_us_text": "Auktionshaus Allcom Die Seite befindet sich derzeit in der Entwicklung. Vielen Dank für Ihre Geduld und Ihr Verständnis!!!",

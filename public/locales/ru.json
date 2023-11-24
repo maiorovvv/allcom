@@ -20,6 +20,33 @@
 		"weight": "вес",
 		"wishlist": "Избранное"
 	},
+	"ProductDetails": {
+		"link_back_to_home": "Вернуться на главную",
+		"product_details": "Детали продукта",
+		"add_to_card": "добавить в корзину",
+		"by_it_now": "купить сейчас",
+		"wishlist": "Избранное",
+		"color": "Цвет",
+		"price": "Цена",
+		"brand": "Бренд",
+		"category": "Категория",
+		"shipping": "Доставка",
+		"payment": "Оплата",
+		"return": "Возврат",
+		"support": "Поддержка"
+	},
+	"Shipping": {
+		"in_developing": "В разработке..."
+	},
+	"Payment": {
+		"in_developing": "В разработке..."
+	},
+	"Return": {
+		"in_developing": "В разработке..."
+	},
+	"Support": {
+		"in_developing": "В разработке..."
+	},
 	"footer": {
 		"about_us": "О Нас",
 		"about_us_text": "Аукционный дом Allcom В данный момент сайт находиться в стадии разработки. Спасибо за Ваше терпение и понимание !!!",

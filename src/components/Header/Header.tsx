@@ -42,7 +42,7 @@ const Header: React.FC = () => {
 				setIsScrolled(false);
 			}
 		};
-
+		//TODO
 		window.addEventListener('scroll', handleScroll);
 	}, []);
 
@@ -268,6 +268,7 @@ const Header: React.FC = () => {
 									<span className="offcanvas__account--items__label">Login / Register</span>
 								</a>
 							</div>
+							{/* //TODO isOpen={''} */}
 							<SetLanguage isOpen={''} />
 						</nav>
 					</div>
@@ -345,13 +346,13 @@ const Header: React.FC = () => {
 					<div className="minicart__product">
 						<div className="minicart__product--items d-flex">
 							<div className="minicart__thumb">
-								<a href="product-details.html">
+								<a href="product/details.html">
 									<img src="assets/img/product/product1.png" alt="prduct-img"></img>
 								</a>
 							</div>
 							<div className="minicart__text">
 								<h3 className="minicart__subtitle h4">
-									<a href="product-details.html">Oversize Cotton Dress</a>
+									<a href="product/details.html">Oversize Cotton Dress</a>
 								</h3>
 								<span className="color__variant">
 									<b>Color:</b> Beige
@@ -387,13 +388,13 @@ const Header: React.FC = () => {
 						</div>
 						<div className="minicart__product--items d-flex">
 							<div className="minicart__thumb">
-								<a href="product-details.html">
+								<a href="product/details.html">
 									<img src="assets/img/product/product2.png" alt="prduct-img"></img>
 								</a>
 							</div>
 							<div className="minicart__text">
 								<h3 className="minicart__subtitle h4">
-									<a href="product-details.html">Boxy Denim Jacket</a>
+									<a href="product/details.html">Boxy Denim Jacket</a>
 								</h3>
 								<span className="color__variant">
 									<b>Color:</b> Green

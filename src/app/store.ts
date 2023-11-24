@@ -2,13 +2,14 @@ import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import userProductsReducer from '../features/user/wishProducts/productsSlice';
 import productsReducer from '../features/products/productsSlice';
 import userDateReducer from '../components/MyAccount/UserSlice';
-// import counterReducer from '../features/counter/counterSlice';
+import productReducer from '../features/ProductDetails/productDetailsSlice';
 
 export const store = configureStore({
 	reducer: {
 		userProducts: userProductsReducer,
 		userDate: userDateReducer,
 		products: productsReducer,
+		product: productReducer,
 	},
 });
 
