@@ -2,7 +2,7 @@ import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import userProductsReducer from '../features/user/wishProducts/productsSlice';
 import productsReducer from '../features/products/productsSlice';
 import userDateReducer from '../components/MyAccount/UserSlice';
-import productReducer from '../components/ProductDetails/productDetailsSlice';
+import productReducer from '../features/ProductDetails/productDetailsSlice';
 
 export const store = configureStore({
 	reducer: {

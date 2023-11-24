@@ -35,6 +35,18 @@
 		"return": "Return",
 		"support": "Support"
 	},
+	"Shipping": {
+		"in_developing": "In developing..."
+	},
+	"Payment": {
+		"in_developing": "In developing..."
+	},
+	"Return": {
+		"in_developing": "In developing..."
+	},
+	"Support": {
+		"in_developing": "In developing..."
+	},
 	"footer": {
 		"about_us": "About Us",
 		"about_us_text": "Auction house Allcom The site is currently under development. Thank you for your patience and understanding!!!",

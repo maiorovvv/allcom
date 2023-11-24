@@ -63,7 +63,7 @@ const Products: React.FC = (): JSX.Element => {
 														<li className="product__items--action__list">
 															<div className="product__items--action__btn add__to--cart">
 																<Basket />
-																<span className="product_add__to--cart__text">
+																<span className="product_product__details_add__to--cart__text">
 																	{t('add_to_card')}
 																</span>
 															</div>

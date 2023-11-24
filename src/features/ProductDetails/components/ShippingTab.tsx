@@ -1,12 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 
-import imageShipping from '../../img/other/shipping.png';
-import imagePayment from '../../img/other/payment.png';
-import imageReturn from '../../img/other/return.png';
-import imageSupport from '../../img/other/support.png';
+import imageShipping from '../../../img/other/shipping.png';
+import imagePayment from '../../../img/other/payment.png';
+import imageReturn from '../../../img/other/return.png';
+import imageSupport from '../../../img/other/support.png';
 
-const Shipping: React.FC = (): JSX.Element => {
+const ShippingTab: React.FC = (): JSX.Element => {
 	const { t } = useTranslation('ProductDetails');
 	return (
 		<section className="shipping__section2 shipping__style3 section--padding pt-0">
@@ -62,4 +62,4 @@ const Shipping: React.FC = (): JSX.Element => {
 	);
 };
 
-export default Shipping;
+export default ShippingTab;

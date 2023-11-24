@@ -1,12 +1,15 @@
-import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
+
+import { useTranslation } from 'react-i18next';
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { RootState } from '../../app/store';
-import Spinner from '../Spinner/Spinner';
+
+import Spinner from '../../components/Spinner/Spinner';
 import { loadProduct } from './productDetailsSlice';
-import MediaSwiper from './MediaSwiper';
-import Shipping from './Shipping';
+
+import MediaSwiper from './components/MediaSwiper';
+import ShippingTab from './components/ShippingTab';
 
 import Heart from '../../img/svg/heart.svg?react';
 
@@ -59,7 +62,10 @@ const ProductDetails: React.FC = (): JSX.Element => {
 												<Heart />
 												{t('wishlist')}
 											</a>
-											<button className="variant__buy--now__btn primary__btn" type="submit">
+											<button
+												className="product__details_variant__buy--now__btn primary__btn"
+												type="submit"
+											>
 												{t('by_it_now')}
 											</button>
 										</div>
@@ -78,7 +84,7 @@ const ProductDetails: React.FC = (): JSX.Element => {
 					</div>
 				</div>
 			</section>
-			<Shipping />
+			<ShippingTab />
 		</div>
 	);
 };
