@@ -15,7 +15,7 @@ interface ProductProps {
 }
 
 const MediaSwiper = (props: ProductProps): JSX.Element => {
-	const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
+	const [thumbsSwiper, setThumbsSwiper] = useState(null);
 	const { product } = props;
 	const { i18n } = useTranslation('ProductDetails');
 
@@ -45,6 +45,8 @@ const MediaSwiper = (props: ProductProps): JSX.Element => {
 			</div>
 			<div className="product__media--nav swiper">
 				<Swiper
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
 					onSwiper={setThumbsSwiper}
 					spaceBetween={10}
 					slidesPerView={4}
