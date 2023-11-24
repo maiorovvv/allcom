@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 
@@ -20,9 +20,6 @@ const MediaSwiper = (props: ProductProps): JSX.Element => {
 	const { t, i18n } = useTranslation('ProductDetails');
 
 	return (
-		// 					{product?.images?.length > 0 &&
-		// 				product.images.map((image, index) => (
-		// 					<SwiperSlide key={`swiper-${index}`}></SwiperSlide>
 		<div className="product__details--media">
 			<div className="product__media--preview swiper">
 				<Swiper

@@ -1,16 +1,11 @@
 import { useEffect } from 'react';
-
 import { useTranslation } from 'react-i18next';
-
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { RootState } from '../../app/store';
-
 import Spinner from '../../components/Spinner/Spinner';
 import { loadProduct } from './productDetailsSlice';
-
 import MediaSwiper from './components/MediaSwiper';
 import ShippingTab from './components/ShippingTab';
-
 import Heart from '../../img/svg/heart.svg?react';
 
 const ProductDetails: React.FC = (): JSX.Element => {
