@@ -31,7 +31,6 @@ const MediaSwiper = (props: ProductProps): JSX.Element => {
 					navigation={true}
 					thumbs={{ swiper: thumbsSwiper }}
 					modules={[FreeMode, Navigation, Thumbs]}
-					className="mySwiper2"
 				>
 					{product?.images?.length > 0 &&
 						product.images.map((image, index) => (
@@ -50,7 +49,6 @@ const MediaSwiper = (props: ProductProps): JSX.Element => {
 					freeMode={true}
 					watchSlidesProgress={true}
 					modules={[FreeMode, Navigation, Thumbs]}
-					className="mySwiper"
 				>
 					{product?.images?.length > 0 &&
 						product.images.map((image, index) => (
