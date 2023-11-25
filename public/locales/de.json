@@ -20,6 +20,37 @@
 		"weight": "Gewicht",
 		"wishlist": "Mein Merkzettel"
 	},
+	"shopping_cart": {
+		"continue_shopping": "Weiter einkaufen",
+		"price": "Preis",
+		"product": "Produkt",
+		"quantity": "Menge",
+		"total_sum": "Gesamt:",
+		"clear_cart": "Leerer Warenkorb",
+		"note": "Notiz",
+		"note_placeholder": "Fügen Sie spezielle Anweisungen für Ihren Verkäufer hinzu...",
+		"subtotal": "ZWISCHENSUMME",
+		"grand_total": "GESAMTSUMME",
+		"agreement": "Ich stimme dem zu",
+		"privacy_policy": "Datenschutzrichtlinie",
+		"checkout": "Bestellen"
+	},
+	"mini_cart": {
+		"cart": "Warenkorb",
+		"color": "farbe:",
+		"weight": "gewicht:",
+		"price": "preis:",
+		"total_sum": "Gesamt:",
+		"agreement": "Ich stimme dem zu",
+		"privacy_policy": "Datenschutzrichtlinie",
+		"checkout": "Bestellen",
+		"view_cart": "Warenkorb ansehen",
+		"remove": "Lösen"
+	},
+	"productsInCart": {
+		"color": "Farbe",
+		"weight": "Gewicht"
+	},
 	"footer": {
 		"about_us": "Über Uns",
 		"about_us_text": "Auktionshaus Allcom Die Seite befindet sich derzeit in der Entwicklung. Vielen Dank für Ihre Geduld und Ihr Verständnis!!!",
@@ -52,12 +83,6 @@
 		"my_account": "Mein Konto",
 		"search_products": "Produktsuche",
 		"search_here": "Suche Hier",
-		"sub_total": "Zwischensumme:",
-		"total_sum": "Gesamt:",
-		"agreement": "Ich stimme dem zu",
-		"privacy_policy": "Datenschutzrichtlinie",
-		"view_cart": "Warenkorb ansehen",
-		"checkout": "Bestellen",
 		"all_categories": "Alle Kategorien",
 		"keyword_here": "Stichwort hier..."
 	},

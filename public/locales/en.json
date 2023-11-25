@@ -20,6 +20,38 @@
 		"weight": "weight",
 		"wishlist": "Wishlist"
 	},
+	"shopping_cart": {
+		"continue_shopping": "Continue shopping",
+		"price": "price",
+		"product": "product",
+		"quantity": "Quantity",
+		"total_sum": "Total:",
+		"clear_cart": "Clear Cart",
+		"note": "Note",
+		"note_placeholder": "Add special instructions for your seller...",
+		"subtotal": "SUBTOTAL",
+		"grand_total": "GRAND TOTAL",
+		"checkout": "Checkout",
+		"agreement": "I agree with the",
+		"privacy_policy": "Privacy Policy"
+	},
+	"mini_cart": {
+		"cart": "Shopping Cart",
+		"weight": "weight:",
+		"color": "color:",
+		"price": "price:",
+		"agreement": "I agree with the",
+		"privacy_policy": "Privacy Policy",
+		"view_cart": "View cart",
+		"checkout": "Checkout",
+		"subtotal": "SUBTOTAL",
+		"grand_total": "GRAND TOTAL",
+		"remove": "Remove"
+	},
+	"productsInCart": {
+		"weight": "weight",
+		"color": "color"
+	},
 	"footer": {
 		"about_us": "About Us",
 		"about_us_text": "Auction house Allcom The site is currently under development. Thank you for your patience and understanding!!!",
@@ -51,12 +83,6 @@
 		"my_account": "My Account",
 		"search_products": "Search Products",
 		"search_here": "Search Here",
-		"sub_total": "Sub Total:",
-		"total_sum": "Total:",
-		"agreement": "I agree with the",
-		"privacy_policy": "Privacy Policy",
-		"view_cart": "View cart",
-		"checkout": "Checkout",
 		"all_categories": "All Categories",
 		"keyword_here": "Keyword here...",
 		"add_product": "Add Product"

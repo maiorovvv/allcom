@@ -1,0 +1,310 @@
+.shopping_cart__title {
+	@media only screen and (max-width: 575px) {
+		text-align: center;
+	}
+}
+.shopping_cart__table {
+	&--inner {
+		width: 100%;
+		border-spacing: 0;
+	}
+	&--header {
+		@media only screen and (max-width: 768px) {
+			display: none;
+		}
+		&__list {
+			padding: 0 2rem 1.5rem 0;
+			text-transform: uppercase;
+			text-align: left;
+			border-bottom: 1px solid var(--border-color2);
+			&:last-child {
+				padding-right: 0;
+			}
+			font-size: 1.4rem;
+			@media only screen and (min-width: 768px) {
+				padding: 0 2rem 2rem 0;
+			}
+			@media only screen and (min-width: 992px) {
+				font-size: 1.5rem;
+			}
+			&.text-center {
+				text-align: center;
+			}
+			&.text-right {
+				text-align: right;
+			}
+		}
+	}
+	&--body {
+		&__items {
+			@media only screen and (max-width: 768px) {
+				display: flex;
+				flex-direction: column;
+				margin-bottom: 5%;
+			}
+		}
+		&__list {
+			border-bottom: 1px solid var(--border-color2);
+			padding: 2rem 2rem 2rem 0;
+			&:last-child {
+				padding-right: 0;
+			}
+			@media only screen and (min-width: 768px) {
+				padding: 2rem 2rem 2rem 0;
+			}
+			@media only screen and (max-width: 768px) {
+				display: flex;
+				justify-content: center;
+				padding: 1.2rem 0;
+				width: fit-content;
+				margin: 0 auto;
+			}
+		}
+	}
+}
+
+.shopping_cart__thumbnail {
+	max-width: 10rem;
+	line-height: 1;
+	@media only screen and (max-width: 767px) {
+		max-width: 8rem;
+		min-width: 4rem;
+	}
+}
+.shopping_cart__content {
+	min-width: 2rem;
+	padding-left: 1.5rem;
+	@media only screen and (min-width: 1200px) {
+		padding-left: 2rem;
+	}
+	@media only screen and (min-width: 576px) and (max-width: 768px) {
+		min-width: 36rem;
+	}
+	@media only screen and (max-width: 576px) {
+		min-width: 22rem;
+	}
+
+	&--variant {
+		display: block;
+		margin-bottom: 0.5rem;
+		line-height: 2.2rem;
+		font-size: 1.3rem;
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+	&--title {
+		margin-bottom: 0.5rem;
+		line-height: 2.2rem;
+		@media only screen and (min-width: 768px) {
+			line-height: 2.5rem;
+		}
+	}
+}
+
+.shopping_cart__add-cart--btn {
+	padding: 0.5rem 0.8rem;
+	height: auto;
+	line-height: 2.4rem;
+	border-radius: 5px;
+	font-size: 1.3rem;
+}
+
+.shopping_cart__remove--btn {
+	font-weight: 600;
+	width: 3rem;
+	height: 3rem;
+	text-align: center;
+	line-height: 3rem;
+	background: var(--white-color);
+	box-shadow: 0 2px 22px rgba(0, 0, 0, 0.16);
+	margin-right: 1rem;
+	border-radius: 50%;
+	border: 0;
+	padding: 0;
+	&:hover {
+		color: var(--secondary-color);
+	}
+	@media only screen and (min-width: 768px) {
+		margin-right: 1.5rem;
+	}
+}
+.shopping_cart__price {
+	font-weight: 600;
+	padding-right: 2rem;
+	min-width: 10rem;
+	text-align: right;
+	@media only screen and (min-width: 992px) {
+		font-size: 1.6rem;
+	}
+	@media only screen and (max-width: 768px) {
+		text-align: center;
+		padding: 0;
+	}
+}
+
+.shopping_cart__continue__shopping {
+	padding-top: 2rem;
+	&--link {
+		font-size: 1.5rem;
+		font-weight: 600;
+		color: var(--secondary-color);
+		@media only screen and (min-width: 992px) {
+			font-size: 1.7rem;
+		}
+		@media only screen and (max-width: 480px) {
+			font-size: 1.4rem;
+			border-right: 1px solid var(--border-color);
+			padding-right: 1rem;
+		}
+	}
+	&--clear {
+		font-size: 1.5rem;
+		font-weight: 600;
+		color: var(--secondary-color);
+		border: 0;
+		padding: 0;
+		background: inherit;
+		@media only screen and (min-width: 992px) {
+			font-size: 1.7rem;
+		}
+		@media only screen and (max-width: 480px) {
+			font-size: 1.4rem;
+		}
+	}
+}
+
+.shopping_cart__summary {
+	margin-top: 5rem;
+	box-shadow: 0 2px 22px rgba(0, 0, 0, 0.16);
+	padding: 2rem;
+	background: var(--white-color);
+	position: sticky;
+	top: 0;
+	@media only screen and (max-width: 991px) {
+		margin-top: 7.5rem;
+	}
+	@media only screen and (max-width: 767px) {
+		margin-top: 5.5rem;
+	}
+	&--total {
+		@media only screen and (max-width: 576px) {
+			font-size: 1.3rem;
+		}
+		@media only screen and (max-width: 480px) {
+			font-size: 1.1rem;
+		}
+		&__table {
+			width: 100%;
+		}
+	}
+	&--amount {
+		font-weight: 600;
+	}
+	&--footer {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		@media only screen and (max-width: 480px) {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+}
+
+.shopping_cart__conditions {
+	padding: 16px 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	@media only screen and (min-width: 1600px) {
+		padding: 20px 0;
+	}
+	@media only screen and (max-width: 576px) {
+		font-size: 1.3rem;
+	}
+	&--input {
+		vertical-align: middle;
+		margin-right: 8px;
+	}
+	&--label {
+		font-weight: 600;
+		letter-spacing: 0.5px;
+		color: var(--text-gray-color);
+	}
+	&--link {
+		color: var(--secondary-color);
+		text-decoration: underline;
+		&:hover {
+			color: var(--primary-color);
+			text-decoration: underline;
+		}
+	}
+}
+
+.shopping_cart__note {
+	&--title {
+		font-size: 1.7rem;
+		margin-bottom: 0.7rem;
+		line-height: 2.4rem;
+		@media only screen and (min-width: 992px) {
+			font-size: 2rem;
+		}
+	}
+	&--desc {
+		margin-bottom: 1.5rem;
+		@media only screen and (max-width: 480px) {
+			font-size: 1.2rem;
+		}
+	}
+	&--textarea {
+		border: 1px solid var(--border-color);
+		height: 8rem;
+		padding: 1rem;
+		width: 100%;
+		resize: none;
+		&:focus {
+			border-color: var(--secondary-color);
+		}
+		@media only screen and (min-width: 1200px) {
+			height: 10rem;
+		}
+	}
+}
+
+.shopping_cart__total {
+	font-weight: 600;
+	&--list {
+		margin-bottom: 1rem;
+		width: 12%;
+		text-align: right;
+		border-bottom: 2px solid var(--border-color2);
+		@media only screen and (max-width: 768px) {
+			width: 100%;
+			text-align: center;
+		}
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.shopping_cart__summary--footer {
+	&__desc {
+		font-size: 1.5rem;
+		margin-bottom: 1.5rem;
+	}
+	&__btn {
+		height: 4rem;
+		line-height: 4rem;
+		padding: 0 1.5rem;
+		font-size: 1.4rem;
+		@media only screen and (min-width: 992px) {
+			padding: 0 2rem;
+		}
+		@media only screen and (min-width: 1200px) {
+			padding: 0 2.5rem;
+			font-size: 1.5rem;
+		}
+	}
+}

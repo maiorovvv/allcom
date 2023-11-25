@@ -1,19 +1,14 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { NavLink, Route, Routes, useNavigate } from 'react-router-dom';
+import { NavLink, Route, Routes } from 'react-router-dom';
 
 import AboutMe from './components/AboutMe';
 import ChangePassword from './components/ChangePassword';
 import Products from '../../features/user/wishProducts/ProductList';
+import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 
 const MyAccount: FC = (): JSX.Element => {
 	const { t } = useTranslation('my_account');
-
-	const navigate = useNavigate();
-
-	useEffect(() => {
-		navigate('/user/my_account/about_me');
-	}, []);
 
 	return (
 		<section className="my__account--section section--padding">
@@ -67,6 +62,7 @@ const MyAccount: FC = (): JSX.Element => {
 					<div className="my_account__wrapper">
 						<div className="my_account__content">
 							<Routes>
+								<Route path="cart" element={<ShoppingCart />} />
 								<Route path="products" element={<Products />} />
 								<Route path="about_me" element={<AboutMe />} />
 								<Route path="change_password" element={<ChangePassword />} />
