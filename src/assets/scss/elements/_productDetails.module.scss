@@ -38,6 +38,7 @@
 		}
 	}
 }
+
 .product__media--nav {
 	margin-top: 2rem;
 	&__items {
@@ -47,6 +48,9 @@
 			width: 100%;
 			display: block;
 			cursor: pointer;
+			&.active {
+				border: 2px solid var(--secondary-color);
+			}
 		}
 	}
 }
