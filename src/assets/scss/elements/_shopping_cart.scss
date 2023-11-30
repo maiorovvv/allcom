@@ -1,3 +1,20 @@
+.shopping_cart__timer {
+	display: flex;
+	justify-content: center;
+	padding: 0;
+	font-size: 1.8rem;
+	font-weight: 500;
+	max-width: 170px;
+	margin-bottom: 1rem;
+	background-color: rgba(226, 226, 226, 0.395);
+	border-radius: 5px;
+	&--item_days {
+		margin-right: 0.5rem;
+	}
+	&--items {
+		min-width: 23px;
+	}
+}
 .shopping_cart__title {
 	@media only screen and (max-width: 575px) {
 		text-align: center;
@@ -57,6 +74,24 @@
 				justify-content: center;
 				padding: 1.2rem 0;
 				width: fit-content;
+				margin: 0 auto;
+				border: none;
+			}
+		}
+		&--price{
+			border-bottom: 1px solid var(--border-color2);
+			padding: 2rem 2rem 2rem 0;
+			&:last-child {
+				padding-right: 0;
+			}
+			@media only screen and (min-width: 768px) {
+				padding: 2rem 2rem 2rem 0;
+			}
+			@media only screen and (max-width: 768px) {
+				display: flex;
+				justify-content: center;
+				padding: 1.2rem 0;
+				width: 100%;
 				margin: 0 auto;
 			}
 		}
@@ -130,20 +165,36 @@
 	}
 }
 .shopping_cart__price {
-	font-weight: 600;
-	padding-right: 2rem;
-	min-width: 10rem;
 	text-align: right;
-	@media only screen and (min-width: 992px) {
-		font-size: 1.6rem;
-	}
-	@media only screen and (max-width: 768px) {
-		text-align: center;
-		padding: 0;
+	&--total{
+		font-weight: 600;
+		min-width: 10rem;
+		text-align: right;
+		@media only screen and (min-width: 992px) {
+			font-size: 1.6rem;
+		}
+		@media only screen and (max-width: 768px) {
+			text-align: center;
+			padding: 0;
+			min-width: 0;
+			margin-right: 1rem;
+		}
 	}
 }
-
+.shopping_cart__aufgeld {
+	font-size: 1rem;
+	background-color: var(--background-aufgeld-color);
+	border-radius: 10px;
+	padding: 0 5px 0 5px;
+	text-align: right;
+	min-width: 40px;
+	text-align: center;
+	@media only screen and (max-width: 768px) {
+		margin-left: 0;
+	}
+}
 .shopping_cart__continue__shopping {
+	margin-top: 1rem;
 	padding-top: 2rem;
 	&--link {
 		font-size: 1.5rem;
@@ -154,8 +205,6 @@
 		}
 		@media only screen and (max-width: 480px) {
 			font-size: 1.4rem;
-			border-right: 1px solid var(--border-color);
-			padding-right: 1rem;
 		}
 	}
 	&--clear {
@@ -170,6 +219,8 @@
 		}
 		@media only screen and (max-width: 480px) {
 			font-size: 1.4rem;
+			border-right: 1px solid var(--border-color);
+			padding-right: 1.3rem;
 		}
 	}
 }
@@ -188,6 +239,7 @@
 		margin-top: 5.5rem;
 	}
 	&--total {
+		padding-top: 1rem;
 		@media only screen and (max-width: 576px) {
 			font-size: 1.3rem;
 		}

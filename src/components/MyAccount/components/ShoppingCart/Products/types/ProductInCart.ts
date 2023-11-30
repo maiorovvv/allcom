@@ -7,5 +7,5 @@ export default interface ProductInCart {
 	image: string;
 	color?: string;
 	weight?: string;
-	quantity: number;
+	time: number;
 }

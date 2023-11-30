@@ -35,21 +35,11 @@
 		"privacy_policy": "Datenschutzrichtlinie",
 		"checkout": "Bestellen"
 	},
-	"mini_cart": {
-		"cart": "Warenkorb",
-		"color": "farbe:",
-		"weight": "gewicht:",
-		"price": "preis:",
-		"total_sum": "Gesamt:",
-		"agreement": "Ich stimme dem zu",
-		"privacy_policy": "Datenschutzrichtlinie",
-		"checkout": "Bestellen",
-		"view_cart": "Warenkorb ansehen",
-		"remove": "Lösen"
-	},
 	"productsInCart": {
 		"color": "Farbe",
-		"weight": "Gewicht"
+		"weight": "Gewicht",
+		"days": "Tage",
+		"tax": "Aufgeld"
 	},
 	"footer": {
 		"about_us": "Über Uns",
@@ -78,7 +68,7 @@
 		"auction": "Auktion",
 		"categories": "Kategorien",
 		"search": "Suchen",
-		"cart": "Warenkorb",
+		"cart": "Meine Auktionen",
 		"wishlist": "Merkzettel",
 		"my_account": "Mein Konto",
 		"search_products": "Produktsuche",
@@ -109,7 +99,7 @@
 		"wishlist": "Merkzettel",
 		"change_password": "Password ändern",
 		"dashboard": "Dashboard",
-		"cart": "Warenkorb",
+		"cart": "Meine Auktionen",
 		"about_me": "Über mich"
 	},
 	"about_me": {
