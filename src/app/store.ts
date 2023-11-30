@@ -2,6 +2,7 @@ import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import userProductsReducer from '../features/user/wishProducts/productsSlice';
 import productsReducer from '../features/products/productsSlice';
 import userDateReducer from '../components/MyAccount/UserSlice';
+import productReducer from '../features/ProductDetails/productDetailsSlice';
 import productsInCartReducer from '../components/MyAccount/components/ShoppingCart/productsInCartSlice';
 
 export const store = configureStore({
@@ -9,6 +10,7 @@ export const store = configureStore({
 		userProducts: userProductsReducer,
 		userDate: userDateReducer,
 		products: productsReducer,
+		product: productReducer,
 		productsInCart: productsInCartReducer,
 	},
 });

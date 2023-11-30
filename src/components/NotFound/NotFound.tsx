@@ -4,8 +4,6 @@ import { useTranslation } from 'react-i18next';
 
 import image404 from '../../img/other/404.png';
 
-import './NotFound.module.scss';
-
 const NotFound: React.FC = (): JSX.Element => {
 	const { t } = useTranslation('404-page');
 

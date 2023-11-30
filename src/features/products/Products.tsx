@@ -43,7 +43,7 @@ const Products: React.FC = (): JSX.Element => {
 										<div key={product.id} className="col mb-30">
 											<div className="product__items">
 												<div className="product__items--thumbnail">
-													<NavLink className="product__items--link" to="/product-details">
+													<NavLink className="product__items--link" to="/product/details">
 														<img
 															src={product.image}
 															className="product__items--img"
@@ -54,7 +54,7 @@ const Products: React.FC = (): JSX.Element => {
 												<div className="product__items--content">
 													<span className="product__items--content__subtitle">{product.title}</span>
 													<div className="product__items--content__title">
-														<NavLink to="/product-details">{product.category}</NavLink>
+														<NavLink to="/product/details">{product.category}</NavLink>
 													</div>
 													<div className="product__items--price">
 														<span className="product_current__price">${product.price}</span>
