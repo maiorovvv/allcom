@@ -64,13 +64,13 @@ const Header: React.FC = () => {
 							</div>
 							<div className="main__logo">
 								<h1 className="main__logo--title">
-									<a className="main__logo--link" href="index.html">
+									<NavLink to="/" className="footer__copyright__content--link">
 										<img
-											className="main__logo--img"
+											className="main__logo--link"
 											src="assets/img/logo/nav-log.png"
 											alt="logo"
 										></img>
-									</a>
+									</NavLink>
 								</h1>
 							</div>
 							<div className="header__search--widget header__sticky--none d-none d-lg-block mb-15">

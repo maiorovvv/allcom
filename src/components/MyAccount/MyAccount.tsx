@@ -1,19 +1,15 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { NavLink, Route, Routes, useNavigate } from 'react-router-dom';
-
-import AboutMe from './components/AboutMe';
-import ChangePassword from './components/ChangePassword';
-import Products from '../../features/user/wishProducts/ProductList';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 
 const MyAccount: FC = (): JSX.Element => {
 	const { t } = useTranslation('my_account');
 
 	const navigate = useNavigate();
 
-	useEffect(() => {
-		navigate('/user/my_account/about_me');
-	}, []);
+	const handleLogout = (): void => {
+		navigate('/');
+	};
 
 	return (
 		<section className="my__account--section section--padding">
@@ -38,14 +34,9 @@ const MyAccount: FC = (): JSX.Element => {
 							>
 								<div>{t('wishlist')}</div>
 							</NavLink>
-							<NavLink
-								to="2"
-								className={({ isActive }) =>
-									isActive ? 'active__nav_link my_account__menu--list' : 'my_account__menu--list'
-								}
-							>
+							<div onClick={handleLogout} className="my_account__menu--list">
 								<div>{t('log_out')}</div>
-							</NavLink>
+							</div>
 							<NavLink
 								to="/user/my_account/about_me"
 								className={({ isActive }) =>
@@ -66,11 +57,7 @@ const MyAccount: FC = (): JSX.Element => {
 					</div>
 					<div className="my_account__wrapper">
 						<div className="my_account__content">
-							<Routes>
-								<Route path="products" element={<Products />} />
-								<Route path="about_me" element={<AboutMe />} />
-								<Route path="change_password" element={<ChangePassword />} />
-							</Routes>
+							<Outlet />
 						</div>
 					</div>
 				</div>
