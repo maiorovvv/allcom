@@ -47,23 +47,18 @@
 	"Support": {
 		"in_developing": "В разработке..."
 	},
-	"shopping_cart": {
+	"my_auctions": {
 		"continue_shopping": "продолжить покупки",
 		"product": "продукт",
 		"price": "цена",
-		"clear_cart": "очистить корзину",
-		"note": "Примечание",
-		"note_placeholder": "Добавьте специальные инструкции для вашего продавца...",
-		"subtotal": "ПРОМЕЖУТОЧНЫЙ ИТОГ",
-		"grand_total": "ОБЩАЯ СУММА",
-		"agreement": "Я согласен с этим",
-		"privacy_policy": "Политика Конфиденциальности",
-		"checkout": "Заказать"
+		"clear_my_auctions": "очистить"
 	},
-	"productsInCart": {
+	"product_in_my_auctions": {
 		"color": "цвет",
 		"weight": "вес",
 		"days": "Дней",
+		"days_one": "День",
+		"days_few": "Дня",
 		"tax": "Налог"
 	},
 	"footer": {
@@ -71,7 +66,7 @@
 		"about_us_text": "Аукционный дом Allcom В данный момент сайт находиться в стадии разработки. Спасибо за Ваше терпение и понимание !!!",
 		"follow": "Подписывайтесь на нас",
 		"my_account": "Мой Аккаунт",
-		"cart": "Мои аукционы",
+		"my_auctions": "Мои аукционы",
 		"login": "Войти",
 		"register": "Регистрация",
 		"wishlist": "Избранное",
@@ -93,7 +88,7 @@
 		"auction": "Аукцион",
 		"categories": "Категории",
 		"search": "Поиск",
-		"cart": "Мои аукционы",
+		"my_auctions": "Мои аукционы",
 		"wishlist": "Избранное",
 		"my_account": "Мой Аккаунт",
 		"search_products": "Поиск продуктов",
@@ -124,7 +119,7 @@
 		"wishlist": "Избранное",
 		"dashboard": "Недамборд",
 		"change_password": "Изменить пароль",
-		"cart": "Мои аукционы",
+		"my_auctions": "Мои аукционы",
 		"about_me": "Обо мне"
 	},
 	"about_me": {

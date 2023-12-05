@@ -47,25 +47,17 @@
 	"Support": {
 		"in_developing": "In developing..."
 	},
-	"shopping_cart": {
+	"my_auctions": {
 		"continue_shopping": "Continue shopping",
 		"price": "price",
 		"product": "product",
-		"quantity": "Quantity",
-		"total_sum": "Total:",
-		"clear_cart": "Clear Cart",
-		"note": "Note",
-		"note_placeholder": "Add special instructions for your seller...",
-		"subtotal": "SUBTOTAL",
-		"grand_total": "GRAND TOTAL",
-		"checkout": "Checkout",
-		"agreement": "I agree with the",
-		"privacy_policy": "Privacy Policy"
+		"clear_my_auctions": "Clear"
 	},
-	"productsInCart": {
+	"product_in_my_auctions": {
 		"weight": "weight",
 		"color": "color",
-		"days": "Days",
+		"days_one": "Day",
+    "days_other": "Days",
 		"tax": "Tax"
 	},
 	"footer": {
@@ -73,7 +65,7 @@
 		"about_us_text": "Auction house Allcom The site is currently under development. Thank you for your patience and understanding!!!",
 		"follow": "Follow Us",
 		"my_account": "My Account",
-		"cart": "Shopping Cart",
+		"my_auctions": "Shopping Cart",
 		"login": "Login",
 		"register": "Register",
 		"wishlist": "Wishlist",
@@ -94,7 +86,7 @@
 		"auction": "Auction",
 		"categories": "Categories",
 		"search": "Search",
-		"cart": "Shopping Cart",
+		"my_auctions": "My auctions",
 		"wishlist": "Wishlist",
 		"my_account": "My Account",
 		"search_products": "Search Products",
@@ -125,7 +117,7 @@
 		"wishlist": "Wishlist",
 		"dashboard": "Dashboard",
 		"change_password": "Change password",
-		"cart": "My auctions",
+		"my_auctions": "My auctions",
 		"about_me": "About me"
 	},
 	"about_me": {

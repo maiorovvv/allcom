@@ -5,7 +5,7 @@ import { NavLink, Route, Routes } from 'react-router-dom';
 import AboutMe from './components/AboutMe';
 import ChangePassword from './components/ChangePassword';
 import Products from '../../features/user/wishProducts/ProductList';
-import ShoppingCart from './components/ShoppingCart/ShoppingCart';
+import MyAuctions from './components/MyAuctions/MyAuctions';
 
 const MyAccount: FC = (): JSX.Element => {
 	const { t } = useTranslation('my_account');
@@ -18,12 +18,12 @@ const MyAccount: FC = (): JSX.Element => {
 						<h2 className="my_account__content--title h3 mb-20">{t('my_profile')}</h2>
 						<div className="my_account__menu">
 							<NavLink
-								to="/user/my_account/cart"
+								to="/user/my_account/my_auctions"
 								className={({ isActive }) =>
 									isActive ? 'active__nav_link my_account__menu--list' : 'my_account__menu--list'
 								}
 							>
-								<div>{t('cart')}</div>
+								<div>{t('my_auctions')}</div>
 							</NavLink>
 							<NavLink
 								to="/user/my_account/products"
@@ -62,7 +62,7 @@ const MyAccount: FC = (): JSX.Element => {
 					<div className="my_account__wrapper">
 						<div className="my_account__content">
 							<Routes>
-								<Route path="cart" element={<ShoppingCart />} />
+								<Route path="my_auctions" element={<MyAuctions />} />
 								<Route path="products" element={<Products />} />
 								<Route path="about_me" element={<AboutMe />} />
 								<Route path="change_password" element={<ChangePassword />} />

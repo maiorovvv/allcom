@@ -1,4 +1,4 @@
-export default interface ProductInCart {
+export default interface ProductInMyAuctions {
 	id: number;
 	title: string;
 	price: number;

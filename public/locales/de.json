@@ -47,25 +47,17 @@
 	"Support": {
 		"in_developing": "In Bearbeitung..."
 	},
-	"shopping_cart": {
+	"my_auctions": {
 		"continue_shopping": "Weiter einkaufen",
 		"price": "Preis",
 		"product": "Produkt",
-		"quantity": "Menge",
-		"total_sum": "Gesamt:",
-		"clear_cart": "Leerer Warenkorb",
-		"note": "Notiz",
-		"note_placeholder": "Fügen Sie spezielle Anweisungen für Ihren Verkäufer hinzu...",
-		"subtotal": "ZWISCHENSUMME",
-		"grand_total": "GESAMTSUMME",
-		"agreement": "Ich stimme dem zu",
-		"privacy_policy": "Datenschutzrichtlinie",
-		"checkout": "Bestellen"
+		"clear_my_auctions": "Leerer"
 	},
-	"productsInCart": {
+	"product_in_my_auctions": {
 		"color": "Farbe",
 		"weight": "Gewicht",
-		"days": "Tage",
+		"days_one": "Tag",
+		"days_other": "Tages",
 		"tax": "Aufgeld"
 	},
 	"footer": {
@@ -73,7 +65,7 @@
 		"about_us_text": "Auktionshaus Allcom Die Seite befindet sich derzeit in der Entwicklung. Vielen Dank für Ihre Geduld und Ihr Verständnis!!!",
 		"follow": "Folgen Sie Uns",
 		"my_account": "Mein Konto",
-		"cart": "Warenkorb",
+		"my_auctions": "Meine Auktionen",
 		"login": "Anmeldung",
 		"register": "Registrieren",
 		"wishlist": "Merkzettel",
@@ -95,7 +87,7 @@
 		"auction": "Auktion",
 		"categories": "Kategorien",
 		"search": "Suchen",
-		"cart": "Meine Auktionen",
+		"my_auctions": "Meine Auktionen",
 		"wishlist": "Merkzettel",
 		"my_account": "Mein Konto",
 		"search_products": "Produktsuche",
@@ -126,7 +118,7 @@
 		"wishlist": "Merkzettel",
 		"change_password": "Password ändern",
 		"dashboard": "Dashboard",
-		"cart": "Meine Auktionen",
+		"my_auctions": "Meine Auktionen",
 		"about_me": "Über mich"
 	},
 	"about_me": {

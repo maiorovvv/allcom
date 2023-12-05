@@ -1,4 +1,4 @@
-.shopping_cart__timer {
+.my_auctions__timer {
 	display: flex;
 	justify-content: center;
 	padding: 0;
@@ -15,12 +15,12 @@
 		min-width: 23px;
 	}
 }
-.shopping_cart__title {
+.my_auctions__title {
 	@media only screen and (max-width: 575px) {
 		text-align: center;
 	}
 }
-.shopping_cart__table {
+.my_auctions__table {
 	&--inner {
 		width: 100%;
 		border-spacing: 0;
@@ -78,7 +78,7 @@
 				border: none;
 			}
 		}
-		&--price{
+		&--price {
 			border-bottom: 1px solid var(--border-color2);
 			padding: 2rem 2rem 2rem 0;
 			&:last-child {
@@ -98,7 +98,7 @@
 	}
 }
 
-.shopping_cart__thumbnail {
+.my_auctions__thumbnail {
 	max-width: 10rem;
 	line-height: 1;
 	@media only screen and (max-width: 767px) {
@@ -106,7 +106,7 @@
 		min-width: 4rem;
 	}
 }
-.shopping_cart__content {
+.my_auctions__content {
 	min-width: 2rem;
 	padding-left: 1.5rem;
 	@media only screen and (min-width: 1200px) {
@@ -137,7 +137,7 @@
 	}
 }
 
-.shopping_cart__add-cart--btn {
+.my_auctions__add-cart--btn {
 	padding: 0.5rem 0.8rem;
 	height: auto;
 	line-height: 2.4rem;
@@ -145,7 +145,7 @@
 	font-size: 1.3rem;
 }
 
-.shopping_cart__remove--btn {
+.my_auctions__remove--btn {
 	font-weight: 600;
 	width: 3rem;
 	height: 3rem;
@@ -164,9 +164,9 @@
 		margin-right: 1.5rem;
 	}
 }
-.shopping_cart__price {
+.my_auctions__price {
 	text-align: right;
-	&--total{
+	&--total {
 		font-weight: 600;
 		min-width: 10rem;
 		text-align: right;
@@ -181,7 +181,7 @@
 		}
 	}
 }
-.shopping_cart__aufgeld {
+.my_auctions__aufgeld {
 	font-size: 1rem;
 	background-color: var(--background-aufgeld-color);
 	border-radius: 10px;
@@ -193,7 +193,7 @@
 		margin-left: 0;
 	}
 }
-.shopping_cart__continue__shopping {
+.my_auctions__continue__shopping {
 	margin-top: 1rem;
 	padding-top: 2rem;
 	&--link {
@@ -225,7 +225,7 @@
 	}
 }
 
-.shopping_cart__summary {
+.my_auctions__summary {
 	margin-top: 5rem;
 	box-shadow: 0 2px 22px rgba(0, 0, 0, 0.16);
 	padding: 2rem;
@@ -264,7 +264,7 @@
 	}
 }
 
-.shopping_cart__conditions {
+.my_auctions__conditions {
 	padding: 16px 0;
 	display: flex;
 	align-items: center;
@@ -294,7 +294,7 @@
 	}
 }
 
-.shopping_cart__note {
+.my_auctions__note {
 	&--title {
 		font-size: 1.7rem;
 		margin-bottom: 0.7rem;
@@ -324,7 +324,7 @@
 	}
 }
 
-.shopping_cart__total {
+.my_auctions__total {
 	font-weight: 600;
 	&--list {
 		margin-bottom: 1rem;
@@ -341,7 +341,7 @@
 	}
 }
 
-.shopping_cart__summary--footer {
+.my_auctions__summary--footer {
 	&__desc {
 		font-size: 1.5rem;
 		margin-bottom: 1.5rem;

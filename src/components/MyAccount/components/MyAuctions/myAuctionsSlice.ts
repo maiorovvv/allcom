@@ -4,7 +4,7 @@ import * as api from './api';
 import ProductState from './Products/types/ProductsState';
 
 const initialState: ProductState = {
-	productsInCart: [],
+	productsInMyAuctions: [],
 	loading: false,
 };
 
@@ -14,8 +14,12 @@ export const loadProducts = createAsyncThunk(
 	() => api.getAll()
 );
 
-export const productsInCartSlice = createSlice({
-	name: 'productsInCart',
+export const deleteProduct = createAsyncThunk('products/deleteOneProduct', (id: number) =>
+	api.deleteOneProduct(id)
+);
+
+export const myAuctionstSlice = createSlice({
+	name: 'myAuctions',
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
@@ -24,13 +28,19 @@ export const productsInCartSlice = createSlice({
 				state.loading = true;
 			})
 			.addCase(loadProducts.fulfilled, (state, action) => {
-				state.productsInCart = action.payload;
+				state.productsInMyAuctions = action.payload;
 				state.loading = false;
 			})
 			.addCase(loadProducts.rejected, (state) => {
 				state.loading = false;
+			})
+			.addCase(deleteProduct.fulfilled, (state, action) => {
+				const res = action.payload.id;
+				state.productsInMyAuctions = state.productsInMyAuctions.filter(
+					(product) => product.id !== res
+				);
 			});
 	},
 });
 
-export default productsInCartSlice.reducer;
+export default myAuctionstSlice.reducer;

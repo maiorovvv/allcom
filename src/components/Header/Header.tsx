@@ -2,7 +2,9 @@ import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { RootState } from '../../app/store';
-import { useAppSelector } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { loadProducts as loadProductsFromMyAuctions } from '../MyAccount/components/MyAuctions/myAuctionsSlice';
+import { loadProducts } from '../../features/user/wishProducts/productsSlice';
 
 import SetLanguage from './SetLanguage/SetLanguage';
 import CategorySelect from './CategorySelect/CategorySelect';
@@ -21,19 +23,22 @@ import CategoriesIcon from '../../img/svg/categories_icon.svg?react';
 
 const Header: React.FC = () => {
 	const { t } = useTranslation('header');
-	const [countItemsInCart, setCountItemsInCart] = useState<number>(0);
-	const [countItemsInWishlist, setCountItemsInWishlist] = useState<number>(0);
+
+	const productsInMyAuctions = useAppSelector(
+		(state: RootState) => state.myAuctions.productsInMyAuctions
+	);
+	const products = useAppSelector((state: RootState) => state.userProducts.products);
+
 	const [offcanvasIsActive, setOffcanvasIsActive] = useState<boolean>(false);
 	const [searchBoxIsActive, setSearchBoxIsActive] = useState<boolean>(false);
 	const [isScrolled, setIsScrolled] = useState<boolean>(false);
 
-	const productsInCart = useAppSelector((state: RootState) => state.productsInCart.productsInCart);
-	const products = useAppSelector((state: RootState) => state.userProducts.products);
+	const dispatch = useAppDispatch();
 
 	useEffect(() => {
-		setCountItemsInCart(productsInCart.length);
-		setCountItemsInWishlist(products.length);
-	}, [products, productsInCart]);
+		dispatch(loadProductsFromMyAuctions());
+		dispatch(loadProducts());
+	}, []);
 
 	const scrollToTop = (): void => {
 		window.scrollTo({
@@ -131,18 +136,21 @@ const Header: React.FC = () => {
 										>
 											<div className="my_icon">
 												<HeartIcon />
-												<span className="items__count_header">{countItemsInWishlist}</span>
+												<span className="items__count_header">{products.length}</span>
 											</div>
 											<span className="header__account--btn__text">{t('wishlist')}</span>
 										</NavLink>
 									</li>
 									<li className="header__account--items">
-										<NavLink className="header__account--btn cont_icons" to="user/my_account/cart">
+										<NavLink
+											className="header__account--btn cont_icons"
+											to="user/my_account/my_auctions"
+										>
 											<div className="my_icon">
 												<CartIcon />
-												<span className="items__count_header">{countItemsInCart}</span>
+												<span className="items__count_header">{productsInMyAuctions.length}</span>
 											</div>
-											<span className="header__account--btn__text">{t('cart')}</span>
+											<span className="header__account--btn__text">{t('my_auctions')}</span>
 										</NavLink>
 									</li>
 								</ul>
@@ -198,7 +206,7 @@ const Header: React.FC = () => {
 									<li className="header__account--items header__account2--items d-none d-lg-block">
 										<NavLink className="header__account--btn" to="/user/my_account/products" end>
 											<HeartIcon />
-											<span className="items__count  wishlist style2">{countItemsInWishlist}</span>
+											<span className="items__count  wishlist style2">{products.length}</span>
 										</NavLink>
 									</li>
 									<li className="header__account--items header__account2--items">
@@ -207,7 +215,7 @@ const Header: React.FC = () => {
 											to="user/my_account/cart"
 										>
 											<CartIcon />
-											<span className="items__count style2">{countItemsInCart}</span>
+											<span className="items__count style2">{productsInMyAuctions.length}</span>
 										</NavLink>
 									</li>
 								</ul>
@@ -300,16 +308,16 @@ const Header: React.FC = () => {
 						<li className="offcanvas__stikcy--toolbar__list ">
 							<NavLink
 								className="offcanvas__stikcy--toolbar__btn minicart__open--btn cont_icons"
-								to="user/my_account/cart"
+								to="user/my_account/my_auctions"
 							>
 								<div className="my_icon">
 									<span className="offcanvas__stikcy--toolbar__icon">
 										<CatrIconOffcanvas />
 									</span>
-									<span className="items__count">{countItemsInCart}</span>
+									<span className="items__count">{productsInMyAuctions.length}</span>
 								</div>
 
-								<span className="offcanvas__stikcy--toolbar__label">{t('cart')}</span>
+								<span className="offcanvas__stikcy--toolbar__label">{t('my_auctions')}</span>
 							</NavLink>
 						</li>
 						<li className="offcanvas__stikcy--toolbar__list">
@@ -320,7 +328,7 @@ const Header: React.FC = () => {
 								<div className="my_icon">
 									<span className="offcanvas__stikcy--toolbar__icon">
 										<HeartIcon />
-										<span className="items__count">{countItemsInWishlist}</span>
+										<span className="items__count">{products.length}</span>
 									</span>
 								</div>
 								<span className="offcanvas__stikcy--toolbar__label">{t('wishlist')}</span>
