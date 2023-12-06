@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { NavLink } from 'react-router-dom';
 
 const Footer: React.FC = (): JSX.Element => {
 	const { t } = useTranslation('footer');
@@ -223,10 +224,10 @@ const Footer: React.FC = (): JSX.Element => {
 				</div>
 				<div className="footer__bottom d-flex justify-content-center align-items-center">
 					<p className="footer__copyright__content text-ofwhite m-0">
-						{t('copyright')}{' '}
-						<a className="footer__copyright__content--link" href="index.html">
+						{t('copyright')}
+						<NavLink to="/" className="footer__copyright__content--link">
 							{t('title')}
-						</a>{' '}
+						</NavLink>
 						{t('reserved')}
 					</p>
 				</div>

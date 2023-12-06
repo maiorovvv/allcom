@@ -1,11 +1,12 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import { useAppSelector } from '../../../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 import { RootState } from '../../../../app/store';
 import ProductInCart from './ProductInMyAuction';
 import Spinner from '../../../Spinner/Spinner';
+import { loadProducts } from './myAuctionsSlice';
 
 const MyAuctions: FC = (): JSX.Element => {
 	const { t } = useTranslation('my_auctions');
@@ -14,6 +15,12 @@ const MyAuctions: FC = (): JSX.Element => {
 	const productsInMyAuctions = useAppSelector(
 		(state: RootState) => state.myAuctions.productsInMyAuctions
 	);
+
+	const dispatch = useAppDispatch();
+
+	useEffect(() => {
+		dispatch(loadProducts());
+	}, []);
 
 	if (loading)
 		return (

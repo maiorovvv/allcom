@@ -4,7 +4,8 @@ import svgr from 'vite-plugin-svgr';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	base: '/allcom/',
+	// base: '/allcom/',
+	// publicPath: '/allcom/',
 	plugins: [
 		react(),
 		svgr({
@@ -27,6 +28,8 @@ export default defineConfig({
 	],
 	server: {
 		open: true,
+		// force: true,
+		// rewrites: [{ from: /^\/allcom\/.*$/, to: '/allcom/index.html' }],
 	},
 	build: {
 		outDir: 'build',
