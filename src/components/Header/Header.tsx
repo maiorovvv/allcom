@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+
 import { RootState } from '../../app/store';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { loadProducts as loadProductsFromMyAuctions } from '../MyAccount/components/MyAuctions/myAuctionsSlice';
@@ -117,7 +118,6 @@ const Header: React.FC = () => {
 													: 'header__account--btn cont_icons'
 											}
 											to="/user/my_account/about_me"
-											end
 										>
 											<HumanIcon />
 											<span className="header__account--btn__text">{t('my_account')}</span>
@@ -132,7 +132,6 @@ const Header: React.FC = () => {
 													: 'header__account--btn cont_icons'
 											}
 											to="/user/my_account/products"
-											end
 										>
 											<div className="my_icon">
 												<HeartIcon />
@@ -198,13 +197,13 @@ const Header: React.FC = () => {
 										</div>
 									</li>
 									<li className="header__account--items header__account2--items">
-										<NavLink className="header__account--btn" to={'user/my_account/about_me'} end>
+										<NavLink className="header__account--btn" to={'user/my_account/about_me'}>
 											<HumanIcon />
 											<span className="visually-hidden">My Account</span>
 										</NavLink>
 									</li>
 									<li className="header__account--items header__account2--items d-none d-lg-block">
-										<NavLink className="header__account--btn" to="/user/my_account/products" end>
+										<NavLink className="header__account--btn" to="/user/my_account/products">
 											<HeartIcon />
 											<span className="items__count  wishlist style2">{products.length}</span>
 										</NavLink>
@@ -212,7 +211,7 @@ const Header: React.FC = () => {
 									<li className="header__account--items header__account2--items">
 										<NavLink
 											className="header__account--btn minicart__open--btn"
-											to="user/my_account/cart"
+											to="user/my_account/my_auctions"
 										>
 											<CartIcon />
 											<span className="items__count style2">{productsInMyAuctions.length}</span>

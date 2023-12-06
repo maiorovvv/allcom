@@ -12,7 +12,7 @@ interface ProductProps {
 }
 
 interface TimeLeft {
-	days: string;
+	days: number;
 	hours: string;
 	minutes: string;
 	secs: string;
@@ -28,23 +28,29 @@ const ProductInMyAuction: FC<ProductProps> = ({ product }): JSX.Element => {
 	const calculateTimeLeft = (): TimeLeft => {
 		if (seconds.current <= 0) {
 			return {
-				days: '0',
+				days: 0,
 				hours: '0',
 				minutes: '0',
 				secs: '0',
 			};
 		}
 
-		const days = Math.floor(seconds.current / (24 * 60 * 60));
-		const hours = Math.floor((seconds.current % (24 * 60 * 60)) / (60 * 60));
-		const minutes = Math.floor((seconds.current % (60 * 60)) / 60);
-		const secs = seconds.current % 60;
+		const SECONDS_IN_DAY = 24 * 60 * 60;
+		const SECONDS_IN_HOUR = 60 * 60;
+		const SECONDS_IN_MINUTE = 60;
+
+		const totalSeconds = seconds.current;
+
+		const days = Math.floor(totalSeconds / SECONDS_IN_DAY);
+		const hours = Math.floor((totalSeconds % SECONDS_IN_DAY) / SECONDS_IN_HOUR);
+		const minutes = Math.floor((totalSeconds % SECONDS_IN_HOUR) / SECONDS_IN_MINUTE);
+		const secs = totalSeconds % SECONDS_IN_MINUTE;
 
 		return {
-			days: days.toString(),
-			hours: hours > 9 ? `${hours}:` : `0${hours}:`,
-			minutes: minutes > 9 ? `${minutes}:` : `0${minutes}:`,
-			secs: secs > 9 ? `${secs}` : `0${secs}`,
+			days,
+			hours: hours.toString().padStart(2, '0'),
+			minutes: minutes.toString().padStart(2, '0'),
+			secs: secs.toString().padStart(2, '0'),
 		};
 	};
 
@@ -81,10 +87,10 @@ const ProductInMyAuction: FC<ProductProps> = ({ product }): JSX.Element => {
 					<div className="my_auctions__content">
 						<div className="my_auctions__timer">
 							<div className="my_auctions__timer--item_days">
-								{timeLeft.days} {t('days', { count: +timeLeft.days })}
+								{timeLeft.days} {t('days', { count: timeLeft.days })}
 							</div>
-							<div className="my_auctions__timer--items">{timeLeft.hours}</div>
-							<div className="my_auctions__timer--items">{timeLeft.minutes}</div>
+							<div className="my_auctions__timer--items">{timeLeft.hours}:</div>
+							<div className="my_auctions__timer--items">{timeLeft.minutes}:</div>
 							<div className="my_auctions__timer--items">{timeLeft.secs}</div>
 						</div>
 						<h4 className="my_auctions__content--title">
