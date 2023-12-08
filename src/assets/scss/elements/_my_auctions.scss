@@ -6,13 +6,28 @@
 	font-weight: 500;
 	max-width: 170px;
 	margin-bottom: 1rem;
-	background-color: rgba(226, 226, 226, 0.395);
+	background-color: var(--background-timer-color);
 	border-radius: 5px;
 	&--item_days {
 		margin-right: 0.5rem;
 	}
-	&--items {
-		min-width: 23px;
+	&--finish {
+		transition: all 2s;
+		text-align: center;
+		padding: 0;
+		font-size: 1.8rem;
+		font-weight: 500;
+		max-width: 170px;
+		margin-bottom: 1rem;
+		background-color: var(--background-timer-finish-color);
+		border-radius: 5px;
+		@media only screen and (max-width: 576px) {
+			font-size: 1.2rem;
+			max-width: 120px;
+		}
+	}
+	@media only screen and (max-width: 576px) {
+		font-size: 1.2rem;
 	}
 }
 .my_auctions__title {
@@ -26,7 +41,7 @@
 		border-spacing: 0;
 	}
 	&--header {
-		@media only screen and (max-width: 768px) {
+		@media only screen and (max-width: 767px) {
 			display: none;
 		}
 		&__list {
@@ -38,7 +53,7 @@
 				padding-right: 0;
 			}
 			font-size: 1.4rem;
-			@media only screen and (min-width: 768px) {
+			@media only screen and (min-width: 767px) {
 				padding: 0 2rem 2rem 0;
 			}
 			@media only screen and (min-width: 992px) {
@@ -54,7 +69,7 @@
 	}
 	&--body {
 		&__items {
-			@media only screen and (max-width: 768px) {
+			@media only screen and (max-width: 767px) {
 				display: flex;
 				flex-direction: column;
 				margin-bottom: 5%;
@@ -66,15 +81,14 @@
 			&:last-child {
 				padding-right: 0;
 			}
-			@media only screen and (min-width: 768px) {
+			@media only screen and (min-width: 767px) {
 				padding: 2rem 2rem 2rem 0;
 			}
-			@media only screen and (max-width: 768px) {
+			@media only screen and (max-width: 767px) {
 				display: flex;
 				justify-content: center;
 				padding: 1.2rem 0;
 				width: fit-content;
-				margin: 0 auto;
 				border: none;
 			}
 		}
@@ -84,10 +98,10 @@
 			&:last-child {
 				padding-right: 0;
 			}
-			@media only screen and (min-width: 768px) {
+			@media only screen and (min-width: 767px) {
 				padding: 2rem 2rem 2rem 0;
 			}
-			@media only screen and (max-width: 768px) {
+			@media only screen and (max-width: 767px) {
 				display: flex;
 				justify-content: center;
 				padding: 1.2rem 0;
@@ -95,6 +109,10 @@
 				margin: 0 auto;
 			}
 		}
+	}
+	&--container {
+		display: flex;
+		align-items: center;
 	}
 }
 
@@ -107,16 +125,13 @@
 	}
 }
 .my_auctions__content {
-	min-width: 2rem;
+	min-width: 200px;
 	padding-left: 1.5rem;
 	@media only screen and (min-width: 1200px) {
 		padding-left: 2rem;
 	}
-	@media only screen and (min-width: 576px) and (max-width: 768px) {
-		min-width: 36rem;
-	}
 	@media only screen and (max-width: 576px) {
-		min-width: 22rem;
+		min-width: auto;
 	}
 
 	&--variant {
@@ -131,9 +146,12 @@
 	&--title {
 		margin-bottom: 0.5rem;
 		line-height: 2.2rem;
-		@media only screen and (min-width: 768px) {
+		@media only screen and (min-width: 767px) {
 			line-height: 2.5rem;
 		}
+		@media only screen and (max-width: 576px) {
+				font-size: 1.2rem;
+			}
 	}
 }
 
@@ -147,8 +165,8 @@
 
 .my_auctions__remove--btn {
 	font-weight: 600;
-	width: 3rem;
-	height: 3rem;
+	min-width: 20px;
+	max-width: 20px;
 	text-align: center;
 	line-height: 3rem;
 	background: var(--white-color);
@@ -160,7 +178,13 @@
 	&:hover {
 		color: var(--secondary-color);
 	}
-	@media only screen and (min-width: 768px) {
+	@media only screen and (min-width: 767px) {
+		margin-right: 1.5rem;
+	}
+	@media only screen and (max-width: 767px) {
+		margin-right: 1.5rem;
+	}
+	@media only screen and (max-width: 576px) {
 		margin-right: 1.5rem;
 	}
 }
@@ -173,7 +197,7 @@
 		@media only screen and (min-width: 992px) {
 			font-size: 1.6rem;
 		}
-		@media only screen and (max-width: 768px) {
+		@media only screen and (max-width: 767px) {
 			text-align: center;
 			padding: 0;
 			min-width: 0;
@@ -189,7 +213,7 @@
 	text-align: right;
 	min-width: 40px;
 	text-align: center;
-	@media only screen and (max-width: 768px) {
+	@media only screen and (max-width: 767px) {
 		margin-left: 0;
 	}
 }
@@ -331,7 +355,7 @@
 		width: 12%;
 		text-align: right;
 		border-bottom: 2px solid var(--border-color2);
-		@media only screen and (max-width: 768px) {
+		@media only screen and (max-width: 767px) {
 			width: 100%;
 			text-align: center;
 		}

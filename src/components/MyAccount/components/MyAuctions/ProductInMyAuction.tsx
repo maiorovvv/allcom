@@ -20,7 +20,7 @@ interface TimeLeft {
 
 const ProductInMyAuction: FC<ProductProps> = ({ product }): JSX.Element => {
 	const dispatch = useAppDispatch();
-	const { title, price, image, color, weight, time = 4004800 } = product;
+	const { title, price, image, color, weight, time } = product;
 	const { t } = useTranslation('product_in_my_auctions');
 
 	const seconds = useRef(time);
@@ -35,16 +35,17 @@ const ProductInMyAuction: FC<ProductProps> = ({ product }): JSX.Element => {
 			};
 		}
 
-		const SECONDS_IN_DAY = 24 * 60 * 60;
-		const SECONDS_IN_HOUR = 60 * 60;
+		const HOURS_IN_DAY = 24;
+		const MINUTES_IN_HOUR = 60;
 		const SECONDS_IN_MINUTE = 60;
 
-		const totalSeconds = seconds.current;
+		const SECONDS_IN_DAY = HOURS_IN_DAY * MINUTES_IN_HOUR * SECONDS_IN_MINUTE;
+		const SECONDS_IN_HOUR = SECONDS_IN_MINUTE * MINUTES_IN_HOUR;
 
-		const days = Math.floor(totalSeconds / SECONDS_IN_DAY);
-		const hours = Math.floor((totalSeconds % SECONDS_IN_DAY) / SECONDS_IN_HOUR);
-		const minutes = Math.floor((totalSeconds % SECONDS_IN_HOUR) / SECONDS_IN_MINUTE);
-		const secs = totalSeconds % SECONDS_IN_MINUTE;
+		const days = Math.floor(seconds.current / SECONDS_IN_DAY);
+		const hours = Math.floor((seconds.current % SECONDS_IN_DAY) / SECONDS_IN_HOUR);
+		const minutes = Math.floor((seconds.current % SECONDS_IN_HOUR) / SECONDS_IN_MINUTE);
+		const secs = seconds.current % SECONDS_IN_MINUTE;
 
 		return {
 			days,
@@ -57,9 +58,9 @@ const ProductInMyAuction: FC<ProductProps> = ({ product }): JSX.Element => {
 	const [timeLeft, setTimeLeft] = useState(calculateTimeLeft);
 
 	useEffect(() => {
-		if (seconds.current <= 0) return;
-
 		const intervalId = setInterval(() => {
+			if (seconds.current <= 0) return;
+
 			seconds.current--;
 			setTimeLeft(calculateTimeLeft);
 		}, 1000);
@@ -70,7 +71,7 @@ const ProductInMyAuction: FC<ProductProps> = ({ product }): JSX.Element => {
 	return (
 		<>
 			<td className="my_auctions__table--body__list">
-				<div className="d-flex align-items-center">
+				<div className="my_auctions__table--container">
 					<button
 						className="my_auctions__remove--btn"
 						aria-label="search button"
@@ -81,18 +82,22 @@ const ProductInMyAuction: FC<ProductProps> = ({ product }): JSX.Element => {
 					</button>
 					<div className="my_auctions__thumbnail">
 						<a href="product-details.html">
-							<img className="border-radius-5" src={image} alt="cart-product" />
+							<img className="border-radius-5" src={image} alt="product" />
 						</a>
 					</div>
 					<div className="my_auctions__content">
-						<div className="my_auctions__timer">
-							<div className="my_auctions__timer--item_days">
-								{timeLeft.days} {t('days', { count: timeLeft.days })}
+						{seconds.current ? (
+							<div className="my_auctions__timer">
+								<div className="my_auctions__timer--item_days">
+									{timeLeft.days} {t('days', { count: timeLeft.days })}
+								</div>
+								<div className="my_auctions__timer--items">{timeLeft.hours}:</div>
+								<div className="my_auctions__timer--items">{timeLeft.minutes}:</div>
+								<div className="my_auctions__timer--items">{timeLeft.secs}</div>
 							</div>
-							<div className="my_auctions__timer--items">{timeLeft.hours}:</div>
-							<div className="my_auctions__timer--items">{timeLeft.minutes}:</div>
-							<div className="my_auctions__timer--items">{timeLeft.secs}</div>
-						</div>
+						) : (
+							<div className="my_auctions__timer--finish">{t('finish')}</div>
+						)}
 						<h4 className="my_auctions__content--title">
 							<a href="product-details.html">{title}</a>
 						</h4>

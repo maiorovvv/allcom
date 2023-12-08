@@ -58,7 +58,8 @@
 		"color": "color",
 		"days_one": "Day",
     "days_other": "Days",
-		"tax": "Tax"
+		"tax": "Tax",
+		"finish": "Auction is over"
 	},
 	"footer": {
 		"about_us": "About Us",

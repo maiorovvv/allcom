@@ -58,7 +58,8 @@
 		"weight": "Gewicht",
 		"days_one": "Tag",
 		"days_other": "Tages",
-		"tax": "Aufgeld"
+		"tax": "Aufgeld",
+		"finish": "Auktion beendet"
 	},
 	"footer": {
 		"about_us": "Über Uns",

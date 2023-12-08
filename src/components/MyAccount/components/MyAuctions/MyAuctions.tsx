@@ -39,7 +39,7 @@ const MyAuctions: FC = (): JSX.Element => {
 								<thead className="my_auctions__table--header">
 									<tr className="my_auctions__table--header__items">
 										<th className="my_auctions__table--header__list">{t('product')}</th>
-										<th className="my_auctions__table--header__list text-center">{t('price')}</th>
+										<th className="my_auctions__table--header__list text-right">{t('price')}</th>
 									</tr>
 								</thead>
 								<tbody className="my_auctions__table--body">
