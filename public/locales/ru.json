@@ -56,10 +56,12 @@
 	"product_in_my_auctions": {
 		"color": "цвет",
 		"weight": "вес",
+		"tax": "Налог"
+	},
+	"timer": {
 		"days": "Дней",
 		"days_one": "День",
 		"days_few": "Дня",
-		"tax": "Налог",
 		"finish": "Аукцион окончен"
 	},
 	"footer": {

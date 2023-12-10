@@ -24,9 +24,8 @@ function App(): JSX.Element {
 						<Route index element={<AboutMe />} />
 						<Route path="products" element={<ProductList />} />
 						<Route path="about_me" element={<AboutMe />} />
-						<Route path="change_password" element={<ChangePassword />} />{' '}
+						<Route path="change_password" element={<ChangePassword />} />
 						<Route path="my_auctions" element={<MyAuctions />} />
-						{/* <Route path="*" element={<NotFound />} /> */}
 					</Route>
 					<Route path="product/details/" element={<ProductDetails />} />
 					<Route path="shipping" element={<Shipping />} />

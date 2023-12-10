@@ -56,9 +56,11 @@
 	"product_in_my_auctions": {
 		"color": "Farbe",
 		"weight": "Gewicht",
+		"tax": "Aufgeld"
+	},
+	"timer": {
 		"days_one": "Tag",
 		"days_other": "Tages",
-		"tax": "Aufgeld",
 		"finish": "Auktion beendet"
 	},
 	"footer": {

@@ -56,9 +56,11 @@
 	"product_in_my_auctions": {
 		"weight": "weight",
 		"color": "color",
+		"tax": "Tax"
+	},
+	"timer": {
 		"days_one": "Day",
     "days_other": "Days",
-		"tax": "Tax",
 		"finish": "Auction is over"
 	},
 	"footer": {
