@@ -19,12 +19,12 @@ const MyAccount: FC = (): JSX.Element => {
 						<h2 className="my_account__content--title h3 mb-20">{t('my_profile')}</h2>
 						<div className="my_account__menu">
 							<NavLink
-								to="/user/my_account/cart"
+								to="/user/my_account/my_auctions"
 								className={({ isActive }) =>
 									isActive ? 'active__nav_link my_account__menu--list' : 'my_account__menu--list'
 								}
 							>
-								<div>{t('cart')}</div>
+								<div>{t('my_auctions')}</div>
 							</NavLink>
 							<NavLink
 								to="/user/my_account/products"

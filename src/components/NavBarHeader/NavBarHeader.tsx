@@ -65,16 +65,6 @@ const NavBarHeader: FC = (): JSX.Element => {
 											{t('add_product')}
 										</NavLink>
 									</li>
-									<li className="header__menu--items style2">
-										<NavLink
-											className={({ isActive }) =>
-												isActive ? 'active__nav_link header__menu--link' : 'header__menu--link'
-											}
-											to="/auction"
-										>
-											{t('auction')}
-										</NavLink>
-									</li>
 								</ul>
 							</nav>
 						</div>

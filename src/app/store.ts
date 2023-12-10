@@ -3,6 +3,7 @@ import userProductsReducer from '../features/user/wishProducts/productsSlice';
 import productsReducer from '../features/products/productsSlice';
 import userDateReducer from '../components/MyAccount/UserSlice';
 import productReducer from '../features/ProductDetails/productDetailsSlice';
+import myAuctionsReducer from '../components/MyAccount/components/MyAuctions/myAuctionsSlice';
 
 export const store = configureStore({
 	reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
 		userDate: userDateReducer,
 		products: productsReducer,
 		product: productReducer,
+		myAuctions: myAuctionsReducer,
 	},
 });
 
