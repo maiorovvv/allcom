@@ -1,0 +1,62 @@
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import ProductState from '../../types/ProductsState';
+import * as api from './api';
+
+const initialState: ProductState = {
+	products: [],
+	productById: {
+		id: 0,
+		title: '',
+		description: '',
+		price: 0,
+		brand: '',
+		category: '',
+		thumbnail: '',
+		images: [],
+		time: 0,
+		color: '',
+		weight: '',
+	},
+	loadingAllProducts: false,
+	loadingOneProduct: false,
+};
+
+export const loadProducts = createAsyncThunk('productsHome/loadProducts', (skip: number) =>
+	api.getAllProducts(skip)
+);
+
+export const loadProductById = createAsyncThunk('productsHome/loadProductById', (id: number) =>
+	api.getProduct(id)
+);
+
+export const HomePageSlice = createSlice({
+	name: 'homePage',
+	initialState,
+	reducers: {},
+	extraReducers(builder) {
+		builder
+			.addCase(loadProducts.fulfilled, (state, action) => {
+				state.products = action.payload;
+				state.loadingAllProducts = false;
+			})
+			.addCase(loadProducts.pending, (state) => {
+				state.loadingAllProducts = true;
+			})
+			.addCase(loadProducts.rejected, (state) => {
+				state.loadingAllProducts = false;
+			})
+
+			.addCase(loadProductById.fulfilled, (state, action) => {
+				state.productById = action.payload;
+				state.loadingOneProduct = false;
+			})
+			.addCase(loadProductById.pending, (state) => {
+				state.loadingOneProduct = true;
+			})
+			.addCase(loadProductById.rejected, (state) => {
+				state.loadingOneProduct = true;
+			});
+	},
+});
+
+export default HomePageSlice.reducer;

@@ -25,6 +25,8 @@
 	--background-timer-color: #e2e2e265;
 	--background-timer-last-moments-color: #e6a91a65;
 	--background-timer-finish-color: #d81b4465;
+	--background-action-btn-color: #7c7e7e49;
+	--overlay-color: rgba(0, 0, 0, 0.637);
 	--font-jost: "Jost", sans-serif;
 	--body-font-size: 1.6rem;
 	--body-font-weight: 400;
@@ -1134,29 +1136,7 @@ hr {
 	border: 0;
 	word-wrap: normal !important;
 }
-.section__heading {
-	&--maintitle {
-		position: relative;
-		padding-bottom: 2rem;
-		&::before {
-			position: absolute;
-			content: '';
-			background: url(../img/other/heading-shape.png);
-			width: 174px;
-			height: 5px;
-			bottom: 0;
-			left: 50%;
-			transform: translatex(-50%);
-		}
-		&.style2 {
-			&::before {
-				width: 13rem;
-				height: 0.2rem;
-				background: var(--secondary-color);
-			}
-		}
-	}
-}
+
 .primary__btn {
 	font-size: 1.4rem;
 	font-weight: var(--body-line-height);

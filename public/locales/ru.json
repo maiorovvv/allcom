@@ -4,6 +4,21 @@
 		"add_to_card": " + В корзину",
 		"wishlist": "Избранное"
 	},
+	"home_page": {
+		"header": "Products",
+		"bid_now": "СДЕЛАТЬ СТАВКУ",
+		"category": "Категория",
+		"auctions": "Аукционы"
+	},
+	"modal_window_product": {
+		"bid_now": "СДЕЛАТЬ СТАВКУ",
+		"actual_price": "АКТУАЛЬНАЯ СТАВКА:",
+		"color": "цвет",
+		"weight": "вес",
+		"category": "категория",
+		"left_time": "До закрытия",
+		"add_to_wishlist": "В избранное"
+	},
 	"poster": {
 		"view_auctions": "Текущие аукционы",
 		"main_text_part1": "Найди для себя новые",

@@ -4,6 +4,21 @@
 		"add_to_card": " + Add to cart",
 		"wishlist": "Wishlist"
 	},
+	"home_page": {
+		"header": "Products",
+		"bid_now": "BID NOW",
+		"category": "Category",
+		"auctions": "Auctions"
+	},
+	"modal_window_product": {
+		"bid_now": "BID NOW",
+		"actual_price": "CURRENT BID:",
+		"color": "color",
+		"weight": "weight",
+		"category": "category",
+		"left_time": "Left until closing",
+		"add_to_wishlist": "Add to wishlist"
+	},
 	"poster": {
 		"view_auctions": "View auctions",
 		"main_text_part1": "Find new Auction lots",

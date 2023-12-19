@@ -4,6 +4,21 @@
 		"add_to_card": " + In den Korb",
 		"wishlist": "Merkzettel"
 	},
+	"home_page": {
+		"header": "Products",
+		"bid_now": "JETZT BIETEN",
+		"category": "Kategorie",
+		"auctions": "Auktionen"
+	},
+	"modal_window_product": {
+		"bid_now": "JETZT BIETEN",
+		"actual_price": "AKTUELLES GEBOT:",
+		"color": "Farbe",
+		"weight": "Gewicht",
+		"category": "kategorie",
+		"left_time": "Bis zum Ende",
+		"add_to_wishlist": "Auf den Merkzettel"
+	},
 	"poster": {
 		"view_auctions": "Auktionen ansehen",
 		"main_text_part1": "Finden Sie selbst neue",

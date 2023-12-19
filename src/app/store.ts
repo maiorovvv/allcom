@@ -4,6 +4,7 @@ import productsReducer from '../features/products/productsSlice';
 import userDateReducer from '../components/MyAccount/UserSlice';
 import productReducer from '../features/ProductDetails/productDetailsSlice';
 import myAuctionsReducer from '../components/MyAccount/components/MyAuctions/myAuctionsSlice';
+import homePageReduser from '../features/HomePage/HomePageSlice';
 
 export const store = configureStore({
 	reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
 		products: productsReducer,
 		product: productReducer,
 		myAuctions: myAuctionsReducer,
+		homePage: homePageReduser,
 	},
 });
 
