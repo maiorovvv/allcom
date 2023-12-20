@@ -63,9 +63,7 @@ const Product: FC<ProductProps> = ({ product, setActiveWindow }) => {
 				<span className="home_page__items--content__subtitle">
 					{t('category')}: {category}
 				</span>
-				<h3 className="home_page__items--content__title">
-					<a href="product-details.html">{title}</a>
-				</h3>
+				<h3 className="home_page__items--content__title">{title}</h3>
 				<div className="home_page__items--priceAndTimer">
 					<span className="home_page__current__price">{price} &euro;</span>
 					<Timer time={time} />

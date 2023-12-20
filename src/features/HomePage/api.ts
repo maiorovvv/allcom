@@ -1,9 +1,8 @@
 import { ProductResponse, ProductData } from '../../types/Product';
 
-export async function getAllProducts(skip: number): Promise<ProductData[]> {
+export async function getAllProducts(skip: number): Promise<ProductResponse> {
 	const res = await fetch(`https://dummyjson.com/products?limit=20&skip=${skip}`);
-	const data: ProductResponse = await res.json();
-	return data.products;
+	return res.json();
 }
 
 export async function getProduct(id: number): Promise<ProductData> {

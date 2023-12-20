@@ -1,0 +1,25 @@
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.page-link {
+  font-size: 2rem;
+  width: 3rem;
+  color: var(--text-gray-color);
+  &:hover {
+    color: var(--secondary-color);
+  }
+  &--arrow {
+    width: 6rem;
+    &:hover {
+      color: var(--secondary-color);
+    }
+  }
+  &__active {
+    background-color: var(--ofwhite-color);
+    color: var(--secondary-color);
+
+  }
+}

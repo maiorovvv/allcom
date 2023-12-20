@@ -17,6 +17,9 @@ const initialState: ProductState = {
 		color: '',
 		weight: '',
 	},
+	totalItems: 0,
+	skip: 0,
+	limit: 0,
 	loadingAllProducts: false,
 	loadingOneProduct: false,
 };
@@ -36,7 +39,10 @@ export const HomePageSlice = createSlice({
 	extraReducers(builder) {
 		builder
 			.addCase(loadProducts.fulfilled, (state, action) => {
-				state.products = action.payload;
+				state.products = action.payload.products;
+				state.totalItems = action.payload.total;
+				state.skip = action.payload.skip;
+				state.limit = action.payload.limit;
 				state.loadingAllProducts = false;
 			})
 			.addCase(loadProducts.pending, (state) => {

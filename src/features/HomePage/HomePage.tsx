@@ -8,6 +8,7 @@ import { RootState } from '../../app/store';
 import Spinner from '../../components/Spinner/Spinner';
 import Product from './components/Product';
 import ModalWindowProduct from '../../components/ModalWindowProduct/ModalWindowProduct';
+import Pagination from '../../components/Pagination/Pagination';
 
 const HomePage: FC = (): JSX.Element => {
 	const { t } = useTranslation('home_page');
@@ -19,6 +20,10 @@ const HomePage: FC = (): JSX.Element => {
 		(state: RootState) => state.homePage.loadingAllProducts
 	);
 	const dispatch = useAppDispatch();
+
+	const loadContentForPage = (skip: number): void => {
+		dispatch(loadProducts(skip));
+	};
 
 	useEffect(() => {
 		dispatch(loadProducts(0));
@@ -45,6 +50,7 @@ const HomePage: FC = (): JSX.Element => {
 							<Product product={product} key={product.id} setActiveWindow={setActiveWindow} />
 						))}
 					</div>
+					<Pagination loadContentForPage={loadContentForPage} />
 				</div>
 			</div>
 			<ModalWindowProduct activeWindow={activeWindow} setActiveWindow={setActiveWindow} />

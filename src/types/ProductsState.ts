@@ -6,4 +6,7 @@ export default interface ProductState {
 	error?: string;
 	productById: ProductData;
 	loadingOneProduct: boolean;
+	totalItems: number;
+	skip: number;
+	limit: number;
 }
