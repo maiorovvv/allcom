@@ -1,9 +1,4 @@
 {
-	"home": {
-		"header": "Produkte",
-		"add_to_card": " + In den Korb",
-		"wishlist": "Merkzettel"
-	},
 	"home_page": {
 		"header": "Products",
 		"bid_now": "JETZT BIETEN",
@@ -20,10 +15,7 @@
 		"add_to_wishlist": "Auf den Merkzettel"
 	},
 	"poster": {
-		"view_auctions": "Auktionen ansehen",
-		"main_text_part1": "Finden Sie selbst neue",
-		"main_text_part2": "Auktionsgegenstände!!",
-		"button": "Auktion anzeigen"
+		"bid_now": "JETZT BIETEN"
 	},
 	"products": {
 		"add_to_cart": "in den Warenkorb",

@@ -1,9 +1,4 @@
 {
-	"home": {
-		"header": "Products",
-		"add_to_card": " + Add to cart",
-		"wishlist": "Wishlist"
-	},
 	"home_page": {
 		"header": "Products",
 		"bid_now": "BID NOW",
@@ -20,10 +15,7 @@
 		"add_to_wishlist": "Add to wishlist"
 	},
 	"poster": {
-		"view_auctions": "View auctions",
-		"main_text_part1": "Find new Auction lots",
-		"main_text_part2": "for yourself!!",
-		"button": "Show Auction"
+		"bid_now": "BID NOW"
 	},
 	"products": {
 		"add_to_cart": "add to cart",

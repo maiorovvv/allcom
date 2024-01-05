@@ -1,21 +1,28 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
+import { NavLink } from 'react-router-dom';
 
-import Spinner from '../Spinner/Spinner';
-import { useAppSelector } from '../../app/hooks';
-import { RootState } from '../../app/store';
-import Timer from '../Timer/Timer';
+import { useAppSelector } from '../../../app/hooks';
+import { RootState } from '../../../app/store';
 
-import CloseIcon from '../../img/svg/cross.svg?react';
-import HeartIcon from '../../img/svg/heart.svg?react';
-import SwiperModalWindow from '../../features/HomePage/components/SwiperModalWindow';
+import Spinner from '../../../components/Spinner/Spinner';
+import Timer from '../../../components/Timer/Timer';
+import SwiperModalWindow from './SwiperModalWindow';
+
+import CloseIcon from '../../../img/svg/cross.svg?react';
+import HeartIcon from '../../../img/svg/heart.svg?react';
 
 interface ModalWindowProps {
 	activeWindow: boolean;
 	setActiveWindow: (flag: boolean) => void;
+	getProductById: (product_id: number) => void;
 }
 
-const ModalWindowProduct: FC<ModalWindowProps> = ({ activeWindow, setActiveWindow }) => {
+const ModalWindowProduct: FC<ModalWindowProps> = ({
+	activeWindow,
+	setActiveWindow,
+	getProductById,
+}) => {
 	const { t } = useTranslation('modal_window_product');
 	const productById = useAppSelector((state: RootState) => state.homePage.productById);
 	const loadingOneProducts = useAppSelector((state: RootState) => state.homePage.loadingOneProduct);
@@ -78,7 +85,9 @@ const ModalWindowProduct: FC<ModalWindowProps> = ({ activeWindow, setActiveWindo
 								<HeartIcon />
 								{t('add_to_wishlist')}
 							</span>
-							<button className="modal_window__buttons--btn">{t('bid_now')}</button>
+							<NavLink to="product/details/" onClick={() => getProductById(id)}>
+								<button className="modal_window__buttons--btn">{t('bid_now')}</button>
+							</NavLink>
 						</div>
 					</div>
 				</div>

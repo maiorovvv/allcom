@@ -9,3 +9,8 @@ export async function getProduct(id: number): Promise<ProductData> {
 	const res = await fetch(`https://dummyjson.com/products/${id}`);
 	return res.json();
 }
+
+export async function getProductInPoster(): Promise<ProductResponse> {
+	const res = await fetch('https://dummyjson.com/products');
+	return res.json();
+}

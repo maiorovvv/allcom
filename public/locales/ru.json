@@ -1,9 +1,4 @@
 {
-	"home": {
-		"header": "Товары",
-		"add_to_card": " + В корзину",
-		"wishlist": "Избранное"
-	},
 	"home_page": {
 		"header": "Products",
 		"bid_now": "СДЕЛАТЬ СТАВКУ",
@@ -20,10 +15,7 @@
 		"add_to_wishlist": "В избранное"
 	},
 	"poster": {
-		"view_auctions": "Текущие аукционы",
-		"main_text_part1": "Найди для себя новые",
-		"main_text_part2": "аукционные лоты!!",
-		"button": "Показать аукцион"
+		"bid_now": "СДЕЛАТЬ СТАВКУ"
 	},
 	"products": {
 		"add_to_cart": "добавить в корзину",

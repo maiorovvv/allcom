@@ -6,24 +6,18 @@ import Timer from '../../../components/Timer/Timer';
 
 import HeartIcon from '../../../img/svg/heart.svg?react';
 import EyeIcon from '../../../img/svg/eye.svg?react';
-import { useAppDispatch } from '../../../app/hooks';
-import { loadProductById } from '../HomePageSlice';
 import { NavLink } from 'react-router-dom';
 
 interface ProductProps {
 	product: ProductData;
 	setActiveWindow: (flag: boolean) => void;
+	getProductById: (product_id: number) => void;
 }
 
-const Product: FC<ProductProps> = ({ product, setActiveWindow }) => {
+const Product: FC<ProductProps> = ({ product, setActiveWindow, getProductById }) => {
 	const { t } = useTranslation('home_page');
-	const dispatch = useAppDispatch();
 
 	const { id, price, title, category, thumbnail, time } = product;
-
-	const getProductById = (product_id: number): void => {
-		dispatch(loadProductById(product_id));
-	};
 
 	return (
 		<div className="home_page__items ">

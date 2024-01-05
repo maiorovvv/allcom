@@ -8,8 +8,8 @@ export interface ProductData {
 	thumbnail: string;
 	images: string[];
 	time: number;
-	color?: string;
-	weight?: string;
+	color: string;
+	weight: string;
 }
 
 export interface ProductResponse {

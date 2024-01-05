@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import ProductState from '../../types/ProductsState';
 import * as api from './api';
+import ProductState from './types/ProductsState';
 
 const initialState: ProductState = {
 	products: [],
@@ -22,6 +22,8 @@ const initialState: ProductState = {
 	limit: 0,
 	loadingAllProducts: false,
 	loadingOneProduct: false,
+	productsInPoster: [],
+	loadingProducsInPoster: false,
 };
 
 export const loadProducts = createAsyncThunk('productsHome/loadProducts', (skip: number) =>
@@ -30,6 +32,10 @@ export const loadProducts = createAsyncThunk('productsHome/loadProducts', (skip:
 
 export const loadProductById = createAsyncThunk('productsHome/loadProductById', (id: number) =>
 	api.getProduct(id)
+);
+
+export const loadProductsInPoster = createAsyncThunk('productsHome/loadProductsInPoster', () =>
+	api.getProductInPoster()
 );
 
 export const HomePageSlice = createSlice({
@@ -61,6 +67,16 @@ export const HomePageSlice = createSlice({
 			})
 			.addCase(loadProductById.rejected, (state) => {
 				state.loadingOneProduct = true;
+			})
+			.addCase(loadProductsInPoster.fulfilled, (state, action) => {
+				state.productsInPoster = action.payload.products;
+				state.loadingProducsInPoster = false;
+			})
+			.addCase(loadProductsInPoster.pending, (state) => {
+				state.loadingProducsInPoster = true;
+			})
+			.addCase(loadProductsInPoster.rejected, (state) => {
+				state.loadingProducsInPoster = true;
 			});
 	},
 });
