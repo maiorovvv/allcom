@@ -8,7 +8,7 @@ import { RootState } from '../../app/store';
 import Spinner from '../../components/Spinner/Spinner';
 import Product from './components/Product';
 import Pagination from '../../components/Pagination/Pagination';
-import ModalWindowProduct from './components/ModalWindowProduct';
+import ModalWindowProduct from './components/ModalWindow/ModalWindowProduct';
 import Poster from './components/Poster/Poster';
 
 const HomePage: FC = (): JSX.Element => {

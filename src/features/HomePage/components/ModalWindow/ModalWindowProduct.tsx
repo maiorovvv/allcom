@@ -2,15 +2,15 @@ import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 
-import { useAppSelector } from '../../../app/hooks';
-import { RootState } from '../../../app/store';
+import { useAppSelector } from '../../../../app/hooks';
+import { RootState } from '../../../../app/store';
 
-import Spinner from '../../../components/Spinner/Spinner';
-import Timer from '../../../components/Timer/Timer';
+import Spinner from '../../../../components/Spinner/Spinner';
+import Timer from '../../../../components/Timer/Timer';
 import SwiperModalWindow from './SwiperModalWindow';
 
-import CloseIcon from '../../../img/svg/cross.svg?react';
-import HeartIcon from '../../../img/svg/heart.svg?react';
+import CloseIcon from '../../../../img/svg/cross.svg?react';
+import HeartIcon from '../../../../img/svg/heart.svg?react';
 
 interface ModalWindowProps {
 	activeWindow: boolean;

@@ -3,7 +3,9 @@
 		"header": "Products",
 		"bid_now": "BID NOW",
 		"category": "Category",
-		"auctions": "Auctions"
+		"auctions": "Auctions",
+		"preview": "Preview",
+		"add_to_wishlist": "Add to wishlist"
 	},
 	"modal_window_product": {
 		"bid_now": "BID NOW",

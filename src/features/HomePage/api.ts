@@ -10,7 +10,7 @@ export async function getProduct(id: number): Promise<ProductData> {
 	return res.json();
 }
 
-export async function getProductInPoster(): Promise<ProductResponse> {
+export async function getProductsInPoster(): Promise<ProductResponse> {
 	const res = await fetch('https://dummyjson.com/products');
 	return res.json();
 }

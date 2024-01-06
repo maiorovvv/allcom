@@ -1,12 +1,13 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
+import { NavLink } from 'react-router-dom';
 
 import { ProductData } from '../../../types/Product';
 import Timer from '../../../components/Timer/Timer';
+import Tooltip from '../../../components/Tooltip/Tooltip';
 
 import HeartIcon from '../../../img/svg/heart.svg?react';
 import EyeIcon from '../../../img/svg/eye.svg?react';
-import { NavLink } from 'react-router-dom';
 
 interface ProductProps {
 	product: ProductData;
@@ -22,11 +23,7 @@ const Product: FC<ProductProps> = ({ product, setActiveWindow, getProductById })
 	return (
 		<div className="home_page__items ">
 			<div className="home_page__items--thumbnail">
-				<img
-					className="home_page__items--img home_page__primary--img"
-					src={thumbnail}
-					alt="product-img"
-				></img>
+				<img src={thumbnail} alt="product-img"></img>
 				<NavLink
 					className="home_page__btn"
 					to="product/details/"
@@ -36,20 +33,24 @@ const Product: FC<ProductProps> = ({ product, setActiveWindow, getProductById })
 				</NavLink>
 				<ul className="home_page__items--action">
 					<li className="home_page__items--action__list">
-						<button className="home_page__items--action__btn">
-							<HeartIcon className="home_page__items--action__btn--svg" />
-						</button>
+						<Tooltip text={t('add_to_wishlist')}>
+							<button className="home_page__items--action__btn">
+								<HeartIcon className="home_page__items--action__btn--svg" />
+							</button>
+						</Tooltip>
 					</li>
 					<li className="home_page__items--action__list">
-						<button
-							className="home_page__items--action__btn"
-							onClick={() => {
-								setActiveWindow(true);
-								getProductById(id);
-							}}
-						>
-							<EyeIcon className="home_page__items--action__btn--svg" />
-						</button>
+						<Tooltip text={t('preview')}>
+							<button
+								className="home_page__items--action__btn"
+								onClick={() => {
+									setActiveWindow(true);
+									getProductById(id);
+								}}
+							>
+								<EyeIcon className="home_page__items--action__btn--svg" />
+							</button>
+						</Tooltip>
 					</li>
 				</ul>
 			</div>

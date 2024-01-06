@@ -3,13 +3,13 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectCoverflow, EffectCreative, Navigation, Pagination } from 'swiper/modules';
 import { useTranslation } from 'react-i18next';
 
-import Timer from '../../../../components/Timer/Timer';
-
-import 'swiper/css/pagination';
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 import { RootState } from '../../../../app/store';
-import Spinner from '../../../../components/Spinner/Spinner';
 import { loadProductsInPoster } from '../../HomePageSlice';
+import Timer from '../../../../components/Timer/Timer';
+import Spinner from '../../../../components/Spinner/Spinner';
+
+import 'swiper/css/pagination';
 
 const Poster: FC = (): JSX.Element => {
 	const { t } = useTranslation('poster');

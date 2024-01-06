@@ -35,7 +35,7 @@ export const loadProductById = createAsyncThunk('productsHome/loadProductById', 
 );
 
 export const loadProductsInPoster = createAsyncThunk('productsHome/loadProductsInPoster', () =>
-	api.getProductInPoster()
+	api.getProductsInPoster()
 );
 
 export const HomePageSlice = createSlice({
