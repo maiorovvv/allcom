@@ -1,9 +1,10 @@
 import { FC } from 'react';
 
-import ArrowLeftIcon from '../../img/svg/arrow_pagination_left.svg?react';
-import ArrowRightIcon from '../../img/svg/arrow_pagination_right.svg?react';
 import { RootState } from '../../app/store';
 import { useAppSelector } from '../../app/hooks';
+
+import ArrowLeftIcon from '../../img/svg/arrow_pagination_left.svg?react';
+import ArrowRightIcon from '../../img/svg/arrow_pagination_right.svg?react';
 
 interface PaginationProps {
 	loadContentForPage: (skip: number) => void;

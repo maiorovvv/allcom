@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 
-import Spinner from '../../Spinner/Spinner';
+import Spinner from '../../../components/Spinner/Spinner';
 import { RootState } from '../../../app/store';
 import { loadUser } from '../UserSlice';
 import UserType from '../types/User';
