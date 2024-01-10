@@ -21,17 +21,12 @@ const initialState: ProductState = {
 	skip: 0,
 	limit: 0,
 	loadingAllProducts: false,
-	loadingOneProduct: false,
 	productsInPoster: [],
 	loadingProducsInPoster: false,
 };
 
-export const loadProducts = createAsyncThunk('productsHome/loadProducts', (skip: number) =>
+export const loadAllProducts = createAsyncThunk('productsHome/loadProducts', (skip: number) =>
 	api.getAllProducts(skip)
-);
-
-export const loadProductById = createAsyncThunk('productsHome/loadProductById', (id: number) =>
-	api.getProduct(id)
 );
 
 export const loadProductsInPoster = createAsyncThunk('productsHome/loadProductsInPoster', () =>
@@ -41,32 +36,30 @@ export const loadProductsInPoster = createAsyncThunk('productsHome/loadProductsI
 export const HomePageSlice = createSlice({
 	name: 'homePage',
 	initialState,
-	reducers: {},
+	reducers: {
+		filterProductById: (state, action) => {
+			const productId = action.payload;
+			const res = state.products.find((product) => product.id === productId);
+
+			if (res) {
+				state.productById = res;
+			}
+		},
+	},
 	extraReducers(builder) {
 		builder
-			.addCase(loadProducts.fulfilled, (state, action) => {
+			.addCase(loadAllProducts.fulfilled, (state, action) => {
 				state.products = action.payload.products;
 				state.totalItems = action.payload.total;
 				state.skip = action.payload.skip;
 				state.limit = action.payload.limit;
 				state.loadingAllProducts = false;
 			})
-			.addCase(loadProducts.pending, (state) => {
+			.addCase(loadAllProducts.pending, (state) => {
 				state.loadingAllProducts = true;
 			})
-			.addCase(loadProducts.rejected, (state) => {
+			.addCase(loadAllProducts.rejected, (state) => {
 				state.loadingAllProducts = false;
-			})
-
-			.addCase(loadProductById.fulfilled, (state, action) => {
-				state.productById = action.payload;
-				state.loadingOneProduct = false;
-			})
-			.addCase(loadProductById.pending, (state) => {
-				state.loadingOneProduct = true;
-			})
-			.addCase(loadProductById.rejected, (state) => {
-				state.loadingOneProduct = true;
 			})
 			.addCase(loadProductsInPoster.fulfilled, (state, action) => {
 				state.productsInPoster = action.payload.products;
@@ -81,4 +74,5 @@ export const HomePageSlice = createSlice({
 	},
 });
 
+export const { filterProductById } = HomePageSlice.actions;
 export default HomePageSlice.reducer;

@@ -1,14 +1,14 @@
 {
 	"home_page": {
 		"header": "Products",
-		"bid_now": "BID NOW",
+		"bet_now": "BET NOW",
 		"category": "Category",
 		"auctions": "Auctions",
 		"preview": "Preview",
 		"add_to_wishlist": "Add to wishlist"
 	},
 	"modal_window_product": {
-		"bid_now": "BID NOW",
+		"bet_now": "BET NOW",
 		"actual_price": "CURRENT BID:",
 		"color": "color",
 		"weight": "weight",
@@ -17,7 +17,7 @@
 		"add_to_wishlist": "Add to wishlist"
 	},
 	"poster": {
-		"bid_now": "BID NOW"
+		"bet_now": "BET NOW"
 	},
 	"products": {
 		"add_to_cart": "add to cart",

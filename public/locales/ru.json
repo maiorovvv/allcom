@@ -1,14 +1,14 @@
 {
 	"home_page": {
 		"header": "Products",
-		"bid_now": "СДЕЛАТЬ СТАВКУ",
+		"bet_now": "СДЕЛАТЬ СТАВКУ",
 		"category": "Категория",
 		"auctions": "Аукционы",
 		"preview": "Предпросмотр",
 		"add_to_wishlist": "В избранное"
 	},
 	"modal_window_product": {
-		"bid_now": "СДЕЛАТЬ СТАВКУ",
+		"bet_now": "СДЕЛАТЬ СТАВКУ",
 		"actual_price": "АКТУАЛЬНАЯ СТАВКА:",
 		"color": "цвет",
 		"weight": "вес",
@@ -17,7 +17,7 @@
 		"add_to_wishlist": "В избранное"
 	},
 	"poster": {
-		"bid_now": "СДЕЛАТЬ СТАВКУ"
+		"bet_now": "СДЕЛАТЬ СТАВКУ"
 	},
 	"products": {
 		"add_to_cart": "добавить в корзину",

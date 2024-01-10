@@ -1,10 +1,11 @@
 import { FC, ReactElement, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 
 export interface TooltipProps {
 	text: string;
 	children: ReactElement;
 }
+
+const DELAY_TIME = 1000;
 
 const Tooltip: FC<TooltipProps> = ({ text, children }): JSX.Element => {
 	const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -14,7 +15,7 @@ const Tooltip: FC<TooltipProps> = ({ text, children }): JSX.Element => {
 	const onMouseEnterHandler = (): void => {
 		refSetTimeout.current = setTimeout(() => {
 			setIsVisible(true);
-		}, 1000);
+		}, DELAY_TIME);
 	};
 
 	const onMouseLeaveHandler = (): void => {

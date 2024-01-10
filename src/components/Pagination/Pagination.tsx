@@ -1,30 +1,39 @@
 import { FC } from 'react';
 
-import { RootState } from '../../app/store';
-import { useAppSelector } from '../../app/hooks';
-
 import ArrowLeftIcon from '../../img/svg/arrow_pagination_left.svg?react';
 import ArrowRightIcon from '../../img/svg/arrow_pagination_right.svg?react';
 
 interface PaginationProps {
 	loadContentForPage: (skip: number) => void;
+	totalItems: number;
+	skip: number;
+	limit: number;
 }
 
-const Pagination: FC<PaginationProps> = ({ loadContentForPage }): JSX.Element => {
-	const totalItems = useAppSelector((state: RootState) => state.homePage.totalItems);
-	const skip = useAppSelector((state: RootState) => state.homePage.skip);
-	const ITEMS_PER_PAGE = useAppSelector((state: RootState) => state.homePage.limit);
+const FIRST_PAGE_NUMBER = 1;
 
-	const FIRST_PAGE_NUMBER = 1;
-	const QUANTITY_PAGES = Math.ceil(totalItems / ITEMS_PER_PAGE);
+const Pagination: FC<PaginationProps> = ({
+	loadContentForPage,
+	totalItems,
+	skip,
+	limit,
+}): JSX.Element => {
+	const quantityPages = Math.ceil(totalItems / limit);
 
 	const pageNumbers = Array.from(
-		{ length: QUANTITY_PAGES },
+		{ length: quantityPages },
 		(_, index) => FIRST_PAGE_NUMBER + index
 	);
 
+	const handleScrollToTop = (): void => {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		});
+	};
+
 	const renderedPageButtons = pageNumbers.map((numberPage) => {
-		const calculatedSkip = ITEMS_PER_PAGE * numberPage - ITEMS_PER_PAGE;
+		const calculatedSkip = limit * numberPage - limit;
 
 		return (
 			<li className="page-item" key={numberPage}>
@@ -32,6 +41,7 @@ const Pagination: FC<PaginationProps> = ({ loadContentForPage }): JSX.Element =>
 					className={calculatedSkip === skip ? 'page-link page-link__active' : 'page-link'}
 					onClick={() => {
 						loadContentForPage(calculatedSkip);
+						handleScrollToTop();
 					}}
 					disabled={skip === calculatedSkip}
 				>
@@ -48,7 +58,8 @@ const Pagination: FC<PaginationProps> = ({ loadContentForPage }): JSX.Element =>
 					<button
 						className="page-link page-link--arrow"
 						onClick={() => {
-							loadContentForPage(skip - ITEMS_PER_PAGE);
+							loadContentForPage(skip - limit);
+							handleScrollToTop();
 						}}
 						disabled={skip === 0}
 					>
@@ -60,9 +71,10 @@ const Pagination: FC<PaginationProps> = ({ loadContentForPage }): JSX.Element =>
 					<button
 						className="page-link page-link--arrow"
 						onClick={() => {
-							loadContentForPage(skip + ITEMS_PER_PAGE);
+							loadContentForPage(skip + limit);
+							handleScrollToTop();
 						}}
-						disabled={skip + ITEMS_PER_PAGE >= totalItems}
+						disabled={skip + limit >= totalItems}
 					>
 						<ArrowRightIcon />
 					</button>

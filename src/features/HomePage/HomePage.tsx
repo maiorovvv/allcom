@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { loadProductById, loadProducts } from './HomePageSlice';
+import { filterProductById, loadAllProducts } from './HomePageSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { RootState } from '../../app/store';
 
@@ -20,18 +20,21 @@ const HomePage: FC = (): JSX.Element => {
 	const loadingAllProducts = useAppSelector(
 		(state: RootState) => state.homePage.loadingAllProducts
 	);
+	const totalItems = useAppSelector((state: RootState) => state.homePage.totalItems);
+	const skip = useAppSelector((state: RootState) => state.homePage.skip);
+	const limit = useAppSelector((state: RootState) => state.homePage.limit);
 	const dispatch = useAppDispatch();
 
 	const getProductById = (product_id: number): void => {
-		dispatch(loadProductById(product_id));
+		dispatch(filterProductById(product_id));
 	};
 
-	const loadContentForPage = (skip: number): void => {
-		dispatch(loadProducts(skip));
+	const loadContentForPage = (skip_count: number): void => {
+		dispatch(loadAllProducts(skip_count));
 	};
 
 	useEffect(() => {
-		dispatch(loadProducts(0));
+		dispatch(loadAllProducts(0));
 	}, []);
 
 	if (loadingAllProducts) {
@@ -61,7 +64,12 @@ const HomePage: FC = (): JSX.Element => {
 							/>
 						))}
 					</div>
-					<Pagination loadContentForPage={loadContentForPage} />
+					<Pagination
+						loadContentForPage={loadContentForPage}
+						totalItems={totalItems}
+						skip={skip}
+						limit={limit}
+					/>
 				</div>
 			</div>
 			<ModalWindowProduct

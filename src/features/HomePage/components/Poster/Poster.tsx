@@ -55,7 +55,7 @@ const Poster: FC = (): JSX.Element => {
 									<span className="poster_col__info--price">{price} &euro;</span>
 									<Timer time={time} />
 								</div>
-								<button className="poster_col__info--btn">{t('bid_now')}</button>
+								<button className="poster_col__info--btn">{t('bet_now')}</button>
 							</div>
 						</SwiperSlide>
 					))}

@@ -29,7 +29,7 @@ const Product: FC<ProductProps> = ({ product, setActiveWindow, getProductById })
 					to="product/details/"
 					onClick={() => getProductById(id)}
 				>
-					<span className="home_page__btn--bid_now">{t('bid_now')}</span>
+					<span className="home_page__btn--bet_now">{t('bet_now')}</span>
 				</NavLink>
 				<ul className="home_page__items--action">
 					<li className="home_page__items--action__list">
