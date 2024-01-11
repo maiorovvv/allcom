@@ -6,9 +6,11 @@ interface ImagesProps {
 	images: string[];
 }
 
+const initialActiveIndex = 0;
+
 const SwiperModalWindow: FC<ImagesProps> = ({ images }) => {
 	const [thumbsSwiper, setThumbsSwiper] = useState(null);
-	const [activeIndex, setActiveIndex] = useState<number>(0);
+	const [activeIndex, setActiveIndex] = useState<number>(initialActiveIndex);
 
 	return (
 		<div className="swiper_modal_window__container">

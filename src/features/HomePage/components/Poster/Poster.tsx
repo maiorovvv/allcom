@@ -11,6 +11,10 @@ import Spinner from '../../../../components/Spinner/Spinner';
 
 import 'swiper/css/pagination';
 
+const autoplayDelay = 2000;
+const spaceBetweenSlides = 50;
+const slidesPerView = 1;
+
 const Poster: FC = (): JSX.Element => {
 	const { t } = useTranslation('poster');
 
@@ -34,9 +38,9 @@ const Poster: FC = (): JSX.Element => {
 		<>
 			{products && (
 				<Swiper
-					autoplay={{ delay: 2000 }}
-					spaceBetween={50}
-					slidesPerView={1}
+					autoplay={{ delay: autoplayDelay }}
+					spaceBetween={spaceBetweenSlides}
+					slidesPerView={slidesPerView}
 					navigation={true}
 					pagination={{
 						dynamicBullets: true,
