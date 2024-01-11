@@ -6,11 +6,13 @@ interface ImagesProps {
 	images: string[];
 }
 
-const initialActiveIndex = 0;
+const INITIAL_ACTIVE_INDEX = 0;
+const SPACE_BETWEEN_SLIDES = 10;
+const SLIDES_PER_VIEW = 4;
 
 const SwiperModalWindow: FC<ImagesProps> = ({ images }) => {
 	const [thumbsSwiper, setThumbsSwiper] = useState(null);
-	const [activeIndex, setActiveIndex] = useState<number>(initialActiveIndex);
+	const [activeIndex, setActiveIndex] = useState<number>(INITIAL_ACTIVE_INDEX);
 
 	return (
 		<div className="swiper_modal_window__container">
@@ -31,8 +33,8 @@ const SwiperModalWindow: FC<ImagesProps> = ({ images }) => {
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-ignore
 				onSwiper={setThumbsSwiper}
-				spaceBetween={10}
-				slidesPerView={4}
+				spaceBetween={SPACE_BETWEEN_SLIDES}
+				slidesPerView={SLIDES_PER_VIEW}
 				modules={[Navigation, Thumbs]}
 				className="swiper_modal_window__thumbs"
 			>
