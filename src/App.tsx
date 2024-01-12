@@ -1,25 +1,25 @@
 import { Route, Routes } from 'react-router-dom';
 
 import NotFound from './components/NotFound/NotFound';
-import Home from './features/products/Products';
-import Layout from './components/Layout';
-import MyAccount from './components/MyAccount/MyAccount';
+import Layout from './features/Layout';
+import MyAccount from './features/MyAccount/MyAccount';
 import ProductDetails from './features/ProductDetails/ProductDetails';
 import Shipping from './components/Shipping/Shipping';
 import Payment from './components/Payment/Payment';
 import Return from './components/Return/Return';
 import Support from './components/Support/Support';
-import AboutMe from './components/MyAccount/components/AboutMe';
-import ChangePassword from './components/MyAccount/components/ChangePassword';
+import AboutMe from './features/MyAccount/components/AboutMe';
+import ChangePassword from './features/MyAccount/components/ChangePassword';
 import ProductList from './features/user/wishProducts/ProductList';
-import MyAuctions from './components/MyAccount/components/MyAuctions/MyAuctions';
+import MyAuctions from './features/MyAccount/components/MyAuctions/MyAuctions';
+import HomePage from './features/HomePage/HomePage';
 
 function App(): JSX.Element {
 	return (
 		<>
 			<Routes>
 				<Route path="/" element={<Layout />}>
-					<Route index element={<Home />} />
+					<Route index element={<HomePage />} />
 					<Route path="user/my_account/" element={<MyAccount />}>
 						<Route index element={<AboutMe />} />
 						<Route path="products" element={<ProductList />} />

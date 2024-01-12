@@ -1,14 +1,23 @@
 {
-	"home": {
-		"header": "Товары",
-		"add_to_card": " + В корзину",
-		"wishlist": "Избранное"
+	"home_page": {
+		"header": "Products",
+		"bet_now": "СДЕЛАТЬ СТАВКУ",
+		"category": "Категория",
+		"auctions": "Аукционы",
+		"preview": "Предпросмотр",
+		"add_to_wishlist": "В избранное"
+	},
+	"modal_window_product": {
+		"bet_now": "СДЕЛАТЬ СТАВКУ",
+		"actual_price": "АКТУАЛЬНАЯ СТАВКА:",
+		"color": "цвет",
+		"weight": "вес",
+		"category": "категория",
+		"left_time": "До закрытия",
+		"add_to_wishlist": "В избранное"
 	},
 	"poster": {
-		"view_auctions": "Текущие аукционы",
-		"main_text_part1": "Найди для себя новые",
-		"main_text_part2": "аукционные лоты!!",
-		"button": "Показать аукцион"
+		"bet_now": "СДЕЛАТЬ СТАВКУ"
 	},
 	"products": {
 		"add_to_cart": "добавить в корзину",

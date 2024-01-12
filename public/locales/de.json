@@ -1,14 +1,23 @@
 {
-	"home": {
-		"header": "Produkte",
-		"add_to_card": " + In den Korb",
-		"wishlist": "Merkzettel"
+	"home_page": {
+		"header": "Products",
+		"bet_now": "JETZT BIETEN",
+		"category": "Kategorie",
+		"auctions": "Auktionen",
+		"preview": "Vorschau",
+		"add_to_wishlist": "Auf den Merkzettel"
+	},
+	"modal_window_product": {
+		"bet_now": "JETZT BIETEN",
+		"actual_price": "AKTUELLES GEBOT:",
+		"color": "Farbe",
+		"weight": "Gewicht",
+		"category": "kategorie",
+		"left_time": "Bis zum Ende",
+		"add_to_wishlist": "Auf den Merkzettel"
 	},
 	"poster": {
-		"view_auctions": "Auktionen ansehen",
-		"main_text_part1": "Finden Sie selbst neue",
-		"main_text_part2": "Auktionsgegenstände!!",
-		"button": "Auktion anzeigen"
+		"bet_now": "JETZT BIETEN"
 	},
 	"products": {
 		"add_to_cart": "in den Warenkorb",

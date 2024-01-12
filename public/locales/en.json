@@ -1,14 +1,23 @@
 {
-	"home": {
+	"home_page": {
 		"header": "Products",
-		"add_to_card": " + Add to cart",
-		"wishlist": "Wishlist"
+		"bet_now": "BET NOW",
+		"category": "Category",
+		"auctions": "Auctions",
+		"preview": "Preview",
+		"add_to_wishlist": "Add to wishlist"
+	},
+	"modal_window_product": {
+		"bet_now": "BET NOW",
+		"actual_price": "CURRENT BID:",
+		"color": "color",
+		"weight": "weight",
+		"category": "category",
+		"left_time": "Left until closing",
+		"add_to_wishlist": "Add to wishlist"
 	},
 	"poster": {
-		"view_auctions": "View auctions",
-		"main_text_part1": "Find new Auction lots",
-		"main_text_part2": "for yourself!!",
-		"button": "Show Auction"
+		"bet_now": "BET NOW"
 	},
 	"products": {
 		"add_to_cart": "add to cart",

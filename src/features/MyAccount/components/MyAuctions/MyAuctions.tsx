@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 import { RootState } from '../../../../app/store';
 import ProductInCart from './ProductInMyAuction';
-import Spinner from '../../../Spinner/Spinner';
+import Spinner from '../../../../components/Spinner/Spinner';
 import { loadProducts } from './myAuctionsSlice';
 
 const MyAuctions: FC = (): JSX.Element => {

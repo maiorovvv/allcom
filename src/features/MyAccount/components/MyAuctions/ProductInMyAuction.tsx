@@ -5,7 +5,7 @@ import ProductInterface from './Products/types/ProductInMyAuctions';
 import CrossIcon from '../../../../img/svg/cross2.svg?react';
 import { useAppDispatch } from '../../../../app/hooks';
 import { deleteProduct } from './myAuctionsSlice';
-import Timer from '../../../Timer/Timer';
+import Timer from '../../../../components/Timer/Timer';
 
 interface ProductProps {
 	product: ProductInterface;
