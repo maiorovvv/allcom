@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 
+import LoginPage from './components/LoginPage/LoginPage';
 import NotFound from './components/NotFound/NotFound';
 import Layout from './features/Layout';
 import MyAccount from './features/MyAccount/MyAccount';
@@ -13,6 +14,7 @@ import ChangePassword from './features/MyAccount/components/ChangePassword';
 import ProductList from './features/user/wishProducts/ProductList';
 import MyAuctions from './features/MyAccount/components/MyAuctions/MyAuctions';
 import HomePage from './features/HomePage/HomePage';
+import RegisterPage from './components/RegisterPage/RegisterPage';
 
 function App(): JSX.Element {
 	return (
@@ -32,6 +34,8 @@ function App(): JSX.Element {
 					<Route path="payment" element={<Payment />} />
 					<Route path="return" element={<Return />} />
 					<Route path="support" element={<Support />} />
+					<Route path="login" element={<LoginPage />} />
+					<Route path="register" element={<RegisterPage />} />
 					<Route path="*" element={<NotFound />} />
 				</Route>
 			</Routes>

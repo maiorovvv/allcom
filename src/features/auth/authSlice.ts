@@ -1,17 +1,14 @@
 // src/features/auth/authSlice.ts
 import * as api from './api';
-
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import LoginCredentials from './types/LoginCredentials';
 
-import Credentials from './types/Credentials';
-
-export const login = createAsyncThunk('auth/login', (creditials: Credentials) =>
+export const login = createAsyncThunk('auth/login', (creditials: LoginCredentials) =>
 	api.getCurrentUser(creditials)
 );
 export const authSlice = createSlice({
 	name: 'auth',
 	initialState: {
-		// по умолчанию поле юзер оставили пустым
 		isAuthenticated: false,
 		user: null,
 	},

@@ -1,164 +1,185 @@
 // LoginPage.tsx
-import * as React from 'react';
-import { useState } from 'react';
+import { FC, MouseEventHandler, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch } from 'react-redux';
-import { login, logout } from '../../features/auth/authSlice';
-import { useAppDispatch } from '../../app/hooks'; // Импортируем для использования useDispatch из react-redux
-import { useNavigate } from 'react-router';
+import { Form, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Formik, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import Col from 'react-bootstrap/Col';
+import InputGroup from 'react-bootstrap/InputGroup';
+import { Icon } from 'react-icons-kit';
+import { eyeBlocked } from 'react-icons-kit/icomoon/eyeBlocked';
+import { eye } from 'react-icons-kit/icomoon/eye';
+import { useAppDispatch } from '../../app/hooks';
+import { login } from '../../features/auth/authSlice';
+import { validateEmail, validatePassword } from './validationLoginRules';
+import FloatingInput from '../FloatingInput';
 
-const LoginPage: React.FC = (): JSX.Element => {
-	const { t } = useTranslation('LoginPage');
-	const dispatch = useDispatch();
-	const appDispatch = useAppDispatch(); // Используем хук для получения dispatch из Redux
-	const navigate = useNavigate(); // для редиректа - можно использовать хук useNavigate
-
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
-	const [message, setMessage] = useState<string>(''); // Добавляем состояние для сообщений
-
-	const handleLogin = (): void => {
-		// Логика для отправки данных о пользователе на сервер
-		// После успешной аутентификации вызывайте action для обновления состояния в Redux store
-		appDispatch(login({ email, password }))
+const LoginPage: FC = (): JSX.Element => {
+	const { t } = useTranslation('LoginRegisterPage');
+	const appDispatch = useAppDispatch();
+	const [passwordShow, setPasswordShow] = useState(false);
+	const [passwordIcon, setPasswordIcon] = useState(eye);
+	const [message] = useState<string>('');
+	const handleLogin = (formValues: { email: string; password: string }): void => {
+		appDispatch(login(formValues))
 			.then((res) => {
-				// fullfiled
-				// мы смотрели ответ с сервера - нас интересовало
-				// лежит ли в ответе Юзер или ошибка с полем message
 				const payload = res.payload as { message: string };
 				if (payload.message) {
-					setMessage(payload.message);
-				} else {
-					navigate('/');
+					// Дальнейшие действия после успешной регистрации
 				}
 			})
-			.catch((err) => {
-				// rejected // в данном примере мы не попадем сюда
-				console.log(err);
+			.catch(() => {
+				// Обработка ошибки при регистрации
 			});
 	};
+	const validationSchema = Yup.object({
+		email: validateEmail(t),
+		password: validatePassword(t),
+	});
 
-	const handleLogout = (): void => {
-		// Логика для разлогина (если требуется)
-		// Вызовите action для обновления состояния в Redux store
-		dispatch(logout());
+	const labelAuthorization = (
+		<h2 className="login__account--header__title h3 d-flex justify-content-center align-items-center">
+			{t('login')}
+		</h2>
+	);
+
+	const headerDescription = (
+		<p className="login__account--header__desc d-flex justify-content-center align-items-center">
+			{t('header_desc')}
+		</p>
+	);
+	const handlePasswordToggle: MouseEventHandler<HTMLDivElement> = (event) => {
+		event.preventDefault();
+		setPasswordShow(!passwordShow);
+		setPasswordIcon(passwordShow ? eye : eyeBlocked);
 	};
 
+	const inputLogin = (
+		<Form.Group as={Col} md="12" controlId="formEmail">
+			<InputGroup>
+				<Field
+					as={FloatingInput}
+					className="login__account--input"
+					type="email"
+					name="email"
+					placeholder={t('placeholder_email')}
+				/>
+			</InputGroup>
+			<ErrorMessage name="email" component="div" className="text-danger" />
+		</Form.Group>
+	);
+	const inputPassword = (
+		<Form.Group as={Col} md="12" controlId="formPassword">
+			<InputGroup>
+				<div className="col d-flex">
+					<div className="col-12 ">
+						<Field
+							as={FloatingInput}
+							name="password"
+							placeholder={t('placeholder_password')}
+							type={passwordShow ? 'text' : 'password'}
+						/>
+					</div>
+					<div className="col">
+						<Icon
+							icon={passwordIcon}
+							size={24}
+							onClick={(event) => {
+								handlePasswordToggle(event);
+							}}
+							className={`${!passwordShow ? 'icon_EYE_withError' : 'icon_EYE_notError'}`}
+						/>
+					</div>
+				</div>
+			</InputGroup>
+			<ErrorMessage name="password" component="div" className="text-danger" />
+		</Form.Group>
+	);
+
+	const checkboxRememberMe = (
+		<div className="login__account--remember text-black position__relative d-flex justify-content-left d-flex ">
+			<Form.Check
+				type="checkbox"
+				id="checkbox_remember"
+				className="checkout__checkbox--label login__remember--label pt-1"
+			/>
+			<div className="pt-2 pe-2">{t('remember_me')}</div>
+		</div>
+	);
+	const buttonForgotPassword = (
+		<Link to="/restore_password">
+			<Button className="login__account--forgot" type="button" id="button_restore_password">
+				{t('forgot_your_password')}
+			</Button>
+		</Link>
+	);
+
+	const buttonLogin = (
+		<Button
+			id="button_login"
+			className="login__account--btn primary__btn"
+			name="submit"
+			type="submit"
+		>
+			{t('login')}
+		</Button>
+	);
+	const labelOR = (
+		<div className="login__account--divide mt-4">
+			<span className="login__account--divide__text text-black">{t('or')}</span>
+		</div>
+	);
+
+	const labelDontHaveAccount = (
+		<p className="login__account--signup__text ">{t('dont_have_account')}</p>
+	);
+	const buttonRegisterNow = (
+		<div className="d-flex flex-column">
+			<Link to="/register">
+				<Button className="login__account--btn primary__btn" type="submit">
+					{t('sign_up_now')}
+				</Button>
+			</Link>
+		</div>
+	);
 	return (
 		<div className="login__section section--padding">
 			<div className="container">
-				<form action="#">
-					<div className="login__section--inner">
-						<div className="row row-cols-md-2 row-cols-1">
-							<div className="col">
-								<div className="login__account" style={{ height: '510px' }}>
-									<div className="login__account--header mb-25">
-										<h2 className="login__account--header__title h3 mb-10">{t('login')}</h2>
-										<p className="login__account--header__desc">{t('header_desc')}</p>
-									</div>
-									<div className="login__account--inner ">
-										<input
-											className="login__account--input"
-											placeholder={t('placeholder_email')}
-											type="text"
-											value={email}
-											onChange={(e) => setEmail(e.target.value)}
-										/>
-										<input
-											className="login__account--input"
-											placeholder={t('placeholder_password')}
-											type="password"
-											value={password}
-											onChange={(e) => setPassword(e.target.value)}
-										/>
+				<div className="login__section--inner">
+					<div className="login__account">
+						<div className="login__account--header">
+							{labelAuthorization}
+							{headerDescription}
+						</div>
+						<div className="login__account--inner">
+							<Formik
+								initialValues={{ email: '', password: '' }}
+								validationSchema={validationSchema}
+								onSubmit={(values, { setSubmitting }) => {
+									handleLogin(values);
+									setSubmitting(false);
+								}}
+							>
+								{({ handleSubmit }) => (
+									<Form onSubmit={handleSubmit}>
+										<span>{message}</span>
+										{inputLogin}
+										{inputPassword}
 										<div className="login__account--remember__forgot mb-15 d-flex justify-content-between align-items-center">
-											<div className="login__account--remember position__relative mb-15 d-flex justify-content-between align-items-center">
-												<input className="checkout__checkbox--input" id="check1" type="checkbox" />
-												<span className="checkout__checkbox--checkmark"></span>
-												<label
-													className="checkout__checkbox--label login__remember--label ms-3"
-													htmlFor="check1"
-												>
-													{t('remember_me')}
-												</label>
-											</div>
-											<button
-												className="login__account--forgot"
-												type="button"
-												onClick={handleLogout}
-											>
-												{t('forgot_your_password')}
-											</button>
+											{checkboxRememberMe}
+											{buttonForgotPassword}
 										</div>
-										<button
-											className="login__account--btn primary__btn"
-											type="button"
-											onClick={handleLogin}
-										>
-											{t('login')}
-										</button>
-										<div className="login__account--divide p-5">
-											<span className="login__account--divide__text text-black">{t('or')}</span>
-										</div>
-										<p className="login__account--signup__text">
-											{t('dont_have_account')}
-											<button className="ms-3" type="button">
-												{t('sign_up_now')}{' '}
-											</button>
-										</p>
-									</div>
-								</div>
-							</div>
-							<div className="col">
-								<div className="login__account register" style={{ height: '510px' }}>
-									<div className="login__account--header mb-25">
-										<h2 className="login__account--header__title h3 mb-10">
-											{t('create_account')}
-										</h2>
-										<p className="login__account--header__desc">{t('register_here_text')}</p>
-									</div>
-									<div className="login__account--inner">
-										<input
-											className="login__account--input"
-											placeholder={t('username')}
-											type="text"
-										/>
-										<input
-											className="login__account--input"
-											placeholder={t('placeholder_email')}
-											type="text"
-										/>
-										<input
-											className="login__account--input"
-											placeholder={t('placeholder_password')}
-											type="password"
-										/>
-										<input
-											className="login__account--input"
-											placeholder={t('placeholder_confirm_password')}
-											type="password"
-										/>
-										<button className="login__account--btn primary__btn mb-10" type="button">
-											{t('submit_register')}
-										</button>
-										<div className="login__account--remember position__relative d-flex justify-content-left">
-											<div>
-												<input className="checkout__checkbox--input" id="check2" type="checkbox" />
-												<span className="checkout__checkbox--checkmark"></span>
-											</div>
-											<label
-												className="checkout__checkbox--label login__remember--label ms-3"
-												htmlFor="check2"
-											>
-												{t('i_have_read_text')}
-											</label>
-										</div>
-									</div>
-								</div>
-							</div>
+										{buttonLogin}
+										{labelOR}
+										{labelDontHaveAccount}
+										{buttonRegisterNow}
+									</Form>
+								)}
+							</Formik>
 						</div>
 					</div>
-				</form>
+				</div>
 			</div>
 		</div>
 	);
