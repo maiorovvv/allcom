@@ -1,4 +1,3 @@
-// validationRegisterRules.tsx
 import * as Yup from 'yup';
 
 type TFunction = (key: string) => string;
@@ -96,7 +95,7 @@ export const validateEmail = (t: TFunction): Yup.StringSchema<string> => {
 		.required(t('validation.email.required'))
 		.test('email-validation', t('validation.email.invalid'), function (value) {
 			const errors = [];
-			if (!/^[\w_+.-]{3,63}@[a-z0-9]{1,63}\.[a-z]{2,63}$/i.test(value ?? '')) {
+			if (!/^[\w_.-]{3,63}@[a-z0-9]{1,63}\.[a-z]{2,63}$/i.test(value ?? '')) {
 				errors.push(new Yup.ValidationError(t('validation.email.invalid'), value ?? '', 'email'));
 			}
 			const dotCount = (value ?? '').match(/\./g)?.length ?? 0;
@@ -114,7 +113,7 @@ export const validateEmail = (t: TFunction): Yup.StringSchema<string> => {
 					new Yup.ValidationError(t('validation.email.error.user'), value ?? '', 'email')
 				);
 			}
-			if (!/^[\w_+.-]+@/i.test(value ?? '')) {
+			if (!/^[\w_.-]+@/i.test(value ?? '')) {
 				errors.push(
 					new Yup.ValidationError(t('validation.email.error.user.invalid'), value ?? '', 'email')
 				);
@@ -129,6 +128,7 @@ export const validateEmail = (t: TFunction): Yup.StringSchema<string> => {
 					new Yup.ValidationError(t('validation.email.error.at.twice'), value ?? '', 'email')
 				);
 			}
+
 			if (
 				!/@[a-z0-9_.-]{1,63}\./i.test(value ?? '') ||
 				!/@[a-z0-9_.-]{1,63}\.[a-z]{2,63}/i.test(value ?? '') ||
@@ -149,14 +149,14 @@ export const validateEmail = (t: TFunction): Yup.StringSchema<string> => {
 					new Yup.ValidationError(t('validation.email.error.spacebar'), value ?? '', 'email')
 				);
 			}
-			const specCharCount = (value ?? '').match(/[,:;"`|№!#%$%^&*()={}[/?~^<>]/g)?.length ?? 0;
+			const specCharCount = (value ?? '').match(/[,:;"`|№!#%$%^&*()=+{}[/?~^<>]/g)?.length ?? 0;
 			if (specCharCount >= 1) {
 				errors.push(
 					new Yup.ValidationError(t('validation.email.error.spec.characters'), value ?? '', 'email')
 				);
 			}
 			if (
-				!/^[a-z0-9._\-,;+:`"№!@#%$%*()={}[?~^&<>]+@[a-z0-9,;:`"№!#%@$%*()=+{}[?~^&<>]+\.[a-z0-9,;:`"№!#%@$%*()=+{}[?~^&<>]+$/gi.test(
+				!/^[a-z0-9._\-,;:`"№!@#%$%*()=+{}[?~^&<>]+@[a-z0-9,;:`"№!#%@$%*()=+{}[?~^&<>]+\.[a-z0-9,;:`"№!#%@$%*()=+{}[?~^&<>]+$/gi.test(
 					value ?? ''
 				)
 			) {
@@ -236,7 +236,7 @@ export const validatePassword = (t: TFunction): Yup.StringSchema<string> => {
 		.test('password-validation', t('validation.password.invalid'), function (value) {
 			const errors = [];
 			if (
-				!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,256}$/.test(
+				!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z0-9!.@#$%^&*]{8,256}$/.test(
 					value ?? ''
 				)
 			) {
@@ -273,7 +273,7 @@ export const validatePassword = (t: TFunction): Yup.StringSchema<string> => {
 					)
 				);
 			}
-			if (!/^[a-zA-Z0-9!@#$%^&*]+$/.test(value ?? '')) {
+			if (!/^[a-zA-Z0-9!@#$.%^&*]+$/.test(value ?? '')) {
 				errors.push(
 					new Yup.ValidationError(t('validation.password.error.en.lang'), value ?? '', 'password')
 				);
@@ -297,7 +297,7 @@ export const validatePasswordConfirm = (t: TFunction): Yup.StringSchema<string> 
 		.test('passwordConfirm-validation', t('validation.password.confirm.invalid'), function (value) {
 			const passwordErrors = [];
 			if (
-				!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,256}$/.test(
+				!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$.%^&*]{8,256}$/.test(
 					value ?? ''
 				)
 			) {
@@ -350,7 +350,7 @@ export const validatePasswordConfirm = (t: TFunction): Yup.StringSchema<string> 
 					)
 				);
 			}
-			if (!/^[a-zA-Z0-9!@#$%^&*]+$/.test(value ?? '')) {
+			if (!/^[a-zA-Z0-9!@#$%^.&*]+$/.test(value ?? '')) {
 				passwordErrors.push(
 					new Yup.ValidationError(
 						t('validation.password.error.en.lang'),
@@ -359,8 +359,6 @@ export const validatePasswordConfirm = (t: TFunction): Yup.StringSchema<string> 
 					)
 				);
 			}
-
-			// Проверка на совпадение паролей
 			const password = (this.parent as { password: string })?.password;
 			if (passwordErrors.length === 0 && value !== password) {
 				throw new Yup.ValidationError(

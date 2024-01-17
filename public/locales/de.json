@@ -152,7 +152,6 @@
 	},
 	"LoginRegisterPage": {
 		"header_desc": "Melden Sie sich an, wenn Sie ein Stammkunde sind.",
-
 		"placeholder_email": "E-Mail-Adresse",
 		"placeholder_password": "Passwort",
 		"remember_me": "Erinnere dich an mich",
@@ -168,7 +167,7 @@
 		"username": "Benutzername",
 		"last_name": "Nachname",
 		"phone_number_placeholder": "Ihre Telefonnummer",
-		"placeholder_confirm_password": "Bestätigen Sie Ihr neues Passwort",
+		"placeholder_confirm_password": "Bestätigen neues Passwort",
 		"client_firma": "GEWERBLICH",
 		"company_line": "FIRMENDATEN",
 		"company_name_placeholder": "Ihr Firmenname",

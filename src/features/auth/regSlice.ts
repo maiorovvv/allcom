@@ -1,6 +1,3 @@
-// authSlice.ts
-
-// src/features/auth/regSlice.ts
 import * as api from './api';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import RegisterCredentials from './types/RegisterCredentials';

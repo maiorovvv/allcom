@@ -1,4 +1,3 @@
-// api.ts
 import LoginCredentials from './types/LoginCredentials';
 import RegisterCredentials from './types/RegisterCredentials';
 import User from './types/User';

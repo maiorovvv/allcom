@@ -1,4 +1,3 @@
-// NewUser.ts
 export default interface NewUser {
 	firstName: string;
 	lastName: string;

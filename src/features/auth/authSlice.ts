@@ -1,7 +1,7 @@
-// src/features/auth/authSlice.ts
-import * as api from './api';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+
 import LoginCredentials from './types/LoginCredentials';
+import * as api from './api';
 
 export const login = createAsyncThunk('auth/login', (creditials: LoginCredentials) =>
 	api.getCurrentUser(creditials)

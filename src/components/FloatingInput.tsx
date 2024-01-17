@@ -1,4 +1,3 @@
-// FloatingInput.tsx
 import { FC, useEffect, useState } from 'react';
 import { useFormikContext, Field } from 'formik';
 
@@ -28,30 +27,19 @@ const FloatingInput: FC<FloatingInputProps> = ({ id, name, placeholder, type }) 
 	};
 
 	return (
-		<div
-			style={{ justifyTracks: 'center', marginBottom: `1rem`, paddingTop: `2rem` }}
-			className={`form-floating pt-1 ${isInvalid ? 'placeholder-filled' : 'placeholder-empty'}`}
-		>
+		<div className="floating_input form-floating">
 			<Field
 				type={type}
-				className={`form-control ${isInvalid ? 'is-invalid' : ''} ${isValid ? 'is-valid' : ''}`}
+				className={`floating_input__field form-control ${isInvalid ? 'is-invalid' : ''} ${
+					isValid ? 'is-valid' : ''
+				}`}
 				id={id}
 				name={name}
-				style={{ height: `4.8rem`, paddingTop: `33px`, fontSize: `20px`, paddingBottom: `15px` }}
 				placeholder={placeholder}
 				onFocus={handleBlur}
 				onBlur={handleBlur}
 			/>
-
-			<label
-				htmlFor={id}
-				style={{
-					paddingTop: `11px`,
-					backgroundColor: `transparent`,
-					fontSize: `17px`,
-					justifyContent: 'center',
-				}}
-			>
+			<label htmlFor={id} className="floating_input__label">
 				{placeholder}
 			</label>
 		</div>

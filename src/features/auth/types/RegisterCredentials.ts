@@ -1,4 +1,3 @@
-// RegisterCredentials.ts
 export default interface RegisterCredentials {
 	firstName: string;
 	lastName: string;

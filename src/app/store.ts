@@ -1,5 +1,5 @@
-//store.ts
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+
 import userProductsReducer from '../features/user/wishProducts/productsSlice';
 import userDateReducer from '../features/MyAccount/UserSlice';
 import productReducer from '../features/ProductDetails/productDetailsSlice';
@@ -7,7 +7,6 @@ import myAuctionsReducer from '../features/MyAccount/components/MyAuctions/myAuc
 import homePageReduser from '../features/HomePage/HomePageSlice';
 import authReducer from '../features/auth/authSlice';
 import regReducer from '../features/auth/regSlice';
-// import counterReducer from '../features/counter/counterSlice';
 
 export const store = configureStore({
 	reducer: {
@@ -18,7 +17,6 @@ export const store = configureStore({
 		homePage: homePageReduser,
 		auth: authReducer,
 		reg: regReducer,
-		// counter: counterReducer,
 	},
 });
 
