@@ -253,4 +253,12 @@
 		"yes": "Bestätigen",
 		"no": "Stornieren"
 	}
+	,"about_us": {
+		"about_us": "Über uns",
+		"welcome": "Willkommen bei Allcom, Ihrer ersten Wahl für spannende Auktionen. Bei Allcom sind wir darauf spezialisiert, Käufer und Verkäufer in einem dynamischen und transparenten Marktplatz zusammenzubringen. Unser Team ist leidenschaftlich daran interessiert, Menschen durch Online-Auktionen mit einzigartigen und wertvollen Gegenständen zu verbinden.",
+		"wishlist": "Favoriten",
+		"about_us1": "Egal, ob Sie ein erfahrener Sammler sind, der nach seltenen Artefakten sucht, oder ein Verkäufer, der ein globales Publikum erreichen möchte, Allcom bietet eine Plattform, die Ihren Bedürfnissen entspricht. Unsere Auktionen umfassen eine Vielzahl von Kategorien, darunter Kunst, Antiquitäten, Schmuck, Vintage-Artikel und mehr.",
+		"about_us2": "Unser Unternehmen wird in Kürze auch eine Lieferoption einführen, wir werden Sie umgehend auf der Website darüber informieren.",
+		"about_us3": "Der Standort unseres Lagers ist für Sie auf der Karte angegeben. Wir befinden uns in der Stadt Berlin unter der Adresse Wilhelminenhofstraße 93, 12459."
+	}
 }
