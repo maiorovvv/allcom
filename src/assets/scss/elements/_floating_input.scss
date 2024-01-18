@@ -1,0 +1,30 @@
+.floating_input {
+	margin-bottom: 1rem;
+	&--field {
+		height: 4.8rem !important;
+		padding-top: 27px !important;
+		font-size: 20px;
+		padding-top: 10px;
+	}
+	&--field_disabled {
+		height: 4.8rem !important;
+		font-size: 20px;
+		padding-bottom: 15px !important;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+	}
+	&--placeholder {
+		background-color: transparent;
+		margin-top: -2px;
+		font-size: 17px;
+	}
+	&--icon_eye_password {
+		color: #a7a7a7f9;
+		position: absolute;
+		top: 8px;
+		right: 30px;
+		z-index: 99;
+	}
+}
