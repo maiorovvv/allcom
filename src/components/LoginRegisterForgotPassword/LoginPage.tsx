@@ -1,14 +1,11 @@
 import { FC, MouseEventHandler, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Form, Button } from 'react-bootstrap';
-import InputGroup from 'react-bootstrap/InputGroup';
-import Col from 'react-bootstrap/Col';
+import { Form, Button, Col, InputGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Formik, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Icon } from 'react-icons-kit';
-import { eyeBlocked } from 'react-icons-kit/icomoon/eyeBlocked';
-import { eye } from 'react-icons-kit/icomoon/eye';
+import { eyeBlocked, eye } from 'react-icons-kit/icomoon';
 
 import { useAppDispatch } from '../../app/hooks';
 import { login } from '../../features/auth/authSlice';
@@ -45,7 +42,7 @@ const LoginPage: FC = (): JSX.Element => {
 	};
 
 	const inputLogin = (
-		<Form.Group as={Col} md="12" controlId="formEmail">
+		<Form.Group as={Col} controlId="formEmail">
 			<InputGroup>
 				<Field
 					as={FloatingInput}
@@ -59,7 +56,7 @@ const LoginPage: FC = (): JSX.Element => {
 		</Form.Group>
 	);
 	const inputPassword = (
-		<Form.Group as={Col} md="12" controlId="formPassword">
+		<Form.Group as={Col} controlId="formPassword">
 			<InputGroup>
 				<div className="col d-flex">
 					<div className="col-12 ">

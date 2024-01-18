@@ -3,22 +3,25 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Button } from 'react-bootstrap';
 
+const COUNTDOWN_START = 60;
+const COUNTDOWN_END = 0;
+const COUNTDOWN_DELAY = 1;
+const COUNTDOWN_ONE_SECOND_IS = 1000;
+
 const RestoreUserValidationWait: FC = (): JSX.Element => {
 	const { t } = useTranslation('LoginRegisterPage');
 	const navigate = useNavigate();
-	const [countdown, setCountdown] = useState(60);
+	const [countdown, setCountdown] = useState(COUNTDOWN_START);
 
 	useEffect(() => {
 		const redirectTimeout = setTimeout(() => {
-			setCountdown((prevCountdown) => {
-				if (prevCountdown > 0) {
-					return prevCountdown - 1;
-				} else {
-					navigate('/home');
-					return 0;
-				}
-			});
-		}, 1000);
+			if (countdown > COUNTDOWN_END) {
+				setCountdown(countdown - COUNTDOWN_DELAY);
+			} else {
+				navigate('/home');
+				setCountdown(COUNTDOWN_END);
+			}
+		}, COUNTDOWN_ONE_SECOND_IS);
 
 		return () => {
 			clearTimeout(redirectTimeout);
