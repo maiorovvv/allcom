@@ -1,6 +1,7 @@
 import LoginCredentials from './types/LoginCredentials';
 import RegisterCredentials from './types/RegisterCredentials';
 import RestoreCredentials from './types/RestoreCredentials';
+import RestoreEnterNewPasswordCredentials from './types/RestoreEnterNewPasswordCredentials';
 import User from './types/User';
 import NewUser from './types/newUser';
 import RestoreUser from './types/RestoreUser';
@@ -61,6 +62,18 @@ export async function restoreUser({ email }: RestoreCredentials): Promise<Restor
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({
 			email,
+		}),
+	});
+	return resRestore.json();
+}
+export async function restoreUserNewPassword({
+	password,
+}: RestoreEnterNewPasswordCredentials): Promise<RestoreUser> {
+	const resRestore = await fetch('https://dummyjson.com/auth/restoreMewPassword', {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({
+			password,
 		}),
 	});
 	return resRestore.json();

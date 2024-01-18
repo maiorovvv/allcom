@@ -6,6 +6,15 @@
 		font-size: 20px;
 		padding-top: 10px;
 	}
+	&--field_disabled {
+		height: 4.8rem !important;
+		font-size: 20px;
+		padding-bottom: 15px !important;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+	}
 	&--placeholder {
 		background-color: transparent;
 		margin-top: -2px;

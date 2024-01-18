@@ -17,6 +17,7 @@ import LoginPage from './components/LoginRegisterForgotPassword/LoginPage';
 import RegisterPage from './components/LoginRegisterForgotPassword/RegisterPage';
 import RestorePassword from './components/LoginRegisterForgotPassword/RestorePassword';
 import RestorePasswordWait from './components/LoginRegisterForgotPassword/RestoreUserValidationWait';
+import RestoreEnterNewPAssword from './components/LoginRegisterForgotPassword/RestoreEnterNewPAssword';
 
 function App(): JSX.Element {
 	return (
@@ -40,6 +41,7 @@ function App(): JSX.Element {
 					<Route path="register" element={<RegisterPage />} />
 					<Route path="restore_password" element={<RestorePassword />} />
 					<Route path="restore_password_wait" element={<RestorePasswordWait />} />
+					<Route path="restore_password_new" element={<RestoreEnterNewPAssword />} />
 					<Route path="*" element={<NotFound />} />
 				</Route>
 			</Routes>
