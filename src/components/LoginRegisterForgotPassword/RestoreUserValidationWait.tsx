@@ -44,10 +44,18 @@ const RestoreUserValidationWait: FC = (): JSX.Element => {
 			<span className="login_register--divide__text">{t('restore_password_wait_header')}</span>
 		</div>
 	);
+	const readyToLogIn = (
+		<div className="pt-3">
+			<div className="login_register--divide">
+				<span className="login_register--divide__text">{t('restore_password_ready_to_login')}</span>
+			</div>
+		</div>
+	);
 	return (
 		<div className="login_register--restore_password_wait row">
 			{restorePasswordHeader}
 			{restorePasswordText}
+			{readyToLogIn}
 			{buttonLogin}
 			{countdownTimer}
 		</div>

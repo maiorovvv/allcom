@@ -231,6 +231,7 @@
 		"restore_request": "Recover",
 		"restore_password_wait_header": "PASSWORD RECOVERY",
 		"restore_password_wait_text": "Follow the instructions sent to your email address to recover your password. Usually, the email arrives instantly, but sometimes it may take a few minutes. Also, please check your SPAM folder.",
-		"redirect_message": "Redirecting to the homepage in {{seconds}} seconds"
+		"redirect_message": "Redirecting to the homepage in {{seconds}} seconds",
+		"restore_password_ready_to_login": "READY TO LOGIN?"
 	}
 }

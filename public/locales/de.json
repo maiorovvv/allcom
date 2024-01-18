@@ -229,6 +229,7 @@
 		"restore_request": "Wiederherstellen",
 		"restore_password_wait_header": "PASSWORTWIEDERHERSTELLUNG",
 		"restore_password_wait_text": "Befolgen Sie die Anweisungen, die an Ihre E-Mail-Adresse gesendet wurden, um Ihr Passwort wiederherzustellen. Normalerweise kommt die E-Mail sofort an, aber manchmal kann es einige Minuten dauern. Überprüfen Sie auch Ihren SPAM-Ordner.",
-		"redirect_message": "Weiterleitung zur Startseite in {{seconds}} Sekunden"
+		"redirect_message": "Weiterleitung zur Startseite in {{seconds}} Sekunden",
+		"restore_password_ready_to_login": "DIE WEBSITE ZU BETRETEN?"
 	}
 }
