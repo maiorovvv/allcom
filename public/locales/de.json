@@ -223,6 +223,12 @@
 		"validation.password.error.lowercase": "Das Passwort muss mindestens 1 Kleinbuchstaben enthalten",
 		"validation.password.error.numeric": "Das Passwort muss mindestens 1 Zahl enthalten",
 		"validation.password.error.spec.characters": "Das Passwort muss mindestens 1 Sonderzeichen aus [!@#$%^&*] enthalten",
-		"validation.password.error.en.lang": "Nur lateinische Buchstaben erlaubt"
+		"validation.password.error.en.lang": "Nur lateinische Buchstaben erlaubt",
+		"restore_form_label_desc": "Geben Sie die E-Mail-Adresse ein, die Sie bei der Registrierung verwendet haben",
+		"restore_placeholder_email": "E-Mail-Adresse zur Wiederherstellung",
+		"restore_request": "Wiederherstellen",
+		"restore_password_wait_header": "PASSWORTWIEDERHERSTELLUNG",
+		"restore_password_wait_text": "Befolgen Sie die Anweisungen, die an Ihre E-Mail-Adresse gesendet wurden, um Ihr Passwort wiederherzustellen. Normalerweise kommt die E-Mail sofort an, aber manchmal kann es einige Minuten dauern. Überprüfen Sie auch Ihren SPAM-Ordner.",
+		"redirect_message": "Weiterleitung zur Startseite in {{seconds}} Sekunden"
 	}
 }

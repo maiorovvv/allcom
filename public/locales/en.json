@@ -225,6 +225,12 @@
 		"validation.password.error.lowercase": "Password must contain at least 1 lowercase letter", 
 		"validation.password.error.numeric": "Password must contain at least 1 numeric character", 
 		"validation.password.error.spec.characters": "Password must contain at least 1 special character from [!@#$%^&*]", 
-		"validation.password.error.en.lang": "Only Latin alphabet allowed"
+		"validation.password.error.en.lang": "Only Latin alphabet allowed",
+		"restore_form_label_desc": "Enter the email address you used during registration",
+		"restore_placeholder_email": "Email Address for Recovery",
+		"restore_request": "Recover",
+		"restore_password_wait_header": "PASSWORD RECOVERY",
+		"restore_password_wait_text": "Follow the instructions sent to your email address to recover your password. Usually, the email arrives instantly, but sometimes it may take a few minutes. Also, please check your SPAM folder.",
+		"redirect_message": "Redirecting to the homepage in {{seconds}} seconds"
 	}
 }

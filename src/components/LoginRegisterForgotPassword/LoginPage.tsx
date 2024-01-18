@@ -1,18 +1,18 @@
 import { FC, MouseEventHandler, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Form, Button } from 'react-bootstrap';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Col from 'react-bootstrap/Col';
 import { Link } from 'react-router-dom';
 import { Formik, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import Col from 'react-bootstrap/Col';
-import InputGroup from 'react-bootstrap/InputGroup';
 import { Icon } from 'react-icons-kit';
 import { eyeBlocked } from 'react-icons-kit/icomoon/eyeBlocked';
 import { eye } from 'react-icons-kit/icomoon/eye';
 
 import { useAppDispatch } from '../../app/hooks';
 import { login } from '../../features/auth/authSlice';
-import { validateEmail, validatePassword } from '../RegisterPage/validationRules';
+import { validateEmail, validatePassword } from './validationRules';
 import FloatingInput from '../FloatingInput';
 
 const LoginPage: FC = (): JSX.Element => {
@@ -55,7 +55,7 @@ const LoginPage: FC = (): JSX.Element => {
 					placeholder={t('placeholder_email')}
 				/>
 			</InputGroup>
-			<ErrorMessage name="email" component="div" className="validation_warning_message" />
+			<ErrorMessage name="email" component="div" className="warning_message--validation" />
 		</Form.Group>
 	);
 	const inputPassword = (
@@ -77,18 +77,22 @@ const LoginPage: FC = (): JSX.Element => {
 							onClick={(event) => {
 								handlePasswordToggle(event);
 							}}
-							className="icon_EYE"
+							className="floating_input--icon_eye_password"
 						/>
 					</div>
 				</div>
 			</InputGroup>
-			<ErrorMessage name="password" component="div" className="validation_warning_message" />
+			<ErrorMessage name="password" component="div" className="warning_message--validation" />
 		</Form.Group>
 	);
 
 	const checkboxRememberMe = (
 		<div className="d-flex">
-			<Form.Check type="checkbox" id="checkbox_remember" className="login_register--checkbox " />
+			<Form.Check
+				type="checkbox"
+				id="checkbox_remember"
+				className="login_register--checkbox mb-3"
+			/>
 			<div className="login_register--checkbox">{t('remember_me')}</div>
 		</div>
 	);
@@ -115,13 +119,11 @@ const LoginPage: FC = (): JSX.Element => {
 		<p className="login_register--signup__text">{t('dont_have_account')}</p>
 	);
 	const buttonRegisterNow = (
-		<div className="d-flex row">
-			<Link to="/register">
-				<Button id="button_register" className="login_register--btn" type="submit">
-					{t('sign_up_now')}
-				</Button>
-			</Link>
-		</div>
+		<Link to="/register" className="login_register--btn">
+			<Button id="button_register" className="login_register--btn" type="submit">
+				{t('sign_up_now')}
+			</Button>
+		</Link>
 	);
 	return (
 		<div className="login_register--container">

@@ -30,7 +30,7 @@ const FloatingInput: FC<FloatingInputProps> = ({ id, name, placeholder, type }) 
 		<div className="floating_input form-floating">
 			<Field
 				type={type}
-				className={`floating_input__field form-control ${isInvalid ? 'is-invalid' : ''} ${
+				className={`floating_input--field form-control ${isInvalid ? 'is-invalid' : ''} ${
 					isValid ? 'is-valid' : ''
 				}`}
 				id={id}
@@ -39,7 +39,7 @@ const FloatingInput: FC<FloatingInputProps> = ({ id, name, placeholder, type }) 
 				onFocus={handleBlur}
 				onBlur={handleBlur}
 			/>
-			<label htmlFor={id} className="floating_input__label">
+			<label htmlFor={id} className="floating_input--placeholder">
 				{placeholder}
 			</label>
 		</div>

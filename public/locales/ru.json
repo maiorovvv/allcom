@@ -226,6 +226,12 @@
 		"validation.password.error.lowercase": "должен содержать 1 символ в нижнем регистре",
 		"validation.password.error.numeric": "должен содержать 1 цифру",
 		"validation.password.error.spec.characters": "должен содержать 1 спецсимвол из [!@#$%^&*]",
-		"validation.password.error.en.lang": "только латинский алфавит"
+		"validation.password.error.en.lang": "только латинский алфавит",
+		"restore_form_label_desc": "Введите адрес электронной почты, который вы использовали при регистрации",
+		"restore_placeholder_email": "Email Адрес для восстановления",
+		"restore_request": "Восстановить",
+		"restore_password_wait_header": "ВОССТАНОВЛЕНИЕ ПАРОЛЯ",
+		"restore_password_wait_text": "Далее следуйте инструкциям по восстановлению пароля, которе были высланы Вам на указанный адрес электронной почты. Обычно письмо приходит моментально, но иногда может потребоваться несколько минут на получение письма. Также рекомендуем заглянуть в папку SPAM",
+		"redirect_message": "Переход на главную страницу через {{seconds}} секунд"
 	}
 }

@@ -1,7 +1,9 @@
 import LoginCredentials from './types/LoginCredentials';
 import RegisterCredentials from './types/RegisterCredentials';
+import RestoreCredentials from './types/RestoreCredentials';
 import User from './types/User';
 import NewUser from './types/newUser';
+import RestoreUser from './types/RestoreUser';
 
 export async function getCurrentUser({ email, password }: LoginCredentials): Promise<User> {
 	const resLogin = await fetch('https://dummyjson.com/auth/login', {
@@ -51,4 +53,15 @@ export async function registerNewUser({
 	});
 
 	return resRegister.json();
+}
+
+export async function restoreUser({ email }: RestoreCredentials): Promise<RestoreUser> {
+	const resRestore = await fetch('https://dummyjson.com/auth/restore', {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({
+			email,
+		}),
+	});
+	return resRestore.json();
 }

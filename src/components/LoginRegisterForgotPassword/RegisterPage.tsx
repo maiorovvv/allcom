@@ -100,7 +100,7 @@ const RegisterPage: FC = (): JSX.Element => {
 			<InputGroup>
 				<Field as={FloatingInput} id={id} name={id} type={type} placeholder={placeholder} />
 			</InputGroup>
-			<ErrorMessage name={id} component="div" className="validation_warning_message" />
+			<ErrorMessage name={id} component="div" className="warning_message--validation" />
 		</Form.Group>
 	);
 
@@ -116,7 +116,7 @@ const RegisterPage: FC = (): JSX.Element => {
 		placeholder: string;
 	};
 
-	const USER_LABEL = (
+	const labelUser = (
 		<div className="login_register--divide">
 			<span className="login_register--divide__text">{t('user_line')}</span>
 		</div>
@@ -145,7 +145,7 @@ const RegisterPage: FC = (): JSX.Element => {
 						onClick={(event) => {
 							handlePasswordToggle(event);
 						}}
-						className="icon_EYE"
+						className="floating_input--icon_eye_password"
 					/>
 				</div>
 			</div>
@@ -169,7 +169,7 @@ const RegisterPage: FC = (): JSX.Element => {
 						onClick={(event) => {
 							handlePasswordConfirmToggle(event);
 						}}
-						className="icon_EYE"
+						className="floating_input--icon_eye_password"
 					/>
 				</div>
 			</div>
@@ -204,7 +204,7 @@ const RegisterPage: FC = (): JSX.Element => {
 		</div>
 	);
 
-	const COMPANY_LABEL = (
+	const labelCompany = (
 		<div className="login_register--divide ">
 			<span className="login_register--divide__text">{t('company_line')}</span>
 		</div>
@@ -293,7 +293,7 @@ const RegisterPage: FC = (): JSX.Element => {
 						{toolboxClientFirma}
 						<div id="container_client-firma" className="login_register--container_client-firma row">
 							<div id="container_client" className="login_register--container_client">
-								{USER_LABEL}
+								{labelUser}
 								{firstName}
 								{lastName}
 								{email}
@@ -303,7 +303,7 @@ const RegisterPage: FC = (): JSX.Element => {
 							</div>
 							{toolboxEnabled && (
 								<div id="container_firma" className="login_register--container_firma col">
-									{COMPANY_LABEL}
+									{labelCompany}
 									{companyName}
 									{companyPosition}
 									{taxNumber}
