@@ -10,6 +10,18 @@
 	}
 	&__item {
 		width: 30rem;
+		&--name {
+			display: flex;
+			width: fit-content;
+			cursor: pointer;
+			transition: var(--transition);
+			&:hover {
+				color: var(--secondary-color);
+			}
+			&__sort_icon {
+				margin-left: .5rem;
+			}
+		}
 		&--status {
 			width: 5rem;
 		}

@@ -1,7 +1,5 @@
 import { FC, ReactElement, useRef, useState } from 'react';
 
-import '../../assets/scss/elements/_tooltip.module.scss';
-
 export interface TooltipProps {
 	text: string;
 	children: ReactElement;

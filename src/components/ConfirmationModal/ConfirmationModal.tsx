@@ -3,8 +3,6 @@ import { useTranslation } from 'react-i18next';
 
 import CrossIcon from '../../img/svg/cross.svg?react';
 
-import '../../assets/scss/elements/_confirmation_modal.module.scss';
-
 interface ModalProps {
 	confirmationModalActive: boolean;
 	setConfirmationModal: (flag: boolean) => void;

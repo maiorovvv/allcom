@@ -10,7 +10,8 @@ import ConfirmationModal from '../../../../components/ConfirmationModal/Confirma
 import Tooltip from '../../../../components/Tooltip/Tooltip';
 import Search from '../../../../components/Search/Search';
 
-import '../../../../assets/scss/elements/_users_list.module.scss';
+import SortAZIcon from '../../../../img/svg/sortAZ.svg?react';
+import SortZAIcon from '../../../../img/svg/sortZA.svg?react';
 
 const UserList: FC = (): JSX.Element => {
 	const { t } = useTranslation('users_list');
@@ -45,7 +46,7 @@ const UserList: FC = (): JSX.Element => {
 		}
 	};
 
-	// const [sortOrder, setSortOrder] = useState('asc');
+	const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
 	// const usersSort = (): void => {
 	// }
 
@@ -62,7 +63,17 @@ const UserList: FC = (): JSX.Element => {
 			<table className="users_list">
 				<thead>
 					<tr>
-						<th className="users_list__item">{t('name')}</th>
+						<th className="users_list__item">
+							<div
+								className=" users_list__item--name"
+								onClick={() => setSortOrder((prev) => (prev === 'asc' ? 'desc' : 'asc'))}
+							>
+								{t('name')}
+								<div className="users_list__item--name__sort_icon">
+									{sortOrder === 'asc' ? <SortAZIcon /> : <SortZAIcon />}
+								</div>
+							</div>
+						</th>
 						<th className="users_list__item">{t('email')}</th>
 						<th className="users_list__item">{t('phone')}</th>
 						<th className="users_list__item">{t('address')}</th>
