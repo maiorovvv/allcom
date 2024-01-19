@@ -1,8 +1,8 @@
 import * as i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
-import { isDevelopmentMode } from './utils';
 
+import { isDevelopmentMode } from './utils';
 import deTranslations from '../public/locales/de.json';
 import ruTranslations from '../public/locales/ru.json';
 import enTranslations from '../public/locales/en.json';

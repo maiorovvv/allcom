@@ -13,7 +13,12 @@ import ChangePassword from './features/MyAccount/components/ChangePassword';
 import ProductList from './features/user/wishProducts/ProductList';
 import MyAuctions from './features/MyAccount/components/MyAuctions/MyAuctions';
 import HomePage from './features/HomePage/HomePage';
-import UserList from './features/MyAccount/components/UsersList/UserList';
+import LoginPage from './components/LoginRegisterForgotPassword/LoginPage';
+import RegisterPage from './components/LoginRegisterForgotPassword/RegisterPage';
+import RestorePassword from './components/LoginRegisterForgotPassword/RestorePassword';
+import RestorePasswordWait from './components/LoginRegisterForgotPassword/RestoreUserValidationWait';
+import RestoreEnterNewPAssword from './components/LoginRegisterForgotPassword/RestoreEnterNewPAssword';
+import UsersList from './features/MyAccount/components/UsersList/UsersList';
 
 function App(): JSX.Element {
 	return (
@@ -27,13 +32,18 @@ function App(): JSX.Element {
 						<Route path="about_me" element={<AboutMe />} />
 						<Route path="change_password" element={<ChangePassword />} />
 						<Route path="my_auctions" element={<MyAuctions />} />
-						<Route path="users_list" element={<UserList />} />
+						<Route path="users_list" element={<UsersList />} />
 					</Route>
 					<Route path="product/details/" element={<ProductDetails />} />
 					<Route path="shipping" element={<Shipping />} />
 					<Route path="payment" element={<Payment />} />
 					<Route path="return" element={<Return />} />
 					<Route path="support" element={<Support />} />
+					<Route path="login" element={<LoginPage />} />
+					<Route path="register" element={<RegisterPage />} />
+					<Route path="restore_password" element={<RestorePassword />} />
+					<Route path="restore_password_wait" element={<RestorePasswordWait />} />
+					<Route path="restore_password_new" element={<RestoreEnterNewPAssword />} />
 					<Route path="*" element={<NotFound />} />
 				</Route>
 			</Routes>

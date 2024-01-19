@@ -12,16 +12,31 @@
 	"cSpell.words": [
 		"airbnb",
 		"allcom",
+		"checkmark",
+		"creditials",
+		"Formik",
+		"HOUSENUMBER",
+		"icomoon",
 		"languagedetector",
+		"libphonenumber",
 		"maintitle",
 		"poster",
 		"predeploy",
 		"reduxjs",
+		"scss",
+		"signup",
+		"spacebar",
 		"svgr",
-		"sсss"
+		"swiper",
+		"translatey",
+		"typicons"
 	],
 	"[typescriptreact]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
-	"files.eol": "\n"
+	"files.eol": "\n",
+	"editor.inlineSuggest.showToolbar": "onHover",
+	"Codegeex.Comment.LanguagePreference": "English",
+	"Codegeex.Explanation.LanguagePreference": "English",
+	"Codegeex.SidebarUI.LanguagePreference": "English"
 }

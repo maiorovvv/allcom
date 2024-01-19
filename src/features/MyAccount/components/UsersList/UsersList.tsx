@@ -13,7 +13,7 @@ import Search from '../../../../components/Search/Search';
 import SortAZIcon from '../../../../img/svg/sortAZ.svg?react';
 import SortZAIcon from '../../../../img/svg/sortZA.svg?react';
 
-const UserList: FC = (): JSX.Element => {
+const UsersList: FC = (): JSX.Element => {
 	const { t } = useTranslation('users_list');
 
 	const users = useAppSelector((state: RootState) => state.userDate.users);
@@ -129,4 +129,4 @@ const UserList: FC = (): JSX.Element => {
 	);
 };
 
-export default UserList;
+export default UsersList;
