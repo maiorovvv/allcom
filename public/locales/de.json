@@ -131,7 +131,8 @@
 		"change_password": "Password ändern",
 		"dashboard": "Dashboard",
 		"my_auctions": "Meine Auktionen",
-		"about_me": "Über mich"
+		"about_me": "Über mich",
+		"users_list": "Benutzerliste"
 	},
 	"about_me": {
 		"submit": "Absenden",
@@ -149,5 +150,23 @@
 		"confirm_password": "Bestätige das Passwort",
 		"change_password": "Password ändern",
 		"old_password": "Altes Passwort"
+	},
+	"users_list": {
+		"name": "Name",
+		"email": "Email",
+		"phone": "Telefon",
+		"address":"Adresse",
+		"status": "Status",
+		"tooltip_set_status": "einen Benutzer sperren oder entsperren",
+		"text": "Bestätigen Sie die Aktion",
+		"active": "Activ",
+		"blocked": "Verstopft"
+	},
+	"confirmation_modal": {
+		"yes": "Bestätigen",
+		"no": "Stornieren"
+	},
+	"search": {
+		"placeholder": "geben Sie den Nachnamen oder Vornamen ein..."
 	}
 }

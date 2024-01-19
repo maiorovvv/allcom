@@ -13,6 +13,7 @@ import ChangePassword from './features/MyAccount/components/ChangePassword';
 import ProductList from './features/user/wishProducts/ProductList';
 import MyAuctions from './features/MyAccount/components/MyAuctions/MyAuctions';
 import HomePage from './features/HomePage/HomePage';
+import UserList from './features/MyAccount/components/UsersList/UserList';
 
 function App(): JSX.Element {
 	return (
@@ -26,6 +27,7 @@ function App(): JSX.Element {
 						<Route path="about_me" element={<AboutMe />} />
 						<Route path="change_password" element={<ChangePassword />} />
 						<Route path="my_auctions" element={<MyAuctions />} />
+						<Route path="users_list" element={<UserList />} />
 					</Route>
 					<Route path="product/details/" element={<ProductDetails />} />
 					<Route path="shipping" element={<Shipping />} />

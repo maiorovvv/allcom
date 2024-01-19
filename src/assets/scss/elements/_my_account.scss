@@ -1,9 +1,4 @@
-/*
-    22. My account page css
-*/
-
 .my__account--section {
-
 	&__inner {
 		display: flex;
 		flex-direction: column;
@@ -19,19 +14,6 @@
 	}
 }
 
-.my_account__left--sidebar {
-	@media only screen and (min-width: 1199px) {
-		padding-right: 5rem;
-		margin-right: 5rem;
-	}
-	@media only screen and (max-width: 991px) {
-		width: 100%;
-		padding-right: 0;
-		margin-right: 0;
-		border-right: 0;
-		padding-bottom: 2.5rem;
-	}
-}
 .my_account__wrapper {
 	margin: 0 auto;
 	width: calc(100% - 18rem);

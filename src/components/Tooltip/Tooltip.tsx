@@ -1,5 +1,7 @@
 import { FC, ReactElement, useRef, useState } from 'react';
 
+import '../../assets/scss/elements/_tooltip.module.scss';
+
 export interface TooltipProps {
 	text: string;
 	children: ReactElement;
@@ -24,7 +26,11 @@ const Tooltip: FC<TooltipProps> = ({ text, children }): JSX.Element => {
 	};
 
 	return (
-		<div onMouseEnter={onMouseEnterHandler} onMouseLeave={onMouseLeaveHandler}>
+		<div
+			className="tooltip__container"
+			onMouseEnter={onMouseEnterHandler}
+			onMouseLeave={onMouseLeaveHandler}
+		>
 			{children}
 			{isVisible && <div className="tooltip__text">{text}</div>}
 		</div>

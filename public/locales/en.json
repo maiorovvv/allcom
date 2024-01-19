@@ -69,7 +69,7 @@
 	},
 	"timer": {
 		"days_one": "Day",
-    "days_other": "Days",
+		"days_other": "Days",
 		"finish": "Auction is over"
 	},
 	"footer": {
@@ -130,7 +130,8 @@
 		"dashboard": "Dashboard",
 		"change_password": "Change password",
 		"my_auctions": "My auctions",
-		"about_me": "About me"
+		"about_me": "About me",
+		"users_list": "Users List"
 	},
 	"about_me": {
 		"submit": "Submit",
@@ -149,5 +150,23 @@
 		"confirm_password": "Confirm password",
 		"change_password": "Change password",
 		"old_password": "Old password"
+	},
+	"users_list": {
+		"name": "Full Name",
+		"email": "Email",
+		"phone": "Phone",
+		"address": "Address",
+		"status": "Status",
+		"tooltip_set_status": "block or unblock a user",
+		"text": "Confirm the action",
+		"active": "Active",
+		"blocked": "Blocked"
+	},
+	"confirmation_modal": {
+		"yes": "Confirm",
+		"no": "Cancel"
+	},
+	"search": {
+		"placeholder": "enter last name or first name..."
 	}
 }

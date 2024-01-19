@@ -132,7 +132,8 @@
 		"dashboard": "Недамборд",
 		"change_password": "Изменить пароль",
 		"my_auctions": "Мои аукционы",
-		"about_me": "Обо мне"
+		"about_me": "Обо мне",
+		"users_list": "Список пользователей"
 	},
 	"about_me": {
 		"submit": "Отправить",
@@ -150,5 +151,23 @@
 		"confirm_password": "Подтвердите пароль",
 		"change_password": "Изменить пароль",
 		"old_password": "Старый пароль"
+	},
+	"users_list": {
+		"name": "Полное имя",
+		"email": "Емейл",
+		"phone": "Телефон",
+		"address":"Адрес",
+		"status": "Статус",
+		"tooltip_set_status": "заблокировать или разблокировать пользователя",
+		"text": "Подтвердите действие",
+		"active": "Активный",
+		"blocked": "Заблокирован"
+	},
+	"confirmation_modal": {
+		"yes": "Подтвердить",
+		"no": "Отменить"
+	},
+	"search": {
+		"placeholder": "введите фамилию или имя..."
 	}
 }

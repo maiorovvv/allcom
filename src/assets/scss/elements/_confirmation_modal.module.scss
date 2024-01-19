@@ -1,0 +1,63 @@
+.confirmation_modal {
+  position: fixed;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: var(--overlay-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 100;
+	opacity: 0;
+	pointer-events: none;
+	transition: var(--transition2);
+	&--active {
+		opacity: 1;
+		pointer-events: all;
+	}
+}
+
+.confirmation_modal__content {
+	position: relative;
+	text-align: center;
+  min-width: 30vw;
+	max-width: 40vw;
+	padding: 2rem;
+  background-color: var(--white-color);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	transition: var(--transition);
+	&--cross_icon {
+		cursor: pointer;
+		position: absolute;
+		top: 5px;
+		right: 0;
+		&:hover {
+			color: var(--secondary-color);
+		}
+	}
+}
+
+.confirmation_modal__text {
+	margin-top: 2rem;
+	font-size: 1.8rem;
+}
+
+.confirmation_modal__buttons {
+	display: flex;
+	justify-content: space-around;
+	&--btn {
+			padding: 1rem 4rem;
+			text-align: center;
+			border: none;
+			color: var(--white-color);
+			background-color: var(--secondary-color);
+			margin-top: 3rem;
+			&:hover {
+				background: var(--primary-color);
+				color: var(--white-color);
+			}
+		}
+	}
