@@ -94,12 +94,16 @@
 	height: 100%;
 }
 
-/* Offacnvas Logo */
 .offcanvas__logo {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	padding: 20px 15px;
+}
+.offcanvas__logo--img {
+	height: 6cap;
+	margin-top: -1rem;
+	margin-bottom: -1rem;
 }
 .offcanvas__close--btn {
 	position: relative;
@@ -634,16 +638,14 @@
 		padding: 2rem 0;
 	}
 }
-
 .main__logo {
-	&--img {
-		@media only screen and (min-width: 480px) {
-			max-width: 155px;
-		}
-		@media only screen and (min-width: 768px) {
-			max-width: 100%;
-		}
-	}
+	height: auto;
+	display: flex;
+	align-items: center;
+}
+
+.main__logo--img {
+	max-height: 6rem;
 }
 
 // Start Search box css here
