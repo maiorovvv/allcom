@@ -11,6 +11,7 @@ import SetLanguage from './SetLanguage/SetLanguage';
 import CategorySelect from './CategorySelect/CategorySelect';
 import NavBarHeader from '../NavBarHeader/NavBarHeader';
 
+import SiteLogo from '../../assets/img/logo/nav-log.png';
 import HeartIcon from '../../img/svg/heart.svg?react';
 import CartIcon from '../../img/svg/cart_icon.svg?react';
 import HumanIcon from '../../img/svg/human.svg?react';
@@ -18,7 +19,7 @@ import Human2Icon from '../../img/svg/human2.svg?react';
 import CrossIcon from '../../img/svg/cross.svg?react';
 import UpArrowIcon from '../../img/svg/up_arrow.svg?react';
 import LinesIcon from '../../img/svg/3lines.svg?react';
-import CatrIconOffcanvas from '../../img/svg/cart_icon_offcanvas.svg?react';
+import CartIconOffcanvas from '../../img/svg/cart_icon_offcanvas.svg?react';
 import SearchIcon from '../../img/svg/search_icon.svg?react';
 import CategoriesIcon from '../../img/svg/categories_icon.svg?react';
 
@@ -56,7 +57,6 @@ const Header: React.FC = () => {
 				setIsScrolled(false);
 			}
 		};
-		//TODO
 		window.addEventListener('scroll', handleScroll);
 	}, []);
 
@@ -78,16 +78,12 @@ const Header: React.FC = () => {
 							</div>
 							<div className="main__logo">
 								<h1 className="main__logo--title">
-									<NavLink to="/" className="footer__copyright__content--link">
-										<img
-											className="main__logo--link"
-											src="assets/img/logo/nav-log.png"
-											alt="logo"
-										></img>
+									<NavLink to="/" className="main__logo--link">
+										<img className="main__logo--img" src={SiteLogo} alt="logo"></img>
 									</NavLink>
 								</h1>
 							</div>
-							<div className="header__search--widget header__sticky--none d-none d-lg-block mb-15">
+							<div className="header__search--widget header__sticky--none d-none d-lg-block">
 								<form className="d-flex header__search--form" action="#">
 									<CategorySelect />
 									<div className="header__search--box">
@@ -222,13 +218,11 @@ const Header: React.FC = () => {
 						</div>
 					</div>
 				</div>
-
 				<NavBarHeader />
-
 				<div className={`offcanvas__header ${offcanvasIsActive ? 'open' : ''}`}>
 					<div className="offcanvas__inner">
 						<div className="offcanvas__logo">
-							<img src="" alt="Grocee Logo"></img>
+							<img className="offcanvas__logo--img" src={SiteLogo} alt="Grocee Logo"></img>
 							<button
 								onClick={() => setOffcanvasIsActive(!offcanvasIsActive)}
 								className="offcanvas__close--btn"
@@ -311,7 +305,7 @@ const Header: React.FC = () => {
 							>
 								<div className="my_icon">
 									<span className="offcanvas__stikcy--toolbar__icon">
-										<CatrIconOffcanvas />
+										<CartIconOffcanvas />
 									</span>
 									<span className="items__count">{productsInMyAuctions.length}</span>
 								</div>
