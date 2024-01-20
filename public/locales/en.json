@@ -132,7 +132,7 @@
 		"change_password": "Change password",
 		"my_auctions": "My auctions",
 		"about_me": "About me",
-		"users_list": "Users List"
+		"users_list": "Users"
 	},
 	"about_me": {
 		"submit": "Submit",
@@ -244,17 +244,15 @@
 		"email": "Email",
 		"phone": "Phone",
 		"address": "Address",
-		"status": "Status",
 		"tooltip_set_status": "block or unblock a user",
-		"text": "Confirm the action",
-		"active": "Active",
-		"blocked": "Blocked"
+		"text_block": "Block user",
+		"text_activate": "Unblock user",
+		"activate": "Activate",
+		"block": "Block",
+		"search_placeholder": "enter last name or first name..."
 	},
 	"confirmation_modal": {
 		"yes": "Confirm",
 		"no": "Cancel"
-	},
-	"search": {
-		"placeholder": "enter last name or first name..."
 	}
 }

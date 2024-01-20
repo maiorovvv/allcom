@@ -2,18 +2,21 @@ import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import CrossIcon from '../../img/svg/cross.svg?react';
+import Button from '../Button/Button';
 
 interface ModalProps {
 	confirmationModalActive: boolean;
 	setConfirmationModal: (flag: boolean) => void;
 	text: string;
 	onConfirm: (confirmed: boolean) => void;
+	name?: string;
 }
 const ConfirmationModal: FC<ModalProps> = ({
 	confirmationModalActive,
 	setConfirmationModal,
 	text,
 	onConfirm,
+	name,
 }): JSX.Element | null => {
 	const { t } = useTranslation('confirmation_modal');
 
@@ -38,14 +41,12 @@ const ConfirmationModal: FC<ModalProps> = ({
 					className="confirmation_modal__content--cross_icon"
 					onClick={() => setConfirmationModal(false)}
 				/>
-				<p className="confirmation_modal__text">{t(`${text}`)} </p>
+				<p className="confirmation_modal__text">
+					{t(`${text}`)} <strong>{name}</strong>
+				</p>
 				<div className="confirmation_modal__buttons">
-					<button className="confirmation_modal__buttons--btn" onClick={() => handleClick(true)}>
-						{t('yes')}
-					</button>
-					<button className="confirmation_modal__buttons--btn" onClick={() => handleClick(false)}>
-						{t('no')}
-					</button>
+					<Button btnType={true} text={t('yes')} onClickBtn={handleClick} isConfirm={true} />
+					<Button btnType={false} text={t('no')} onClickBtn={handleClick} />
 				</div>
 			</div>
 		</div>

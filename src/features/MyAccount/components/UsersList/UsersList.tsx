@@ -12,6 +12,7 @@ import Search from '../../../../components/Search/Search';
 
 import SortAZIcon from '../../../../img/svg/sortAZ.svg?react';
 import SortZAIcon from '../../../../img/svg/sortZA.svg?react';
+import Button from '../../../../components/Button/Button';
 
 const UsersList: FC = (): JSX.Element => {
 	const { t } = useTranslation('users_list');
@@ -23,6 +24,8 @@ const UsersList: FC = (): JSX.Element => {
 	const totalItems = useAppSelector((state: RootState) => state.userDate.totalUsers);
 
 	const [confirmationModalActive, setConfirmationModal] = useState<boolean>(false);
+	const [userName, setUserName] = useState<string>('');
+	const [userStatus, setUserStatus] = useState<boolean>(false);
 
 	// change after adding endpoint
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -59,7 +62,7 @@ const UsersList: FC = (): JSX.Element => {
 
 	return (
 		<>
-			<Search search={search} />
+			<Search search={search} textPlaceholder={t('search_placeholder')} />
 			<table className="users_list">
 				<thead>
 					<tr>
@@ -77,7 +80,6 @@ const UsersList: FC = (): JSX.Element => {
 						<th className="users_list__item">{t('email')}</th>
 						<th className="users_list__item">{t('phone')}</th>
 						<th className="users_list__item">{t('address')}</th>
-						<th className="users_list__item--status">{t('status')}</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -102,9 +104,13 @@ const UsersList: FC = (): JSX.Element => {
 											<div
 												className={`users_list__status
 											${status ? 'users_list__status--active' : 'users_list__status--blocked'}`}
-												onClick={() => setConfirmationModal((prev) => !prev)}
+												onClick={() => {
+													setConfirmationModal((prev) => !prev);
+													setUserName(`${lastName}, ${firstName}`);
+													setUserStatus(status);
+												}}
 											>
-												{status ? t('active') : t('blocked')}
+												{status ? t('activate') : t('block')}
 											</div>
 										</Tooltip>
 									</td>
@@ -122,8 +128,9 @@ const UsersList: FC = (): JSX.Element => {
 			<ConfirmationModal
 				confirmationModalActive={confirmationModalActive}
 				setConfirmationModal={setConfirmationModal}
-				text={t('text')}
+				text={t(`${userStatus ? 'text_activate' : 'text_block'}`)}
 				onConfirm={onConfirm}
+				name={userName}
 			/>
 		</>
 	);

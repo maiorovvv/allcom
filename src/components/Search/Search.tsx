@@ -1,16 +1,18 @@
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import SearchIcon from '../../img/svg/search_icon.svg?react';
 
-import '../../assets/scss/elements/_search.scss';
-
 interface SearchProps {
 	search: (value: string) => void;
+	textPlaceholder: string;
 }
 
-const Search: FC<SearchProps> = ({ search }): JSX.Element => {
-	const { t } = useTranslation('search');
+const Search: FC<SearchProps> = ({ search, textPlaceholder }): JSX.Element => {
+	const sanitizeUserInput = (value: string): string => {
+		const sanitizedInput = value.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
+
+		return sanitizedInput;
+	};
 
 	return (
 		<form>
@@ -18,9 +20,10 @@ const Search: FC<SearchProps> = ({ search }): JSX.Element => {
 				<input
 					className="search__input"
 					type="text"
-					placeholder={t('placeholder')}
+					placeholder={textPlaceholder}
 					onChange={(event) => {
-						search(event.target.value);
+						const sanitizedValue = sanitizeUserInput(event.target.value);
+						search(sanitizedValue);
 					}}
 				/>
 				<SearchIcon className="search__icon" />

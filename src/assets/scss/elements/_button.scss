@@ -1,0 +1,13 @@
+.button {
+	padding: 1rem 4rem;
+	text-align: center;
+	border: none;
+	color: var(--white-color);
+	background-color: var(--secondary-color);
+	&:hover {
+		background: var(--hover-btn-color);
+	}
+	&__confirm {
+		background: var(--success-btn-color);
+	}
+}

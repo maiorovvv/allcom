@@ -3,7 +3,6 @@
 		height: 5rem;
 		border-bottom: 1px solid var(--border-color2);
 		transition: var(--transition);
-
 		&:hover {
 			background-color: var(--ofwhite-color);
 		}
@@ -32,16 +31,18 @@
 		color: var(--white-color);
 		transition: var(--transition);
 		cursor: pointer;
+		min-width: 10rem;
+		text-align: center;
 		&--active {
 			background-color: green;
 			&:hover {
-				opacity: 0.6;
+				background-color: rgb(1, 94, 1);
 			}
 		}
 		&--blocked {
 			background-color: red;
 			&:hover {
-				opacity: 0.6;
+				background-color: rgb(202, 4, 4);
 			}
 		}
 	}
