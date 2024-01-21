@@ -31,15 +31,16 @@ const AboutMe: FC = (): JSX.Element => {
 	useEffect(() => {
 		if (user) {
 			const {
-				name: { firstname = '', lastname = '' } = {},
-				username = '',
+				firstName = '',
+				lastName = '',
+				userName = '',
 				email = '',
 				address: { city = '', street = '', number = '' } = {},
 			} = user;
 
-			setHandleFirstname(firstname);
-			setHandleLastname(lastname);
-			setHandleUsername(username);
+			setHandleFirstname(firstName);
+			setHandleLastname(lastName);
+			setHandleUsername(userName);
 			setHandleEmail(email);
 			setHandleAddress(`${city}, ${street}, ${number}`);
 		}

@@ -24,7 +24,11 @@ const Tooltip: FC<TooltipProps> = ({ text, children }): JSX.Element => {
 	};
 
 	return (
-		<div onMouseEnter={onMouseEnterHandler} onMouseLeave={onMouseLeaveHandler}>
+		<div
+			className="tooltip__container"
+			onMouseEnter={onMouseEnterHandler}
+			onMouseLeave={onMouseLeaveHandler}
+		>
 			{children}
 			{isVisible && <div className="tooltip__text">{text}</div>}
 		</div>

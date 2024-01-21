@@ -131,7 +131,8 @@
 		"dashboard": "Dashboard",
 		"change_password": "Change password",
 		"my_auctions": "My auctions",
-		"about_me": "About me"
+		"about_me": "About me",
+		"users_list": "Users"
 	},
 	"about_me": {
 		"submit": "Submit",
@@ -237,5 +238,21 @@
 		"restore_password_create_new_desc": "You are about to set a new password for authentication on the website. Please create a new password and enter it twice in the fields below.\nThe password must be at least 8 characters long and contain at least 1 digit, 1 uppercase letter, 1 lowercase letter, and 1 special character.",
 		"restore_password_create_new_button": "Set New Password",
 		"redirect_message_new_password": "Password successfully changed.\nPlease use the new password to log in to the website.\nRedirecting to the Login page in {{seconds}} seconds"
+	},
+	"users_list": {
+		"name": "Full Name",
+		"email": "Email",
+		"phone": "Phone",
+		"address": "Address",
+		"tooltip_set_status": "block or unblock a user",
+		"text_block": "Block user",
+		"text_activate": "Unblock user",
+		"activate": "Activate",
+		"block": "Block",
+		"search_placeholder": "enter last name or first name..."
+	},
+	"confirmation_modal": {
+		"yes": "Confirm",
+		"no": "Cancel"
 	}
 }

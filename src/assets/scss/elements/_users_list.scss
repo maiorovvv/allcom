@@ -1,0 +1,49 @@
+.users_list {
+	&__info {
+		height: 5rem;
+		border-bottom: 1px solid var(--border-color2);
+		transition: var(--transition);
+		&:hover {
+			background-color: var(--ofwhite-color);
+		}
+	}
+	&__item {
+		width: 30rem;
+		&--name {
+			display: flex;
+			width: fit-content;
+			cursor: pointer;
+			transition: var(--transition);
+			&:hover {
+				color: var(--secondary-color);
+			}
+			&__sort_icon {
+				margin-left: .5rem;
+			}
+		}
+		&--status {
+			width: 5rem;
+		}
+	}
+	&__status {
+		font-size: 1.4rem;
+		padding: 5px;
+		color: var(--white-color);
+		transition: var(--transition);
+		cursor: pointer;
+		min-width: 10rem;
+		text-align: center;
+		&--active {
+			background-color: green;
+			&:hover {
+				background-color: rgb(1, 94, 1);
+			}
+		}
+		&--blocked {
+			background-color: red;
+			&:hover {
+				background-color: rgb(202, 4, 4);
+			}
+		}
+	}
+}

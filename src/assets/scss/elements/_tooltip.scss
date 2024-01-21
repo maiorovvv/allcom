@@ -1,12 +1,18 @@
-.tooltip__text {
-	position: absolute;
-  min-width: fit-content;
-  padding: 4px 12px;
-	right: 10px;
-  color: var(--black-color);
-  background-color: var(--white-color);
-  text-align: center;
-  white-space: nowrap;
-  pointer-events: none;
-	z-index: 1000;
+.tooltip {
+	&__container {
+		position: relative;
+	}
+	&__text {
+		position: absolute;
+		min-width: fit-content;
+		padding: 4px 12px;
+		right: 25px;
+		color: var(--black-color);
+		background-color: var(--white-color);
+		border: 1px solid var(--border-dark);
+		text-align: center;
+		white-space: nowrap;
+		pointer-events: none;
+		z-index: 1000;
+	}
 }

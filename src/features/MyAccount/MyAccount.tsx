@@ -53,6 +53,14 @@ const MyAccount: FC = (): JSX.Element => {
 							>
 								<div>{t('change_password')}</div>
 							</NavLink>
+							<NavLink
+								to="/user/my_account/users_list"
+								className={({ isActive }) =>
+									isActive ? 'active__nav_link my_account__menu--list' : 'my_account__menu--list'
+								}
+							>
+								<div>{t('users_list')}</div>
+							</NavLink>
 						</div>
 					</div>
 					<div className="my_account__wrapper">
