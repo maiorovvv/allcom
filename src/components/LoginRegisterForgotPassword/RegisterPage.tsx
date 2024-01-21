@@ -95,18 +95,21 @@ const RegisterPage: FC = (): JSX.Element => {
 		setPasswordConfirmIcon(passwordConfirmShow ? eye : eyeBlocked);
 	};
 
-	const CustomFormField: React.FC<CustomFormFieldProps> = ({ id, type = 'text', placeholder }) => (
-		<Form.Group as={Col} id={`form${id}`}>
-			<InputGroup>
-				<Field as={FloatingInput} id={id} name={id} type={type} placeholder={placeholder} />
-			</InputGroup>
-			<ErrorMessage name={id} component="div" className="warning_message--validation" />
-		</Form.Group>
-	);
+	const CustomFormField: React.FC<CustomFormFieldProps> = ({ id, type = 'text', placeholder }) => {
+		const fieldType = type === 'password' ? 'password' : 'text';
+		return (
+			<Form.Group as={Col} id={`form${id}`}>
+				<InputGroup>
+					<Field as={FloatingInput} id={id} name={id} type={fieldType} placeholder={placeholder} />
+				</InputGroup>
+				<ErrorMessage name={id} component="div" className="warning_message--validation" />
+			</Form.Group>
+		);
+	};
 
 	CustomFormField.propTypes = {
 		id: PropTypes.string.isRequired,
-		type: PropTypes.string.isRequired,
+		type: PropTypes.string,
 		placeholder: PropTypes.string.isRequired,
 	};
 
@@ -238,7 +241,7 @@ const RegisterPage: FC = (): JSX.Element => {
 					</Link>
 				</Form.Label>
 			</div>
-			<ErrorMessage name="readTerms" component="div" className="validation_warning_message" />
+			<ErrorMessage name="readTerms" component="div" className="warning_message--validation" />
 		</Form.Group>
 	);
 
