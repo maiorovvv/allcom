@@ -167,7 +167,7 @@
 		"register_here_text": "Зарегистрируйтесь, если вы новый клиент",
 		"client_private": "ЧАСТНОЕ ЛИЦО",
 		"user_line": "ДАННЫЕ ПОЛЬЗОВАТЕЛЯ",
-		"username": "Имя пользователя",
+		"first_name": "Имя пользователя",
 		"last_name": "Фамилия пользователя",
 		"phone_number_placeholder": "Номер Вашего телефона",
 		"placeholder_confirm_password": "Подтвердите пароль",

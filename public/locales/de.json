@@ -165,7 +165,7 @@
 		"register_here_text": "Registrieren Sie sich, wenn Sie ein neuer Kunde sind",
 		"client_private": "PRIVAT",
 		"user_line": "BENUTZERDATEN",
-		"username": "Benutzername",
+		"first_name": "Benutzername",
 		"last_name": "Nachname",
 		"phone_number_placeholder": "Ihre Telefonnummer",
 		"placeholder_confirm_password": "Bestätigen neues Passwort",
