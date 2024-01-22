@@ -166,7 +166,7 @@
 		"register_here_text": "Register here if you are a new customer",
 		"client_private": "PRIVATE",
 		"user_line": "USER DATA",
-		"username": "Username",
+		"first_name": "First Name",
 		"last_name": "Last Name",
 		"phone_number": "Phone Number",
 		"phone_number_placeholder": "Your Phone Number",
