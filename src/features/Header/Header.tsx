@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { RootState } from '../../app/store';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { loadProducts as loadProductsFromMyAuctions } from '../MyAccount/components/MyAuctions/myAuctionsSlice';
-import { loadProducts } from '../../features/user/wishProducts/productsSlice';
+import { loadProducts } from '../user/wishProducts/productsSlice';
 
 import SetLanguage from './SetLanguage/SetLanguage';
 import CategorySelect from './CategorySelect/CategorySelect';
@@ -60,159 +60,362 @@ const Header: React.FC = () => {
 		window.addEventListener('scroll', handleScroll);
 	}, []);
 
+	const upArrowToStartButton = (
+		<button
+			onClick={scrollToTop}
+			id="scroll__top"
+			className={`${isScrolled ? 'active' : ''}`}
+			data-testid="upArrowToStartButton"
+		>
+			<UpArrowIcon />
+		</button>
+	);
+	const searchCloseButton = (
+		<button
+			className="predictive__search--close__btn"
+			onClick={() => setSearchBoxIsActive(!searchBoxIsActive)}
+			aria-label="search close button"
+			data-offcanvas
+			data-testid="searchCloseButton"
+		>
+			<CrossIcon />
+		</button>
+	);
+	const searchButtonPopup = (
+		<button
+			className="predictive__search--button"
+			aria-label="search button"
+			type="submit"
+			data-testid="searchButtonPopup"
+		>
+			<SearchIcon />
+		</button>
+	);
+	const searchInputPopup = (
+		<label>
+			<input
+				className="predictive__search--input"
+				placeholder={t('search_here')}
+				type="text"
+				data-testid="searchInputPopup"
+			></input>
+		</label>
+	);
+	const wishlistBottom = (
+		<li className="offcanvas__stikcy--toolbar__list" data-testid="wishlistBottom">
+			<NavLink
+				className="offcanvas__stikcy--toolbar__btn cont_icons"
+				to="/user/my_account/products"
+			>
+				<div className="my_icon">
+					<span className="offcanvas__stikcy--toolbar__icon">
+						<HeartIcon />
+						<span className="items__count">{products.length}</span>
+					</span>
+				</div>
+				<span className="offcanvas__stikcy--toolbar__label">{t('wishlist')}</span>
+			</NavLink>
+		</li>
+	);
+	const myAuctionsBottom = (
+		<li className="offcanvas__stikcy--toolbar__list" data-testid="myAuctionsBottom">
+			<NavLink
+				className="offcanvas__stikcy--toolbar__btn minicart__open--btn cont_icons"
+				to="user/my_account/my_auctions"
+			>
+				<div className="my_icon">
+					<span className="offcanvas__stikcy--toolbar__icon">
+						<CartIconOffcanvas />
+					</span>
+					<span className="items__count">{productsInMyAuctions.length}</span>
+				</div>
+				<span className="offcanvas__stikcy--toolbar__label">{t('my_auctions')}</span>
+			</NavLink>
+		</li>
+	);
+	const searchBottom = (
+		<li className="offcanvas__stikcy--toolbar__list" data-testid="searchBottom">
+			<div
+				onClick={() => setSearchBoxIsActive(!searchBoxIsActive)}
+				className="offcanvas__stikcy--toolbar__btn search__open--btn"
+				data-offcanvas
+			>
+				<span className="offcanvas__stikcy--toolbar__icon">
+					<SearchIcon />
+				</span>
+				<span className="offcanvas__stikcy--toolbar__label">{t('search')}</span>
+			</div>
+		</li>
+	);
+	const categoriesBottom = (
+		<li className="offcanvas__stikcy--toolbar__list" data-testid="categoriesBottom">
+			<NavLink className="offcanvas__stikcy--toolbar__btn" to="/">
+				<span className="offcanvas__stikcy--toolbar__icon">
+					<CategoriesIcon />
+				</span>
+				<span className="offcanvas__stikcy--toolbar__label">{t('categories')}</span>
+			</NavLink>
+		</li>
+	);
+	const loginRegisterSidepanelButton = (
+		<div className="offcanvas__account--items" data-testid="loginRegisterSidepanelButton">
+			<a className="offcanvas__account--items__btn d-flex align-items-center" href="login.html">
+				<span className="offcanvas__account--items__icon">
+					<Human2Icon />
+				</span>
+				<span className="offcanvas__account--items__label">Login / Register</span>
+			</a>
+		</div>
+	);
+	const auctionSidepanel = (
+		<li className="offcanvas__menu_li" data-testid="auctionSidepanel">
+			<a className="header__menu--link" href="contact.html">
+				{t('auction')}{' '}
+			</a>
+		</li>
+	);
+	const registerSidepanel = (
+		<li className="offcanvas__menu_li" data-testid="registerSidepanel">
+			<a className="header__menu--link" href="contact.html">
+				{t('register')}{' '}
+			</a>
+		</li>
+	);
+	const faqSidepanel = (
+		<li className="offcanvas__menu_li" data-testid="faqSidepanel">
+			<a className="header__menu--link" href="contact.html">
+				{t('faq')}{' '}
+			</a>
+		</li>
+	);
+	const contactSidepanel = (
+		<li className="offcanvas__menu_li" data-testid="contactSidepanel">
+			<a className="header__menu--link" href="contact.html">
+				{t('contact_us')}{' '}
+			</a>
+		</li>
+	);
+	const aboutUsSidepanel = (
+		<li className="offcanvas__menu_li" data-testid="aboutUsSidepanel">
+			<a className="header__menu--link" href="about.html">
+				{t('about_us')}{' '}
+			</a>
+		</li>
+	);
+	const closeSidepanelButton = (
+		<button
+			onClick={() => setOffcanvasIsActive(!offcanvasIsActive)}
+			className="offcanvas__close--btn"
+			data-offcanvas
+			data-testid="closeSidepanelButton"
+		>
+			close
+		</button>
+	);
+	const logoSidepanel = (
+		<div className="offcanvas__logo" data-testid="logoSidepanel">
+			<img className="offcanvas__logo--img" src={SiteLogo} alt="Allcom Logo"></img>
+			{closeSidepanelButton}
+		</div>
+	);
+	const cart = (
+		<li className="header__account--items header__account2--items" data-testid="cart">
+			<NavLink
+				className="header__account--btn minicart__open--btn"
+				to="user/my_account/my_auctions"
+			>
+				<CartIcon />
+				<span className="items__count style2">{productsInMyAuctions.length}</span>
+			</NavLink>
+		</li>
+	);
+	const wishlist = (
+		<li
+			className="header__account--items header__account2--items d-none d-lg-block"
+			data-testid="wishlist"
+		>
+			<NavLink className="header__account--btn" to="/user/my_account/products">
+				<HeartIcon />
+				<span className="items__count  wishlist style2">{products.length}</span>
+			</NavLink>
+		</li>
+	);
+	const myAccount = (
+		<li className="header__account--items header__account2--items" data-testid="myAccount">
+			<NavLink className="header__account--btn" to={'user/my_account/about_me'}>
+				<HumanIcon />
+				<span className="visually-hidden">My Account</span>
+			</NavLink>
+		</li>
+	);
+	const search = (
+		<li
+			className="header__account--items header__account2--items  header__account--search__items d-none d-lg-block"
+			data-testid="search"
+		>
+			<div
+				className="header__account--btn search__open--btn"
+				onClick={() => setSearchBoxIsActive(!searchBoxIsActive)}
+			>
+				<SearchIcon />
+				<span className="visually-hidden">Search</span>
+			</div>
+		</li>
+	);
+	const auctionHideLink = (
+		<li className="header__menu--items style2" data-testid="auctionHideLink">
+			<a className="header__menu--link" href="/auction">
+				{t('auction')}
+			</a>
+		</li>
+	);
+	const registerHideLink = (
+		<li className="header__menu--items style2" data-testid="registerHideLink">
+			<a className="header__menu--link" href="/register">
+				{t('register')}
+			</a>
+		</li>
+	);
+	const faqHideLink = (
+		<li className="header__menu--items style2" data-testid="faqHideLink">
+			<a className="header__menu--link" href="/faq">
+				{t('faq')}
+			</a>
+		</li>
+	);
+	const contactHideLink = (
+		<li className="header__menu--items style2" data-testid="contactHideLink">
+			<a className="header__menu--link" href="/contact">
+				{t('contact_us')}
+			</a>
+		</li>
+	);
+	const aboutUsHideLink = (
+		<li className="header__menu--items style2" data-testid="aboutUsHideLink">
+			<a className="header__menu--link" href="/aboutUs">
+				{t('about_us')}
+			</a>
+		</li>
+	);
+	const wishlistTop = (
+		<li className="header__account--items" data-testid="wishlistTop">
+			<NavLink
+				className={({ isActive }) =>
+					isActive
+						? 'active__nav_link header__account--btn cont_icons'
+						: 'header__account--btn cont_icons'
+				}
+				to="/user/my_account/products"
+			>
+				<div className="my_icon">
+					<HeartIcon />
+					<span className="items__count_header">{products.length}</span>
+				</div>
+				<span className="header__account--btn__text">{t('wishlist')}</span>
+			</NavLink>
+		</li>
+	);
+	const cartTop = (
+		<li className="header__account--items" data-testid="cartTop">
+			<NavLink className="header__account--btn cont_icons" to="user/my_account/my_auctions">
+				<div className="my_icon">
+					<CartIcon />
+					<span className="items__count_header">{productsInMyAuctions.length}</span>
+				</div>
+				<span className="header__account--btn__text">{t('my_auctions')}</span>
+			</NavLink>
+		</li>
+	);
+	const myAccountTop = (
+		<li className="header__account--items" data-testid="myAccountTop">
+			<NavLink
+				className={({ isActive }) =>
+					isActive ? 'active__nav_link header__account--btn' : 'header__account--btn cont_icons'
+				}
+				to="/user/my_account/about_me"
+			>
+				<HumanIcon />
+				<span className="header__account--btn__text">{t('my_account')}</span>
+			</NavLink>
+		</li>
+	);
+	const searchButton = (
+		<button
+			className="header__search--button bg__secondary text-white"
+			type="submit"
+			aria-label="search button"
+			data-testid="searchButton"
+		>
+			<SearchIcon />
+		</button>
+	);
+	const searchInput = (
+		<label data-testid="searchInput">
+			<input className="header__search--input" placeholder={t('keyword_here')} type="text"></input>
+		</label>
+	);
+	const siteLogo = (
+		<div className="main__logo">
+			<h1 className="main__logo--title">
+				<NavLink to="/" className="main__logo--link">
+					<img className="main__logo--img" src={SiteLogo} alt="logo"></img>
+				</NavLink>
+			</h1>
+		</div>
+	);
+	const hamburger = (
+		<div className="offcanvas__header--menu__open open">
+			<div
+				className="offcanvas__header--menu__open--btn"
+				data-offcanvas
+				onClick={() => setOffcanvasIsActive(!offcanvasIsActive)}
+			>
+				<LinesIcon />
+				<span className="visually-hidden">Menu Open</span>
+			</div>
+		</div>
+	);
 	return (
 		<>
 			<header className="header__section">
 				<div className={`main__header header__sticky ${isScrolled ? 'sticky' : ''}`}>
 					<div className="container-fluid">
 						<div className="main__header--inner position__relative d-flex justify-content-between align-items-center">
-							<div className="offcanvas__header--menu__open open">
-								<div
-									className="offcanvas__header--menu__open--btn"
-									data-offcanvas
-									onClick={() => setOffcanvasIsActive(!offcanvasIsActive)}
-								>
-									<LinesIcon />
-									<span className="visually-hidden">Menu Open</span>
-								</div>
-							</div>
-							<div className="main__logo">
-								<h1 className="main__logo--title">
-									<NavLink to="/" className="main__logo--link">
-										<img className="main__logo--img" src={SiteLogo} alt="logo"></img>
-									</NavLink>
-								</h1>
-							</div>
+							{hamburger}
+							{siteLogo}
 							<div className="header__search--widget header__sticky--none d-none d-lg-block">
-								<form className="d-flex header__search--form" action="#">
+								<form className="d-flex header__search--form z-50" action="#">
 									<CategorySelect />
 									<div className="header__search--box">
-										<label>
-											<input
-												className="header__search--input"
-												placeholder={t('keyword_here')}
-												type="text"
-											></input>
-										</label>
-										<button
-											className="header__search--button bg__secondary text-white"
-											type="submit"
-											aria-label="search button"
-										>
-											<SearchIcon />
-										</button>
+										{searchInput}
+										{searchButton}
 									</div>
 								</form>
 							</div>
 							<div className="header__account header__sticky--none">
 								<ul className="d-flex">
-									<li className="header__account--items">
-										<NavLink
-											className={({ isActive }) =>
-												isActive
-													? 'active__nav_link header__account--btn'
-													: 'header__account--btn cont_icons'
-											}
-											to="/user/my_account/about_me"
-										>
-											<HumanIcon />
-											<span className="header__account--btn__text">{t('my_account')}</span>
-										</NavLink>
-									</li>
-
-									<li className="header__account--items">
-										<NavLink
-											className={({ isActive }) =>
-												isActive
-													? 'active__nav_link header__account--btn cont_icons'
-													: 'header__account--btn cont_icons'
-											}
-											to="/user/my_account/products"
-										>
-											<div className="my_icon">
-												<HeartIcon />
-												<span className="items__count_header">{products.length}</span>
-											</div>
-											<span className="header__account--btn__text">{t('wishlist')}</span>
-										</NavLink>
-									</li>
-									<li className="header__account--items">
-										<NavLink
-											className="header__account--btn cont_icons"
-											to="user/my_account/my_auctions"
-										>
-											<div className="my_icon">
-												<CartIcon />
-												<span className="items__count_header">{productsInMyAuctions.length}</span>
-											</div>
-											<span className="header__account--btn__text">{t('my_auctions')}</span>
-										</NavLink>
-									</li>
+									{myAccountTop}
+									{wishlistTop}
+									{cartTop}
 								</ul>
 							</div>
 							<div className="header__menu d-none header__sticky--block d-lg-block">
 								<nav className="header__menu--navigation">
 									<ul className="d-flex">
-										<li className="header__menu--items style2">
-											<a className="header__menu--link" href="about.html">
-												{t('about_us')}
-											</a>
-										</li>
-										<li className="header__menu--items style2">
-											<a className="header__menu--link" href="contact.html">
-												{t('contact_us')}
-											</a>
-										</li>
-										<li className="header__menu--items style2">
-											<a className="header__menu--link" href="contact.html">
-												{t('faq')}
-											</a>
-										</li>
-										<li className="header__menu--items style2">
-											<a className="header__menu--link" href="contact.html">
-												{t('register')}
-											</a>
-										</li>
-										<li className="header__menu--items style2">
-											<a className="header__menu--link" href="contact.html">
-												{t('auction')}
-											</a>
-										</li>
+										{aboutUsHideLink}
+										{contactHideLink}
+										{faqHideLink}
+										{registerHideLink}
+										{auctionHideLink}
 									</ul>
 								</nav>
 							</div>
 							<div className="header__account header__account2 header__sticky--block">
 								<ul className="d-flex">
-									<li className="header__account--items header__account2--items  header__account--search__items d-none d-lg-block">
-										<div
-											className="header__account--btn search__open--btn"
-											onClick={() => setSearchBoxIsActive(!searchBoxIsActive)}
-										>
-											<SearchIcon />
-											<span className="visually-hidden">Search</span>
-										</div>
-									</li>
-									<li className="header__account--items header__account2--items">
-										<NavLink className="header__account--btn" to={'user/my_account/about_me'}>
-											<HumanIcon />
-											<span className="visually-hidden">My Account</span>
-										</NavLink>
-									</li>
-									<li className="header__account--items header__account2--items d-none d-lg-block">
-										<NavLink className="header__account--btn" to="/user/my_account/products">
-											<HeartIcon />
-											<span className="items__count  wishlist style2">{products.length}</span>
-										</NavLink>
-									</li>
-									<li className="header__account--items header__account2--items">
-										<NavLink
-											className="header__account--btn minicart__open--btn"
-											to="user/my_account/my_auctions"
-										>
-											<CartIcon />
-											<span className="items__count style2">{productsInMyAuctions.length}</span>
-										</NavLink>
-									</li>
+									{search}
+									{myAccount}
+									{wishlist}
+									{cart}
 								</ul>
 							</div>
 						</div>
@@ -221,147 +424,42 @@ const Header: React.FC = () => {
 				<NavBarHeader />
 				<div className={`offcanvas__header ${offcanvasIsActive ? 'open' : ''}`}>
 					<div className="offcanvas__inner">
-						<div className="offcanvas__logo">
-							<img className="offcanvas__logo--img" src={SiteLogo} alt="Grocee Logo"></img>
-							<button
-								onClick={() => setOffcanvasIsActive(!offcanvasIsActive)}
-								className="offcanvas__close--btn"
-								data-offcanvas
-							>
-								close
-							</button>
-						</div>
+						{logoSidepanel}
 						<nav className="offcanvas__menu">
 							<ul className="offcanvas__menu_ul">
-								<li className="offcanvas__menu_li">
-									<a className="header__menu--link" href="about.html">
-										{t('about_us')}{' '}
-									</a>
-								</li>
-								<li className="offcanvas__menu_li">
-									<a className="header__menu--link" href="contact.html">
-										{t('contact_us')}{' '}
-									</a>
-								</li>
-								<li className="offcanvas__menu_li">
-									<a className="header__menu--link" href="contact.html">
-										{t('faq')}{' '}
-									</a>
-								</li>
-								<li className="offcanvas__menu_li">
-									<a className="header__menu--link" href="contact.html">
-										{t('register')}{' '}
-									</a>
-								</li>
-								<li className="offcanvas__menu_li">
-									<a className="header__menu--link" href="contact.html">
-										{t('auction')}{' '}
-									</a>
-								</li>
+								{aboutUsSidepanel}
+								{contactSidepanel}
+								{faqSidepanel}
+								{registerSidepanel}
+								{auctionSidepanel}
 							</ul>
-							<div className="offcanvas__account--items">
-								<a
-									className="offcanvas__account--items__btn d-flex align-items-center"
-									href="login.html"
-								>
-									<span className="offcanvas__account--items__icon">
-										<Human2Icon />
-									</span>
-									<span className="offcanvas__account--items__label">Login / Register</span>
-								</a>
-							</div>
+							{loginRegisterSidepanelButton}
 							{/* //TODO isOpen={''} */}
 							<SetLanguage isOpen={''} />
 						</nav>
 					</div>
 				</div>
 
-				<div className="offcanvas__stikcy--toolbar">
+				<div className="offcanvas__stikcy--toolbar z-50">
 					<ul className="d-flex justify-content-between">
-						<li className="offcanvas__stikcy--toolbar__list">
-							<NavLink className="offcanvas__stikcy--toolbar__btn" to="/">
-								<span className="offcanvas__stikcy--toolbar__icon">
-									<CategoriesIcon />
-								</span>
-								<span className="offcanvas__stikcy--toolbar__label">{t('categories')}</span>
-							</NavLink>
-						</li>
-						<li className="offcanvas__stikcy--toolbar__list ">
-							<div
-								onClick={() => setSearchBoxIsActive(!searchBoxIsActive)}
-								className="offcanvas__stikcy--toolbar__btn search__open--btn"
-								data-offcanvas
-							>
-								<span className="offcanvas__stikcy--toolbar__icon">
-									<SearchIcon />
-								</span>
-								<span className="offcanvas__stikcy--toolbar__label">{t('search')}</span>
-							</div>
-						</li>
-						<li className="offcanvas__stikcy--toolbar__list ">
-							<NavLink
-								className="offcanvas__stikcy--toolbar__btn minicart__open--btn cont_icons"
-								to="user/my_account/my_auctions"
-							>
-								<div className="my_icon">
-									<span className="offcanvas__stikcy--toolbar__icon">
-										<CartIconOffcanvas />
-									</span>
-									<span className="items__count">{productsInMyAuctions.length}</span>
-								</div>
-
-								<span className="offcanvas__stikcy--toolbar__label">{t('my_auctions')}</span>
-							</NavLink>
-						</li>
-						<li className="offcanvas__stikcy--toolbar__list">
-							<NavLink
-								className="offcanvas__stikcy--toolbar__btn cont_icons"
-								to="/user/my_account/products"
-							>
-								<div className="my_icon">
-									<span className="offcanvas__stikcy--toolbar__icon">
-										<HeartIcon />
-										<span className="items__count">{products.length}</span>
-									</span>
-								</div>
-								<span className="offcanvas__stikcy--toolbar__label">{t('wishlist')}</span>
-							</NavLink>
-						</li>
+						{categoriesBottom}
+						{searchBottom}
+						{myAuctionsBottom}
+						{wishlistBottom}
 					</ul>
 				</div>
 				<div className={`predictive__search--box ${searchBoxIsActive ? 'active_window' : ''}`}>
 					<div className="predictive__search--box__inner">
 						<h2 className="predictive__search--title">{t('search_products')}</h2>
 						<form className="predictive__search--form" action="#">
-							<label>
-								<input
-									className="predictive__search--input"
-									placeholder={t('search_here')}
-									type="text"
-								></input>
-							</label>
-							<button
-								className="predictive__search--button"
-								aria-label="search button"
-								type="submit"
-							>
-								<SearchIcon />
-							</button>
+							{searchInputPopup}
+							{searchButtonPopup}
 						</form>
 					</div>
-					<button
-						className="predictive__search--close__btn"
-						onClick={() => setSearchBoxIsActive(!searchBoxIsActive)}
-						aria-label="search close button"
-						data-offcanvas
-					>
-						<CrossIcon />
-					</button>
+					{searchCloseButton}
 				</div>
 			</header>
-			<button onClick={scrollToTop} id="scroll__top" className={`${isScrolled ? 'active' : ''}`}>
-				<UpArrowIcon />
-			</button>
+			{upArrowToStartButton}
 		</>
 	);
 };

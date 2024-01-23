@@ -17,6 +17,7 @@ const LoginPage: FC = (): JSX.Element => {
 	const appDispatch = useAppDispatch();
 	const [passwordShow, setPasswordShow] = useState(false);
 	const [passwordIcon, setPasswordIcon] = useState(eye);
+
 	const handleLogin = (formValues: { email: string; password: string }): void => {
 		appDispatch(login(formValues))
 			.then((res) => {
@@ -27,21 +28,23 @@ const LoginPage: FC = (): JSX.Element => {
 			})
 			.catch(() => {});
 	};
+
 	const validationSchema = Yup.object({
 		email: validateEmail(t),
 		password: validatePassword(t),
 	});
 
-	const labelAuthorization = <p className="h3 login_register--header">{t('login')}</p>;
+	const LabelAuthorization: FC = () => <p className="h3 login_register--header">{t('login')}</p>;
 
-	const headerDescription = <p className="login_register--header">{t('header_desc')}</p>;
+	const HeaderDescription: FC = () => <p className="login_register--header">{t('header_desc')}</p>;
+
 	const handlePasswordToggle: MouseEventHandler<HTMLDivElement> = (event) => {
 		event.preventDefault();
 		setPasswordShow(!passwordShow);
 		setPasswordIcon(passwordShow ? eye : eyeBlocked);
 	};
 
-	const inputLogin = (
+	const InputLogin: FC = () => (
 		<Form.Group as={Col} controlId="formEmail">
 			<InputGroup>
 				<Field
@@ -50,13 +53,20 @@ const LoginPage: FC = (): JSX.Element => {
 					type="email"
 					name="email"
 					placeholder={t('placeholder_email')}
+					data-testid="InputLogin"
 				/>
 			</InputGroup>
-			<ErrorMessage name="email" component="div" className="warning_message--validation" />
+			<ErrorMessage
+				name="email"
+				component="div"
+				className="warning_message--validation"
+				data-testid="error_firstName"
+			/>
 		</Form.Group>
 	);
-	const inputPassword = (
-		<Form.Group as={Col} controlId="formPassword">
+
+	const InputPassword: FC = () => (
+		<Form.Group as={Col} controlId="formPassword" data-testid="formPassword">
 			<InputGroup>
 				<div className="col d-flex">
 					<div className="col-12 ">
@@ -65,6 +75,7 @@ const LoginPage: FC = (): JSX.Element => {
 							name="password"
 							placeholder={t('placeholder_password')}
 							type={passwordShow ? 'text' : 'password'}
+							data-testid="InputPassword"
 						/>
 					</div>
 					<div className="col">
@@ -75,53 +86,77 @@ const LoginPage: FC = (): JSX.Element => {
 								handlePasswordToggle(event);
 							}}
 							className="floating_input--icon_eye_password"
+							data-testid="passwordIcon"
 						/>
 					</div>
 				</div>
 			</InputGroup>
-			<ErrorMessage name="password" component="div" className="warning_message--validation" />
+			<ErrorMessage
+				name="password"
+				component="div"
+				className="warning_message--validation"
+				data-testid="error_lastName"
+			/>
 		</Form.Group>
 	);
 
-	const checkboxRememberMe = (
+	const CheckboxRememberMe: FC = () => (
 		<div className="d-flex">
 			<Form.Check
 				type="checkbox"
 				id="checkbox_remember"
 				className="login_register--checkbox mb-3"
+				data-testid="checkbox_remember"
 			/>
 			<div className="login_register--checkbox">{t('remember_me')}</div>
 		</div>
 	);
-	const buttonForgotPassword = (
-		<Form.Label className="px-3" id="forgot_password">
+
+	const ButtonForgotPassword: FC = () => (
+		<Form.Label data-testid="ButtonForgotPassword" className="px-3" id="forgot_password">
 			<Link to="/restore_password" className="login_register--link pt-2">
 				{t('forgot_your_password')}
 			</Link>
 		</Form.Label>
 	);
 
-	const buttonLogin = (
-		<Button id="button_login" className="login_register--btn" name="submit" type="submit">
+	const ButtonLogin: FC = () => (
+		<Button
+			id="button_login"
+			data-testid="button_login"
+			className="login_register--btn"
+			name="submit"
+			type="submit"
+		>
 			{t('login')}
 		</Button>
 	);
-	const labelOR = (
-		<div className="login_register--divide mt-4">
+
+	const LabelOR: FC = () => (
+		<div data-testid="LabelOR" className="login_register--divide mt-4">
 			<span className="login_register--divide__text">{t('or')}</span>
 		</div>
 	);
 
-	const labelDontHaveAccount = (
-		<p className="login_register--signup__text">{t('dont_have_account')}</p>
+	const LabelDontHaveAccount: FC = () => (
+		<p data-testid="LabelDontHaveAccount" className="login_register--signup__text">
+			{t('dont_have_account')}
+		</p>
 	);
-	const buttonRegisterNow = (
+
+	const ButtonRegisterNow: FC = () => (
 		<Link to="/register" className="login_register--btn">
-			<Button id="button_register" className="login_register--btn" type="submit">
+			<Button
+				id="button_register"
+				data-testid="button_register"
+				className="login_register--btn"
+				type="submit"
+			>
 				{t('sign_up_now')}
 			</Button>
 		</Link>
 	);
+
 	return (
 		<div className="login_register--container">
 			<Formik
@@ -134,18 +169,18 @@ const LoginPage: FC = (): JSX.Element => {
 			>
 				{({ handleSubmit }) => (
 					<Form onSubmit={handleSubmit}>
-						{labelAuthorization}
-						{headerDescription}
-						{inputLogin}
-						{inputPassword}
+						<LabelAuthorization />
+						<HeaderDescription />
+						<InputLogin />
+						<InputPassword />
 						<div className="d-flex">
-							{checkboxRememberMe}
-							{buttonForgotPassword}
+							<CheckboxRememberMe />
+							<ButtonForgotPassword />
 						</div>
-						{buttonLogin}
-						{labelOR}
-						{labelDontHaveAccount}
-						{buttonRegisterNow}
+						<ButtonLogin />
+						<LabelOR />
+						<LabelDontHaveAccount />
+						<ButtonRegisterNow />
 					</Form>
 				)}
 			</Formik>

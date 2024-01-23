@@ -97,12 +97,27 @@ const RegisterPage: FC = (): JSX.Element => {
 
 	const CustomFormField: React.FC<CustomFormFieldProps> = ({ id, type = 'text', placeholder }) => {
 		const fieldType = type === 'password' ? 'password' : 'text';
+		const inputTestId = `input_${id}`;
+		const errorMessageTestId = `error_${id}`;
+
 		return (
 			<Form.Group as={Col} id={`form${id}`}>
 				<InputGroup>
-					<Field as={FloatingInput} id={id} name={id} type={fieldType} placeholder={placeholder} />
+					<Field
+						as={FloatingInput}
+						id={id}
+						name={id}
+						type={fieldType}
+						placeholder={placeholder}
+						data-testid={inputTestId}
+					/>
 				</InputGroup>
-				<ErrorMessage name={id} component="div" className="warning_message--validation" />
+				<ErrorMessage
+					name={id}
+					component="div"
+					className="warning_message--validation"
+					data-testid={errorMessageTestId}
+				/>
 			</Form.Group>
 		);
 	};
