@@ -70,7 +70,7 @@ const NavBarHeader: FC = (): JSX.Element => {
 											className={({ isActive }) =>
 												isActive ? 'active__nav_link header__menu--link' : 'header__menu--link'
 											}
-											to="/products/addnew"
+											to="/products/add_product"
 										>
 											{t('add_product')}
 										</NavLink>

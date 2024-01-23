@@ -71,7 +71,7 @@ const ModalWindowProduct: FC<ModalWindowProps> = ({
 									<HeartIcon />
 									{t('add_to_wishlist')}
 								</span>
-								<NavLink to="product/details/" onClick={() => getProductById(id)}>
+								<NavLink to="products/details/" onClick={() => getProductById(id)}>
 									<button className="modal_window__buttons--btn">{t('bet_now')}</button>
 								</NavLink>
 							</div>

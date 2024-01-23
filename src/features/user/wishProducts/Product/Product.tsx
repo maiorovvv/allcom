@@ -27,13 +27,13 @@ const Product: FC<ProductProps> = ({ product }): JSX.Element => {
 						</svg>
 					</button>
 					<div className="cart__thumbnail">
-						<a href="product/details.html">
+						<a href="products/details.html">
 							<img className="border-radius-5" src={image} alt="cart-product" />
 						</a>
 					</div>
 					<div className="cart__content">
 						<h4 className="cart__content--title">
-							<a href="product/details.html">{title}</a>
+							<a href="products/details.html">{title}</a>
 						</h4>
 						<span className="cart__content--variant">
 							{t('color')}: {color}
