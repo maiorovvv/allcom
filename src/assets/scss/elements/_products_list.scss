@@ -1,0 +1,30 @@
+.products_list {
+	&__container {
+		width: 80%;
+		margin: 2rem auto;
+		position: relative;
+	}
+	&__table {
+		margin: 0 auto;
+		text-align: center;
+	}
+	&__item {
+		width: 15rem;
+	}
+	&__info {
+		height: 5rem;
+		border-bottom: 1px solid var(--border-color2);
+		transition: var(--transition);
+		text-align: center;
+		&:hover {
+			background-color: var(--ofwhite-color);
+		}
+		&--name {
+			width: 30rem;
+			text-align: left;
+		}
+		&--price {
+			text-align: center
+		}
+	}
+}

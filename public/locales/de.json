@@ -105,7 +105,8 @@
 		"search_products": "Produktsuche",
 		"search_here": "Suche Hier",
 		"all_categories": "Alle Kategorien",
-		"keyword_here": "Stichwort hier..."
+		"keyword_here": "Stichwort hier...",
+		"products_list": "Producte"
 	},
 	"categories": {
 		"category_1": "Laptops und Computer",
@@ -132,7 +133,8 @@
 		"dashboard": "Dashboard",
 		"my_auctions": "Meine Auktionen",
 		"about_me": "Über mich",
-		"users_list": "Benutzer"
+		"users_list": "Benutzer",
+		"products_list": "Producte"
 	},
 	"about_me": {
 		"submit": "Absenden",
@@ -252,5 +254,17 @@
 	"confirmation_modal": {
 		"yes": "Bestätigen",
 		"no": "Stornieren"
+	},
+	"products_list": {
+		"name": "Name",
+		"created_at": "Erstellt",
+		"store": "Speicher",
+		"start_date": "Startdatum",
+		"end_date": "Endtermin",
+		"current_price": "Aktuellpreis",
+		"starting_price": "Startpreis",
+		"edit": "Ändern",
+		"search_placeholder": "geben Sie den Produktnamen ein ...",
+		"tooltip_edit": "produktdetails ändern"
 	}
 }

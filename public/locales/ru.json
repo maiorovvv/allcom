@@ -107,7 +107,8 @@
 		"search_here": "Поищи здесь",
 		"all_categories": "Все категории",
 		"keyword_here": "Ключевое слово здесь...",
-		"add_product": "Добавить товар"
+		"add_product": "Добавить товар",
+		"products_list": "Продукты"
 	},
 	"categories": {
 		"category_1": "Ноутбуки и компьютеры",
@@ -133,7 +134,8 @@
 		"change_password": "Изменить пароль",
 		"my_auctions": "Мои аукционы",
 		"about_me": "Обо мне",
-		"users_list": "Пользователи"
+		"users_list": "Пользователи",
+		"products_list": "Продукты"
 	},
 	"about_me": {
 		"submit": "Отправить",
@@ -244,7 +246,7 @@
 		"name": "Полное имя",
 		"email": "Емейл",
 		"phone": "Телефон",
-		"address":"Адрес",
+		"address": "Адрес",
 		"tooltip_set_status": "заблокировать или разблокировать пользователя",
 		"text_block": "Заблокировать пользователя",
 		"text_activate": "Разблокировать пользователя",
@@ -255,5 +257,17 @@
 	"confirmation_modal": {
 		"yes": "Подтвердить",
 		"no": "Отменить"
+	},
+	"products_list": {
+		"name": "Название",
+		"created_at": "Создан",
+		"store": "Склад",
+		"start_date": "Начало",
+		"end_date": "Конец",
+		"current_price": "Актуальная цена",
+		"starting_price": "Стартовая цена",
+		"edit": "Изменить",
+		"search_placeholder": "введите название продукта...",
+		"tooltip_edit": "изменить данные о товаре"
 	}
 }

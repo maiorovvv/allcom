@@ -18,7 +18,8 @@ import RegisterPage from './components/LoginRegisterForgotPassword/RegisterPage'
 import RestorePassword from './components/LoginRegisterForgotPassword/RestorePassword';
 import RestorePasswordWait from './components/LoginRegisterForgotPassword/RestoreUserValidationWait';
 import RestoreEnterNewPAssword from './components/LoginRegisterForgotPassword/RestoreEnterNewPAssword';
-import UsersList from './features/MyAccount/components/UsersList/UsersList';
+import UsersList from './features/MyAccount/components/admin/UsersList';
+import ProductsList from './features/MyAccount/components/admin/ProductsList';
 
 function App(): JSX.Element {
 	return (
@@ -34,6 +35,7 @@ function App(): JSX.Element {
 						<Route path="my_auctions" element={<MyAuctions />} />
 						<Route path="users_list" element={<UsersList />} />
 					</Route>
+					<Route path="product/products_list" element={<ProductsList />} />
 					<Route path="product/details/" element={<ProductDetails />} />
 					<Route path="shipping" element={<Shipping />} />
 					<Route path="payment" element={<Payment />} />
