@@ -2,16 +2,16 @@ import { FC, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 
-import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
-import { RootState } from '../../../../app/store';
-import { loadAllProducts } from '../../../HomePage/HomePageSlice';
-import { getFoundUser, loadDefaultUsers } from '../../UserSlice';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { RootState } from '../../app/store';
+import { loadAllProducts } from '../HomePage/HomePageSlice';
+import { getFoundUser, loadDefaultUsers } from '../MyAccount/UserSlice';
 
-import Spinner from '../../../../components/Spinner/Spinner';
-import Pagination from '../../../../components/Pagination/Pagination';
-import Tooltip from '../../../../components/Tooltip/Tooltip';
-import Search from '../../../../components/Search/Search';
-import Button from '../../../../components/Button/Button';
+import Spinner from '../../components/Spinner/Spinner';
+import Pagination from '../../components/Pagination/Pagination';
+import Tooltip from '../../components/Tooltip/Tooltip';
+import Search from '../../components/Search/Search';
+import Button from '../../components/Button/Button';
 
 const ProductsList: FC = (): JSX.Element => {
 	const { t } = useTranslation('products_list');

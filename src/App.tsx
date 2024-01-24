@@ -18,8 +18,8 @@ import RegisterPage from './components/LoginRegisterForgotPassword/RegisterPage'
 import RestorePassword from './components/LoginRegisterForgotPassword/RestorePassword';
 import RestorePasswordWait from './components/LoginRegisterForgotPassword/RestoreUserValidationWait';
 import RestoreEnterNewPAssword from './components/LoginRegisterForgotPassword/RestoreEnterNewPAssword';
-import UsersList from './features/MyAccount/components/admin/UsersList';
-import ProductsList from './features/MyAccount/components/admin/ProductsList';
+import UsersList from './features/MyAccount/components/UsersList';
+import ProductsList from './features/ProductsList/ProductsList';
 
 function App(): JSX.Element {
 	return (
