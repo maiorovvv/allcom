@@ -125,7 +125,7 @@ const RegisterPage: FC = (): JSX.Element => {
 		</div>
 	);
 
-	const firstName = <CustomFormField id="firstName" placeholder={t('username')} />;
+	const firstName = <CustomFormField id="firstName" placeholder={t('first_name')} />;
 	const lastName = <CustomFormField id="lastName" placeholder={t('last_name')} />;
 	const email = <CustomFormField id="email" placeholder={t('placeholder_email')} />;
 	const phoneNumber = (
@@ -182,7 +182,10 @@ const RegisterPage: FC = (): JSX.Element => {
 	const toolboxClientFirma = (
 		<Form.Group as={Col} id="account_type_switch">
 			<div className="d-flex justify-content-center">
-				<Form.Label className={` ${!toolboxEnabled ? 'login_register--toolbox_client' : ''}`}>
+				<Form.Label
+					id="checkbox_client_firma"
+					className={` ${!toolboxEnabled ? 'login_register--toolbox_client' : ''}`}
+				>
 					{t('client_private')}
 				</Form.Label>
 				<Form.Check

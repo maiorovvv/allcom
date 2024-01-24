@@ -20,7 +20,7 @@ const NavBarHeader: FC = (): JSX.Element => {
 											className={({ isActive }) =>
 												isActive ? 'active__nav_link header__menu--link' : 'header__menu--link'
 											}
-											to="/about"
+											to="/about_us"
 										>
 											{t('about_us')}
 										</NavLink>
