@@ -11,7 +11,7 @@ import Spinner from '../../../../components/Spinner/Spinner';
 
 import 'swiper/css/pagination';
 
-const AUTPLAY_DELAY = 2000;
+const AUTOPLAY_DELAY = 2000;
 const SPACE_BETWEEN_SLIDES = 50;
 const SLIDES_PER_VIEW = 1;
 
@@ -38,7 +38,7 @@ const Poster: FC = (): JSX.Element => {
 		<>
 			{products && (
 				<Swiper
-					autoplay={{ delay: AUTPLAY_DELAY }}
+					autoplay={{ delay: AUTOPLAY_DELAY }}
 					spaceBetween={SPACE_BETWEEN_SLIDES}
 					slidesPerView={SLIDES_PER_VIEW}
 					navigation={true}

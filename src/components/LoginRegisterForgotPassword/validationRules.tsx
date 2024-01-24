@@ -386,7 +386,8 @@ export const validateCompanyName = (t: TFunction): Yup.StringSchema<string> => {
 		.required(t('validation.companyName.required'))
 		.test('companyName-validation', t('validation.invalid.error'), function (value) {
 			const errors = [];
-			if (!/[a-z0-9,;:`"№!#%@$%*()={}[?~^&< >]{2,30}$/gi.test(value ?? '')) {
+			const specChar = (value ?? '').match(/[/|<>]/g)?.length ?? 0;
+			if (!/[a-z0-9,;:`"№!#%@$%*()={}[?~^& ]{2,30}$/gi.test(value ?? '')) {
 				errors.push(
 					new Yup.ValidationError(t('validation.invalid.error'), value ?? '', 'companyName')
 				);
@@ -395,6 +396,11 @@ export const validateCompanyName = (t: TFunction): Yup.StringSchema<string> => {
 			if (letterCount < 2) {
 				errors.push(
 					new Yup.ValidationError(t('validation.error.length'), value ?? '', 'companyName')
+				);
+			}
+			if (specChar >= 1 && !/[+-]/.test(value ?? '')) {
+				errors.push(
+					new Yup.ValidationError(t('validation.error.spec.char'), value ?? '', 'companyName')
 				);
 			}
 			if (errors.length > 0) {
