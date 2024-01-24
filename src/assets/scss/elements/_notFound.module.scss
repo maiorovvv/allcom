@@ -3,7 +3,16 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: flex-start;
-	height: 100rex; 
+	height: 35em; 
+	@media (min-width: 375px) {
+		height: 25em; 
+	}
+	@media (min-width: 576px) {
+		height: 30em; 
+	}
+	@media (min-width: 992px) {
+		height: 35em; 
+	}
 	background-image: url('/src/img/other/404.png');
 	background-size: contain;
 	background-position: center;
