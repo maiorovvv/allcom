@@ -11,7 +11,7 @@ import Spinner from '../../../../components/Spinner/Spinner';
 
 import 'swiper/css/pagination';
 
-const AUTPLAY_DELAY = 2000;
+const AUTOPLAY_DELAY = 2000;
 const SPACE_BETWEEN_SLIDES = 50;
 const SLIDES_PER_VIEW = 1;
 
@@ -38,7 +38,7 @@ const Poster: FC = (): JSX.Element => {
 		<>
 			{products && (
 				<Swiper
-					autoplay={{ delay: AUTPLAY_DELAY }}
+					autoplay={{ delay: AUTOPLAY_DELAY }}
 					spaceBetween={SPACE_BETWEEN_SLIDES}
 					slidesPerView={SLIDES_PER_VIEW}
 					navigation={true}
@@ -46,7 +46,7 @@ const Poster: FC = (): JSX.Element => {
 						dynamicBullets: true,
 					}}
 					modules={[EffectCoverflow, Pagination, Autoplay, EffectCreative, Navigation]}
-					className="poster_swiper"
+					className="poster_swiper z-0"
 				>
 					{products.map(({ id, thumbnail, title, price, time }) => (
 						<SwiperSlide key={id} className="poster_col">
