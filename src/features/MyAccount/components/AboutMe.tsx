@@ -38,9 +38,10 @@ const AboutMe: FC = (): JSX.Element => {
 				address: { city = '', street = '', number = '' } = {},
 			} = user;
 
-			setHandleFirstname(firstName);
-			setHandleLastname(lastName);
-			setHandleUsername(userName);
+			//TODO unsafe types
+			//setHandleFirstname(firstname || '');
+			//setHandleLastname(lastname || '');
+			//setHandleUsername(username);
 			setHandleEmail(email);
 			setHandleAddress(`${city}, ${street}, ${number}`);
 		}

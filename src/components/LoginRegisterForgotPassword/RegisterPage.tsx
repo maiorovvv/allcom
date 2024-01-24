@@ -10,7 +10,7 @@ import * as Yup from 'yup';
 import * as PropTypes from 'prop-types';
 
 import { useAppDispatch } from '../../app/hooks';
-import { register } from '../../features/auth/regSlice';
+import { register } from '../../features/auth/authSlice';
 import FloatingInput from '../FloatingInput';
 import {
 	validateFirstName,
@@ -78,6 +78,8 @@ const RegisterPage: FC = (): JSX.Element => {
 				const payload = res.payload as { message: string };
 				if (payload.message) {
 					console.error(payload.message);
+				} else {
+					window.location.href = '/';
 				}
 			})
 			.catch(() => {});
