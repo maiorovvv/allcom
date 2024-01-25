@@ -6,9 +6,11 @@ type FloatingInputProps = {
 	name: string;
 	placeholder: string;
 	type: string;
+	step?: string;
+	value?: string | number;
 };
 
-const FloatingInput: FC<FloatingInputProps> = ({ id, name, placeholder, type }) => {
+const FloatingInput: FC<FloatingInputProps> = ({ id, name, placeholder, type, step, value }) => {
 	const formik = useFormikContext();
 	const [isValidationTriggered, setIsValidationTriggered] = useState(false);
 	const isInvalid =
@@ -30,11 +32,13 @@ const FloatingInput: FC<FloatingInputProps> = ({ id, name, placeholder, type }) 
 		<div className="floating_input form-floating">
 			<Field
 				type={type}
+				step={step}
 				className={`floating_input--field form-control ${isInvalid ? 'is-invalid' : ''} ${
 					isValid ? 'is-valid' : ''
 				}`}
 				id={id}
 				name={name}
+				value={value}
 				placeholder={placeholder}
 				onFocus={handleBlur}
 				onBlur={handleBlur}

@@ -20,6 +20,7 @@
 	"dependencies": {
 		"@reduxjs/toolkit": "^1.9.7",
 		"bootstrap": "^5.3.2",
+		"browser-image-compression": "^2.0.2",
 		"date-fns": "^3.3.0",
 		"formik": "^2.4.5",
 		"i18next": "^23.6.0",

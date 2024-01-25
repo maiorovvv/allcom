@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { FC, memo } from 'react';
 import { Form, Col, InputGroup } from 'react-bootstrap';
 import { Field, ErrorMessage } from 'formik';
 
@@ -9,12 +9,15 @@ interface Props {
 	name: string;
 	placeholder?: string;
 	type?: string;
-	// children?: ReactNode;
+	step?: string;
 	className?: string;
+	value?: string | number;
 }
 
 const FormikInputField: FC<Props> = (props) => {
-	const { id, name, placeholder, type = 'text', className } = props;
+	const { id, name, placeholder, type = 'text', className, value, step } = props;
+	console.log({ id });
+	console.log({ value });
 
 	return (
 		<Form.Group as={Col} controlId={`form${id}`}>
@@ -24,8 +27,10 @@ const FormikInputField: FC<Props> = (props) => {
 					id={id}
 					className={className}
 					type={type}
+					step={step}
 					name={name}
 					placeholder={placeholder}
+					value={value}
 				/>
 			</InputGroup>
 			<ErrorMessage
@@ -38,4 +43,4 @@ const FormikInputField: FC<Props> = (props) => {
 	);
 };
 
-export default FormikInputField;
+export default memo(FormikInputField);

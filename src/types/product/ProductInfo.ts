@@ -1,7 +1,7 @@
 import { AuctionFormValues } from '../auction/AuctionFormValues';
 import { StorageFormValues } from '../storage/StorageFormValues';
 
-export interface ProductFormValues {
+export interface ProductInfo {
 	product: {
 		id?: number;
 		name: string;
@@ -14,5 +14,4 @@ export interface ProductFormValues {
 	};
 	auction: AuctionFormValues;
 	storage: StorageFormValues;
-	images: File[];
 }

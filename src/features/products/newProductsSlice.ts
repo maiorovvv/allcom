@@ -3,6 +3,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import * as api from './api';
 import ProductState from '../../types/product/ProductState';
 import { ProductFormValues } from '../../types/product/ProductFormValues';
+import { ProductInfo } from '../../types/product/ProductInfo';
 
 const initialState: ProductState = {
 	product: null,
@@ -27,7 +28,7 @@ export const newProductsSlice = createSlice({
 			.addCase(createProduct.pending, (state: { loading: boolean }) => {
 				state.loading = true;
 			})
-			.addCase(createProduct.fulfilled, (state, action: PayloadAction<ProductFormValues>) => {
+			.addCase(createProduct.fulfilled, (state, action: PayloadAction<ProductInfo>) => {
 				if (action.payload.error) {
 					state.error = action.payload.message || 'Unknown error occurred';
 					state.product = null;

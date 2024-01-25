@@ -1,4 +1,4 @@
-import { FC, ChangeEvent, useState } from 'react';
+import { FC, ChangeEvent, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router';
 import { Formik } from 'formik';
 import { Form, Button } from 'react-bootstrap';
@@ -11,6 +11,7 @@ import { selectError, selectLoading } from '../selectors';
 import Spinner from '../../../components/Spinner/Spinner';
 import ProductFields from '../ProductFields/ProductFields';
 import { ProductFormValues } from '../../../types/product/ProductFormValues';
+import resizeAndCompressImage from '../../../components/utils/imageResizer';
 
 const DEFAULT_START_WEEK = 1;
 const DEFAULT_PLANNED_END_WEEK = 2;
@@ -21,6 +22,7 @@ const START_INDEX = 0;
 const ISO_DATE_LENGTH = 16;
 
 const AddProductPage: FC = () => {
+	console.log('AAAAADDDDDSSSЕЕЕЕЕ');
 	const dispatch = useAppDispatch();
 
 	function getNextMondayAtNoonAfterWeeks(weeks: number): string {
@@ -38,18 +40,53 @@ const AddProductPage: FC = () => {
 	);
 
 	const error = useAppSelector(selectError);
+	const [errorMessage, setErrorMessage] = useState<string | undefined>(error);
 	const loading = useAppSelector(selectLoading);
+	const [isFileLoading, setIsFileLoading] = useState<boolean>(false);
 	const [files, setFiles] = useState<File[]>([]);
-	const handleFileChange = (event: ChangeEvent<HTMLInputElement>): void => {
+
+	const handleFileChange = async (event: ChangeEvent<HTMLInputElement>): Promise<void> => {
 		if (event.target.files) {
-			setFiles(Array.from(event.target.files));
+			setIsFileLoading(true);
+			const newFileList = Array.from(event.target.files);
+			const allFiles = [...files];
+
+			for (const newFile of newFileList) {
+				if (!allFiles.some((file) => file.name === newFile.name && file.size === newFile.size)) {
+					try {
+						const resizedFile = await resizeAndCompressImage({
+							file: newFile,
+							maxWidth: 1600,
+							maxHeight: 1200,
+							maxSizeMB: 1,
+						});
+						allFiles.push(resizedFile);
+					} catch (e) {
+						if (e instanceof Error) {
+							setErrorMessage(`Error resizing file ${newFile.name}: ${e.message}`);
+						} else {
+							setErrorMessage(`Error resizing file ${newFile.name}`);
+						}
+					}
+				}
+			}
+
+			setFiles(allFiles);
+			setIsFileLoading(false);
 		}
 	};
 
+	const formInitialValues = useMemo(() => {
+		return initialValues(startAt, plannedEndAt);
+	}, []);
+
 	const navigate = useNavigate();
-	const handleSave = async (formValues: ProductFormValues): Promise<void> => {
+	const handleSave = async (
+		formValues: ProductFormValues,
+		setValues: (formValues: ProductFormValues) => void
+	): Promise<void> => {
 		console.log({ formValues });
-		formValues.files = files;
+		formValues.images = files;
 		const dispatchResult = await dispatch(createProduct(formValues));
 		if (createProduct.fulfilled.match(dispatchResult)) {
 			dispatch(resetError());
@@ -57,110 +94,40 @@ const AddProductPage: FC = () => {
 		}
 	};
 
-	if (loading) {
-		return (
-			<div className="text-center">
-				<Spinner />
-			</div>
-		);
-	}
-
-	const dd = files.map((file) => URL.createObjectURL(file));
+	const linkList = files.map((file) => URL.createObjectURL(file));
+	const handleDeleteImage = (index: number): void => {
+		const updatedFiles = files.filter((_, fileIndex) => fileIndex !== index);
+		setFiles(updatedFiles);
+	};
 
 	return (
 		<div>
 			<Formik
-				initialValues={initialValues(startAt, plannedEndAt)}
+				initialValues={formInitialValues}
 				validationSchema={ProductValidationSchema}
-				onSubmit={(formValues, { setSubmitting }) => {
-					handleSave(formValues);
-					setSubmitting(false);
+				enableReinitialize={true}
+				onSubmit={(formValues, { setSubmitting, setValues }) => {
+					handleSave(formValues, setValues).finally(() => setSubmitting(false));
 				}}
 			>
-				{({ handleSubmit, setFieldValue }) => (
+				{({ handleSubmit, values, handleChange, setFieldValue }) => (
 					<Form onSubmit={handleSubmit}>
 						<ProductFields
-							startAt={startAt}
-							plannedEndAt={plannedEndAt}
 							onFileChange={handleFileChange}
-							setStartAt={setStartAt}
-							setPlannedEndAt={setPlannedEndAt}
+							linkList={linkList}
+							values={values}
+							handleChange={handleChange}
+							onDeleteImage={handleDeleteImage}
 							setFieldValue={setFieldValue}
-							urls={dd}
 						/>
-						{/* <div className="container row">
-							<div className="col-6">
-								<h2>Product Info</h2>
-								<FormikInputField name="name" placeholder="Product Name" id="ProductName" />
-								<FormikTextAriaField
-									label="description"
-									name="description"
-									placeholder="Description"
-									id="description"
-									className={styles.description}
-								/>
-								<FormikInputField name="weight" placeholder="weight" id="weight" type="number" />
-								<FormikInputField name="color" placeholder="color" id="color" />
-								<FormikInputField
-									name="categoryId"
-									placeholder="categoryId"
-									id="categoryId"
-									type="number"
-								/>
-								<FormikInputField
-									name="buyPrice"
-									placeholder="buyPrice"
-									id="buyPrice"
-									type="number"
-								/>
-							</div>
-							<div className="col-6">
-								<div>
-									<h2>Auction Info</h2>
-									<FormikInputField
-										id="startPrice"
-										name="auction.startPrice"
-										placeholder="start Price"
-										type="number"
-									/>
-									<Datepicker
-										id="startAt"
-										name="auction.startAt"
-										label="Start At"
-										dateTime={startAt}
-										handleDateTimeChange={(event) =>
-											handleDateTimeChange(event, 'auction.startAt', setStartAt, setFieldValue)
-										}
-									/>
-									<Datepicker
-										id="plannedEndAt"
-										name="auction.plannedEndAt"
-										label="Planned End At"
-										dateTime={plannedEndAt}
-										handleDateTimeChange={(event) =>
-											handleDateTimeChange(
-												event,
-												'auction.plannedEndAt',
-												setPlannedEndAt,
-												setFieldValue
-											)
-										}
-									/>
+						<Button name="submit" type="submit" disabled={loading}>
+							{loading || isFileLoading ? (
+								<div className="text-center">
+									<Spinner />
 								</div>
-								<div>
-									<h2>Storage Info</h2>
-									<FormikInputField name="storage.area" id="area" />
-									<FormikInputField name="storage.rack" id="rack" type="number" />
-									<FormikInputField name="storage.section" id="section" type="number" />
-									<FormikInputField name="storage.shelve" id="shelve" type="number" />
-								</div>
-							</div>
-						</div>
-						<input type="file" multiple onChange={handleFileChange} />
-						{renderSwiperSlides()} */}
-
-						<Button name="submit" type="submit">
-							Submit
+							) : (
+								'Submit'
+							)}
 						</Button>
 					</Form>
 				)}

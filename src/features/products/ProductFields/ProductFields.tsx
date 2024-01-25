@@ -1,71 +1,97 @@
-import { ChangeEvent, Dispatch, FC, SetStateAction, useCallback, useMemo } from 'react';
-import { FormikErrors } from 'formik';
+import { ChangeEvent, FC, memo } from 'react';
+import { FormikProps } from 'formik';
+import Select from 'react-select';
 
 import FormikInputField from '../../../components/FormikInputField/FormikInputField';
 import Datepicker from '../../../components/Datepicker/Datepicker';
 import FormikTextAriaField from '../../../components/FormikTextAriaField/FormikTextAriaField';
 import { ProductFormValues } from '../../../types/product/ProductFormValues';
+import SwiperModalWindow from '../../../components/SwiperModalWindow/SwiperModalWindow';
+
+import { useTranslation } from 'react-i18next';
 
 import styles from './ProductFields.module.css';
-import SwiperModalWindow from '../../HomePage/components/ModalWindow/SwiperModalWindow';
+
+const DECIMAL_STEP = '0.01';
+
+type Options = {
+	value: number;
+	label: string;
+};
+
 interface PropsInterface {
-	startAt: string;
-	plannedEndAt: string;
-	urls: string[];
-	onFileChange: (event: ChangeEvent<HTMLInputElement>) => void;
-	setStartAt: Dispatch<SetStateAction<string>>;
-	setPlannedEndAt: Dispatch<SetStateAction<string>>;
-	setFieldValue: (
-		field: string,
-		value: any,
-		shouldValidate?: boolean
-	) => Promise<void | FormikErrors<ProductFormValues>>;
+	onDeleteImage: (index: number) => void;
+	onFileChange: (event: ChangeEvent<HTMLInputElement>) => Promise<void>;
+	linkList: string[];
+	values: ProductFormValues;
+	handleChange: FormikProps<ProductFormValues>['handleChange'];
+	setFieldValue: FormikProps<ProductFormValues>['setFieldValue'];
 }
 const ProductFields: FC<PropsInterface> = (props) => {
-	const { startAt, plannedEndAt, onFileChange, urls, setStartAt, setPlannedEndAt, setFieldValue } =
-		props;
+	const { linkList, values, handleChange, onDeleteImage, onFileChange, setFieldValue } = props;
 
-	const handleDateTimeChange = (
-		event: ChangeEvent<HTMLInputElement>,
-		fieldName: string,
-		targetSetter: Dispatch<SetStateAction<string>>
-	): void => {
-		const newValue = event.target.value;
-		targetSetter(newValue);
-		setFieldValue(fieldName, newValue);
+	console.log('ProductFields');
+	const { t } = useTranslation('categories');
+
+	const selectOptions: Options[] = [
+		{ value: 1, label: t('category_1') },
+		{ value: 2, label: t('category_2') },
+		{ value: 3, label: t('category_3') },
+		{ value: 4, label: t('category_4') },
+		{ value: 5, label: t('category_5') },
+		{ value: 6, label: t('category_6') },
+		{ value: 7, label: t('category_7') },
+		{ value: 8, label: t('category_8') },
+		{ value: 9, label: t('category_9') },
+	];
+
+	const filterOptions = (selectedValue: number): Options[] => {
+		return selectOptions.filter(({ value }) => value === selectedValue);
 	};
 
-	const renderSwiperSlides = useCallback((): JSX.Element => {
-		console.log('AAAAAA');
-		// setFieldValue('images', urls);
-		return <SwiperModalWindow images={urls} />;
-	}, [urls]);
 	return (
 		<>
 			<div className="container row">
+				<input type="file" name="product.images" multiple onChange={onFileChange} />
+				<SwiperModalWindow images={linkList} onDelete={onDeleteImage} />
 				<div className="col-6">
 					<h2>Product Info</h2>
-					<FormikInputField name="product.name" placeholder="Product Name" id="ProductName" />
+					<FormikInputField
+						name="product.name"
+						placeholder="name"
+						id="productName"
+						value={values.product.name}
+					/>
 					<FormikTextAriaField
 						label="description"
 						name="product.description"
 						placeholder="Description"
 						id="description"
 						className={styles.description}
-					/>
-					<FormikInputField name="product.weight" placeholder="weight" id="weight" type="number" />
-					<FormikInputField name="product.color" placeholder="color" id="color" />
-					<FormikInputField
-						name="categoryId"
-						placeholder="categoryId"
-						id="categoryId"
-						type="number"
+						value={values.product.description}
 					/>
 					<FormikInputField
-						name="product.buyPrice"
-						placeholder="buyPrice"
-						id="buyPrice"
+						name="product.weight"
+						placeholder="weight"
+						id="weight"
 						type="number"
+						step={DECIMAL_STEP}
+						value={values.product.weight}
+					/>
+					<FormikInputField
+						name="product.color"
+						placeholder="color"
+						id="color"
+						value={values.product.color}
+					/>
+					<Select
+						defaultValue={selectOptions.find(
+							(option) => option.value === values.product.categoryId
+						)}
+						value={filterOptions(values.product.categoryId)}
+						name="product.categoryId"
+						options={selectOptions}
+						onChange={(option) => setFieldValue('product.categoryId', option ? option.value : null)}
 					/>
 				</div>
 				<div className="col-6">
@@ -76,40 +102,49 @@ const ProductFields: FC<PropsInterface> = (props) => {
 							name="auction.startPrice"
 							placeholder="start Price"
 							type="number"
+							value={values.auction.startPrice}
 						/>
 						<Datepicker
 							id="startAt"
 							name="auction.startAt"
 							label="Start At"
-							dateTime={startAt}
-							handleDateTimeChange={(event) =>
-								handleDateTimeChange(event, 'auction.startAt', setStartAt)
-							}
+							value={values.auction.startAt}
+							handleChange={handleChange}
 						/>
 						<Datepicker
 							id="plannedEndAt"
 							name="auction.plannedEndAt"
 							label="Planned End At"
-							dateTime={plannedEndAt}
-							handleDateTimeChange={(event) =>
-								handleDateTimeChange(event, 'auction.plannedEndAt', setPlannedEndAt)
-							}
+							value={values.auction.plannedEndAt}
+							handleChange={handleChange}
 						/>
 					</div>
 					<div>
 						<h2>Storage Info</h2>
-						<FormikInputField name="storage.area" id="area" />
-						<FormikInputField name="storage.rack" id="rack" type="number" />
-						<FormikInputField name="storage.section" id="section" type="number" />
-						<FormikInputField name="storage.shelve" id="shelve" type="number" />
+						<FormikInputField name="storage.area" id="area" value={values.storage.area} />
+						<FormikInputField
+							name="storage.rack"
+							id="rack"
+							type="number"
+							value={values.storage.rack}
+						/>
+						<FormikInputField
+							name="storage.section"
+							id="section"
+							type="number"
+							value={values.storage.section}
+						/>
+						<FormikInputField
+							name="storage.shelve"
+							id="shelve"
+							type="number"
+							value={values.storage.shelve}
+						/>
 					</div>
 				</div>
 			</div>
-			<input type="file" name="product.images" multiple onChange={onFileChange} />
-			<SwiperModalWindow images={urls} />
-			{/* {renderSwiperSlides()} */}
 		</>
 	);
 };
 
-export default ProductFields;
+export default memo(ProductFields);
