@@ -46,7 +46,7 @@ const Poster: FC = (): JSX.Element => {
 						dynamicBullets: true,
 					}}
 					modules={[EffectCoverflow, Pagination, Autoplay, EffectCreative, Navigation]}
-					className="poster_swiper z-0"
+					className="poster_swiper"
 				>
 					{products.map(({ id, thumbnail, title, price, time }) => (
 						<SwiperSlide key={id} className="poster_col">
