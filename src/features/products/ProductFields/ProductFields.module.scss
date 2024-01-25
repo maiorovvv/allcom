@@ -1,0 +1,29 @@
+
+.container {
+	width: 95%;
+	margin: 3rem auto;
+	display: flex;
+	justify-content: space-around;
+	text-align: center;
+	box-shadow: 0 2px 22px rgba(0, 0, 0, 0.16);
+}
+
+.product {
+	margin: 2rem;
+	width: 40%;
+}
+
+.auction {
+	margin: 2rem;
+	width: 40%;
+}
+
+.textarea {
+	font-size: 1.6rem;
+	width: 100%;
+	border-color: var(--border-color);
+	&:focus {
+		border-color: var(--secondary-color);
+		box-shadow: 0 0 5px rgba(224, 9, 9, 0.3);
+	}
+}

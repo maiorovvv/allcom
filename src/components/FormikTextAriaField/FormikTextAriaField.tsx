@@ -5,7 +5,6 @@ import { Field, ErrorMessage } from 'formik';
 interface Props {
 	id: string;
 	name: string;
-	label: string;
 	placeholder: string;
 	type?: string;
 	// children?: ReactNode;
@@ -14,11 +13,10 @@ interface Props {
 }
 
 const FormikTextAriaField: FC<Props> = (props) => {
-	const { id, name, label, rows = 3, placeholder, type = 'text', className = '' } = props;
+	const { id, name, rows = 3, placeholder, type = 'text', className = '' } = props;
 
 	return (
 		<Form.Group className={className} controlId={`form${id}`}>
-			<Form.Label>{label}</Form.Label>
 			{/* <Form.Control as="textarea" rows={rows} style={{ fontSize: '20px' }}> */}
 			{/* <Field
 					as={textarea}

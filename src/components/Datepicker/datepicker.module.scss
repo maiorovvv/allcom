@@ -1,0 +1,15 @@
+.container {
+	font-size: 1.8rem;
+	width: 40%;
+	padding: 1rem;
+}
+
+.date {
+	padding: 1rem;
+	font-size: 1.8rem !important;
+	border-radius: 0;
+  &:focus {
+		border-color: var(--secondary-color);
+		box-shadow: 0 0 5px rgba(224, 9, 9, 0.3);
+	}
+}

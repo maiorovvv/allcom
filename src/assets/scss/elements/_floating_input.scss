@@ -5,6 +5,13 @@
 		padding-top: 27px !important;
 		font-size: 20px;
 		padding-top: 10px;
+		border-radius: 0;
+		color: var(--text-gray-color);
+		&:focus {
+			border-color: var(--secondary-color);
+			box-shadow: 0 0 5px rgba(224, 9, 9, 0.3);
+			color: var(--text-gray-color);
+		}
 	}
 	&--field_disabled {
 		height: 4.8rem !important;
@@ -18,7 +25,8 @@
 	&--placeholder {
 		background-color: transparent;
 		margin-top: -2px;
-		font-size: 17px;
+		font-size: 1.6rem;
+		color: var(--text-gray-color);
 	}
 	&--icon_eye_password {
 		color: #a7a7a7f9;

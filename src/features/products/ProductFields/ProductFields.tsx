@@ -6,7 +6,7 @@ import Datepicker from '../../../components/Datepicker/Datepicker';
 import FormikTextAriaField from '../../../components/FormikTextAriaField/FormikTextAriaField';
 import { ProductFormValues } from '../../../types/product/ProductFormValues';
 
-import styles from './ProductFields.module.css';
+import styles from './ProductFields.module.scss';
 import SwiperModalWindow from '../../HomePage/components/ModalWindow/SwiperModalWindow';
 interface PropsInterface {
 	startAt: string;
@@ -42,16 +42,15 @@ const ProductFields: FC<PropsInterface> = (props) => {
 	}, [urls]);
 	return (
 		<>
-			<div className="container row">
-				<div className="col-6">
-					<h2>Product Info</h2>
+			<div className={styles.container}>
+				<div className={styles.product}>
+					<h3>Product Info</h3>
 					<FormikInputField name="product.name" placeholder="Product Name" id="ProductName" />
 					<FormikTextAriaField
-						label="description"
 						name="product.description"
 						placeholder="Description"
 						id="description"
-						className={styles.description}
+						className={styles.textarea}
 					/>
 					<FormikInputField name="product.weight" placeholder="weight" id="weight" type="number" />
 					<FormikInputField name="product.color" placeholder="color" id="color" />
@@ -61,43 +60,41 @@ const ProductFields: FC<PropsInterface> = (props) => {
 						id="categoryId"
 						type="number"
 					/>
-					<FormikInputField
-						name="product.buyPrice"
-						placeholder="buyPrice"
-						id="buyPrice"
-						type="number"
-					/>
 				</div>
-				<div className="col-6">
+				<div className={styles.auction}>
 					<div>
-						<h2>Auction Info</h2>
+						<h3>Auction Info</h3>
 						<FormikInputField
 							id="startPrice"
 							name="auction.startPrice"
 							placeholder="start Price"
 							type="number"
 						/>
-						<Datepicker
-							id="startAt"
-							name="auction.startAt"
-							label="Start At"
-							dateTime={startAt}
-							handleDateTimeChange={(event) =>
-								handleDateTimeChange(event, 'auction.startAt', setStartAt)
-							}
-						/>
-						<Datepicker
-							id="plannedEndAt"
-							name="auction.plannedEndAt"
-							label="Planned End At"
-							dateTime={plannedEndAt}
-							handleDateTimeChange={(event) =>
-								handleDateTimeChange(event, 'auction.plannedEndAt', setPlannedEndAt)
-							}
-						/>
+						<div className="d-flex justify-content-around align-items-end">
+							<Datepicker
+								id="startAt"
+								name="auction.startAt"
+								label="Start At"
+								dateTime={startAt}
+								handleDateTimeChange={(event) =>
+									handleDateTimeChange(event, 'auction.startAt', setStartAt)
+								}
+								className={styles.date}
+							/>
+							<Datepicker
+								id="plannedEndAt"
+								name="auction.plannedEndAt"
+								label="Planned End At"
+								dateTime={plannedEndAt}
+								handleDateTimeChange={(event) =>
+									handleDateTimeChange(event, 'auction.plannedEndAt', setPlannedEndAt)
+								}
+								className={styles.date}
+							/>
+						</div>
 					</div>
 					<div>
-						<h2>Storage Info</h2>
+						<h3>Storage Info</h3>
 						<FormikInputField name="storage.area" id="area" />
 						<FormikInputField name="storage.rack" id="rack" type="number" />
 						<FormikInputField name="storage.section" id="section" type="number" />
@@ -105,8 +102,8 @@ const ProductFields: FC<PropsInterface> = (props) => {
 					</div>
 				</div>
 			</div>
-			<input type="file" name="product.images" multiple onChange={onFileChange} />
-			<SwiperModalWindow images={urls} />
+			{/* <input type="file" name="product.images" multiple onChange={onFileChange} />
+			<SwiperModalWindow images={urls} /> */}
 			{/* {renderSwiperSlides()} */}
 		</>
 	);
