@@ -22,7 +22,6 @@ const START_INDEX = 0;
 const ISO_DATE_LENGTH = 16;
 
 const AddProductPage: FC = () => {
-	console.log('AAAAADDDDDSSSЕЕЕЕЕ');
 	const dispatch = useAppDispatch();
 
 	function getNextMondayAtNoonAfterWeeks(weeks: number): string {
@@ -34,13 +33,11 @@ const AddProductPage: FC = () => {
 		return futureMondayAtNoon.toISOString().slice(START_INDEX, ISO_DATE_LENGTH);
 	}
 
-	const [startAt, setStartAt] = useState<string>(getNextMondayAtNoonAfterWeeks(DEFAULT_START_WEEK));
-	const [plannedEndAt, setPlannedEndAt] = useState<string>(
-		getNextMondayAtNoonAfterWeeks(DEFAULT_PLANNED_END_WEEK)
-	);
+	const startAt = getNextMondayAtNoonAfterWeeks(DEFAULT_START_WEEK);
+	const plannedEndAt = getNextMondayAtNoonAfterWeeks(DEFAULT_PLANNED_END_WEEK);
 
 	const error = useAppSelector(selectError);
-	const [errorMessage, setErrorMessage] = useState<string | undefined>(error);
+	const [resizingError, setResizingError] = useState<string | undefined>(error);
 	const loading = useAppSelector(selectLoading);
 	const [isFileLoading, setIsFileLoading] = useState<boolean>(false);
 	const [files, setFiles] = useState<File[]>([]);
@@ -63,9 +60,9 @@ const AddProductPage: FC = () => {
 						allFiles.push(resizedFile);
 					} catch (e) {
 						if (e instanceof Error) {
-							setErrorMessage(`Error resizing file ${newFile.name}: ${e.message}`);
+							setResizingError(`Error resizing file ${newFile.name}: ${e.message}`);
 						} else {
-							setErrorMessage(`Error resizing file ${newFile.name}`);
+							setResizingError(`Error resizing file ${newFile.name}`);
 						}
 					}
 				}
@@ -81,11 +78,7 @@ const AddProductPage: FC = () => {
 	}, []);
 
 	const navigate = useNavigate();
-	const handleSave = async (
-		formValues: ProductFormValues,
-		setValues: (formValues: ProductFormValues) => void
-	): Promise<void> => {
-		console.log({ formValues });
+	const handleSave = async (formValues: ProductFormValues): Promise<void> => {
 		formValues.images = files;
 		const dispatchResult = await dispatch(createProduct(formValues));
 		if (createProduct.fulfilled.match(dispatchResult)) {
@@ -106,33 +99,35 @@ const AddProductPage: FC = () => {
 				initialValues={formInitialValues}
 				validationSchema={ProductValidationSchema}
 				enableReinitialize={true}
-				onSubmit={(formValues, { setSubmitting, setValues }) => {
-					handleSave(formValues, setValues).finally(() => setSubmitting(false));
+				onSubmit={(formValues, { setSubmitting }) => {
+					handleSave(formValues).finally(() => setSubmitting(false));
 				}}
 			>
 				{({ handleSubmit, values, handleChange, setFieldValue }) => (
-					<Form onSubmit={handleSubmit}>
-						<ProductFields
-							onFileChange={handleFileChange}
-							linkList={linkList}
-							values={values}
-							handleChange={handleChange}
-							onDeleteImage={handleDeleteImage}
-							setFieldValue={setFieldValue}
-						/>
-						<Button name="submit" type="submit" disabled={loading}>
-							{loading || isFileLoading ? (
-								<div className="text-center">
-									<Spinner />
-								</div>
-							) : (
-								'Submit'
-							)}
-						</Button>
-					</Form>
+					<>
+						{(loading || isFileLoading) && (
+							<div className="text-center">
+								<Spinner />
+							</div>
+						)}
+						<Form onSubmit={handleSubmit}>
+							<ProductFields
+								onFileChange={handleFileChange}
+								linkList={linkList}
+								values={values}
+								handleChange={handleChange}
+								onDeleteImage={handleDeleteImage}
+								setFieldValue={setFieldValue}
+								resizingError={resizingError}
+							/>
+							<Button name="submit" type="submit" disabled={loading}>
+								Submit
+							</Button>
+						</Form>
+					</>
 				)}
 			</Formik>
-			<div className="warning_message--validation">{error}</div>
+			{error && <div className="warning_message--validation">{error}</div>}
 		</div>
 	);
 };

@@ -26,11 +26,19 @@ interface PropsInterface {
 	values: ProductFormValues;
 	handleChange: FormikProps<ProductFormValues>['handleChange'];
 	setFieldValue: FormikProps<ProductFormValues>['setFieldValue'];
+	resizingError: string | undefined;
 }
 const ProductFields: FC<PropsInterface> = (props) => {
-	const { linkList, values, handleChange, onDeleteImage, onFileChange, setFieldValue } = props;
+	const {
+		linkList,
+		values,
+		handleChange,
+		onDeleteImage,
+		onFileChange,
+		setFieldValue,
+		resizingError,
+	} = props;
 
-	console.log('ProductFields');
 	const { t } = useTranslation('categories');
 
 	const selectOptions: Options[] = [
@@ -54,6 +62,7 @@ const ProductFields: FC<PropsInterface> = (props) => {
 			<div className="container row">
 				<input type="file" name="product.images" multiple onChange={onFileChange} />
 				<SwiperModalWindow images={linkList} onDelete={onDeleteImage} />
+				{resizingError && <div className="warning_message--validation">{resizingError}</div>}
 				<div className="col-6">
 					<h2>Product Info</h2>
 					<FormikInputField

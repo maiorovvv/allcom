@@ -16,8 +16,6 @@ interface Props {
 
 const FormikInputField: FC<Props> = (props) => {
 	const { id, name, placeholder, type = 'text', className, value, step } = props;
-	console.log({ id });
-	console.log({ value });
 
 	return (
 		<Form.Group as={Col} controlId={`form${id}`}>

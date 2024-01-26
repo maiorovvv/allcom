@@ -15,7 +15,6 @@ interface Props {
 
 const Datepicker: FC<Props> = (props) => {
 	const { id, name, label, value, handleChange, className = '' } = props;
-	console.log({ name });
 
 	return (
 		<Form.Group className={className} controlId={`form${id}`}>
