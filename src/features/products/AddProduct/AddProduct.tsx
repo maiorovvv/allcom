@@ -6,7 +6,7 @@ import { startOfWeek, addWeeks, setHours, setMinutes } from 'date-fns';
 
 import { ProductValidationSchema, initialValues } from '../../../forms/ProductForm';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { createProduct, resetError } from '../newProductsSlice';
+import { createProduct, resetError } from '../productsSlice';
 import { selectError, selectLoading } from '../selectors';
 import Spinner from '../../../components/Spinner/Spinner';
 import ProductFields from '../ProductFields/ProductFields';

@@ -1,7 +1,7 @@
-import { ProductFormValues } from './ProductFormValues';
+import { ProductInfo } from './ProductInfo';
 
 export default interface ProductState {
-	product: ProductFormValues | null;
+	products: ProductInfo[];
 	loading: boolean;
 	error?: string;
 }

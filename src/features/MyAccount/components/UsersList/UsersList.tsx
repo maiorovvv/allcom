@@ -12,7 +12,6 @@ import Search from '../../../../components/Search/Search';
 
 import SortAZIcon from '../../../../img/svg/sortAZ.svg?react';
 import SortZAIcon from '../../../../img/svg/sortZA.svg?react';
-import Button from '../../../../components/Button/Button';
 
 const UsersList: FC = (): JSX.Element => {
 	const { t } = useTranslation('users_list');
