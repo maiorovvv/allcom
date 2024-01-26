@@ -9,7 +9,6 @@ type Options = {
 
 const CategorySelect: FC = (): JSX.Element => {
 	const { t } = useTranslation('categories');
-
 	const selectOptions: Options[] = [
 		{ value: '1', label: t('category_1') },
 		{ value: '2', label: t('category_2') },
@@ -29,6 +28,7 @@ const CategorySelect: FC = (): JSX.Element => {
 			value={selectedOptionState}
 			onChange={(selectedOption) => setSelectedOption(selectedOption)}
 			classNamePrefix="header_custom_select"
+			data-testid="selected-category"
 		/>
 	);
 };

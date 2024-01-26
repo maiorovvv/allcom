@@ -106,6 +106,7 @@ const Header: React.FC = () => {
 			<NavLink
 				className="offcanvas__stikcy--toolbar__btn cont_icons"
 				to="/user/my_account/products"
+				data-testid="wishlistBottom_link"
 			>
 				<div className="my_icon">
 					<span className="offcanvas__stikcy--toolbar__icon">
@@ -122,6 +123,7 @@ const Header: React.FC = () => {
 			<NavLink
 				className="offcanvas__stikcy--toolbar__btn minicart__open--btn cont_icons"
 				to="user/my_account/my_auctions"
+				data-testid="myAuctionsBottom_link"
 			>
 				<div className="my_icon">
 					<span className="offcanvas__stikcy--toolbar__icon">
@@ -139,8 +141,9 @@ const Header: React.FC = () => {
 				onClick={() => setSearchBoxIsActive(!searchBoxIsActive)}
 				className="offcanvas__stikcy--toolbar__btn search__open--btn"
 				data-offcanvas
+				data-testid="setSearchBoxIsActive"
 			>
-				<span className="offcanvas__stikcy--toolbar__icon">
+				<span className="offcanvas__stikcy--toolbar__icon" data-testid="SearchIcon">
 					<SearchIcon />
 				</span>
 				<span className="offcanvas__stikcy--toolbar__label">{t('search')}</span>
@@ -149,8 +152,12 @@ const Header: React.FC = () => {
 	);
 	const categoriesBottom = (
 		<li className="offcanvas__stikcy--toolbar__list" data-testid="categoriesBottom">
-			<NavLink className="offcanvas__stikcy--toolbar__btn" to="/">
-				<span className="offcanvas__stikcy--toolbar__icon">
+			<NavLink
+				className="offcanvas__stikcy--toolbar__btn"
+				to="/"
+				data-testid="categoriesBottom_link"
+			>
+				<span className="offcanvas__stikcy--toolbar__icon" data-testid="CategoriesIcon">
 					<CategoriesIcon />
 				</span>
 				<span className="offcanvas__stikcy--toolbar__label">{t('categories')}</span>
@@ -159,7 +166,11 @@ const Header: React.FC = () => {
 	);
 	const loginRegisterSidepanelButton = (
 		<div className="offcanvas__account--items" data-testid="loginRegisterSidepanelButton">
-			<a className="offcanvas__account--items__btn d-flex align-items-center" href="login.html">
+			<a
+				className="offcanvas__account--items__btn d-flex align-items-center"
+				href="login.html"
+				data-testid="loginRegisterSidepanelButton_link"
+			>
 				<span className="offcanvas__account--items__icon">
 					<Human2Icon />
 				</span>
@@ -169,35 +180,35 @@ const Header: React.FC = () => {
 	);
 	const auctionSidepanel = (
 		<li className="offcanvas__menu_li" data-testid="auctionSidepanel">
-			<a className="header__menu--link" href="contact.html">
+			<a className="header__menu--link" href="contact.html" data-testid="auctionSidepanel_link">
 				{t('auction')}{' '}
 			</a>
 		</li>
 	);
 	const registerSidepanel = (
 		<li className="offcanvas__menu_li" data-testid="registerSidepanel">
-			<a className="header__menu--link" href="contact.html">
+			<a className="header__menu--link" href="contact.html" data-testid="registerSidepanel_link">
 				{t('register')}{' '}
 			</a>
 		</li>
 	);
 	const faqSidepanel = (
 		<li className="offcanvas__menu_li" data-testid="faqSidepanel">
-			<a className="header__menu--link" href="contact.html">
+			<a className="header__menu--link" href="contact.html" data-testid="faqSidepanel_link">
 				{t('faq')}{' '}
 			</a>
 		</li>
 	);
 	const contactSidepanel = (
 		<li className="offcanvas__menu_li" data-testid="contactSidepanel">
-			<a className="header__menu--link" href="contact.html">
+			<a className="header__menu--link" href="contact.html" data-testid="contactSidepanel_link">
 				{t('contact_us')}{' '}
 			</a>
 		</li>
 	);
 	const aboutUsSidepanel = (
 		<li className="offcanvas__menu_li" data-testid="aboutUsSidepanel">
-			<a className="header__menu--link" href="about.html">
+			<a className="header__menu--link" href="about.html" data-testid="aboutUsSidepanel_link">
 				{t('about_us')}{' '}
 			</a>
 		</li>
@@ -219,10 +230,11 @@ const Header: React.FC = () => {
 		</div>
 	);
 	const cart = (
-		<li className="header__account--items header__account2--items" data-testid="cart">
+		<li className="header__account--items header__account2--items" data-testid="my_auctions">
 			<NavLink
 				className="header__account--btn minicart__open--btn"
 				to="user/my_account/my_auctions"
+				data-testid="my_auctions_link"
 			>
 				<CartIcon />
 				<span className="items__count style2">{productsInMyAuctions.length}</span>
@@ -234,7 +246,11 @@ const Header: React.FC = () => {
 			className="header__account--items header__account2--items d-none d-lg-block"
 			data-testid="wishlist"
 		>
-			<NavLink className="header__account--btn" to="/user/my_account/products">
+			<NavLink
+				className="header__account--btn"
+				to="/user/my_account/products"
+				data-testid="wishlist_link"
+			>
 				<HeartIcon />
 				<span className="items__count  wishlist style2">{products.length}</span>
 			</NavLink>
@@ -242,7 +258,11 @@ const Header: React.FC = () => {
 	);
 	const myAccount = (
 		<li className="header__account--items header__account2--items" data-testid="myAccount">
-			<NavLink className="header__account--btn" to={'user/my_account/about_me'}>
+			<NavLink
+				className="header__account--btn"
+				data-testid="myAccount_link"
+				to={'user/my_account/about_me'}
+			>
 				<HumanIcon />
 				<span className="visually-hidden">My Account</span>
 			</NavLink>
@@ -257,42 +277,42 @@ const Header: React.FC = () => {
 				className="header__account--btn search__open--btn"
 				onClick={() => setSearchBoxIsActive(!searchBoxIsActive)}
 			>
-				<SearchIcon />
+				<SearchIcon data-testid="search_icon" />
 				<span className="visually-hidden">Search</span>
 			</div>
 		</li>
 	);
 	const auctionHideLink = (
-		<li className="header__menu--items style2" data-testid="auctionHideLink">
-			<a className="header__menu--link" href="/auction">
+		<li className="header__menu--items style2" data-testid="auction">
+			<a className="header__menu--link" href="/auction" data-testid="auction_link">
 				{t('auction')}
 			</a>
 		</li>
 	);
 	const registerHideLink = (
-		<li className="header__menu--items style2" data-testid="registerHideLink">
-			<a className="header__menu--link" href="/register">
+		<li className="header__menu--items style2" data-testid="register">
+			<a className="header__menu--link" href="/register" data-testid="register_link">
 				{t('register')}
 			</a>
 		</li>
 	);
 	const faqHideLink = (
-		<li className="header__menu--items style2" data-testid="faqHideLink">
-			<a className="header__menu--link" href="/faq">
+		<li className="header__menu--items style2" data-testid="faq">
+			<a className="header__menu--link" href="/faq" data-testid="faq_link">
 				{t('faq')}
 			</a>
 		</li>
 	);
 	const contactHideLink = (
-		<li className="header__menu--items style2" data-testid="contactHideLink">
-			<a className="header__menu--link" href="/contact">
+		<li className="header__menu--items style2" data-testid="contact_us">
+			<a className="header__menu--link" href="/contact" data-testid="contact_us_Link">
 				{t('contact_us')}
 			</a>
 		</li>
 	);
 	const aboutUsHideLink = (
-		<li className="header__menu--items style2" data-testid="aboutUsHideLink">
-			<a className="header__menu--link" href="/aboutUs">
+		<li className="header__menu--items style2" data-testid="about_us">
+			<a className="header__menu--link" data-testid="about_us_link" href="/about_us">
 				{t('about_us')}
 			</a>
 		</li>
@@ -306,6 +326,7 @@ const Header: React.FC = () => {
 						: 'header__account--btn cont_icons'
 				}
 				to="/user/my_account/products"
+				data-testid="wishlistTop_link"
 			>
 				<div className="my_icon">
 					<HeartIcon />
@@ -317,7 +338,11 @@ const Header: React.FC = () => {
 	);
 	const cartTop = (
 		<li className="header__account--items" data-testid="cartTop">
-			<NavLink className="header__account--btn cont_icons" to="user/my_account/my_auctions">
+			<NavLink
+				className="header__account--btn cont_icons"
+				to="user/my_account/my_auctions"
+				data-testid="cartTop_link"
+			>
 				<div className="my_icon">
 					<CartIcon />
 					<span className="items__count_header">{productsInMyAuctions.length}</span>
@@ -333,6 +358,7 @@ const Header: React.FC = () => {
 					isActive ? 'active__nav_link header__account--btn' : 'header__account--btn cont_icons'
 				}
 				to="/user/my_account/about_me"
+				data-testid="myAccountTop_link"
 			>
 				<HumanIcon />
 				<span className="header__account--btn__text">{t('my_account')}</span>
@@ -350,15 +376,20 @@ const Header: React.FC = () => {
 		</button>
 	);
 	const searchInput = (
-		<label data-testid="searchInput">
-			<input className="header__search--input" placeholder={t('keyword_here')} type="text"></input>
+		<label>
+			<input
+				className="header__search--input"
+				placeholder={t('keyword_here')}
+				data-testid="searchInput"
+				type="text"
+			></input>
 		</label>
 	);
 	const siteLogo = (
 		<div className="main__logo">
 			<h1 className="main__logo--title">
 				<NavLink to="/" className="main__logo--link">
-					<img className="main__logo--img" src={SiteLogo} alt="logo"></img>
+					<img className="main__logo--img" src={SiteLogo} data-testid="siteLogo" alt="logo"></img>
 				</NavLink>
 			</h1>
 		</div>
@@ -369,6 +400,7 @@ const Header: React.FC = () => {
 				className="offcanvas__header--menu__open--btn"
 				data-offcanvas
 				onClick={() => setOffcanvasIsActive(!offcanvasIsActive)}
+				data-testid="hamburger"
 			>
 				<LinesIcon />
 				<span className="visually-hidden">Menu Open</span>
@@ -384,8 +416,8 @@ const Header: React.FC = () => {
 							{hamburger}
 							{siteLogo}
 							<div className="header__search--widget header__sticky--none d-none d-lg-block">
-								<form className="d-flex header__search--form z-50" action="#">
-									<CategorySelect />
+								<form className="d-flex header__search--form z-50" data-testid="header" action="#">
+									<CategorySelect data-testid="CategorySelect" />
 									<div className="header__search--box">
 										{searchInput}
 										{searchButton}
