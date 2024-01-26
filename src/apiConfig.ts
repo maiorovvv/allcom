@@ -9,4 +9,9 @@ export default {
 	restoreEndpoint: `${apiBaseUrl}/api/auth/restore`,
 	restoreNewPasswordEndpoint: `${apiBaseUrl}/api/auth/restoreNewPassword`,
 	getUserProfileEndpoint: `${apiBaseUrl}/api/users/getUserProfile`,
+	getAllUsersEndpoint: `${apiBaseUrl}/api/users/getAll`,
+	findUserByIdEndpoint: `${apiBaseUrl}/api/users/foundUserById/`,
+	findUserByEmailEndpoint: `${apiBaseUrl}/api/users/foundUserByEmail/`,
+	updateUserEndpoint: `${apiBaseUrl}/api/users/updateUser/`,
+	changeUserStatusEndpoint: `${apiBaseUrl}/api/users/changeStatus/`,
 };

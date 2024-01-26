@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Form, Button, Col, InputGroup } from 'react-bootstrap';
 import { Formik, Field, ErrorMessage } from 'formik';
@@ -32,6 +32,7 @@ import {
 const RegisterPage: FC = (): JSX.Element => {
 	const { t } = useTranslation('LoginRegisterPage');
 	const appDispatch = useAppDispatch();
+	const navigate = useNavigate();
 	const [toolboxEnabled, setToolboxEnabled] = useState<boolean>(false);
 	const [passwordShow, setPasswordShow] = useState(false);
 	const [passwordConfirmShow, setPasswordConfirmShow] = useState(false);
@@ -79,7 +80,7 @@ const RegisterPage: FC = (): JSX.Element => {
 				if (payload.message) {
 					console.error(payload.message);
 				} else {
-					window.location.href = '/';
+					navigate(-1);
 				}
 			})
 			.catch(() => {});

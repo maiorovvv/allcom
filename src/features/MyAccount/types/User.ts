@@ -2,17 +2,16 @@ export default interface User {
 	id: number;
 	firstName: string;
 	lastName: string;
-	userName: string;
-	phone: number;
 	email: string;
-	password: string;
-	address: {
-		city: string;
-		street: string;
-		number: string;
-		address: string;
-	};
-	status: boolean;
+	phoneNumber: string;
+	companyName: string;
+	position: string;
+	taxNumber: string;
+	index: string;
+	city: string;
+	street: string;
+	houseNumber: string;
+	blocked: boolean;
 }
 
 export interface UsersResponse {

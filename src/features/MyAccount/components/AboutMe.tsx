@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 
 import Spinner from '../../../components/Spinner/Spinner';
@@ -12,11 +13,10 @@ const AboutMe: FC = (): JSX.Element => {
 	const { t } = useTranslation('about_me');
 
 	const [isActiveDetails, setIsActiveDetails] = useState(true);
+	const navigate = useNavigate();
 
 	const [handleFirstname, setHandleFirstname] = useState('');
 	const [handleLastname, setHandleLastname] = useState('');
-	const [handleUsername, setHandleUsername] = useState('');
-	const [handleDateOfBirth, setHandleDateOfBirth] = useState('');
 	const [handleAddress, setHandleAddress] = useState('');
 	const [handleEmail, setHandleEmail] = useState('');
 
@@ -33,17 +33,18 @@ const AboutMe: FC = (): JSX.Element => {
 			const {
 				firstName = '',
 				lastName = '',
-				userName = '',
 				email = '',
-				address: { city = '', street = '', number = '' } = {},
+				city = '',
+				street = '',
+				houseNumber = '',
 			} = user;
 
-			//TODO unsafe types
-			//setHandleFirstname(firstname || '');
-			//setHandleLastname(lastname || '');
-			//setHandleUsername(username);
+			setHandleFirstname(firstName);
+			setHandleLastname(lastName);
 			setHandleEmail(email);
-			setHandleAddress(`${city}, ${street}, ${number}`);
+			setHandleAddress(`${city}, ${street}, ${houseNumber}`);
+		} else {
+			navigate('/login');
 		}
 	}, [user]);
 
@@ -75,24 +76,6 @@ const AboutMe: FC = (): JSX.Element => {
 						value={handleLastname}
 						disabled={isActiveDetails}
 						onChange={(e) => setHandleLastname(e.target.value)}
-						required
-					></input>
-					<label className="about_me--text_style">{t('user_name')}</label>
-					<input
-						className="about_me--input"
-						type="text"
-						value={handleUsername}
-						disabled={isActiveDetails}
-						onChange={(e) => setHandleUsername(e.target.value)}
-						required
-					></input>
-					<label className="about_me--text_style">{t('date_of_birth')}</label>
-					<input
-						className="about_me--input"
-						type="text"
-						value={handleDateOfBirth}
-						disabled={isActiveDetails}
-						onChange={(e) => setHandleDateOfBirth(e.target.value)}
 						required
 					></input>
 					<label className="about_me--text_style">{t('email')}</label>
