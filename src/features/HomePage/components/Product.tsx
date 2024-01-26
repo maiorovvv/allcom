@@ -26,7 +26,7 @@ const Product: FC<ProductProps> = ({ product, setActiveWindow, getProductById })
 				<img src={thumbnail} alt="product-img"></img>
 				<NavLink
 					className="home_page__btn"
-					to="product/details/"
+					to="products/details/"
 					onClick={() => getProductById(id)}
 				>
 					<span className="home_page__btn--bet_now">{t('bet_now')}</span>

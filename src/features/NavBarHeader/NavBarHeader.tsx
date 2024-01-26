@@ -15,19 +15,7 @@ const NavBarHeader: FC = (): JSX.Element => {
 			<SetLanguage isOpen={'d-none'} />
 		</div>
 	);
-	const addNewProduct = (
-		<li className="header__menu--items style2" data-testid="add_product">
-			<NavLink
-				className={({ isActive }) =>
-					isActive ? 'active__nav_link header__menu--link' : 'header__menu--link'
-				}
-				to="/products/addnew"
-				data-testid="add_product_link"
-			>
-				{t('add_product')}
-			</NavLink>
-		</li>
-	);
+
 	const registration = (
 		<li className="header__menu--items style2" data-testid="register">
 			<NavLink
@@ -41,6 +29,7 @@ const NavBarHeader: FC = (): JSX.Element => {
 			</NavLink>
 		</li>
 	);
+
 	const login = (
 		<li className="header__menu--items style2" data-testid="login">
 			<NavLink
@@ -54,6 +43,7 @@ const NavBarHeader: FC = (): JSX.Element => {
 			</NavLink>
 		</li>
 	);
+
 	const faq = (
 		<li className="header__menu--items style2" data-testid="faq">
 			<NavLink
@@ -67,6 +57,7 @@ const NavBarHeader: FC = (): JSX.Element => {
 			</NavLink>
 		</li>
 	);
+
 	const contact = (
 		<li className="header__menu--items style2" data-testid="contact_us">
 			<NavLink
@@ -80,6 +71,21 @@ const NavBarHeader: FC = (): JSX.Element => {
 			</NavLink>
 		</li>
 	);
+
+	const addNewProduct = (
+		<li className="header__menu--items style2" data-testid="add_product">
+			<NavLink
+				className={({ isActive }) =>
+					isActive ? 'active__nav_link header__menu--link' : 'header__menu--link'
+				}
+				to="/products/add_product"
+				data-testid="add_product_link"
+			>
+				{t('add_product')}
+			</NavLink>
+		</li>
+	);
+
 	const aboutUs = (
 		<li className="header__menu--items style2" data-testid="about_us">
 			<NavLink

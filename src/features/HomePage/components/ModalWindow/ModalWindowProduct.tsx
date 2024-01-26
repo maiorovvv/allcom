@@ -6,7 +6,7 @@ import { useAppSelector } from '../../../../app/hooks';
 import { RootState } from '../../../../app/store';
 
 import Timer from '../../../../components/Timer/Timer';
-import SwiperModalWindow from './SwiperModalWindow';
+import SwiperModalWindow from '../../../../components/SwiperModalWindow/SwiperModalWindow';
 
 import CloseIcon from '../../../../img/svg/cross.svg?react';
 import HeartIcon from '../../../../img/svg/heart.svg?react';
@@ -71,7 +71,7 @@ const ModalWindowProduct: FC<ModalWindowProps> = ({
 									<HeartIcon />
 									{t('add_to_wishlist')}
 								</span>
-								<NavLink to="product/details/" onClick={() => getProductById(id)}>
+								<NavLink to="products/details/" onClick={() => getProductById(id)}>
 									<button className="modal_window__buttons--btn">{t('bet_now')}</button>
 								</NavLink>
 							</div>
