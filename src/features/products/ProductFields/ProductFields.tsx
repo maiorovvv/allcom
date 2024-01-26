@@ -43,6 +43,7 @@ const ProductFields: FC<PropsInterface> = (props) => {
 	return (
 		<>
 			<div className={styles.container}>
+				{/* <div className={styles.product_input}> */}
 				<div className={styles.product}>
 					<h3>Product Info</h3>
 					<FormikInputField name="product.name" placeholder="Product Name" id="ProductName" />
@@ -101,9 +102,10 @@ const ProductFields: FC<PropsInterface> = (props) => {
 						<FormikInputField name="storage.shelve" id="shelve" type="number" />
 					</div>
 				</div>
+				{/* </div> */}
 			</div>
-			{/* <input type="file" name="product.images" multiple onChange={onFileChange} />
-			<SwiperModalWindow images={urls} /> */}
+			<input type="file" name="product.images" multiple onChange={onFileChange} />
+			<SwiperModalWindow images={urls} />
 			{/* {renderSwiperSlides()} */}
 		</>
 	);
