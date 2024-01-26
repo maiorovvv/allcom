@@ -26,7 +26,6 @@ const RestorePasswordPage: FC = (): JSX.Element => {
 				const payload = res.payload as { message: string };
 				if (payload.message) {
 					navigate('/restore_password_wait');
-					console.error(payload.message);
 				}
 			})
 			.catch(() => {});
