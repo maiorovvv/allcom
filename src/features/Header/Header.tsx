@@ -11,7 +11,7 @@ import SetLanguage from './SetLanguage/SetLanguage';
 import CategorySelect from './CategorySelect/CategorySelect';
 import NavBarHeader from '../NavBarHeader/NavBarHeader';
 
-import SiteLogo from '../../assets/img/logo/nav-log.png';
+import SiteLogo from '../../img/logo/logo_main.png';
 import HeartIcon from '../../img/svg/heart.svg?react';
 import CartIcon from '../../img/svg/cart_icon.svg?react';
 import HumanIcon from '../../img/svg/human.svg?react';

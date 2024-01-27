@@ -1,7 +1,7 @@
-export default interface User {
+export default interface UserDTO {
 	id: number;
 	firstName: string;
 	lastName: string;
 	email: string;
-	token?: string; //TODO delete token
+	token: string;
 }

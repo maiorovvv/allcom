@@ -1,13 +1,17 @@
+import apiConfig from '../../apiConfig';
+import { store } from '../../app/store';
 import LoginCredentials from './types/LoginCredentials';
 import RegisterCredentials from './types/RegisterCredentials';
 import RestoreCredentials from './types/RestoreCredentials';
 import RestoreEnterNewPasswordCredentials from './types/RestoreEnterNewPasswordCredentials';
 import User from './types/User';
-import NewUser from './types/newUser';
-import RestoreUser from './types/RestoreUser';
+import UserDTO from './types/UserDTO';
 
-export async function getCurrentUser({ email, password }: LoginCredentials): Promise<User> {
-	const resLogin = await fetch('https://dummyjson.com/auth/login', {
+interface ResponseData {
+	message?: string;
+}
+export async function loginUser({ email, password }: LoginCredentials): Promise<UserDTO> {
+	const res = await fetch(apiConfig.loginEndpoint, {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({
@@ -15,7 +19,11 @@ export async function getCurrentUser({ email, password }: LoginCredentials): Pro
 			password,
 		}),
 	});
-	return resLogin.json();
+	if (res.status >= 400) {
+		const { message }: { message: string } = await res.json();
+		throw new Error(message);
+	}
+	return res.json();
 }
 
 export async function registerNewUser({
@@ -31,8 +39,8 @@ export async function registerNewUser({
 	city,
 	street,
 	houseNumber,
-}: RegisterCredentials): Promise<NewUser> {
-	const resRegister = await fetch('https://dummyjson.com/auth/register', {
+}: RegisterCredentials): Promise<User> {
+	const res = await fetch(apiConfig.registerEndpoint, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -53,28 +61,62 @@ export async function registerNewUser({
 		}),
 	});
 
-	return resRegister.json();
+	if (res.status >= 400) {
+		const jsonResponse: ResponseData = await res.json();
+		const message = jsonResponse?.message;
+		throw new Error(message);
+	}
+	return res.json();
 }
 
-export async function restoreUser({ email }: RestoreCredentials): Promise<RestoreUser> {
-	const resRestore = await fetch('https://dummyjson.com/auth/restore', {
+export async function logout(): Promise<void> {
+	const token = store.getState().auth.token;
+	if (token) {
+		const res = await fetch(apiConfig.logoutEndpoint, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${token}`,
+			},
+		});
+		if (res.status >= 400) {
+			const jsonResponse: ResponseData = await res.json();
+			const message = jsonResponse?.message;
+			throw new Error(message);
+		}
+		return undefined;
+	}
+}
+
+export async function restoreUser({ email }: RestoreCredentials): Promise<User> {
+	const resRestore = await fetch(apiConfig.restoreEndpoint, {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({
 			email,
 		}),
 	});
+	if (resRestore.status >= 400) {
+		const jsonResponse: ResponseData = await resRestore.json();
+		const message = jsonResponse?.message;
+		throw new Error(message);
+	}
 	return resRestore.json();
 }
 export async function restoreUserNewPassword({
 	password,
-}: RestoreEnterNewPasswordCredentials): Promise<RestoreUser> {
-	const resRestore = await fetch('https://dummyjson.com/auth/restoreMewPassword', {
+}: RestoreEnterNewPasswordCredentials): Promise<User> {
+	const resRestore = await fetch(apiConfig.restoreNewPasswordEndpoint, {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({
 			password,
 		}),
 	});
+	if (resRestore.status >= 400) {
+		const jsonResponse: ResponseData = await resRestore.json();
+		const message = jsonResponse?.message;
+		throw new Error(message);
+	}
 	return resRestore.json();
 }

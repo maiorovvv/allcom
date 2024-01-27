@@ -2,13 +2,22 @@ import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 
+import { useAppDispatch } from '../../app/hooks';
+import { logout } from '../../features/auth/authSlice';
+
 const MyAccount: FC = (): JSX.Element => {
 	const { t } = useTranslation('my_account');
 
 	const navigate = useNavigate();
+	const appDispatch = useAppDispatch();
 
-	const handleLogout = (): void => {
-		navigate('/');
+	const handleLogout = async (): Promise<void> => {
+		try {
+			await appDispatch(logout());
+			navigate('/');
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	return (
