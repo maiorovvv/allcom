@@ -139,15 +139,27 @@ const RegisterPage: FC = (): JSX.Element => {
 
 	const labelUser = (
 		<div className="login_register--divide">
-			<span className="login_register--divide__text">{t('user_line')}</span>
+			<span className="login_register--divide__text" data-testid="labelUser_text">
+				{t('user_line')}
+			</span>
 		</div>
 	);
 
-	const firstName = <CustomFormField id="firstName" placeholder={t('first_name')} />;
-	const lastName = <CustomFormField id="lastName" placeholder={t('last_name')} />;
-	const email = <CustomFormField id="email" placeholder={t('placeholder_email')} />;
+	const firstName = (
+		<CustomFormField id="firstName" data-testid="firstName" placeholder={t('first_name')} />
+	);
+	const lastName = (
+		<CustomFormField id="lastName" data-testid="lastName" placeholder={t('last_name')} />
+	);
+	const email = (
+		<CustomFormField id="email" data-testid="email" placeholder={t('placeholder_email')} />
+	);
 	const phoneNumber = (
-		<CustomFormField id="phoneNumber" placeholder={t('phone_number_placeholder')} />
+		<CustomFormField
+			id="phoneNumber"
+			data-testid="phoneNumber"
+			placeholder={t('phone_number_placeholder')}
+		/>
 	);
 	const password = (
 		<InputGroup>
@@ -155,6 +167,7 @@ const RegisterPage: FC = (): JSX.Element => {
 				<div className="col-12">
 					<CustomFormField
 						id="password"
+						data-testid="password"
 						type={passwordShow ? 'text' : 'password'}
 						placeholder={t('placeholder_password')}
 					/>
@@ -167,6 +180,7 @@ const RegisterPage: FC = (): JSX.Element => {
 							handlePasswordToggle(event);
 						}}
 						className="floating_input--icon_eye_password"
+						data-testid="password_icon"
 					/>
 				</div>
 			</div>
@@ -179,6 +193,7 @@ const RegisterPage: FC = (): JSX.Element => {
 				<div className="col-12">
 					<CustomFormField
 						id="passwordConfirm"
+						data-testid="passwordConfirm"
 						type={passwordConfirmShow ? 'text' : 'password'}
 						placeholder={t('placeholder_confirm_password')}
 					/>
@@ -191,6 +206,7 @@ const RegisterPage: FC = (): JSX.Element => {
 							handlePasswordConfirmToggle(event);
 						}}
 						className="floating_input--icon_eye_password"
+						data-testid="passwordConfirm_icon"
 					/>
 				</div>
 			</div>
@@ -202,12 +218,14 @@ const RegisterPage: FC = (): JSX.Element => {
 			<div className="d-flex justify-content-center">
 				<Form.Label
 					id="checkbox_client_firma"
+					data-testid="checkbox_client_firma"
 					className={` ${!toolboxEnabled ? 'login_register--toolbox_client' : ''}`}
 				>
 					{t('client_private')}
 				</Form.Label>
 				<Form.Check
 					type="switch"
+					data-testid="checkbox_client_firma_switch"
 					className="m-1 d-flex justify-content-center"
 					checked={toolboxEnabled}
 					onChange={(e) => {
@@ -223,31 +241,67 @@ const RegisterPage: FC = (): JSX.Element => {
 
 	const headerTitle = (
 		<div className="login__register--header mb-3">
-			<p className="h3 login_register--header">{t('create_account')}</p>
-			<p className="login_register--header">{t('register_here_text')}</p>
+			<p className="h3 login_register--header" data-testid="headerTitle_create_account">
+				{t('create_account')}
+			</p>
+			<p className="login_register--header" data-testid="headerTitle_register_here_text">
+				{t('register_here_text')}
+			</p>
 		</div>
 	);
 
 	const labelCompany = (
-		<div className="login_register--divide ">
-			<span className="login_register--divide__text">{t('company_line')}</span>
+		<div className="login_register--divide">
+			<span className="login_register--divide__text" data-testid="labelCompany">
+				{t('company_line')}
+			</span>
 		</div>
 	);
 
 	const companyName = (
-		<CustomFormField id="companyName" placeholder={t('company_name_placeholder')} />
+		<CustomFormField
+			id="companyName"
+			data-testid="companyName"
+			placeholder={t('company_name_placeholder')}
+		/>
 	);
-	const companyPosition = <CustomFormField id="position" placeholder={t('position_placeholder')} />;
-	const taxNumber = <CustomFormField id="taxNumber" placeholder={t('taxNumber_placeholder')} />;
-	const postIndex = <CustomFormField id="postIndex" placeholder={t('postIndex_placeholder')} />;
-	const city = <CustomFormField id="city" placeholder={t('city_placeholder')} />;
+	const companyPosition = (
+		<CustomFormField
+			id="position"
+			data-testid="companyPosition"
+			placeholder={t('position_placeholder')}
+		/>
+	);
+	const taxNumber = (
+		<CustomFormField
+			id="taxNumber"
+			data-testid="taxNumber"
+			placeholder={t('taxNumber_placeholder')}
+		/>
+	);
+	const postIndex = (
+		<CustomFormField
+			id="postIndex"
+			data-testid="postIndex"
+			placeholder={t('postIndex_placeholder')}
+		/>
+	);
+	const city = <CustomFormField id="city" data-testid="city" placeholder={t('city_placeholder')} />;
 	const address = (
 		<div className="col d-flex">
 			<div className="col-9 pe-2">
-				<CustomFormField id="street" placeholder={t('address_street_placeholder')} />
+				<CustomFormField
+					id="street"
+					data-testid="street"
+					placeholder={t('address_street_placeholder')}
+				/>
 			</div>
 			<div className="col-3">
-				<CustomFormField id="houseNumber" placeholder={t('address_building_number_placeholder')} />
+				<CustomFormField
+					id="houseNumber"
+					data-testid="houseNumber"
+					placeholder={t('address_building_number_placeholder')}
+				/>
 			</div>
 		</div>
 	);
@@ -255,9 +309,20 @@ const RegisterPage: FC = (): JSX.Element => {
 	const checkBoxReadTerms = (
 		<Form.Group as={Col} id="formReadTerms">
 			<div className="login_register--header ">
-				<Field name="readTerms" type="checkbox" id="checkbox_read_terms" form="novalidate" />
+				<Field
+					name="readTerms"
+					type="checkbox"
+					id="checkbox_read_terms"
+					form="novalidate"
+					data-testid="checkbox_read_terms"
+				/>
 				<Form.Label className="login_register--checkbox" htmlFor="checkbox_read_terms">
-					<Link to="https://www.google.com" target="_blank" className="login_register--link">
+					<Link
+						to="https://www.google.com"
+						target="_blank"
+						className="login_register--link"
+						data-testid="checkbox_read_terms_link"
+					>
 						{t('i_have_read_text')}
 					</Link>
 				</Form.Label>
@@ -268,7 +333,13 @@ const RegisterPage: FC = (): JSX.Element => {
 
 	const buttonRegisterNewUser = (
 		<div>
-			<Button id="button_register" className="login_register--btn mb-3" name="submit" type="submit">
+			<Button
+				id="button_register"
+				data-testid="button_register"
+				className="login_register--btn mb-3"
+				name="submit"
+				type="submit"
+			>
 				{t('submit_register')}
 			</Button>
 		</div>
@@ -278,7 +349,12 @@ const RegisterPage: FC = (): JSX.Element => {
 
 	const buttonLogin = (
 		<Link to="/login" className="pt-3">
-			<Button id="button_login" name="login" className="login_register--btn">
+			<Button
+				id="button_login"
+				data-testid="button_login"
+				name="login"
+				className="login_register--btn"
+			>
 				{t('login')}
 			</Button>
 		</Link>
