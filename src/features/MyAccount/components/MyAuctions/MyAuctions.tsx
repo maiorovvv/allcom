@@ -52,7 +52,10 @@ const MyAuctions: FC = (): JSX.Element => {
 							</table>
 						</div>
 						<div className="my_auctions__continue__shopping d-flex justify-content-between">
-							<a className="my_auctions__continue__shopping--clear" href="shop.html">
+							<a
+								className="my_auctions__continue__shopping--clear"
+								href="/user/my_account/my_auctions"
+							>
 								{t('clear_my_auctions')}
 							</a>
 							<NavLink className="my_auctions__continue__shopping--link" to="/">

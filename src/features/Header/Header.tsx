@@ -168,7 +168,7 @@ const Header: React.FC = () => {
 		<div className="offcanvas__account--items" data-testid="loginRegisterSidepanelButton">
 			<a
 				className="offcanvas__account--items__btn d-flex align-items-center"
-				href="login.html"
+				href="/login"
 				data-testid="loginRegisterSidepanelButton_link"
 			>
 				<span className="offcanvas__account--items__icon">
@@ -180,35 +180,39 @@ const Header: React.FC = () => {
 	);
 	const auctionSidepanel = (
 		<li className="offcanvas__menu_li" data-testid="auctionSidepanel">
-			<a className="header__menu--link" href="contact.html" data-testid="auctionSidepanel_link">
+			<a
+				className="header__menu--link"
+				href="/user/my_account/my_auctions"
+				data-testid="auctionSidepanel_link"
+			>
 				{t('auction')}{' '}
 			</a>
 		</li>
 	);
 	const registerSidepanel = (
 		<li className="offcanvas__menu_li" data-testid="registerSidepanel">
-			<a className="header__menu--link" href="contact.html" data-testid="registerSidepanel_link">
+			<a className="header__menu--link" href="/register" data-testid="registerSidepanel_link">
 				{t('register')}{' '}
 			</a>
 		</li>
 	);
 	const faqSidepanel = (
 		<li className="offcanvas__menu_li" data-testid="faqSidepanel">
-			<a className="header__menu--link" href="contact.html" data-testid="faqSidepanel_link">
+			<a className="header__menu--link" href="/faq" data-testid="faqSidepanel_link">
 				{t('faq')}{' '}
 			</a>
 		</li>
 	);
 	const contactSidepanel = (
 		<li className="offcanvas__menu_li" data-testid="contactSidepanel">
-			<a className="header__menu--link" href="contact.html" data-testid="contactSidepanel_link">
+			<a className="header__menu--link" href="/contact" data-testid="contactSidepanel_link">
 				{t('contact_us')}{' '}
 			</a>
 		</li>
 	);
 	const aboutUsSidepanel = (
 		<li className="offcanvas__menu_li" data-testid="aboutUsSidepanel">
-			<a className="header__menu--link" href="about.html" data-testid="aboutUsSidepanel_link">
+			<a className="header__menu--link" href="/about_us" data-testid="aboutUsSidepanel_link">
 				{t('about_us')}{' '}
 			</a>
 		</li>
