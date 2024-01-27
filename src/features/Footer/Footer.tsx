@@ -152,27 +152,27 @@ const Footer: React.FC = (): JSX.Element => {
 							</h2>
 							<ul className="footer__widget--menu footer__widget--inner">
 								<li className="footer__widget--menu__list">
-									<a className="footer__widget--menu__text" href="my-account.html">
+									<a className="footer__widget--menu__text" href="/login">
 										{t('my_account')}
 									</a>
 								</li>
 								<li className="footer__widget--menu__list">
-									<a className="footer__widget--menu__text" href="cart.html">
+									<a className="footer__widget--menu__text" href="/user/my_account/my_auctions">
 										{t('my_auctions')}
 									</a>
 								</li>
 								<li className="footer__widget--menu__list">
-									<a className="footer__widget--menu__text" href="login.html">
+									<a className="footer__widget--menu__text" href="/login">
 										{t('login')}
 									</a>
 								</li>
 								<li className="footer__widget--menu__list">
-									<a className="footer__widget--menu__text" href="login.html">
+									<a className="footer__widget--menu__text" href="/register">
 										{t('register')}
 									</a>
 								</li>
 								<li className="footer__widget--menu__list">
-									<a className="footer__widget--menu__text" href="wishlist.html">
+									<a className="footer__widget--menu__text" href="/user/my_account/products">
 										{t('wishlist')}
 									</a>
 								</li>
@@ -199,22 +199,22 @@ const Footer: React.FC = (): JSX.Element => {
 							</h2>
 							<ul className="footer__widget--menu footer__widget--inner">
 								<li className="footer__widget--menu__list">
-									<a className="footer__widget--menu__text" href="about.html">
+									<a className="footer__widget--menu__text" href="/about_us">
 										{t('about_us')}
 									</a>
 								</li>
 								<li className="footer__widget--menu__list">
-									<a className="footer__widget--menu__text" href="contact.html">
+									<a className="footer__widget--menu__text" href="/contact">
 										{t('contact_us')}
 									</a>
 								</li>
 								<li className="footer__widget--menu__list">
-									<a className="footer__widget--menu__text" href="portfolio.html">
+									<a className="footer__widget--menu__text" href="/portfolio">
 										{t('portfolio')}
 									</a>
 								</li>
 								<li className="footer__widget--menu__list">
-									<a className="footer__widget--menu__text" href="privacy-policy.html">
+									<a className="footer__widget--menu__text" href="/privacy-policy">
 										{t('privacy_policy')}
 									</a>
 								</li>

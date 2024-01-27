@@ -51,7 +51,7 @@ const ProductDetails: React.FC = (): JSX.Element => {
 										<div className="product__variant--list mb-15">
 											<a
 												className="variant__wishlist--icon mb-15"
-												href="wishlist.html"
+												href="/user/my_account/products"
 												title={t('wishlist')}
 											>
 												<Heart />
