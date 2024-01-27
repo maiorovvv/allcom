@@ -1,7 +1,7 @@
 import { FC, MouseEventHandler, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Form, Button, Col, InputGroup } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Formik, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Icon } from 'react-icons-kit';
@@ -15,15 +15,18 @@ import FloatingInput from '../FloatingInput';
 const LoginPage: FC = (): JSX.Element => {
 	const { t } = useTranslation('LoginRegisterPage');
 	const appDispatch = useAppDispatch();
+	const navigate = useNavigate();
 	const [passwordShow, setPasswordShow] = useState(false);
 	const [passwordIcon, setPasswordIcon] = useState(eye);
 
 	const handleLogin = (formValues: { email: string; password: string }): void => {
 		appDispatch(login(formValues))
 			.then((res) => {
-				const payload = res.payload as { message: string };
+				const payload = res.payload as { message?: string };
 				if (payload.message) {
 					console.error(payload.message);
+				} else {
+					navigate(-1);
 				}
 			})
 			.catch(() => {});
