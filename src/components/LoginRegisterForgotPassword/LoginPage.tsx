@@ -109,7 +109,7 @@ const LoginPage: FC = (): JSX.Element => {
 				type="checkbox"
 				id="checkbox_remember"
 				className="login_register--checkbox mb-3"
-				data-testid="checkbox_remember"
+				data-testid="checkbox_remember_me"
 			/>
 			<div className="login_register--checkbox">{t('remember_me')}</div>
 		</div>
