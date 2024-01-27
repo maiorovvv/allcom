@@ -265,5 +265,19 @@
 		"link_back_to_home": "Zurück zur Startseite",
 		"link_to_product_list": "Zur Produktliste",
 		"link_add_product": "Neues Produkt hinzufügen"
+	},
+	"product_fields": {
+		"product_info": "Produktinformation",
+		"name": "Name",
+		"description": "Beschreibung",
+		"weight": "Gewicht",
+		"color": "Farbe",
+		"auction_info": "Auktionsinformationen",
+		"start_price": "Startpreis",
+		"start_at": "Strat",
+		"planned_end_at": "Geplantes Ende um",
+		"storage_info": "Speicherinformationen",
+		"btn": "Produkt hinzufügen",
+		"product_foto": "Produktfoto"
 	}
 }

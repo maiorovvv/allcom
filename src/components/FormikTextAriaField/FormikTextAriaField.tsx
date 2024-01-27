@@ -1,41 +1,34 @@
-import { FC, ReactNode } from 'react';
-import { Form, Col, InputGroup } from 'react-bootstrap';
+import { FC } from 'react';
+import { Form } from 'react-bootstrap';
 import { Field, ErrorMessage } from 'formik';
 
 interface Props {
 	id: string;
 	name: string;
+	label?: string;
 	placeholder: string;
 	type?: string;
-	// children?: ReactNode;
 	rows?: number;
 	className?: string;
+	value?: string;
 }
 
 const FormikTextAriaField: FC<Props> = (props) => {
-	const { id, name, rows = 3, placeholder, type = 'text', className = '' } = props;
+	const { id, name, label, rows = 3, placeholder, type = 'text', className = '', value } = props;
 
 	return (
 		<Form.Group className={className} controlId={`form${id}`}>
-			{/* <Form.Control as="textarea" rows={rows} style={{ fontSize: '20px' }}> */}
-			{/* <Field
-					as={textarea}
-					id={id}
-					className={className}
-					type={type}
-					name={name}
-					placeholder={placeholder}
-				/> */}
+			<Form.Label>{label}</Form.Label>
 			<Field
 				as="textarea"
 				rows={rows}
 				id={id}
-				className={className}
+				className={`${className} form-control`}
 				type={type}
 				name={name}
 				placeholder={placeholder}
+				value={value}
 			/>
-			{/* </Form.Control> */}
 			<ErrorMessage
 				id={`error${id}`}
 				name={name}

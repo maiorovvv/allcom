@@ -76,7 +76,7 @@ const RestoreEnterNewPAssword: FC = (): JSX.Element => {
 	};
 	const newPasswordFormHeader = (
 		<div className="login_register--divide">
-			<span className="login_register--divide__text">
+			<span className="login_register--divide__text" data-testid="newPasswordFormHeader">
 				{t('restore_password_create_new_header')}
 			</span>
 		</div>
@@ -87,16 +87,36 @@ const RestoreEnterNewPAssword: FC = (): JSX.Element => {
 			dangerouslySetInnerHTML={{
 				__html: t('restore_password_create_new_desc').replace(/\n/g, '<br>'),
 			}}
+			data-testid="newPasswordFormDesc"
 		></p>
 	);
-	const CustomFormField: React.FC<CustomFormFieldProps> = ({ id, type, placeholder }) => (
-		<Form.Group as={Col} id={`form${id}`}>
-			<InputGroup>
-				<Field as={FloatingInput} id={id} name={id} type={type} placeholder={placeholder} />
-			</InputGroup>
-			<ErrorMessage name={id} component="div" className="warning_message--validation" />
-		</Form.Group>
-	);
+	const CustomFormField: React.FC<CustomFormFieldProps> = ({ id, type, placeholder }) => {
+		const inputTestId = `input_${id}`;
+		const errorMessageTestId = `error_${id}`;
+
+		return (
+			<Form.Group as={Col} id={`form${id}`}>
+				<InputGroup>
+					<Field
+						as={FloatingInput}
+						id={id}
+						name={id}
+						type={type}
+						placeholder={placeholder}
+						data-testid={inputTestId}
+						aria-describedby={errorMessageTestId}
+						aria-label={placeholder}
+					/>
+				</InputGroup>
+				<ErrorMessage
+					name={id}
+					component="div"
+					className="warning_message--validation"
+					data-testid={errorMessageTestId}
+				/>
+			</Form.Group>
+		);
+	};
 
 	CustomFormField.propTypes = {
 		id: PropTypes.string.isRequired,
@@ -118,6 +138,7 @@ const RestoreEnterNewPAssword: FC = (): JSX.Element => {
 				type="email"
 				value={USER_EMAIL_FOR_RESTORE_PASSWORD}
 				disabled
+				data-testid="emailDisabled"
 			></input>
 		</div>
 	);
@@ -126,7 +147,12 @@ const RestoreEnterNewPAssword: FC = (): JSX.Element => {
 		<InputGroup>
 			<div className="col d-flex">
 				<div className="col-12">
-					<CustomFormField id="password" type="password" placeholder={t('placeholder_password')} />
+					<CustomFormField
+						id="password"
+						type="password"
+						placeholder={t('placeholder_password')}
+						data-testid="passwordInput"
+					/>
 				</div>
 				<div className="col">
 					<Icon
@@ -136,6 +162,7 @@ const RestoreEnterNewPAssword: FC = (): JSX.Element => {
 							handlePasswordToggle(event);
 						}}
 						className="floating_input--icon_eye_password"
+						data-testid="passwordIcon"
 					/>
 				</div>
 			</div>
@@ -150,6 +177,7 @@ const RestoreEnterNewPAssword: FC = (): JSX.Element => {
 						id="passwordConfirm"
 						type={passwordConfirmShow ? 'text' : 'password'}
 						placeholder={t('placeholder_confirm_password')}
+						data-testid="passwordConfirm"
 					/>
 				</div>
 				<div className="col">
@@ -160,6 +188,7 @@ const RestoreEnterNewPAssword: FC = (): JSX.Element => {
 							handlePasswordConfirmToggle(event);
 						}}
 						className="floating_input--icon_eye_password"
+						data-testid="passwordConfirmIcon"
 					/>
 				</div>
 			</div>
@@ -169,6 +198,7 @@ const RestoreEnterNewPAssword: FC = (): JSX.Element => {
 	const countdownTimer = (
 		<span
 			className="login_register--flex_gray pt-4"
+			data-testid="countdownTimer"
 			dangerouslySetInnerHTML={{
 				__html: t('redirect_message_new_password', { seconds: countdown }).replace(/\n/g, '<br>'),
 			}}
@@ -181,6 +211,7 @@ const RestoreEnterNewPAssword: FC = (): JSX.Element => {
 			className="login_register--btn mt-3 pt-0"
 			name="submit"
 			type="submit"
+			data-testid="buttonRestore"
 		>
 			{t('restore_password_create_new_button')}
 		</Button>

@@ -267,5 +267,19 @@
 		"link_back_to_home": "Back To Home",
 		"link_to_product_list": "To List of Products",
 		"link_add_product": "Add new Product"
+	},
+	"product_fields": {
+		"product_info": "Product Info",
+		"name": "Name",
+		"description": "Description",
+		"weight": "Weight",
+		"color": "Color",
+		"auction_info": "Auction Info",
+		"start_price": "Start price",
+		"start_at": "Strat At",
+		"planned_end_at": "Planned End At",
+		"storage_info": "Storage Info",
+		"btn": "Add Product",
+		"product_foto": "Product Photo"
 	}
 }

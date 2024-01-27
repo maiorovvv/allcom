@@ -7,11 +7,6 @@
 		padding-top: 10px;
 		border-radius: 0;
 		color: var(--text-gray-color);
-		&:focus {
-			border-color: var(--secondary-color);
-			box-shadow: 0 0 5px rgba(224, 9, 9, 0.3);
-			color: var(--text-gray-color);
-		}
 	}
 	&--field_disabled {
 		height: 4.8rem !important;

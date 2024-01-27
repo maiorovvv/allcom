@@ -20,7 +20,10 @@ const SetLanguage: React.FC<IProps> = (isOpen): JSX.Element => {
 	const localeTitle = locales[languageKey as keyof typeof locales]?.title;
 
 	return (
-		<div className={`language__currency ${isOpen.isOpen} d-lg-block`}>
+		<div
+			className={`language__currency ${isOpen.isOpen} d-lg-block`}
+			data-testid="language-currency"
+		>
 			<ul className="d-flex align-items-center">
 				<li className="language__currency--list">
 					<img className="language__switcher--icon__img" src={language_icon} alt="language"></img>
@@ -29,10 +32,14 @@ const SetLanguage: React.FC<IProps> = (isOpen): JSX.Element => {
 						onClick={() => {
 							setIsActive(!isActive);
 						}}
+						data-testid="language-text-set"
 					>
 						{localeTitle}
 					</span>
-					<div className={`dropdown__language ${isActive ? 'active_window' : ''}`}>
+					<div
+						className={`dropdown__language ${isActive ? 'active_window' : ''}`}
+						data-testid="dropdown-language"
+					>
 						<ul>
 							{Object.keys(locales).map((locale) => (
 								<li
@@ -45,6 +52,7 @@ const SetLanguage: React.FC<IProps> = (isOpen): JSX.Element => {
 										i18n.changeLanguage(locale);
 										setIsActive(!isActive);
 									}}
+									data-testid={`language-option-${locale}`}
 								>
 									{locales[locale as keyof typeof locales].title}
 								</li>

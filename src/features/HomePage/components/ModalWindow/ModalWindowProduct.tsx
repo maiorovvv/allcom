@@ -6,7 +6,7 @@ import { useAppSelector } from '../../../../app/hooks';
 import { RootState } from '../../../../app/store';
 
 import Timer from '../../../../components/Timer/Timer';
-import SwiperModalWindow from './SwiperModalWindow';
+import SwiperModalWindow from '../../../../components/SwiperModalWindow/SwiperModalWindow';
 
 import CloseIcon from '../../../../img/svg/cross.svg?react';
 import HeartIcon from '../../../../img/svg/heart.svg?react';

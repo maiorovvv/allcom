@@ -18,10 +18,9 @@ export const StorageValidationSchema = yup.object().shape({
 export const ProductInfoValidationSchema = yup.object().shape({
 	name: yup.string().required(REQUIRED),
 	description: yup.string().required(REQUIRED),
-	weight: yup.number().integer().min(0).required(REQUIRED),
+	weight: yup.number().min(0).required(REQUIRED),
 	color: yup.string().required(REQUIRED),
 	categoryId: yup.number().integer().min(0).integer().required(REQUIRED),
-	buyPrice: yup.number().integer().min(0).required(REQUIRED),
 });
 
 export const ProductValidationSchema = yup.object().shape({
@@ -32,13 +31,14 @@ export const ProductValidationSchema = yup.object().shape({
 
 export const initialValues = (startAt: string, plannedEndAt: string): ProductFormValues => ({
 	product: {
+		id: undefined,
 		name: '',
 		description: '',
 		weight: 0,
 		color: '-',
-		categoryId: 0,
-		buyPrice: 0,
+		categoryId: 1,
 		images: [],
+		imagesToDelete: [],
 	},
 	storage: {
 		area: '-',
@@ -51,5 +51,5 @@ export const initialValues = (startAt: string, plannedEndAt: string): ProductFor
 		plannedEndAt,
 		startPrice: 1,
 	},
-	files: [],
+	images: [],
 });
