@@ -6,7 +6,7 @@ interface ButtonProps {
 	widthBtn?: string;
 	heigthBtn?: string;
 	isConfirm?: boolean;
-	onClickBtn: (flag?: boolean) => void;
+	onClickBtn: (flag: boolean) => void;
 }
 
 const Button: FC<ButtonProps> = ({ btnType, text, widthBtn, onClickBtn, isConfirm }) => {
