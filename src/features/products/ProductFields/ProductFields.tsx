@@ -43,7 +43,7 @@ const ProductFields: FC<PropsInterface> = (props) => {
 
 	const { t } = useTranslation('product_fields');
 
-	const selectOptions: Options[] = [
+	const selectOptionsCategory: Options[] = [
 		{ value: 1, label: t('categories:category_1') },
 		{ value: 2, label: t('categories:category_2') },
 		{ value: 3, label: t('categories:category_3') },
@@ -56,15 +56,41 @@ const ProductFields: FC<PropsInterface> = (props) => {
 	];
 
 	const filterOptions = (selectedValue: number): Options[] => {
-		return selectOptions.filter(({ value }) => value === selectedValue);
+		return selectOptionsCategory.filter(({ value }) => value === selectedValue);
 	};
 
+	const selectOptionsArea: Options[] = [
+		{ value: 1, label: 'R' },
+		{ value: 2, label: 'L' },
+	];
+
 	return (
-		<div className="position-relative">
+		<>
 			<div className={styles.container}>
+				<div className={styles.add_img}>
+					<h3>{t('product_foto')}</h3>
+					<input
+						className={`form-control ${styles.file_form}`}
+						name="product.images"
+						type="file"
+						id="formFileMultiple"
+						multiple
+						onChange={onFileChange}
+					/>
+					{loadingImage ? (
+						<div className="d-flex align-items-center justify-content-center h-100">
+							<Spinner />
+						</div>
+					) : (
+						<>
+							<SwiperModalWindow images={linkList} onDelete={onDeleteImage} />
+						</>
+					)}
+					{resizingError && <div className="warning_message--validation">{resizingError}</div>}
+				</div>
 				<div className={styles.product_info}>
 					<div className={styles.product_info__details}>
-						<h4 className="mb-3">{t('product_info')}</h4>
+						<h3 className="mb-3">{t('product_info')}</h3>
 						<FormikInputField
 							name="product.name"
 							placeholder={t('name')}
@@ -95,12 +121,10 @@ const ProductFields: FC<PropsInterface> = (props) => {
 							/>
 						</div>
 						<Select
-							defaultValue={selectOptions.find(
-								(option) => option.value === values.product.categoryId
-							)}
+							defaultValue={selectOptionsCategory}
 							value={filterOptions(values.product.categoryId)}
 							name="product.categoryId"
-							options={selectOptions}
+							options={selectOptionsCategory}
 							onChange={(option) =>
 								setFieldValue('product.categoryId', option ? option.value : null)
 							}
@@ -110,19 +134,17 @@ const ProductFields: FC<PropsInterface> = (props) => {
 							})}
 						/>
 					</div>
-					<hr className={styles.hr} />
+					<div className={styles.verticale}></div>
 					<div className={styles.product_info__auction}>
-						<h4 className="mb-3">{t('auction_info')}</h4>
+						<h3 className="mb-3">{t('auction_info')}</h3>
 						<div className={styles.datepicker}>
-							<div className={styles.price}>
-								<FormikInputField
-									id="startPrice"
-									name="auction.startPrice"
-									placeholder={t('start_price')}
-									type="number"
-									value={values.auction.startPrice}
-								/>
-							</div>
+							<FormikInputField
+								id="startPrice"
+								name="auction.startPrice"
+								placeholder={t('start_price')}
+								type="number"
+								value={values.auction.startPrice}
+							/>
 							<Datepicker
 								id="startAt"
 								name="auction.startAt"
@@ -139,11 +161,26 @@ const ProductFields: FC<PropsInterface> = (props) => {
 							/>
 						</div>
 					</div>
-					<hr className={styles.hr} />
+					<div className={styles.verticale}></div>
 					<div className={styles.product_info__storage}>
-						<h4 className="mb-3">{t('storage_info')}</h4>
-						<div className="d-flex">
-							<FormikInputField name="storage.area" id="area" value={values.storage.area} />
+						<h3 className="mb-3">{t('storage_info')}</h3>
+						<div className={styles.product_info__storage__item}>
+							<Select
+								id="area"
+								defaultValue={selectOptionsArea[0]}
+								value={selectOptionsArea.find((option) => option.label === values.storage.area)}
+								name="storage.area"
+								options={selectOptionsArea}
+								onChange={(option) => setFieldValue('storage.area', option ? option.value : null)}
+								theme={(theme) => ({
+									...theme,
+									borderRadius: 0,
+									spacing: {
+										...theme.spacing,
+										controlHeight: 48,
+									},
+								})}
+							/>
 							<FormikInputField
 								name="storage.rack"
 								id="rack"
@@ -162,35 +199,14 @@ const ProductFields: FC<PropsInterface> = (props) => {
 								type="number"
 								value={values.storage.shelve}
 							/>
+							<button type="submit" name="submit" className={styles.btn}>
+								{t('btn')}
+							</button>
 						</div>
 					</div>
 				</div>
-				<div className={styles.add_img}>
-					<h4>{t('product_foto')}</h4>
-					<input
-						className={`form-control ${styles.file_form}`}
-						name="product.images"
-						type="file"
-						id="formFileMultiple"
-						multiple
-						onChange={onFileChange}
-					/>
-					{loadingImage ? (
-						<div className="d-flex align-items-center justify-content-center h-100">
-							<Spinner />
-						</div>
-					) : (
-						<>
-							<SwiperModalWindow images={linkList} onDelete={onDeleteImage} />
-						</>
-					)}
-					{resizingError && <div className="warning_message--validation">{resizingError}</div>}
-				</div>
 			</div>
-			<button type="submit" name="submit" className={styles.btn}>
-				{t('btn')}
-			</button>
-		</div>
+		</>
 	);
 };
 

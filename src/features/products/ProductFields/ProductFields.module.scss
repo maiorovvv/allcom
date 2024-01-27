@@ -2,46 +2,47 @@
 	width: 95%;
 	margin: 3rem auto;
 	text-align: center;
-	display: flex;
-	justify-content: space-between;
 	color: var(--text-gray-color);
+	display: flex;
+	flex-direction: column;
 }
 
 .product_info {
-	width: 39%;
 	padding: 2rem;
 	box-shadow: 0 2px 22px rgba(0, 0, 0, 0.16);
 	display: flex;
-	flex-direction: column;
+	justify-content: space-between;
 	&__details {
 		margin: 0 auto 1rem;
-		width: 90%;
+		width: 30%;
 	}
 	&__auction {
 		margin: 0 auto 1rem;
-		width: 90%;
+		width: 30%;
 	}
 	&__storage {
 		margin: 0 auto;
-		width: 90%;
+		width: 30%;
+		position: relative;
+		&__item {
+			margin: 0 auto;
+			display: flex;
+			width: 70%;
+		}
 	}
 }
 
-.price {
-	max-width: 10rem;
-	max-height: 48px !important;
-}
-
-.hr {
-	height: 1px;
+.verticale {
+	width: 1px;
 	background-color: var(--border-color);
-	box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
 }
 
 .add_img {
 	padding: 2rem;
+	margin: 0 auto;
 	height: 55rem;
-	width: 55%;
+	width: 75%;
 	box-shadow: 0 2px 22px rgba(0, 0, 0, 0.345);
 	margin-bottom: 5rem;
 }
@@ -61,15 +62,14 @@
 
 .datepicker {
 	display: flex;
-	justify-content: space-between;
-	align-items: end;
+	flex-direction: column;
 	font-size: 1.8rem;
 }
 
 .btn {
 	position: absolute;
-	bottom: -20px;
-	right: 42px;
+	bottom: 0px;
+	right: 0;
 	width: 30rem;
 	height: 5rem;
 	padding: 5px;
