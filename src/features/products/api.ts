@@ -1,13 +1,12 @@
+import apiConfig from '../../apiConfig';
 import { ProductFormValues } from '../../types/product/ProductFormValues';
-import { ProductInfo } from '../../types/product/ProductInfo';
-
-const API_BASE_URL: string = import.meta.env.VITE_API_BASE_URL;
+import { ProductResponseDto } from '../../types/product/ProductResponseDto';
 
 interface ResponseData {
 	message?: string;
 }
 
-export async function createProduct(data: ProductFormValues): Promise<ProductInfo> {
+export async function createProduct(data: ProductFormValues): Promise<ProductResponseDto> {
 	const formData = new FormData();
 	formData.append('product', JSON.stringify(data.product));
 	formData.append('auction', JSON.stringify(data.auction));
@@ -16,7 +15,7 @@ export async function createProduct(data: ProductFormValues): Promise<ProductInf
 		formData.append(`images[${index}]`, image);
 	});
 
-	const res = await fetch(API_BASE_URL + 'api/products/add', {
+	const res = await fetch(apiConfig.addProductEndpoint, {
 		method: 'POST',
 		body: formData,
 	});

@@ -3,10 +3,10 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import * as api from './api';
 import ProductState from '../../types/product/ProductState';
 import { ProductFormValues } from '../../types/product/ProductFormValues';
-import { ProductInfo } from '../../types/product/ProductInfo';
+import { ProductResponseDto } from '../../types/product/ProductResponseDto';
 
 const initialState: ProductState = {
-	product: null,
+	products: [],
 	loading: false,
 	error: undefined,
 };
@@ -15,8 +15,8 @@ export const createProduct = createAsyncThunk('products/createProduct', (data: P
 	api.createProduct(data)
 );
 
-export const newProductsSlice = createSlice({
-	name: 'newProduct',
+export const productsSlice = createSlice({
+	name: 'products',
 	initialState,
 	reducers: {
 		resetError: (state) => {
@@ -28,23 +28,23 @@ export const newProductsSlice = createSlice({
 			.addCase(createProduct.pending, (state: { loading: boolean }) => {
 				state.loading = true;
 			})
-			.addCase(createProduct.fulfilled, (state, action: PayloadAction<ProductInfo>) => {
+			.addCase(createProduct.fulfilled, (state, action: PayloadAction<ProductResponseDto>) => {
 				if (action.payload.error) {
-					state.error = action.payload.message || 'Unknown error occurred';
-					state.product = null;
+					state.error = action.payload.error || 'Unknown error occurred';
+					state.products = [];
 				} else {
-					state.product = action.payload;
+					state.products.push(action.payload);
 					state.error = undefined;
 				}
 				state.loading = false;
 			})
 			.addCase(createProduct.rejected, (state, action) => {
 				state.loading = false;
-				state.error = action.error.message || 'AAAAA';
+				state.error = action.error.message || 'Unknown error occurred';
 			});
 	},
 });
 
-export const { resetError } = newProductsSlice.actions;
+export const { resetError } = productsSlice.actions;
 
-export default newProductsSlice.reducer;
+export default productsSlice.reducer;
