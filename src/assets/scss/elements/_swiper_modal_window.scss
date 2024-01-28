@@ -13,6 +13,18 @@
 		max-height: 90px;
 		display: flex;
 		align-items: center;
+		position: relative;
+		&--delete {
+			position: absolute;
+			top: -5px;
+			right: 60px;
+			transition: var(--transition);
+			width: 25px;
+			height: 25px;
+			&:hover {
+				color: var(--secondary-color);
+			}
+		}
 		&--item {
 			display: flex;
 			align-items: center;

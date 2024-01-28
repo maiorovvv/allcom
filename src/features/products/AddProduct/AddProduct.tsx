@@ -1,14 +1,13 @@
 import { FC, ChangeEvent, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router';
 import { Formik } from 'formik';
-import { Form, Button } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { startOfWeek, addWeeks, setHours, setMinutes } from 'date-fns';
 
 import { ProductValidationSchema, initialValues } from '../../../forms/ProductForm';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { createProduct, resetError } from '../productsSlice';
 import { selectError, selectLoading } from '../selectors';
-import Spinner from '../../../components/Spinner/Spinner';
 import ProductFields from '../ProductFields/ProductFields';
 import { ProductFormValues } from '../../../types/product/ProductFormValues';
 import resizeAndCompressImage from '../../../components/utils/imageResizer';
@@ -38,7 +37,6 @@ const AddProductPage: FC = () => {
 
 	const error = useAppSelector(selectError);
 	const [resizingError, setResizingError] = useState<string | undefined>(error);
-	const loading = useAppSelector(selectLoading);
 	const [isFileLoading, setIsFileLoading] = useState<boolean>(false);
 	const [files, setFiles] = useState<File[]>([]);
 
@@ -105,11 +103,6 @@ const AddProductPage: FC = () => {
 			>
 				{({ handleSubmit, values, handleChange, setFieldValue }) => (
 					<>
-						{(loading || isFileLoading) && (
-							<div className="text-center">
-								<Spinner />
-							</div>
-						)}
 						<Form onSubmit={handleSubmit}>
 							<ProductFields
 								onFileChange={handleFileChange}
@@ -119,10 +112,8 @@ const AddProductPage: FC = () => {
 								onDeleteImage={handleDeleteImage}
 								setFieldValue={setFieldValue}
 								resizingError={resizingError}
+								loadingImage={isFileLoading}
 							/>
-							<Button name="submit" type="submit" disabled={loading}>
-								Submit
-							</Button>
 						</Form>
 					</>
 				)}

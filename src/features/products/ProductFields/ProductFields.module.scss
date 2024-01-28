@@ -1,0 +1,82 @@
+.container {
+	width: 95%;
+	margin: 3rem auto;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+}
+
+.product_info {
+	border-radius: 5px;
+	padding: 2rem;
+	box-shadow: 0 2px 22px rgba(0, 0, 0, 0.16);
+	display: flex;
+	justify-content: space-between;
+	&__details {
+		margin: 0 auto 1rem;
+		width: 30%;
+	}
+	&__auction {
+		margin: 0 auto 1rem;
+		width: 30%;
+	}
+	&__storage {
+		margin: 0 auto;
+		width: 30%;
+		position: relative;
+		&__item {
+			margin: 0 auto;
+			display: flex;
+			width: 70%;
+		}
+	}
+}
+
+.verticale {
+	width: 1px;
+	background-color: var(--border-color);
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+}
+
+.add_img {
+	border-radius: 5px;
+	padding: 2rem;
+	margin: 0 auto;
+	height: 55rem;
+	width: 75%;
+	box-shadow: 0 2px 22px rgba(0, 0, 0, 0.345);
+	margin-bottom: 5rem;
+}
+
+.file_form {
+	margin: 2rem auto;
+	width: 90% !important;
+	font-size: 1.6rem !important;
+}
+
+.description {
+	font-size: 1.6rem !important;
+	margin-bottom: 1rem;
+}
+
+.datepicker {
+	display: flex;
+	flex-direction: column;
+	font-size: 1.8rem;
+}
+
+.btn {
+	position: absolute;
+	bottom: 0px;
+	right: 0;
+	width: 30rem;
+	height: 5rem;
+	padding: 5px;
+	border: none;
+	border-radius: 5px;
+	background-color: var(--secondary-color);
+	color: var(--white-color);
+	&:hover {
+		background-color: var(--hover-btn-color);
+	}
+}

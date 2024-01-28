@@ -56,7 +56,12 @@ const SwiperModalWindow: FC<ImagesProps> = ({ images, onDelete }) => {
 							className={`swiper_modal_window__thumbs--item ${classActiveThumb}`}
 						>
 							<img src={i} className="swiper_modal_window__thumbs--small_img" />
-							{onDelete && <CloseIcon onClick={() => handleDelete(index)} />}
+							{onDelete && (
+								<CloseIcon
+									onClick={() => handleDelete(index)}
+									className="swiper_modal_window__thumbs--delete"
+								/>
+							)}
 						</SwiperSlide>
 					);
 				})}
