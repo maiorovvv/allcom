@@ -128,10 +128,6 @@ const ProductFields: FC<PropsInterface> = (props) => {
 							onChange={(option) =>
 								setFieldValue('product.categoryId', option ? option.value : null)
 							}
-							theme={(theme) => ({
-								...theme,
-								borderRadius: 0,
-							})}
 						/>
 					</div>
 					<div className={styles.verticale}></div>
@@ -174,7 +170,6 @@ const ProductFields: FC<PropsInterface> = (props) => {
 								onChange={(option) => setFieldValue('storage.area', option ? option.value : null)}
 								theme={(theme) => ({
 									...theme,
-									borderRadius: 0,
 									spacing: {
 										...theme.spacing,
 										controlHeight: 48,
