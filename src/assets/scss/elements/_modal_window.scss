@@ -50,8 +50,9 @@
 	width: 55vw;
 	background-color: var(--white-color);
 	display: flex;
-	transition: .6s all;
+	transition: 0.6s all;
 	padding: 3rem 0.5rem 3rem 2rem;
+	border-radius: var(--border-radius);
 	@media only screen and (min-width: 1401px) and (max-width: 1700px) {
 		width: 65vw;
 	}
@@ -179,6 +180,7 @@
 			height: 4rem;
 			text-align: center;
 			border: none;
+			border-radius: var(--border-radius);
 			color: var(--white-color);
 			background-color: var(--secondary-color);
 			@media only screen and (min-width: 992px) {
@@ -208,11 +210,10 @@
 .modal_window__auction_info {
 	@media only screen and (max-width: 768px) {
 		display: flex;
-    justify-content: space-between;
+		justify-content: space-between;
 		flex-direction: column;
 	}
 	@media only screen and (max-width) {
-		
 	}
 }
 
