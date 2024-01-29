@@ -58,6 +58,12 @@
 	opacity: 0.35;
 }
 
+.poster_swiper:hover .swiper-button-next,
+.poster_swiper:hover .swiper-button-prev {
+	display: block;
+	opacity: 1;
+}
+
 .poster_swiper {
 	height: 50vh;
 	background-color: #e0e4e6;
