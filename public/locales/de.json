@@ -274,5 +274,24 @@
 		"about_us1": "Egal, ob Sie ein erfahrener Sammler sind, der nach seltenen Artefakten sucht, oder ein Verkäufer, der ein globales Publikum erreichen möchte, Allcom bietet eine Plattform, die Ihren Bedürfnissen entspricht. Unsere Auktionen umfassen eine Vielzahl von Kategorien, darunter Kunst, Antiquitäten, Schmuck, Vintage-Artikel und mehr.",
 		"about_us2": "Unser Unternehmen wird in Kürze auch eine Lieferoption einführen, wir werden Sie umgehend auf der Website darüber informieren.",
 		"about_us3": "Der Standort unseres Lagers ist für Sie auf der Karte angegeben. Wir befinden uns in der Stadt Berlin unter der Adresse Wilhelminenhofstraße 93, 12459."
+	},
+	"product_added_success_page": {
+		"link_back_to_home": "Zurück zur Startseite",
+		"link_to_product_list": "Zur Produktliste",
+		"link_add_product": "Neues Produkt hinzufügen"
+	},
+	"product_fields": {
+		"product_info": "Produktinformation",
+		"name": "Name",
+		"description": "Beschreibung",
+		"weight": "Gewicht",
+		"color": "Farbe",
+		"auction_info": "Auktionsinformationen",
+		"start_price": "Startpreis",
+		"start_at": "Strat",
+		"planned_end_at": "Geplantes Ende um",
+		"storage_info": "Speicherinformationen",
+		"btn": "Produkt hinzufügen",
+		"product_foto": "Produktfoto"
 	}
 }

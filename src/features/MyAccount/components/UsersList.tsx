@@ -84,7 +84,17 @@ const UsersList: FC = (): JSX.Element => {
 				<tbody>
 					{users &&
 						users.map(
-							({ id, firstName, lastName, email, phone, address: { city, address }, status }) => (
+							({
+								id,
+								firstName,
+								lastName,
+								email,
+								phoneNumber,
+								city,
+								street,
+								houseNumber,
+								blocked,
+							}) => (
 								<tr className="users_list__info" key={id}>
 									<td className="users_list__info--name">
 										{lastName}, {firstName}
@@ -93,23 +103,23 @@ const UsersList: FC = (): JSX.Element => {
 										<a href={`mailto:${email}`}>{email}</a>
 									</td>
 									<td>
-										<a href={`tel:${phone}`}>{phone}</a>
+										<a href={`tel:${phoneNumber}`}>{phoneNumber}</a>
 									</td>
 									<td>
-										{address}, {city}
+										{city}, {street}, {houseNumber}
 									</td>
 									<td>
 										<Tooltip text={t('tooltip_set_status')}>
 											<div
 												className={`users_list__status
-											${status ? 'users_list__status--active' : 'users_list__status--blocked'}`}
+											${blocked ? 'users_list__status--active' : 'users_list__status--blocked'}`}
 												onClick={() => {
 													setConfirmationModal((prev) => !prev);
 													setUserName(`${lastName}, ${firstName}`);
-													setUserStatus(status);
+													setUserStatus(blocked);
 												}}
 											>
-												{status ? t('activate') : t('block')}
+												{blocked ? t('activate') : t('block')}
 											</div>
 										</Tooltip>
 									</td>

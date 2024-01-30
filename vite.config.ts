@@ -9,24 +9,26 @@ export default defineConfig({
 	plugins: [
 		react(),
 		svgr({
-			// svgr options: https://react-svgr.com/docs/options/
-			svgrOptions: {
-				// ...
-			},
-
-			// esbuild options, to transform jsx to js
-			esbuildOptions: {
-				// ...
-			},
-
 			// A minimatch pattern, or array of patterns, which specifies the files in the build the plugin should include.
 			include: '**/*.svg?react',
-
-			//  A minimatch pattern, or array of patterns, which specifies the files in the build the plugin should ignore. By default no files are ignored.
-			exclude: '',
 		}),
 	],
+	// define: {
+	// 	global: {},
+	// 	'process.env': {},
+	// },
 	server: {
+		host: 'localhost',
+		proxy: {
+			// Конфигурация прокси
+			'/ws': {
+				target: 'http://localhost:8080', // Замените на URL вашего сервера
+				changeOrigin: false,
+				secure: false,
+				ws: true, // Важно для WebSocket
+			},
+			// Вы можете добавить другие маршруты прокси здесь
+		},
 		open: true,
 		// force: true,
 		// rewrites: [{ from: /^\/allcom\/.*$/, to: '/allcom/index.html' }],

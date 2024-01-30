@@ -26,7 +26,6 @@ const RestorePasswordPage: FC = (): JSX.Element => {
 				const payload = res.payload as { message: string };
 				if (payload.message) {
 					navigate('/restore_password_wait');
-					console.error(payload.message);
 				}
 			})
 			.catch(() => {});
@@ -48,9 +47,17 @@ const RestorePasswordPage: FC = (): JSX.Element => {
 					type="email"
 					name="email"
 					placeholder={t('restore_placeholder_email')}
+					data-testid="input_email"
+					aria-describedby="error_email"
+					aria-label={t('restore_placeholder_email')}
 				/>
 			</InputGroup>
-			<ErrorMessage name="email" component="div" className="warning_message--validation" />
+			<ErrorMessage
+				name="email"
+				component="div"
+				className="warning_message--validation"
+				data-testid="error_email"
+			/>
 		</Form.Group>
 	);
 
@@ -60,6 +67,7 @@ const RestorePasswordPage: FC = (): JSX.Element => {
 			className="login_register--btn mt-3 pt-0"
 			name="submit"
 			type="submit"
+			data-testid="buttonRestore"
 		>
 			{t('restore_request')}
 		</Button>

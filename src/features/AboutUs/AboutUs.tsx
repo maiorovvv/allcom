@@ -12,15 +12,18 @@ const AboutUs: React.FC = (): JSX.Element => {
 	return (
 		<div className="about-us-container">
 			<div className="about-us-header">
-				<h1>{t('about_us')}</h1>
+				<h1 data-testid="about-us_header">{t('about_us')}</h1>
 			</div>
-			<div className="about-us-content">
-				<p>{t('welcome')}</p>
-				<p>{t('about_us1')}</p>
-				<p>{t('about_us2')}</p>
-				<p>{t('about_us3')}</p>
-				<div className="about-us-map-container">
-					<div className="about-us-leaflet-map-container">
+			<div className="about-us-content" data-testid="about-us-content">
+				<p data-testid="about-us_welcome">{t('welcome')}</p>
+				<p data-testid="about-us_about_us1">{t('about_us1')}</p>
+				<p data-testid="about-us_about_us2">{t('about_us2')}</p>
+				<p data-testid="about-us_about_us3">{t('about_us3')}</p>
+				<div className="about-us-map-container" data-testid="about-us-map-container">
+					<div
+						className="about-us-leaflet-map-container"
+						data-testid="about-us-leaflet-map-container"
+					>
 						<LeafletMapContainer
 							center={ABOUT_US_COORDINATES}
 							zoom={13}
@@ -31,7 +34,7 @@ const AboutUs: React.FC = (): JSX.Element => {
 								attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 							/>
 							<Marker position={ABOUT_US_COORDINATES}>
-								<Popup>Allcom</Popup>
+								<Popup data-testid="allcom_label_on_map">Allcom</Popup>
 							</Marker>
 						</LeafletMapContainer>
 					</div>

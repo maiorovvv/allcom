@@ -112,8 +112,9 @@
 	max-height: 0;
 	font-size: 1.6rem;
 	text-align: center;
+	border-radius: var(--border-radius);
 	&:hover {
-		background-color: var(--primary-color);
+		background-color: var(--hover-btn-color);
 		color: var(--white-color);
 	}
 }
@@ -125,7 +126,6 @@
 	opacity: 0;
 	visibility: hidden;
 	transition: var(--transition);
-
 	&__list {
 		text-align: center;
 		margin-bottom: 1rem;
@@ -139,11 +139,10 @@
 		text-align: center;
 		border: none;
 		color: var(--white-color);
-		border-radius: 0.3rem;
+		border-radius: var(--border-radius);
 		background-color: var(--background-action-btn-color);
 		&:hover {
-			background-color: var(--secondary-color);
-			border-color: var(--secondary-color);
+			background-color: var(--hover-btn-color);
 			color: var(--white-color);
 		}
 		@media only screen and (min-width: 480px) {

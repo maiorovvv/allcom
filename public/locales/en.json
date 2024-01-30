@@ -267,13 +267,32 @@
 		"edit": "Edit",
 		"search_placeholder": "enter product name ...",
 		"tooltip_edit": "change product details"
-	}
-	,"about_us": {
+	},
+	"about_us": {
 		"about_us": "About Us",
 		"welcome": "Welcome to Allcom, your premier choice for exciting auction sales. At Allcom we specialize in connecting buyers and sellers in a dynamic and transparent marketplace. Our team is passionate about connecting people with unique and valuable items through online auction.",
 		"wishlist": "Favorites",
 		"about_us1": "Whether you are a seasoned collector looking for rare artifacts or a seller interested in reaching a global audience, Allcom provides a platform to suit your needs. Our auctions include a variety of categories including art, antiques, jewelry, vintage items and more.",
 		"about_us2": "Our company will also soon launch a delivery option, we will immediately inform you about this on the website..",
 		"about_us3": "The location of our warehouse is indicated on the map for your convenience. We are located in the city of Berlin at the address Wilhelminenhofstraße 93, 12459."
+	},
+	"product_added_success_page": {
+		"link_back_to_home": "Back To Home",
+		"link_to_product_list": "To List of Products",
+		"link_add_product": "Add new Product"
+	},
+	"product_fields": {
+		"product_info": "Product Info",
+		"name": "Name",
+		"description": "Description",
+		"weight": "Weight",
+		"color": "Color",
+		"auction_info": "Auction Info",
+		"start_price": "Start price",
+		"start_at": "Strat At",
+		"planned_end_at": "Planned End At",
+		"storage_info": "Storage Info",
+		"btn": "Add Product",
+		"product_foto": "Product Photo"
 	}
 }

@@ -8,6 +8,7 @@
 	margin-bottom: 1rem;
 	background-color: var(--background-timer-color);
 	width: 170px;
+	border-radius: var(--border-radius);
 	&__last_moments {
 		display: flex;
 		justify-content: center;
@@ -19,6 +20,7 @@
 		background-color: var(--background-timer-last-moments-color);
 		transition: 2s;
 		min-width: 170px;
+		border-radius: var(--border-radius);
 		@media only screen and (max-width: 576px) {
 			font-size: 1.3rem;
 			min-width: 130px;
@@ -40,6 +42,7 @@
 		margin-bottom: 1rem;
 		background-color: var(--background-timer-finish-color);
 		min-width: 170px;
+		border-radius: var(--border-radius);
 		@media only screen and (max-width: 576px) {
 			font-size: 1.2rem;
 			width: 120px;

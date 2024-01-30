@@ -1,0 +1,16 @@
+<svg
+  className="predictive__search--close__icon"
+  xmlns="http://www.w3.org/2000/svg"
+  width="20.255"
+  height="15.2215"
+  viewBox="0 0 512 512"
+>
+  <path
+    fill="currentColor"
+    stroke="currentColor"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth="32"
+    d="M368 368L144 144M368 144L144 368"
+  />
+</svg>

@@ -13,7 +13,7 @@ const initialState: UserState = {
 	error: '',
 };
 
-export const loadUser = createAsyncThunk('user/loadUser', () => api.getUserDate());
+export const loadUser = createAsyncThunk('user/loadUser', () => api.getUserProfile());
 
 export const loadLimitedUsers = createAsyncThunk('user/loadLimitedUsers', (skip: number) =>
 	api.getUsersWithLimitAndSkip(skip)
