@@ -318,7 +318,7 @@ const RegisterPage: FC = (): JSX.Element => {
 				/>
 				<Form.Label className="login_register--checkbox" htmlFor="checkbox_read_terms">
 					<Link
-						to="https://www.google.com"
+						to="/privacy-policy"
 						target="_blank"
 						className="login_register--link"
 						data-testid="checkbox_read_terms_link"
