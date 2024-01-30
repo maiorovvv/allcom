@@ -108,15 +108,7 @@
 		"keyword_here": "Stichwort hier..."
 	},
 	"categories": {
-		"category_1": "Laptops und Computer",
-		"category_2": "Smartphones, Fernseher und Elektronik",
-		"category_3": "Große Haushaltsgeräte",
-		"category_4": "Haushalts- und Bekleidungspflege",
-		"category_5": "Eingebaute Technologie",
-		"category_6": "Küchengeräte",
-		"category_7": "Schönheit und Gesundheit",
-		"category_8": "Möbel",
-		"category_9": "Kleidung, Schuhe und Accessoires"
+		"default_select": "Produktkategorie"
 	},
 	"404-page": {
 		"content_title": "Upps! Wir haben diese Seite nicht gefunden",
@@ -241,7 +233,7 @@
 		"name": "Name",
 		"email": "Email",
 		"phone": "Telefon",
-		"address":"Adresse",
+		"address": "Adresse",
 		"tooltip_set_status": "einen Benutzer sperren oder entsperren",
 		"text_block": "Benutzer blockieren",
 		"text_activate": "Nutzer entblockieren",
