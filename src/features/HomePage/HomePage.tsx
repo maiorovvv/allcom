@@ -8,8 +8,8 @@ import { RootState } from '../../app/store';
 import Spinner from '../../components/Spinner/Spinner';
 import Product from './components/Product';
 import Pagination from '../../components/Pagination/Pagination';
-import ModalWindowProduct from './components/ModalWindow/ModalWindowProduct';
 import Poster from './components/Poster/Poster';
+import ModalWindowProduct from './components/ModalWindow/ModalWindowProduct';
 
 const HomePage: FC = (): JSX.Element => {
 	const { t } = useTranslation('home_page');
@@ -17,24 +17,23 @@ const HomePage: FC = (): JSX.Element => {
 	const [activeWindow, setActiveWindow] = useState<boolean>(false);
 
 	const products = useAppSelector((state: RootState) => state.homePage.products);
+	const arrProducts = products.map((item) => item.product);
 	const loadingAllProducts = useAppSelector(
 		(state: RootState) => state.homePage.loadingAllProducts
 	);
-	const totalItems = useAppSelector((state: RootState) => state.homePage.totalItems);
-	const skip = useAppSelector((state: RootState) => state.homePage.skip);
-	const limit = useAppSelector((state: RootState) => state.homePage.limit);
+
 	const dispatch = useAppDispatch();
 
 	const getProductById = (product_id: number): void => {
 		dispatch(filterProductById(product_id));
 	};
 
-	const loadContentForPage = (skip_count: number): void => {
-		dispatch(loadAllProducts(skip_count));
+	const loadContentForPage = (page_number: number): void => {
+		dispatch(loadAllProducts(page_number));
 	};
 
 	useEffect(() => {
-		dispatch(loadAllProducts(0));
+		dispatch(loadAllProducts(1));
 	}, []);
 
 	if (loadingAllProducts) {
@@ -47,7 +46,7 @@ const HomePage: FC = (): JSX.Element => {
 
 	return (
 		<div className="home_page__container">
-			<Poster />
+			{/* <Poster /> */}
 			<div className="container-fluid">
 				<div className="home_page__title">
 					<h2 className="home_page__title--h2">{t('auctions')}</h2>
@@ -55,21 +54,22 @@ const HomePage: FC = (): JSX.Element => {
 				</div>
 				<div className="home_page__section--inner">
 					<div className="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-2">
-						{products.map((product) => (
-							<Product
-								product={product}
-								key={product.id}
-								setActiveWindow={setActiveWindow}
-								getProductById={getProductById}
-							/>
-						))}
+						{arrProducts &&
+							arrProducts.map((item) => (
+								<Product
+									key={item.id}
+									product={item}
+									setActiveWindow={setActiveWindow}
+									getProductById={getProductById}
+								/>
+							))}
 					</div>
-					<Pagination
+					{/* <Pagination
 						loadContentForPage={loadContentForPage}
 						totalItems={totalItems}
 						skip={skip}
 						limit={limit}
-					/>
+					/> */}
 				</div>
 			</div>
 			<ModalWindowProduct

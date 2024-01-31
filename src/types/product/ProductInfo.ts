@@ -11,7 +11,10 @@ export interface ProductInfo {
 		categoryId: number;
 		images: string[];
 		imagesToDelete: string[];
+		photoLinks: string[];
+		startPrice: number;
+		time: number;
 	};
-	auction: AuctionFormValues;
 	storage: StorageFormValues;
+	auction: AuctionFormValues;
 }

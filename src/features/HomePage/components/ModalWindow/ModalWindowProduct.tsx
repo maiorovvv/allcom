@@ -25,7 +25,13 @@ const ModalWindowProduct: FC<ModalWindowProps> = ({
 	const { t } = useTranslation('modal_window_product');
 	const productById = useAppSelector((state: RootState) => state.homePage.productById);
 
-	const { id, title, description, price, category, images, time, color, weight } = productById;
+	const { id, name, description, categoryId, color, weight } = productById;
+
+	const images = [
+		'/images/1/94ba8869-49a3-43f1-ad2e-f36c384ffdf7.jpg',
+		'/images/1/9686a674-4e84-4b4d-80ab-3e4aa2d69fdb.jpg',
+		'/images/1/cc96bf7e-c14e-441b-9f54-8088bba350cb.jpg',
+	];
 
 	return (
 		<>
@@ -40,22 +46,22 @@ const ModalWindowProduct: FC<ModalWindowProps> = ({
 							<SwiperModalWindow images={images} />
 						</div>
 						<div className="modal_window__col--info">
-							<h3 className="modal_window__title">{title}</h3>
+							<h3 className="modal_window__title">{name}</h3>
 							<span className="modal_window__description">{description}</span>
 							<div className="modal_window__auction_info">
 								<div className="modal_window__actual_price">
 									{t('actual_price')}
-									<span className="modal_window__price">{price} &euro;</span>
+									<span className="modal_window__price">{200} &euro;</span>
 								</div>
 								<div className="modal_window__timer">
 									<span className="modal_window__timer--left">{t('left_time')}:</span>
-									<Timer time={time} />
+									{/* <Timer time={time} /> */}
 								</div>
 							</div>
 							<div className="modal_window__detailsInformation">
 								<div>
 									<span className="modal_window__detailsInformation--item">{t('category')}:</span>
-									{category}
+									{categoryId}
 								</div>
 								<div>
 									<span className="modal_window__detailsInformation--item">{t('color')}:</span>

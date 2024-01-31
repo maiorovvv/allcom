@@ -2,15 +2,15 @@ import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 
-import { ProductData } from '../../../types/Product';
 import Timer from '../../../components/Timer/Timer';
 import Tooltip from '../../../components/Tooltip/Tooltip';
 
 import HeartIcon from '../../../img/svg/heart.svg?react';
 import EyeIcon from '../../../img/svg/eye.svg?react';
+import { ProductDto } from '../../../types/product/ProductApiResponse';
 
 interface ProductProps {
-	product: ProductData;
+	product: ProductDto;
 	setActiveWindow: (flag: boolean) => void;
 	getProductById: (product_id: number) => void;
 }
@@ -18,12 +18,12 @@ interface ProductProps {
 const Product: FC<ProductProps> = ({ product, setActiveWindow, getProductById }) => {
 	const { t } = useTranslation('home_page');
 
-	const { id, price, title, category, thumbnail, time } = product;
+	const { id, name, categoryId, photoLinks } = product;
 
 	return (
-		<div className="home_page__items ">
+		<div className="home_page__items">
 			<div className="home_page__items--thumbnail">
-				<img src={thumbnail} alt="product-img"></img>
+				<img src="/images/1/94ba8869-49a3-43f1-ad2e-f36c384ffdf7.jpg" alt="product-img"></img>
 				<NavLink
 					className="home_page__btn"
 					to="products/details/"
@@ -56,12 +56,12 @@ const Product: FC<ProductProps> = ({ product, setActiveWindow, getProductById })
 			</div>
 			<div className="home_page__items--content">
 				<span className="home_page__items--content__subtitle">
-					{t('category')}: {category}
+					{t('category')}: {categoryId}
 				</span>
-				<h3 className="home_page__items--content__title">{title}</h3>
+				<h3 className="home_page__items--content__title">{name}</h3>
 				<div className="home_page__items--priceAndTimer">
-					<span className="home_page__current__price">{price} &euro;</span>
-					<Timer time={time} />
+					{/* <span className="home_page__current__price">{startPrice} &euro;</span>
+					<Timer time={time = 2000} /> */}
 				</div>
 			</div>
 		</div>

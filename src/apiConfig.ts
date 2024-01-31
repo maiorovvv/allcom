@@ -3,6 +3,8 @@ const apiBaseUrl = 'http://127.0.0.1:8080';
 export default {
 	apiBaseUrl,
 	addProductEndpoint: `${apiBaseUrl}/api/products/add`,
+	getAllProductEndpoint: `${apiBaseUrl}/api/products`,
+	getProductByIdEndpoint: `${apiBaseUrl}/api/products/product/`,
 	loginEndpoint: `${apiBaseUrl}/api/auth/login`,
 	registerEndpoint: `${apiBaseUrl}/api/auth/register`,
 	logoutEndpoint: `${apiBaseUrl}/api/auth/logout`,
