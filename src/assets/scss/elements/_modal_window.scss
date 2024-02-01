@@ -47,7 +47,8 @@
 
 .modal_window {
 	position: relative;
-	width: 55vw;
+	width: 60%;
+	min-height: 45%;
 	background-color: var(--white-color);
 	display: flex;
 	transition: 0.6s all;

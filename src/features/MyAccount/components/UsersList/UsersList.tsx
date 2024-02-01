@@ -128,12 +128,12 @@ const UsersList: FC = (): JSX.Element => {
 						)}
 				</tbody>
 			</table>
-			<Pagination
+			{/* <Pagination
 				loadContentForPage={loadUsersForPage}
 				limit={limit}
 				skip={skip}
 				totalItems={totalItems}
-			/>
+			/> */}
 			<ConfirmationModal
 				confirmationModalActive={confirmationModalActive}
 				setConfirmationModal={setConfirmationModal}

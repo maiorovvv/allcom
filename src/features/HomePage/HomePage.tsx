@@ -7,9 +7,11 @@ import { RootState } from '../../app/store';
 
 import Spinner from '../../components/Spinner/Spinner';
 import Product from './components/Product';
+// import Poster from './components/Poster/Poster';
 import Pagination from '../../components/Pagination/Pagination';
-import Poster from './components/Poster/Poster';
 import ModalWindowProduct from './components/ModalWindow/ModalWindowProduct';
+
+const BACKEND_FIRST_PAGE_NUMBER = 0;
 
 const HomePage: FC = (): JSX.Element => {
 	const { t } = useTranslation('home_page');
@@ -21,6 +23,9 @@ const HomePage: FC = (): JSX.Element => {
 	const loadingAllProducts = useAppSelector(
 		(state: RootState) => state.homePage.loadingAllProducts
 	);
+	const totalPages = useAppSelector((state: RootState) => state.homePage.totalPages);
+	const numberPage = useAppSelector((state: RootState) => state.homePage.number);
+	const categories = useAppSelector((state: RootState) => state.categories.categories);
 
 	const dispatch = useAppDispatch();
 
@@ -33,7 +38,7 @@ const HomePage: FC = (): JSX.Element => {
 	};
 
 	useEffect(() => {
-		dispatch(loadAllProducts(1));
+		dispatch(loadAllProducts(BACKEND_FIRST_PAGE_NUMBER));
 	}, []);
 
 	if (loadingAllProducts) {
@@ -61,21 +66,22 @@ const HomePage: FC = (): JSX.Element => {
 									product={item}
 									setActiveWindow={setActiveWindow}
 									getProductById={getProductById}
+									categories={categories}
 								/>
 							))}
 					</div>
-					{/* <Pagination
+					<Pagination
 						loadContentForPage={loadContentForPage}
-						totalItems={totalItems}
-						skip={skip}
-						limit={limit}
-					/> */}
+						totalPages={totalPages}
+						numberPage={numberPage}
+					/>
 				</div>
 			</div>
 			<ModalWindowProduct
 				activeWindow={activeWindow}
 				setActiveWindow={setActiveWindow}
 				getProductById={getProductById}
+				categories={categories}
 			/>
 		</div>
 	);

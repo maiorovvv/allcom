@@ -46,6 +46,8 @@ export const HomePageSlice = createSlice({
 			.addCase(loadAllProducts.fulfilled, (state, action) => {
 				state.products = action.payload.content;
 				state.loadingAllProducts = false;
+				state.totalPages = action.payload.totalPages;
+				state.number = action.payload.number;
 			})
 			.addCase(loadAllProducts.pending, (state) => {
 				state.loadingAllProducts = true;

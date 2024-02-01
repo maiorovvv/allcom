@@ -10,28 +10,30 @@ import SwiperModalWindow from '../../../../components/SwiperModalWindow/SwiperMo
 
 import CloseIcon from '../../../../img/svg/cross.svg?react';
 import HeartIcon from '../../../../img/svg/heart.svg?react';
+import { CategoriesDto } from '../../../categories/types/CategoriesDto';
+import { getNameCategory } from '../../../categories/utilsCategories';
+import i18next from 'i18next';
 
 interface ModalWindowProps {
 	activeWindow: boolean;
 	setActiveWindow: (flag: boolean) => void;
 	getProductById: (product_id: number) => void;
+	categories: CategoriesDto[];
 }
 
 const ModalWindowProduct: FC<ModalWindowProps> = ({
 	activeWindow,
 	setActiveWindow,
 	getProductById,
+	categories,
 }) => {
 	const { t } = useTranslation('modal_window_product');
+
+	const locale = i18next.language;
+
 	const productById = useAppSelector((state: RootState) => state.homePage.productById);
 
-	const { id, name, description, categoryId, color, weight } = productById;
-
-	const images = [
-		'/images/1/94ba8869-49a3-43f1-ad2e-f36c384ffdf7.jpg',
-		'/images/1/9686a674-4e84-4b4d-80ab-3e4aa2d69fdb.jpg',
-		'/images/1/cc96bf7e-c14e-441b-9f54-8088bba350cb.jpg',
-	];
+	const { id, name, description, categoryId, color, weight, photoLinks } = productById;
 
 	return (
 		<>
@@ -43,7 +45,7 @@ const ModalWindowProduct: FC<ModalWindowProps> = ({
 					<div className="modal_window" onClick={(e) => e.stopPropagation()}>
 						<CloseIcon className="modal_window__close" onClick={() => setActiveWindow(false)} />
 						<div className="modal_window__col--images">
-							<SwiperModalWindow images={images} />
+							<SwiperModalWindow images={photoLinks} />
 						</div>
 						<div className="modal_window__col--info">
 							<h3 className="modal_window__title">{name}</h3>
@@ -55,13 +57,13 @@ const ModalWindowProduct: FC<ModalWindowProps> = ({
 								</div>
 								<div className="modal_window__timer">
 									<span className="modal_window__timer--left">{t('left_time')}:</span>
-									{/* <Timer time={time} /> */}
+									<Timer time={200} />
 								</div>
 							</div>
 							<div className="modal_window__detailsInformation">
 								<div>
 									<span className="modal_window__detailsInformation--item">{t('category')}:</span>
-									{categoryId}
+									{getNameCategory(categories, categoryId, locale)}
 								</div>
 								<div>
 									<span className="modal_window__detailsInformation--item">{t('color')}:</span>

@@ -1,10 +1,12 @@
 import { FC, useEffect, useState } from 'react';
 import Select from 'react-select';
-import i18next from 'i18next';
-
-import * as api from './api';
-import ResponseCategoryDto from './types/ResponseCategoryDto';
 import { useTranslation } from 'react-i18next';
+
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { RootState } from '../../../app/store';
+import { loadAllCategories } from '../../categories/CategoriesSlice';
+import { getByCurrentLocale } from '../../categories/utilsCategories';
+import i18next from 'i18next';
 
 interface CategorySelectProps {
 	handleCategoryChange: (value: number) => void;
@@ -16,28 +18,23 @@ type Option = {
 };
 
 const INITIAL_SELECTED_OPTION_INDEX = 0;
+const PARENT_ID_MAIN_CATEGORIES = 0;
 
 const CategorySelect: FC<CategorySelectProps> = ({ handleCategoryChange }): JSX.Element => {
-	const { t } = useTranslation('categories');
 	const locale = i18next.language;
-	const [categories, setCategories] = useState<ResponseCategoryDto[]>([]);
 
-	const getByCurrentLocale = (): keyof ResponseCategoryDto => {
-		switch (locale) {
-			case 'ru':
-				return 'nameRu';
-			case 'de':
-				return 'nameDe';
-			default:
-				return 'nameEn';
-		}
-	};
+	const { t } = useTranslation('categories');
+
+	const mainCategories = useAppSelector((state: RootState) => state.categories.categories).filter(
+		(item) => item.parentId === PARENT_ID_MAIN_CATEGORIES
+	);
+	const dispatch = useAppDispatch();
 
 	const selectOptions: Option[] = [
 		{ value: 0, label: t('default_select') },
-		...(categories?.map((category) => ({
+		...(mainCategories?.map((category) => ({
 			value: category.id,
-			label: `${category[getByCurrentLocale()]}`,
+			label: `${category[getByCurrentLocale(locale)]}`,
 		})) || []),
 	];
 
@@ -57,16 +54,7 @@ const CategorySelect: FC<CategorySelectProps> = ({ handleCategoryChange }): JSX.
 	};
 
 	useEffect(() => {
-		const fetchData = async (): Promise<void> => {
-			try {
-				const res = await api.getAllCategoryByParent();
-				setCategories(res);
-			} catch (error) {
-				console.error('Error fetching data:', error);
-			}
-		};
-
-		fetchData();
+		dispatch(loadAllCategories());
 	}, []);
 
 	return (

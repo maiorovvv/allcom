@@ -1,4 +1,4 @@
-export default interface ResponseCategoryDto {
+export interface CategoriesDto {
 	id: number;
 	nameRu: string;
 	nameDe: string;
