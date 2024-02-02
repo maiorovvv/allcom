@@ -14,8 +14,13 @@ import Spinner from '../../../components/Spinner/Spinner';
 
 const DECIMAL_STEP = '0.01';
 
-type Options = {
+type CategoryOptions = {
 	value: number;
+	label: string;
+};
+
+type AreaOptions = {
+	value: string;
 	label: string;
 };
 
@@ -43,7 +48,7 @@ const ProductFields: FC<PropsInterface> = (props) => {
 
 	const { t } = useTranslation('product_fields');
 
-	const selectOptionsCategory: Options[] = [
+	const selectOptionsCategory: CategoryOptions[] = [
 		{ value: 1, label: t('categories:category_1') },
 		{ value: 2, label: t('categories:category_2') },
 		{ value: 3, label: t('categories:category_3') },
@@ -55,13 +60,13 @@ const ProductFields: FC<PropsInterface> = (props) => {
 		{ value: 9, label: t('categories:category_9') },
 	];
 
-	const filterOptions = (selectedValue: number): Options[] => {
+	const filterOptions = (selectedValue: number): CategoryOptions[] => {
 		return selectOptionsCategory.filter(({ value }) => value === selectedValue);
 	};
 
-	const selectOptionsArea: Options[] = [
-		{ value: 1, label: 'R' },
-		{ value: 2, label: 'L' },
+	const selectOptionsArea: AreaOptions[] = [
+		{ value: 'R', label: 'R' },
+		{ value: 'L', label: 'L' },
 	];
 
 	return (
@@ -71,7 +76,7 @@ const ProductFields: FC<PropsInterface> = (props) => {
 					<h3>{t('product_foto')}</h3>
 					<input
 						className={`form-control ${styles.file_form}`}
-						name="product.images"
+						name="images"
 						type="file"
 						id="formFileMultiple"
 						multiple
@@ -92,42 +97,40 @@ const ProductFields: FC<PropsInterface> = (props) => {
 					<div className={styles.product_info__details}>
 						<h3 className="mb-3">{t('product_info')}</h3>
 						<FormikInputField
-							name="product.name"
+							name="name"
 							placeholder={t('name')}
 							id="productName"
-							value={values.product.name}
+							value={values.name}
 						/>
 						<FormikTextAriaField
-							name="product.description"
+							name="description"
 							placeholder={t('description')}
 							id="description"
 							className={styles.description}
-							value={values.product.description}
+							value={values.description}
 						/>
 						<div className="d-flex">
 							<FormikInputField
-								name="product.weight"
+								name="weight"
 								placeholder={t('weight')}
 								id="weight"
 								type="number"
 								step={DECIMAL_STEP}
-								value={values.product.weight}
+								value={values.weight}
 							/>
 							<FormikInputField
-								name="product.color"
+								name="color"
 								placeholder={t('color')}
 								id="color"
-								value={values.product.color}
+								value={values.color}
 							/>
 						</div>
 						<Select
 							defaultValue={selectOptionsCategory}
-							value={filterOptions(values.product.categoryId)}
-							name="product.categoryId"
+							value={filterOptions(values.categoryId)}
+							name="categoryId"
 							options={selectOptionsCategory}
-							onChange={(option) =>
-								setFieldValue('product.categoryId', option ? option.value : null)
-							}
+							onChange={(option) => setFieldValue('categoryId', option ? option.value : null)}
 						/>
 					</div>
 					<div className={styles.verticale}></div>
@@ -164,7 +167,7 @@ const ProductFields: FC<PropsInterface> = (props) => {
 							<Select
 								id="area"
 								defaultValue={selectOptionsArea[0]}
-								value={selectOptionsArea.find((option) => option.label === values.storage.area)}
+								value={selectOptionsArea.filter(({ value }) => value === values.storage.area)}
 								name="storage.area"
 								options={selectOptionsArea}
 								onChange={(option) => setFieldValue('storage.area', option ? option.value : null)}
@@ -189,10 +192,10 @@ const ProductFields: FC<PropsInterface> = (props) => {
 								value={values.storage.section}
 							/>
 							<FormikInputField
-								name="storage.shelve"
-								id="shelve"
+								name="storage.shelf"
+								id="shelf"
 								type="number"
-								value={values.storage.shelve}
+								value={values.storage.shelf}
 							/>
 							<button type="submit" name="submit" className={styles.btn}>
 								{t('btn')}

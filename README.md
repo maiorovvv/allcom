@@ -52,11 +52,6 @@ import HeartIcon from '../../img/svg/heart.svg?react';
 [video about scss](https://www.youtube.com/watch?v=yzCJwpJrmb4)
 
 
-# template
-
-[template](https://bootstraptema.ru/stuff/templates_bootstrap/shop/suruchi/7-1-0-5980)
-
-
 # vite-template-redux
 
 Uses [Vite](https://vitejs.dev/), [Vitest](https://vitest.dev/), and [React Testing Library](https://github.com/testing-library/react-testing-library) to create a modern [React](https://react.dev/) app compatible with [Create React App](https://create-react-app.dev/)
