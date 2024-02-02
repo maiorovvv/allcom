@@ -55,10 +55,12 @@
 	}
 }
 .product__details--info {
+	color: var(--text-gray-color);
 	@media only screen and (min-width: 768px) {
 		font-size: 1.6rem;
 	}
 	&__title {
+		color: var(--primary-color);
 		@media only screen and (min-width: 992px) {
 			font-size: 2.8rem;
 		}
@@ -70,23 +72,11 @@
 	}
 	&__price {
 		& .current__price {
-			font-size: 1.6rem;
+			font-weight: 600;
+			margin-left: 2rem;
 			@media only screen and (min-width: 992px) {
 				font-size: 2rem;
 			}
-		}
-		& .old__price {
-			font-size: 1.4rem;
-			margin-left: 0.8rem;
-			@media only screen and (min-width: 992px) {
-				font-size: 1.8rem;
-			}
-		}
-	}
-	&__desc {
-		@media only screen and (min-width: 992px) {
-			font-size: 1.6rem;
-			line-height: 2.8rem;
 		}
 	}
 }

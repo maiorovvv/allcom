@@ -37,10 +37,12 @@ const Product: FC<ProductProps> = ({ product, setActiveWindow, getProductById, c
 		<div className="home_page__items">
 			<div className="home_page__items--thumbnail">
 				<img src={`/${photoLinks[0]}`} alt="product-img"></img>
-				<NavLink className="home_page__btn" to="products/details/">
-					<span className="home_page__btn--bet_now" onClick={() => loadProductById()}>
-						{t('bet_now')}
-					</span>
+				<NavLink
+					className="home_page__btn"
+					to="products/details/"
+					onClick={() => loadProductById()}
+				>
+					<span className="home_page__btn--bet_now">{t('bet_now')}</span>
 				</NavLink>
 				<ul className="home_page__items--action">
 					<li className="home_page__items--action__list">

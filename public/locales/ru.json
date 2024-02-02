@@ -29,7 +29,7 @@
 		"weight": "вес",
 		"wishlist": "Избранное"
 	},
-	"ProductDetails": {
+	"product_details": {
 		"link_back_to_home": "Вернуться на главную",
 		"product_details": "Детали продукта",
 		"add_to_card": "добавить в корзину",
@@ -42,7 +42,8 @@
 		"shipping": "Доставка",
 		"payment": "Оплата",
 		"return": "Возврат",
-		"support": "Поддержка"
+		"support": "Поддержка",
+		"current_price": "АКТУАЛЬНАЯ СТАВКА:"
 	},
 	"Shipping": {
 		"in_developing": "В разработке..."

@@ -7,7 +7,7 @@ export default interface ProductState {
 	productById: ProductDto;
 	number: number;
 	totalPages: number;
+	// loading: boolean;
 	// productsInPoster: ProductInfo[];
 	// loadingProducsInPoster: boolean;
-	// loading: boolean;
 }

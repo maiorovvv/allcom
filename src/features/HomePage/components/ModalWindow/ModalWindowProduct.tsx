@@ -6,7 +6,7 @@ import { useAppSelector } from '../../../../app/hooks';
 import { RootState } from '../../../../app/store';
 
 import Timer from '../../../../components/Timer/Timer';
-import SwiperModalWindow from '../../../../components/SwiperModalWindow/SwiperModalWindow';
+import MediaSwiper from '../../../../components/MediaSwiper/MediaSwiper';
 
 import CloseIcon from '../../../../img/svg/cross.svg?react';
 import HeartIcon from '../../../../img/svg/heart.svg?react';
@@ -45,7 +45,7 @@ const ModalWindowProduct: FC<ModalWindowProps> = ({
 					<div className="modal_window" onClick={(e) => e.stopPropagation()}>
 						<CloseIcon className="modal_window__close" onClick={() => setActiveWindow(false)} />
 						<div className="modal_window__col--images">
-							<SwiperModalWindow images={photoLinks} />
+							<MediaSwiper images={photoLinks} />
 						</div>
 						<div className="modal_window__col--info">
 							<h3 className="modal_window__title">{name}</h3>

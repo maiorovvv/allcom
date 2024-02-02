@@ -29,7 +29,7 @@
 		"weight": "Gewicht",
 		"wishlist": "Mein Merkzettel"
 	},
-	"ProductDetails": {
+	"product_details": {
 		"link_back_to_home": "Zurück zur Startseite",
 		"product_details": "Produktdetails",
 		"add_to_card": "in den Warenkorb",
@@ -42,7 +42,8 @@
 		"shipping": "Lieferung",
 		"payment": "Zahlung",
 		"return": "Zurückkehren",
-		"support": "Unterstützung"
+		"support": "Unterstützung",
+		"current_price": "AKTUELLES GEBOT:"
 	},
 	"Shipping": {
 		"in_developing": "In Bearbeitung..."

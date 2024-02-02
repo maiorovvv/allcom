@@ -7,7 +7,7 @@ import FormikInputField from '../../../components/FormikInputField/FormikInputFi
 import Datepicker from '../../../components/Datepicker/Datepicker';
 import FormikTextAriaField from '../../../components/FormikTextAriaField/FormikTextAriaField';
 import { ProductFormValues } from '../../../types/product/ProductFormValues';
-import SwiperModalWindow from '../../../components/SwiperModalWindow/SwiperModalWindow';
+import SwiperModalWindow from '../../../components/MediaSwiper/MediaSwiper';
 
 import styles from './ProductFields.module.scss';
 import Spinner from '../../../components/Spinner/Spinner';

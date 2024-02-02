@@ -29,7 +29,7 @@
 		"weight": "weight",
 		"wishlist": "Wishlist"
 	},
-	"ProductDetails": {
+	"product_details": {
 		"link_back_to_home": "Back To Home",
 		"product_details": "Product Details",
 		"add_to_card": "add to card",
@@ -42,7 +42,8 @@
 		"shipping": "Shipping",
 		"payment": "Payment",
 		"return": "Return",
-		"support": "Support"
+		"support": "Support",
+		"current_price": "CURRENT BID:"
 	},
 	"Shipping": {
 		"in_developing": "In developing..."

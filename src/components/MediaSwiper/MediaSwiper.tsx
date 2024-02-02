@@ -2,6 +2,11 @@ import { FC, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Thumbs } from 'swiper/modules';
 
+import 'swiper/scss';
+import 'swiper/scss/free-mode';
+import 'swiper/scss/navigation';
+import 'swiper/scss/thumbs';
+
 import CloseIcon from '../../img/svg/crossSmall.svg?react';
 
 interface ImagesProps {
@@ -13,7 +18,7 @@ const INITIAL_ACTIVE_INDEX = 0;
 const SPACE_BETWEEN_SLIDES = 10;
 const SLIDES_PER_VIEW = 4;
 
-const SwiperModalWindow: FC<ImagesProps> = ({ images, onDelete }) => {
+const MediaSwiper: FC<ImagesProps> = ({ images, onDelete }) => {
 	const [thumbsSwiper, setThumbsSwiper] = useState(null);
 	const [activeIndex, setActiveIndex] = useState<number>(INITIAL_ACTIVE_INDEX);
 
@@ -34,7 +39,7 @@ const SwiperModalWindow: FC<ImagesProps> = ({ images, onDelete }) => {
 			>
 				{images.map((i) => (
 					<SwiperSlide key={i} className="swiper_modal_window__big_img--items">
-						<img src={i} className="swiper_modal_window__big_img--item" />
+						<img src={`/${i}`} className="swiper_modal_window__big_img--item" />
 					</SwiperSlide>
 				))}
 			</Swiper>
@@ -55,7 +60,7 @@ const SwiperModalWindow: FC<ImagesProps> = ({ images, onDelete }) => {
 							key={i}
 							className={`swiper_modal_window__thumbs--item ${classActiveThumb}`}
 						>
-							<img src={i} className="swiper_modal_window__thumbs--small_img" />
+							<img src={`/${i}`} className="swiper_modal_window__thumbs--small_img" />
 							{onDelete && (
 								<CloseIcon
 									onClick={() => handleDelete(index)}
@@ -70,4 +75,4 @@ const SwiperModalWindow: FC<ImagesProps> = ({ images, onDelete }) => {
 	);
 };
 
-export default SwiperModalWindow;
+export default MediaSwiper;
