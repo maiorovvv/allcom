@@ -46,3 +46,8 @@ export interface ProductApiResponse {
 	numberOfElements: number;
 	empty: boolean;
 }
+
+export interface ProductByIdDto {
+	product: ProductDto;
+	storage: StorageDto;
+}

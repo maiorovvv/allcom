@@ -41,14 +41,7 @@
 		}
 	}
 }
-.swiper-button-next,
-.swiper-button-prev {
-	color: var(--secondary-color);
-}
-.swiper-wrapper {
-	display: flex;
-	align-items: center;
-}
+
 
 .swiper_modal_window__big_img:hover .swiper-button-next,
 .swiper_modal_window__big_img:hover .swiper-button-prev {
@@ -60,3 +53,4 @@
 .swiper_modal_window__big_img:hover .swiper-button-next.swiper-button-disabled {
 	opacity: 0.35;
 }
+

@@ -1,7 +1,7 @@
-import Product from './ProductDetails';
+import { ProductDto } from '../../../types/product/ProductApiResponse';
 
-export default interface ProductDetailState {
-	product: Product;
+export interface ProductDetailState {
+	product: ProductDto;
 	loading: boolean;
 	error?: string;
 }
