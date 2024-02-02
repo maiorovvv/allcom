@@ -53,7 +53,7 @@ const AddProductPage: FC = () => {
 							file: newFile,
 							maxWidth: 1600,
 							maxHeight: 1200,
-							maxSizeMB: 1,
+							maxSizeMB: 3,
 						});
 						allFiles.push(resizedFile);
 					} catch (e) {
