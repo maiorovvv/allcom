@@ -241,7 +241,7 @@
 		"name": "Name",
 		"email": "Email",
 		"phone": "Telefon",
-		"address":"Adresse",
+		"address": "Adresse",
 		"tooltip_set_status": "einen Benutzer sperren oder entsperren",
 		"text_block": "Benutzer blockieren",
 		"text_activate": "Nutzer entblockieren",
@@ -267,17 +267,23 @@
 		"link_add_product": "Neues Produkt hinzufügen"
 	},
 	"product_fields": {
-		"product_info": "Produktinformation",
+		"product_info": "Produkt",
 		"name": "Name",
 		"description": "Beschreibung",
 		"weight": "Gewicht",
 		"color": "Farbe",
-		"auction_info": "Auktionsinformationen",
+		"auction_info": "Auktions",
 		"start_price": "Startpreis",
 		"start_at": "Strat",
 		"planned_end_at": "Geplantes Ende um",
-		"storage_info": "Speicherinformationen",
-		"btn": "Produkt hinzufügen",
-		"product_foto": "Produktfoto"
+		"storage_info": "Speicher",
+		"add_product": "Produkt hinzufügen",
+		"product_photo": "Produktfoto",
+		"side": "Seite",
+		"rack": "Regalnummer",
+		"vertical_section": "Vertikaler Abschnitt",
+		"horizontal_shelf": "Regal",
+		"RIGHT": "RECHTS",
+		"LEFT": "LINKS"
 	}
 }

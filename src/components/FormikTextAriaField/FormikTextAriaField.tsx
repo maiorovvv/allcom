@@ -13,7 +13,7 @@ interface Props {
 }
 
 const FormikTextAriaField: FC<Props> = (props) => {
-	const { id, name, rows = 3, placeholder, type = 'text', className = '', value } = props;
+	const { id, name, rows = 5, placeholder, type = 'text', className = '', value } = props;
 
 	return (
 		<Form.Group className={className} controlId={`form${id}`}>
