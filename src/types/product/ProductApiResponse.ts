@@ -1,10 +1,3 @@
-import Pageable from '../pageable/Pageable';
-
-export interface ContentProduct {
-	product: ProductDto;
-	storage: StorageDto;
-}
-
 export interface ProductDto {
 	id: number;
 	name: string;
@@ -13,24 +6,50 @@ export interface ProductDto {
 	color: string;
 	categoryId: number;
 	state?: string;
-	photoLinks: string[];
+	imageLinks: string[];
+	lastCreatedAuction: LastCreatedAuctionDto;
+	storage?: StorageDto;
+}
+
+export interface LastCreatedAuctionDto {
+	id: number;
+	startPrice: number;
+	startAt: string;
+	plannedEndAt?: string;
+	currentPlannedEndAt: string;
+	actualEndAt?: string;
+	state?: string;
+	productId?: number;
+	winnerId?: number;
+	lastBetAmount?: number;
+	updatedAt?: string;
+	createdAt?: string;
 }
 
 export interface StorageDto {
 	id: number;
-	areaName: string;
-	rackNumber: number;
-	sectionNumber: number;
-	shelveNumber: number;
+	area: string;
+	rack: number;
+	section: number;
+	shelf: number;
+	productId: number;
+}
+
+export interface Pageable {
+	pageNumber: number;
+	pageSize: number;
+	sort: {
+		empty: boolean;
+		sorted: boolean;
+		unsorted: boolean;
+	};
+	offset: number;
+	paged: true;
+	unpaged: false;
 }
 
 export interface ProductApiResponse {
-	content: [
-		{
-			product: ProductDto;
-			storage: StorageDto;
-		}
-	];
+	content: ProductDto[];
 	pageable: Pageable;
 	last: boolean;
 	totalPages: number;
@@ -45,9 +64,4 @@ export interface ProductApiResponse {
 	first: boolean;
 	numberOfElements: number;
 	empty: boolean;
-}
-
-export interface ProductByIdDto {
-	product: ProductDto;
-	storage: StorageDto;
 }

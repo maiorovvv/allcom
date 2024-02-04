@@ -177,6 +177,7 @@
 	font-size: 1.7rem;
 	font-weight: 600;
 	color: var(--text-gray-color);
+	margin-bottom: 1rem;
 	@media only screen and (max-width: 576px) {
 		font-size: 1.5rem;
 	}
@@ -189,4 +190,11 @@
 	flex-direction: column;
 	align-items: center;
 	bottom: 0;
+	&__format {
+		font-size: 1.8rem;
+			background-color: var(--background-timer-color);
+			width: fit-content;
+			padding-inline: 2rem;
+			border-radius: var(--border-radius);
+	}
 }

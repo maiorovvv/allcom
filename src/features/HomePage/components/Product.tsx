@@ -13,6 +13,7 @@ import Tooltip from '../../../components/Tooltip/Tooltip';
 
 import HeartIcon from '../../../img/svg/heart.svg?react';
 import EyeIcon from '../../../img/svg/eye.svg?react';
+import moment from 'moment';
 
 interface ProductProps {
 	product: ProductDto;
@@ -22,7 +23,13 @@ interface ProductProps {
 }
 
 const Product: FC<ProductProps> = ({ product, setActiveWindow, getProductById, categories }) => {
-	const { id, name, categoryId, photoLinks } = product;
+	const {
+		id,
+		name,
+		categoryId,
+		imageLinks,
+		lastCreatedAuction: { startPrice, startAt, currentPlannedEndAt },
+	} = product;
 
 	const locale = i18next.language;
 	const { t } = useTranslation('home_page');
@@ -33,10 +40,14 @@ const Product: FC<ProductProps> = ({ product, setActiveWindow, getProductById, c
 		dispatch(loadProduct(id));
 	};
 
+	const currentPlannedEnd = moment(currentPlannedEndAt);
+	const formattedDate = moment(startAt).format('YYYY-MM-DD HH:mm:ss');
+	const timeUntilCurrentPlannedEnd = currentPlannedEnd.diff(moment(), 'seconds');
+
 	return (
 		<div className="home_page__items">
 			<div className="home_page__items--thumbnail">
-				<img src={`/${photoLinks[0]}`} alt="product-img"></img>
+				<img src={imageLinks[0]} alt="product-img"></img>
 				<NavLink
 					className="home_page__btn"
 					to="products/details/"
@@ -73,8 +84,12 @@ const Product: FC<ProductProps> = ({ product, setActiveWindow, getProductById, c
 				</span>
 				<h3 className="home_page__items--content__title">{name}</h3>
 				<div className="home_page__items--priceAndTimer">
-					<span className="home_page__current__price">{299} &euro;</span>
-					<Timer time={2000} />
+					<span className="home_page__current__price">{startPrice} &euro;</span>
+					{timeUntilCurrentPlannedEnd > 0 ? (
+						<Timer time={timeUntilCurrentPlannedEnd} />
+					) : (
+						<span className="home_page__items--priceAndTimer__format">{formattedDate}</span>
+					)}
 				</div>
 			</div>
 		</div>

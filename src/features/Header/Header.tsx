@@ -23,9 +23,15 @@ import CartIconOffcanvas from '../../img/svg/cart_icon_offcanvas.svg?react';
 import SearchIcon from '../../img/svg/search_icon.svg?react';
 import CategoriesIcon from '../../img/svg/categories_icon.svg?react';
 import Search from '../../components/Search/Search';
+import { loadAllProducts } from '../HomePage/HomePageSlice';
+
+const DEFAULT_CATEGORY_ID = 0;
+const BACKEND_FIRST_PAGE_NUMBER = 0;
 
 const Header: React.FC = () => {
 	const { t } = useTranslation('header');
+
+	const dispatch = useAppDispatch();
 
 	const productsInMyAuctions = useAppSelector(
 		(state: RootState) => state.myAuctions.productsInMyAuctions
@@ -36,15 +42,23 @@ const Header: React.FC = () => {
 	const [searchBoxIsActive, setSearchBoxIsActive] = useState<boolean>(false);
 	const [isScrolled, setIsScrolled] = useState<boolean>(false);
 
-	const [selectCategory, setSelectCategory] = useState<number>(0);
-	const handleCategoryChange = (category_id = 0): void => {
+	const [selectCategory, setSelectCategory] = useState<number>(DEFAULT_CATEGORY_ID);
+	const handleCategoryChange = (category_id: number): void => {
 		setSelectCategory(category_id);
+		dispatch(loadAllProducts({ category_id }));
 	};
 
-	const dispatch = useAppDispatch();
-
 	const headerSearch = (value: string): void => {
-		console.log(value);
+		if (selectCategory === DEFAULT_CATEGORY_ID) {
+			dispatch(loadAllProducts({ search_query: value }));
+		}
+		dispatch(
+			loadAllProducts({
+				category_id: selectCategory,
+				search_query: value,
+				page_number: BACKEND_FIRST_PAGE_NUMBER,
+			})
+		);
 	};
 
 	useEffect(() => {

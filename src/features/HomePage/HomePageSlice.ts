@@ -2,6 +2,12 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import * as api from './api';
 import ProductState from '../../types/product/ProductState';
 
+interface LoadProductsParams {
+	category_id?: number | null;
+	search_query?: string | null;
+	page_number?: number | null;
+}
+
 const initialState: ProductState = {
 	products: [],
 	loadingAllProducts: false,
@@ -15,13 +21,20 @@ const initialState: ProductState = {
 		weight: 0,
 		color: '',
 		categoryId: 0,
-		photoLinks: [],
+		imageLinks: [],
+		lastCreatedAuction: {
+			id: 0,
+			startPrice: 0,
+			startAt: '',
+			currentPlannedEndAt: '',
+		},
 	},
 };
 
 export const loadAllProducts = createAsyncThunk(
 	'productsHome/loadProducts',
-	(page_number: number) => api.getAllProducts(page_number)
+	({ category_id = null, search_query = null, page_number = null }: LoadProductsParams) =>
+		api.getAllProducts(category_id, search_query, page_number)
 );
 
 export const loadProductsInPoster = createAsyncThunk('productsHome/loadProductsInPoster', () =>
@@ -34,8 +47,7 @@ export const HomePageSlice = createSlice({
 	reducers: {
 		filterProductById: (state, action) => {
 			const productId = action.payload;
-			const arrProducts = state.products.map((item) => item.product);
-			const res = arrProducts.find((item) => item.id === productId);
+			const res = state.products.find((item) => item.id === productId);
 			if (res) {
 				state.productById = res;
 			}

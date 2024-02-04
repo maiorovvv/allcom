@@ -37,9 +37,9 @@ const MediaSwiper: FC<ImagesProps> = ({ images, onDelete }) => {
 				onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
 				className="swiper_modal_window__big_img"
 			>
-				{images.map((i) => (
-					<SwiperSlide key={i} className="swiper_modal_window__big_img--items">
-						<img src={`/${i}`} className="swiper_modal_window__big_img--item" />
+				{images.map((item) => (
+					<SwiperSlide key={item} className="swiper_modal_window__big_img--items">
+						<img src={item} className="swiper_modal_window__big_img--item" />
 					</SwiperSlide>
 				))}
 			</Swiper>
@@ -52,15 +52,15 @@ const MediaSwiper: FC<ImagesProps> = ({ images, onDelete }) => {
 				modules={[Navigation, Thumbs]}
 				className="swiper_modal_window__thumbs"
 			>
-				{images.map((i, index) => {
+				{images.map((item, index) => {
 					const classActiveThumb =
 						index === activeIndex ? 'swiper_modal_window__thumbs--active-slide' : '';
 					return (
 						<SwiperSlide
-							key={i}
+							key={item}
 							className={`swiper_modal_window__thumbs--item ${classActiveThumb}`}
 						>
-							<img src={`/${i}`} className="swiper_modal_window__thumbs--small_img" />
+							<img src={item} className="swiper_modal_window__thumbs--small_img" />
 							{onDelete && (
 								<CloseIcon
 									onClick={() => handleDelete(index)}

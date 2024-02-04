@@ -13,6 +13,7 @@
 		"color": "цвет",
 		"weight": "вес",
 		"category": "категория",
+		"start_at": "Начало с",
 		"left_time": "До закрытия",
 		"add_to_wishlist": "В избранное"
 	},
@@ -33,17 +34,20 @@
 		"link_back_to_home": "Вернуться на главную",
 		"product_details": "Детали продукта",
 		"add_to_card": "добавить в корзину",
-		"by_it_now": "купить сейчас",
-		"wishlist": "Избранное",
+		"bet_now": "СДЕЛАТЬ СТАВКУ",
+		"add_to_wishlist": "В избранное",
 		"color": "Цвет",
-		"price": "Цена",
-		"brand": "Бренд",
+		"weight": "Вес",
 		"category": "Категория",
 		"shipping": "Доставка",
 		"payment": "Оплата",
 		"return": "Возврат",
 		"support": "Поддержка",
-		"current_price": "АКТУАЛЬНАЯ СТАВКА:"
+		"current_price": "АКТУАЛЬНАЯ СТАВКА:",
+		"tax": "Налог",
+		"is_confirm": "Подтвердите действие",
+		"start_at": "Начало с",
+		"left_time": "До закрытия"
 	},
 	"Shipping": {
 		"in_developing": "В разработке..."

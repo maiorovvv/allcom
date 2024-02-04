@@ -1,7 +1,7 @@
-import { ContentProduct, ProductDto } from './ProductApiResponse';
+import { ProductDto } from './ProductApiResponse';
 
 export default interface ProductState {
-	products: ContentProduct[];
+	products: ProductDto[];
 	loadingAllProducts: boolean;
 	error?: string;
 	productById: ProductDto;

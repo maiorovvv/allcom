@@ -13,6 +13,7 @@
 		"color": "color",
 		"weight": "weight",
 		"category": "category",
+		"start_at": "Start At",
 		"left_time": "Left until closing",
 		"add_to_wishlist": "Add to wishlist"
 	},
@@ -33,17 +34,20 @@
 		"link_back_to_home": "Back To Home",
 		"product_details": "Product Details",
 		"add_to_card": "add to card",
-		"by_it_now": "by it now",
-		"wishlist": "Wishlist",
+		"bet_now": "BET NOW",
+		"add_to_wishlist": "Add to wishlist",
 		"color": "Color",
-		"price": "Price",
-		"brand": "Brand",
+		"weight": "Weight",
 		"category": "Category",
 		"shipping": "Shipping",
 		"payment": "Payment",
 		"return": "Return",
 		"support": "Support",
-		"current_price": "CURRENT BID:"
+		"current_price": "CURRENT BID:",
+		"tax": "Tax",
+		"is_confirm": "Confirm action",
+		"start_at": "Start At",
+		"left_time": "Left until closing"
 	},
 	"Shipping": {
 		"in_developing": "In developing..."

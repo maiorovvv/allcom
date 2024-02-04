@@ -13,6 +13,7 @@ import HeartIcon from '../../../../img/svg/heart.svg?react';
 import { CategoriesDto } from '../../../categories/types/CategoriesDto';
 import { getNameCategory } from '../../../categories/utilsCategories';
 import i18next from 'i18next';
+import moment from 'moment';
 
 interface ModalWindowProps {
 	activeWindow: boolean;
@@ -33,7 +34,20 @@ const ModalWindowProduct: FC<ModalWindowProps> = ({
 
 	const productById = useAppSelector((state: RootState) => state.homePage.productById);
 
-	const { id, name, description, categoryId, color, weight, photoLinks } = productById;
+	const {
+		id,
+		name,
+		description,
+		categoryId,
+		color,
+		weight,
+		imageLinks,
+		lastCreatedAuction: { startPrice, startAt, currentPlannedEndAt },
+	} = productById;
+
+	const currentPlannedEnd = moment(currentPlannedEndAt);
+	const formattedDate = moment(startAt).format('YYYY-MM-DD HH:mm:ss');
+	const timeUntilCurrentPlannedEnd = currentPlannedEnd.diff(moment(), 'seconds');
 
 	return (
 		<>
@@ -45,7 +59,7 @@ const ModalWindowProduct: FC<ModalWindowProps> = ({
 					<div className="modal_window" onClick={(e) => e.stopPropagation()}>
 						<CloseIcon className="modal_window__close" onClick={() => setActiveWindow(false)} />
 						<div className="modal_window__col--images">
-							<MediaSwiper images={photoLinks} />
+							<MediaSwiper images={imageLinks} />
 						</div>
 						<div className="modal_window__col--info">
 							<h3 className="modal_window__title">{name}</h3>
@@ -53,24 +67,33 @@ const ModalWindowProduct: FC<ModalWindowProps> = ({
 							<div className="modal_window__auction_info">
 								<div className="modal_window__actual_price">
 									{t('actual_price')}
-									<span className="modal_window__price">{200} &euro;</span>
+									<span className="modal_window__price">{startPrice} &euro;</span>
 								</div>
 								<div className="modal_window__timer">
-									<span className="modal_window__timer--left">{t('left_time')}:</span>
-									<Timer time={200} />
+									{timeUntilCurrentPlannedEnd > 0 ? (
+										<div className="d-flex">
+											<span className="modal_window__timer--left">{t('left_time')}:</span>
+											<Timer time={timeUntilCurrentPlannedEnd} />
+										</div>
+									) : (
+										<div>
+											<span className="modal_window__timer--start">{t('start_at')}:</span>
+											<span className="modal_window__timer--start__format">{formattedDate}</span>
+										</div>
+									)}
 								</div>
 							</div>
-							<div className="modal_window__detailsInformation">
+							<div className="modal_window__details_information">
 								<div>
-									<span className="modal_window__detailsInformation--item">{t('category')}:</span>
+									<span className="modal_window__details_information--item">{t('category')}:</span>
 									{getNameCategory(categories, categoryId, locale)}
 								</div>
 								<div>
-									<span className="modal_window__detailsInformation--item">{t('color')}:</span>
+									<span className="modal_window__details_information--item">{t('color')}:</span>
 									{color}
 								</div>
 								<div>
-									<span className="modal_window__detailsInformation--item">{t('weight')}:</span>
+									<span className="modal_window__details_information--item">{t('weight')}:</span>
 									{weight} kg
 								</div>
 							</div>

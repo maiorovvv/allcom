@@ -11,7 +11,22 @@ const initialState: ProductDetailState = {
 		weight: 0,
 		color: '',
 		categoryId: 0,
-		photoLinks: [],
+		state: '',
+		imageLinks: [],
+		lastCreatedAuction: {
+			id: 0,
+			startPrice: 0,
+			startAt: '',
+			plannedEndAt: '',
+			currentPlannedEndAt: '',
+			actualEndAt: '',
+			state: '',
+			productId: 0,
+			winnerId: 0,
+			lastBetAmount: 0,
+			updatedAt: '',
+			createdAt: '',
+		},
 	},
 	loading: false,
 	error: undefined,
@@ -33,9 +48,8 @@ export const productsSlice = createSlice({
 				state.loading = true;
 			})
 			.addCase(loadProduct.fulfilled, (state, action) => {
-				state.product = action.payload.product;
+				state.product = action.payload;
 				state.loading = false;
-				console.log(state.product);
 			})
 			.addCase(loadProduct.rejected, (state, action) => {
 				state.loading = false;

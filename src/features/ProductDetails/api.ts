@@ -1,11 +1,11 @@
 import apiConfig from '../../apiConfig';
-import { ProductByIdDto } from '../../types/product/ProductApiResponse';
+import { ProductDto } from '../../types/product/ProductApiResponse';
 
 interface ResponseData {
 	message?: string;
 }
 
-export async function getProduct(product_id: number): Promise<ProductByIdDto> {
+export async function getProduct(product_id: number): Promise<ProductDto> {
 	const res = await fetch(`${apiConfig.getProductByIdEndpoint}${product_id}`);
 
 	if (res.status >= 400) {

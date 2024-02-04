@@ -11,15 +11,12 @@ import Product from './components/Product';
 import Pagination from '../../components/Pagination/Pagination';
 import ModalWindowProduct from './components/ModalWindow/ModalWindowProduct';
 
-const BACKEND_FIRST_PAGE_NUMBER = 0;
-
 const HomePage: FC = (): JSX.Element => {
 	const { t } = useTranslation('home_page');
 
 	const [activeWindow, setActiveWindow] = useState<boolean>(false);
 
 	const products = useAppSelector((state: RootState) => state.homePage.products);
-	const arrProducts = products.map((item) => item.product);
 	const loadingAllProducts = useAppSelector(
 		(state: RootState) => state.homePage.loadingAllProducts
 	);
@@ -34,11 +31,11 @@ const HomePage: FC = (): JSX.Element => {
 	};
 
 	const loadContentForPage = (page_number: number): void => {
-		dispatch(loadAllProducts(page_number));
+		dispatch(loadAllProducts({ page_number }));
 	};
 
 	useEffect(() => {
-		dispatch(loadAllProducts(BACKEND_FIRST_PAGE_NUMBER));
+		dispatch(loadAllProducts({}));
 	}, []);
 
 	if (loadingAllProducts) {
@@ -59,8 +56,8 @@ const HomePage: FC = (): JSX.Element => {
 				</div>
 				<div className="home_page__section--inner">
 					<div className="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-2">
-						{arrProducts &&
-							arrProducts.map((item) => (
+						{products &&
+							products.map((item) => (
 								<Product
 									key={item.id}
 									product={item}

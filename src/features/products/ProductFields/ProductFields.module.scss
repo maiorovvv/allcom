@@ -9,7 +9,7 @@
 .product_info {
 	border-radius: 5px;
 	padding: 2rem;
-	box-shadow: 0 2px 22px rgba(0, 0, 0, 0.16);
+	box-shadow: var(--border-box-shadow);
 	display: flex;
 	justify-content: space-between;
 	&__details {
@@ -44,7 +44,7 @@
 	margin: 0 auto;
 	height: 55rem;
 	width: 75%;
-	box-shadow: 0 2px 22px rgba(0, 0, 0, 0.345);
+	box-shadow: var(--border-box-shadow);
 	margin-bottom: 5rem;
 }
 

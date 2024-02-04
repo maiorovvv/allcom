@@ -13,6 +13,7 @@
 		"color": "Farbe",
 		"weight": "Gewicht",
 		"category": "kategorie",
+		"start_at": "Anfangen bei",
 		"left_time": "Bis zum Ende",
 		"add_to_wishlist": "Auf den Merkzettel"
 	},
@@ -33,17 +34,20 @@
 		"link_back_to_home": "Zurück zur Startseite",
 		"product_details": "Produktdetails",
 		"add_to_card": "in den Warenkorb",
-		"by_it_now": "kaufe jetzt",
-		"wishlist": "Mein Merkzettel",
+		"bet_now": "JETZT BIETEN",
+		"add_to_wishlist": "Auf den Merkzettel",
 		"color": "Farbe",
-		"price": "Preis",
-		"brand": "Marke",
+		"weight": "Gewicht",
 		"category": "Kategorie",
 		"shipping": "Lieferung",
 		"payment": "Zahlung",
 		"return": "Zurückkehren",
 		"support": "Unterstützung",
-		"current_price": "AKTUELLES GEBOT:"
+		"current_price": "AKTUELLES GEBOT:",
+		"tax": "Aufgeld",
+		"is_confirm": "Aktion bestätigen",
+		"start_at": "Anfangen bei",
+		"left_time": "Bis zum Ende"
 	},
 	"Shipping": {
 		"in_developing": "In Bearbeitung..."
