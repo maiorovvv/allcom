@@ -1,13 +1,7 @@
-import { ProductDto } from './ProductApiResponse';
+import { ProductInfo } from './ProductInfo';
 
 export default interface ProductState {
-	products: ProductDto[];
-	loadingAllProducts: boolean;
+	products: ProductInfo[];
+	loading: boolean;
 	error?: string;
-	productById: ProductDto;
-	number: number;
-	totalPages: number;
-	// loading: boolean;
-	// productsInPoster: ProductInfo[];
-	// loadingProducsInPoster: boolean;
 }

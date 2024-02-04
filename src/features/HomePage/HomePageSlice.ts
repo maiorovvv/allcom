@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import * as api from './api';
-import ProductState from '../../types/product/ProductState';
+import HomePageState from './types/HomePageSate';
 
 interface LoadProductsParams {
 	category_id?: number | null;
@@ -8,7 +8,7 @@ interface LoadProductsParams {
 	page_number?: number | null;
 }
 
-const initialState: ProductState = {
+const initialState: HomePageState = {
 	products: [],
 	loadingAllProducts: false,
 	error: '',
