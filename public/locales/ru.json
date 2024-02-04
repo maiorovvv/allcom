@@ -98,6 +98,7 @@
 		"contact_us": "Контакты",
 		"faq": "Вопросы",
 		"auction": "Аукцион",
+		"app_product": "Добавить товар",
 		"categories": "Категории",
 		"search": "Поиск",
 		"my_auctions": "Мои аукционы",
@@ -270,17 +271,23 @@
 		"link_add_product": "Добавить новый товар"
 	},
 	"product_fields": {
-		"product_info": "Информация о продукте",
+		"product_info": "Товар",
 		"name": "Название",
 		"description": "Описание",
 		"weight": "Вес",
 		"color": "Цвет",
-		"auction_info": "Информация об аукционе",
+		"auction_info": "Аукцион",
 		"start_price": "Стартовая цена",
 		"start_at": "Начало",
 		"planned_end_at": "Конец",
-		"storage_info": "Информация о складе",
-		"btn": "Добавить продукт",
-		"product_foto": "Фото продукта"
+		"storage_info": "Склад",
+		"add_product": "Добавить продукт",
+		"product_photo": "Фото товара",
+		"side": "Сторона стеллажа",
+		"rack": "Номер стеллажа",
+		"vertical_section": "Вертикальная секция",
+		"horizontal_shelf": "Полка",
+		"RIGHT": "ПРАВЫЙ",
+		"LEFT": "ЛЕВЫЙ"
 	}
 }
