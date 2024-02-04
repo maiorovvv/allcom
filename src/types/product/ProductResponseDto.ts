@@ -1,5 +1,4 @@
 import { AuctionFormValues } from '../auction/AuctionFormValues';
-import Pageable from '../pageable/Pageable';
 import { StorageFormValues } from '../storage/StorageFormValues';
 import { ProductInfo } from './ProductInfo';
 
@@ -8,7 +7,6 @@ export interface ProductResponseDto {
 		product: ProductInfo;
 		storage: Storage;
 	}[];
-	pageable: Pageable;
 	last: boolean;
 	totalPages: number;
 	totalElements: number;
