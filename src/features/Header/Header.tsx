@@ -198,6 +198,17 @@ const Header: React.FC = () => {
 			</a>
 		</li>
 	);
+	const addProductSidepanel = (
+		<li className="offcanvas__menu_li" data-testid="addProductSidepanel">
+			<a
+				className="header__menu--link"
+				href="/products/add_product"
+				data-testid="addProductSidepanel_link"
+			>
+				{t('app_product')}{' '}
+			</a>
+		</li>
+	);
 	const registerSidepanel = (
 		<li
 			className="offcanvas__menu_li"
@@ -462,6 +473,7 @@ const Header: React.FC = () => {
 								{faqSidepanel}
 								{registerSidepanel}
 								{auctionSidepanel}
+								{addProductSidepanel}
 							</ul>
 							{loginRegisterSidepanelButton}
 							{/* //TODO isOpen={''} */}

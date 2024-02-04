@@ -102,6 +102,7 @@
 		"login": "Login",
 		"register": "Register",
 		"auction": "Auction",
+		"app_product": "Add product",
 		"categories": "Categories",
 		"search": "Search",
 		"my_auctions": "My auctions",
@@ -266,17 +267,23 @@
 		"link_add_product": "Add new Product"
 	},
 	"product_fields": {
-		"product_info": "Product Info",
+		"product_info": "Product",
 		"name": "Name",
 		"description": "Description",
 		"weight": "Weight",
 		"color": "Color",
-		"auction_info": "Auction Info",
+		"auction_info": "Auction",
 		"start_price": "Start price",
 		"start_at": "Strat At",
 		"planned_end_at": "Planned End At",
-		"storage_info": "Storage Info",
-		"btn": "Add Product",
-		"product_foto": "Product Photo"
+		"storage_info": "Storage",
+		"add_product": "Add Product",
+		"product_photo": "Product Photo",
+		"side": "Side", 
+		"rack": "Rack number", 
+		"vertical_section": "Vertical section", 
+		"horizontal_shelf": "Shelf", 
+		"RIGHT": "RIGHT", 
+		"LEFT": "LEFT"
 	}
 }

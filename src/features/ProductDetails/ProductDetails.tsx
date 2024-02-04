@@ -1,18 +1,18 @@
 import { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';
+import i18next from 'i18next';
 
 import { useAppSelector } from '../../app/hooks';
 import { RootState } from '../../app/store';
 import Spinner from '../../components/Spinner/Spinner';
 import ShippingTab from './components/ShippingTab';
+import SwiperProduct from '../../components/Swiper/SwiperInModalWindow/SwiperProduct';
+import Timer from '../../components/Timer/Timer';
+import ConfirmationModal from '../../components/ConfirmationModal/ConfirmationModal';
+import { getNameCategory } from '../categories/utilsCategories';
 
 import HeartIcon from '../../img/svg/heart.svg?react';
-import MediaSwiper from '../../components/MediaSwiper/MediaSwiper';
-import { getNameCategory } from '../categories/utilsCategories';
-import i18next from 'i18next';
-import ConfirmationModal from '../../components/ConfirmationModal/ConfirmationModal';
-import Timer from '../../components/Timer/Timer';
 
 const ProductDetails: FC = (): JSX.Element => {
 	const locale = i18next.language;
@@ -54,7 +54,7 @@ const ProductDetails: FC = (): JSX.Element => {
 			<section className="section--padding">
 				<div className="product_details__container container">
 					<div className="product_details__swiper">
-						<MediaSwiper images={imageLinks} />
+						<SwiperProduct images={imageLinks} />
 					</div>
 					<div className="product_details__info">
 						<h2 className="product_details__info__title">{name}</h2>

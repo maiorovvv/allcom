@@ -1,19 +1,20 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
+import moment from 'moment';
+import i18next from 'i18next';
 
 import { useAppSelector } from '../../../../app/hooks';
 import { RootState } from '../../../../app/store';
 
 import Timer from '../../../../components/Timer/Timer';
-import MediaSwiper from '../../../../components/MediaSwiper/MediaSwiper';
+import SwiperProduct from '../../../../components/Swiper/SwiperInModalWindow/SwiperProduct';
 
 import CloseIcon from '../../../../img/svg/cross.svg?react';
 import HeartIcon from '../../../../img/svg/heart.svg?react';
+
 import { CategoriesDto } from '../../../categories/types/CategoriesDto';
 import { getNameCategory } from '../../../categories/utilsCategories';
-import i18next from 'i18next';
-import moment from 'moment';
 
 interface ModalWindowProps {
 	activeWindow: boolean;
@@ -59,7 +60,7 @@ const ModalWindowProduct: FC<ModalWindowProps> = ({
 					<div className="modal_window" onClick={(e) => e.stopPropagation()}>
 						<CloseIcon className="modal_window__close" onClick={() => setActiveWindow(false)} />
 						<div className="modal_window__col--images">
-							<MediaSwiper images={imageLinks} />
+							<SwiperProduct images={imageLinks} />
 						</div>
 						<div className="modal_window__col--info">
 							<h3 className="modal_window__title">{name}</h3>
