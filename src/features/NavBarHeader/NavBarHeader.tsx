@@ -99,6 +99,19 @@ const NavBarHeader: FC = (): JSX.Element => {
 			</NavLink>
 		</li>
 	);
+
+	const productsList = (
+		<li className="header__menu--items style2">
+			<NavLink
+				className={({ isActive }) =>
+					isActive ? 'active__nav_link header__menu--link' : 'header__menu--link'
+				}
+				to="/product/products_list"
+			>
+				{t('products_list')}
+			</NavLink>
+		</li>
+	);
 	return (
 		<div className="header__bottom">
 			<div className="container-fluid">
@@ -113,6 +126,7 @@ const NavBarHeader: FC = (): JSX.Element => {
 									{login}
 									{registration}
 									{addNewProduct}
+									{productsList}
 								</ul>
 							</nav>
 						</div>

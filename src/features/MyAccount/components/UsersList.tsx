@@ -1,17 +1,17 @@
 import { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
-import { RootState } from '../../../../app/store';
-import { getFoundUser, loadDefaultUsers, loadLimitedUsers } from '../../UserSlice';
-import Spinner from '../../../../components/Spinner/Spinner';
-import Pagination from '../../../../components/Pagination/Pagination';
-import ConfirmationModal from '../../../../components/ConfirmationModal/ConfirmationModal';
-import Tooltip from '../../../../components/Tooltip/Tooltip';
-import Search from '../../../../components/Search/Search';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { RootState } from '../../../app/store';
+import { getFoundUser, loadDefaultUsers, loadLimitedUsers } from '../UserSlice';
+import Spinner from '../../../components/Spinner/Spinner';
+import Pagination from '../../../components/Pagination/Pagination';
+import ConfirmationModal from '../../../components/ConfirmationModal/ConfirmationModal';
+import Tooltip from '../../../components/Tooltip/Tooltip';
+import Search from '../../../components/Search/Search';
 
-import SortAZIcon from '../../../../img/svg/sortAZ.svg?react';
-import SortZAIcon from '../../../../img/svg/sortZA.svg?react';
+import SortAZIcon from '../../../img/svg/sortAZ.svg?react';
+import SortZAIcon from '../../../img/svg/sortZA.svg?react';
 
 const UsersList: FC = (): JSX.Element => {
 	const { t } = useTranslation('users_list');
@@ -106,7 +106,7 @@ const UsersList: FC = (): JSX.Element => {
 										<a href={`tel:${phoneNumber}`}>{phoneNumber}</a>
 									</td>
 									<td>
-										{street},{houseNumber}, {city}
+										{city}, {street}, {houseNumber}
 									</td>
 									<td>
 										<Tooltip text={t('tooltip_set_status')}>

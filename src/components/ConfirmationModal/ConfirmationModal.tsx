@@ -45,8 +45,8 @@ const ConfirmationModal: FC<ModalProps> = ({
 					{t(`${text}`)} <strong>{name}</strong>
 				</p>
 				<div className="confirmation_modal__buttons">
-					<Button btnType={true} text={t('yes')} onClickBtn={handleClick} isConfirm={true} />
-					<Button btnType={false} text={t('no')} onClickBtn={handleClick} />
+					<Button btnValue={true} text={t('yes')} onClickBtn={() => handleClick} isConfirm={true} />
+					<Button btnValue={false} text={t('no')} onClickBtn={() => handleClick} />
 				</div>
 			</div>
 		</div>

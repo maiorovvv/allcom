@@ -8,7 +8,8 @@ export interface ProductDto {
 	state?: string;
 	imageLinks: string[];
 	lastCreatedAuction: LastCreatedAuctionDto;
-	storage?: StorageDto;
+	storage: StorageDto;
+	error?: string;
 }
 
 export interface LastCreatedAuctionDto {
@@ -23,7 +24,7 @@ export interface LastCreatedAuctionDto {
 	winnerId?: number;
 	lastBetAmount?: number;
 	updatedAt?: string;
-	createdAt?: string;
+	createdAt: string;
 }
 
 export interface StorageDto {

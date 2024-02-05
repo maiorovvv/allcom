@@ -1,28 +1,32 @@
 import { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { filterProductById, loadAllProducts } from './HomePageSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { RootState } from '../../app/store';
 
 import Spinner from '../../components/Spinner/Spinner';
 import Product from './components/Product';
 // import Poster from './components/Poster/Poster';
 import Pagination from '../../components/Pagination/Pagination';
 import ModalWindowProduct from './components/ModalWindow/ModalWindowProduct';
+import { selectCategories } from '../categories/selectors';
+import {
+	selectLoadingAllProducts,
+	selectNumberPage,
+	selectProducts,
+	selectTotalPages,
+} from '../products/selectors';
+import { filterProductById, loadAllProducts } from '../products/productsSlice';
 
 const HomePage: FC = (): JSX.Element => {
 	const { t } = useTranslation('home_page');
 
 	const [activeWindow, setActiveWindow] = useState<boolean>(false);
 
-	const products = useAppSelector((state: RootState) => state.homePage.products);
-	const loadingAllProducts = useAppSelector(
-		(state: RootState) => state.homePage.loadingAllProducts
-	);
-	const totalPages = useAppSelector((state: RootState) => state.homePage.totalPages);
-	const numberPage = useAppSelector((state: RootState) => state.homePage.number);
-	const categories = useAppSelector((state: RootState) => state.categories.categories);
+	const products = useAppSelector(selectProducts);
+	const loadingAllProducts = useAppSelector(selectLoadingAllProducts);
+	const totalPages = useAppSelector(selectTotalPages);
+	const numberPage = useAppSelector(selectNumberPage);
+	const categories = useAppSelector(selectCategories);
 
 	const dispatch = useAppDispatch();
 
@@ -77,7 +81,6 @@ const HomePage: FC = (): JSX.Element => {
 			<ModalWindowProduct
 				activeWindow={activeWindow}
 				setActiveWindow={setActiveWindow}
-				getProductById={getProductById}
 				categories={categories}
 			/>
 		</div>

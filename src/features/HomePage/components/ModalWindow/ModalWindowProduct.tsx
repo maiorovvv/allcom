@@ -8,32 +8,31 @@ import { useAppSelector } from '../../../../app/hooks';
 import { RootState } from '../../../../app/store';
 
 import Timer from '../../../../components/Timer/Timer';
-import SwiperProduct from '../../../../components/Swiper/SwiperInModalWindow/SwiperProduct';
+import SwiperProduct from '../../../../components/Swiper/SwiperProduct/SwiperProduct';
 
 import CloseIcon from '../../../../img/svg/cross.svg?react';
 import HeartIcon from '../../../../img/svg/heart.svg?react';
 
 import { CategoriesDto } from '../../../categories/types/CategoriesDto';
 import { getNameCategory } from '../../../categories/utilsCategories';
+import { selectProductById } from '../../../products/selectors';
 
 interface ModalWindowProps {
 	activeWindow: boolean;
 	setActiveWindow: (flag: boolean) => void;
-	getProductById: (product_id: number) => void;
 	categories: CategoriesDto[];
 }
 
 const ModalWindowProduct: FC<ModalWindowProps> = ({
 	activeWindow,
 	setActiveWindow,
-	getProductById,
 	categories,
 }) => {
 	const { t } = useTranslation('modal_window_product');
 
 	const locale = i18next.language;
 
-	const productById = useAppSelector((state: RootState) => state.homePage.productById);
+	const productById = useAppSelector(selectProductById);
 
 	const {
 		id,
@@ -103,7 +102,7 @@ const ModalWindowProduct: FC<ModalWindowProps> = ({
 									<HeartIcon />
 									{t('add_to_wishlist')}
 								</span>
-								<NavLink to="products/details/" onClick={() => getProductById(id)}>
+								<NavLink to={`products/details/${id}`}>
 									<button className="modal_window__buttons--btn">{t('bet_now')}</button>
 								</NavLink>
 							</div>

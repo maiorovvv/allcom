@@ -10,6 +10,12 @@ import SwiperModalWindow from '../../../components/Swiper/MediaSwiper';
 
 import styles from './ProductFields.module.scss';
 import Spinner from '../../../components/Spinner/Spinner';
+import { useAppSelector } from '../../../app/hooks';
+import { selectCategories } from '../../categories/selectors';
+import { getByCurrentLocale } from '../../categories/utilsCategories';
+import i18next from 'i18next';
+
+const PARENT_ID_MAIN_CATEGORIES = 0;
 
 export const DECIMAL_STEP = '0.01';
 
@@ -48,16 +54,17 @@ const ProductFields: FC<PropsInterface> = (props) => {
 
 	const { t } = useTranslation('product_fields');
 
+	const locale = i18next.language;
+
+	const mainCategories = useAppSelector(selectCategories).filter(
+		(item) => item.parentId !== PARENT_ID_MAIN_CATEGORIES
+	);
+
 	const selectOptionsCategory: CategoryOptions[] = [
-		{ value: 1, label: t('categories:category_1') },
-		{ value: 2, label: t('categories:category_2') },
-		{ value: 3, label: t('categories:category_3') },
-		{ value: 4, label: t('categories:category_4') },
-		{ value: 5, label: t('categories:category_5') },
-		{ value: 6, label: t('categories:category_6') },
-		{ value: 7, label: t('categories:category_7') },
-		{ value: 8, label: t('categories:category_8') },
-		{ value: 9, label: t('categories:category_9') },
+		...(mainCategories?.map((category) => ({
+			value: category.id,
+			label: `${category[getByCurrentLocale(locale)]}`,
+		})) || []),
 	];
 
 	const filterOptions = (selectedValue: number): CategoryOptions[] => {
@@ -225,6 +232,7 @@ const ProductFields: FC<PropsInterface> = (props) => {
 
 	const categorySelect = (
 		<Select
+			placeholder={t('category')}
 			defaultValue={selectOptionsCategory}
 			value={filterOptions(values.categoryId)}
 			name="categoryId"

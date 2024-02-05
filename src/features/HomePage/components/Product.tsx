@@ -2,18 +2,16 @@ import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import i18next from 'i18next';
+import moment from 'moment';
 
 import { ProductDto } from '../../../types/product/ProductApiResponse';
 import { CategoriesDto } from '../../categories/types/CategoriesDto';
 import { getNameCategory } from '../../categories/utilsCategories';
-import { useAppDispatch } from '../../../app/hooks';
-import { loadProduct } from '../../ProductDetails/productDetailsSlice';
 import Timer from '../../../components/Timer/Timer';
 import Tooltip from '../../../components/Tooltip/Tooltip';
 
 import HeartIcon from '../../../img/svg/heart.svg?react';
 import EyeIcon from '../../../img/svg/eye.svg?react';
-import moment from 'moment';
 
 interface ProductProps {
 	product: ProductDto;
@@ -34,12 +32,6 @@ const Product: FC<ProductProps> = ({ product, setActiveWindow, getProductById, c
 	const locale = i18next.language;
 	const { t } = useTranslation('home_page');
 
-	const dispatch = useAppDispatch();
-
-	const loadProductById = (): void => {
-		dispatch(loadProduct(id));
-	};
-
 	const currentPlannedEnd = moment(currentPlannedEndAt);
 	const formattedDate = moment(startAt).format('YYYY-MM-DD HH:mm:ss');
 	const timeUntilCurrentPlannedEnd = currentPlannedEnd.diff(moment(), 'seconds');
@@ -48,12 +40,8 @@ const Product: FC<ProductProps> = ({ product, setActiveWindow, getProductById, c
 		<div className="home_page__items">
 			<div className="home_page__items--thumbnail">
 				<img src={imageLinks[0]} alt="product-img"></img>
-				<NavLink
-					className="home_page__btn"
-					to="products/details/"
-					onClick={() => loadProductById()}
-				>
-					<span className="home_page__btn--bet_now">{t('bet_now')}</span>
+				<NavLink className="home_page__btn" to={`products/details/${id}`}>
+					<span>{t('view_product')}</span>
 				</NavLink>
 				<ul className="home_page__items--action">
 					<li className="home_page__items--action__list">

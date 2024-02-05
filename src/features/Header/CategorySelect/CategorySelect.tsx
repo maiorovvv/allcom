@@ -7,6 +7,7 @@ import { RootState } from '../../../app/store';
 import { loadAllCategories } from '../../categories/CategoriesSlice';
 import { getByCurrentLocale } from '../../categories/utilsCategories';
 import i18next from 'i18next';
+import { selectCategories } from '../../categories/selectors';
 
 interface CategorySelectProps {
 	handleCategoryChange: (value: number) => void;
@@ -25,7 +26,7 @@ const CategorySelect: FC<CategorySelectProps> = ({ handleCategoryChange }): JSX.
 
 	const { t } = useTranslation('categories');
 
-	const mainCategories = useAppSelector((state: RootState) => state.categories.categories).filter(
+	const mainCategories = useAppSelector(selectCategories).filter(
 		(item) => item.parentId === PARENT_ID_MAIN_CATEGORIES
 	);
 	const dispatch = useAppDispatch();

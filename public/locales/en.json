@@ -1,7 +1,7 @@
 {
 	"home_page": {
 		"header": "Products",
-		"bet_now": "BET NOW",
+		"view_product": "VIEW PRODUCT",
 		"category": "Category",
 		"auctions": "Auctions",
 		"preview": "Preview",
@@ -112,7 +112,8 @@
 		"search_here": "Search Here",
 		"all_categories": "All Categories",
 		"keyword_here": "Keyword here...",
-		"add_product": "Add Product"
+		"add_product": "Add Product",
+		"products_list": "Products"
 	},
 	"categories": {
 		"default_select": "Product category"
@@ -253,6 +254,18 @@
 		"yes": "Confirm",
 		"no": "Cancel"
 	},
+	"products_list": {
+		"name": "Name",
+		"created_at": "Created",
+		"store": "Store",
+		"start_date": "Start date",
+		"end_date": "End date",
+		"current_price": "Current price",
+		"starting_price": "Starting price",
+		"edit": "Edit",
+		"search_placeholder": "enter product name ...",
+		"tooltip_edit": "change product details"
+	},
 	"about_us": {
 		"about_us": "About Us",
 		"welcome": "Welcome to Allcom, your premier choice for exciting auction sales. At Allcom we specialize in connecting buyers and sellers in a dynamic and transparent marketplace. Our team is passionate about connecting people with unique and valuable items through online auction.",
@@ -279,11 +292,12 @@
 		"storage_info": "Storage",
 		"add_product": "Add Product",
 		"product_photo": "Product Photo",
-		"side": "Side", 
-		"rack": "Rack number", 
-		"vertical_section": "Vertical section", 
-		"horizontal_shelf": "Shelf", 
-		"RIGHT": "RIGHT", 
-		"LEFT": "LEFT"
+		"side": "Side",
+		"rack": "Rack number",
+		"vertical_section": "Vertical section",
+		"horizontal_shelf": "Shelf",
+		"RIGHT": "RIGHT",
+		"LEFT": "LEFT",
+		"category": "Category"
 	}
 }
