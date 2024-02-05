@@ -1,7 +1,7 @@
 {
 	"home_page": {
 		"header": "Products",
-		"bet_now": "СДЕЛАТЬ СТАВКУ",
+		"view_product": "ПОСМОТРЕТЬ ПРОДУКТ",
 		"category": "Категория",
 		"auctions": "Аукционы",
 		"preview": "Предпросмотр",
@@ -13,6 +13,7 @@
 		"color": "цвет",
 		"weight": "вес",
 		"category": "категория",
+		"start_at": "Начало с",
 		"left_time": "До закрытия",
 		"add_to_wishlist": "В избранное"
 	},
@@ -29,20 +30,24 @@
 		"weight": "вес",
 		"wishlist": "Избранное"
 	},
-	"ProductDetails": {
+	"product_details": {
 		"link_back_to_home": "Вернуться на главную",
 		"product_details": "Детали продукта",
 		"add_to_card": "добавить в корзину",
-		"by_it_now": "купить сейчас",
-		"wishlist": "Избранное",
+		"bet_now": "СДЕЛАТЬ СТАВКУ",
+		"add_to_wishlist": "В избранное",
 		"color": "Цвет",
-		"price": "Цена",
-		"brand": "Бренд",
+		"weight": "Вес",
 		"category": "Категория",
 		"shipping": "Доставка",
 		"payment": "Оплата",
 		"return": "Возврат",
-		"support": "Поддержка"
+		"support": "Поддержка",
+		"current_price": "АКТУАЛЬНАЯ СТАВКА:",
+		"tax": "Налог",
+		"is_confirm": "Подтвердите действие",
+		"start_at": "Начало с",
+		"left_time": "До закрытия"
 	},
 	"Shipping": {
 		"in_developing": "В разработке..."
@@ -98,6 +103,7 @@
 		"contact_us": "Контакты",
 		"faq": "Вопросы",
 		"auction": "Аукцион",
+		"app_product": "Добавить товар",
 		"categories": "Категории",
 		"search": "Поиск",
 		"my_auctions": "Мои аукционы",
@@ -111,15 +117,7 @@
 		"products_list": "Продукты"
 	},
 	"categories": {
-		"category_1": "Ноутбуки и компьютеры",
-		"category_2": "Смартфоны, ТВ и электроника",
-		"category_3": "Крупно-бытовая техника",
-		"category_4": "Уход за домом и одеждой",
-		"category_5": "Встраиваемая техника",
-		"category_6": "Техника для кухни",
-		"category_7": "Красота и здоровье",
-		"category_8": "Мебель",
-		"category_9": "Одежда, обувь и аксессуары"
+		"default_select": "Категории продуктов"
 	},
 	"404-page": {
 		"content_title": "Упс! Мы не нашли эту страницу",
@@ -246,7 +244,7 @@
 		"name": "Полное имя",
 		"email": "Емейл",
 		"phone": "Телефон",
-		"address":  "Адрес",
+		"address": "Адрес",
 		"tooltip_set_status": "заблокировать или разблокировать пользователя",
 		"text_block": "Заблокировать пользователя",
 		"text_activate": "Разблокировать пользователя",
@@ -264,7 +262,7 @@
 		"store": "Склад",
 		"start_date": "Начало",
 		"end_date": "Конец",
-		"current_price": "Актуальная цена",
+		"current_price": "Текущая цена",
 		"starting_price": "Стартовая цена",
 		"edit": "Изменить",
 		"search_placeholder": "введите название продукта...",
@@ -284,17 +282,24 @@
 		"link_add_product": "Добавить новый товар"
 	},
 	"product_fields": {
-		"product_info": "Информация о продукте",
+		"product_info": "Товар",
 		"name": "Название",
 		"description": "Описание",
 		"weight": "Вес",
 		"color": "Цвет",
-		"auction_info": "Информация об аукционе",
+		"auction_info": "Аукцион",
 		"start_price": "Стартовая цена",
 		"start_at": "Начало",
 		"planned_end_at": "Конец",
-		"storage_info": "Информация о складе",
-		"btn": "Добавить продукт",
-		"product_foto": "Фото продукта"
+		"storage_info": "Склад",
+		"add_product": "Добавить продукт",
+		"product_photo": "Фото товара",
+		"side": "Сторона стеллажа",
+		"rack": "Номер стеллажа",
+		"vertical_section": "Вертикальная секция",
+		"horizontal_shelf": "Полка",
+		"RIGHT": "ПРАВЫЙ",
+		"LEFT": "ЛЕВЫЙ",
+		"category": "Категория"
 	}
 }

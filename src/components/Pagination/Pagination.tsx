@@ -4,26 +4,29 @@ import ArrowLeftIcon from '../../img/svg/arrow_pagination_left.svg?react';
 import ArrowRightIcon from '../../img/svg/arrow_pagination_right.svg?react';
 
 interface PaginationProps {
-	loadContentForPage: (skip: number) => void;
-	totalItems: number;
-	skip: number;
-	limit: number;
+	loadContentForPage: (number_page: number) => void;
+	totalPages: number;
+	numberPage: number;
 }
 
-const FIRST_PAGE_NUMBER = 1;
+const FRONTEND_FIRST_PAGE_NUMBER = 1;
+const BACKEND_FIRST_PAGE_NUMBER = 0;
+const BACKEND_PAGE_OFFSET = 1;
 
 const Pagination: FC<PaginationProps> = ({
 	loadContentForPage,
-	totalItems,
-	skip,
-	limit,
+	totalPages,
+	numberPage,
 }): JSX.Element => {
-	const quantityPages = Math.ceil(totalItems / limit);
+	const frontendPageNumber = numberPage + BACKEND_PAGE_OFFSET;
+	const previousFrontendPageNumber = numberPage - 1;
+	const nextFrontendPageNumber = numberPage + 1;
 
-	const pageNumbers = Array.from(
-		{ length: quantityPages },
-		(_, index) => FIRST_PAGE_NUMBER + index
-	);
+	const arrPageNumbers = [];
+
+	for (let i = FRONTEND_FIRST_PAGE_NUMBER; i <= totalPages; i++) {
+		arrPageNumbers.push(i);
+	}
 
 	const handleScrollToTop = (): void => {
 		window.scrollTo({
@@ -32,20 +35,18 @@ const Pagination: FC<PaginationProps> = ({
 		});
 	};
 
-	const renderedPageButtons = pageNumbers.map((numberPage) => {
-		const calculatedSkip = limit * numberPage - limit;
-
+	const renderedPageButtons = arrPageNumbers.map((item) => {
 		return (
-			<li className="page-item" key={numberPage}>
+			<li className="page-item" key={item}>
 				<button
-					className={calculatedSkip === skip ? 'page-link page-link__active' : 'page-link'}
+					className={frontendPageNumber === item ? 'page-link page-link__active' : 'page-link'}
 					onClick={() => {
-						loadContentForPage(calculatedSkip);
+						loadContentForPage(item - BACKEND_PAGE_OFFSET);
 						handleScrollToTop();
 					}}
-					disabled={skip === calculatedSkip}
+					disabled={frontendPageNumber === item}
 				>
-					{numberPage}
+					{item}
 				</button>
 			</li>
 		);
@@ -58,10 +59,10 @@ const Pagination: FC<PaginationProps> = ({
 					<button
 						className="page-link page-link--arrow"
 						onClick={() => {
-							loadContentForPage(skip - limit);
+							loadContentForPage(previousFrontendPageNumber);
 							handleScrollToTop();
 						}}
-						disabled={skip === 0}
+						disabled={numberPage === BACKEND_FIRST_PAGE_NUMBER}
 					>
 						<ArrowLeftIcon />
 					</button>
@@ -71,10 +72,10 @@ const Pagination: FC<PaginationProps> = ({
 					<button
 						className="page-link page-link--arrow"
 						onClick={() => {
-							loadContentForPage(skip + limit);
+							loadContentForPage(nextFrontendPageNumber);
 							handleScrollToTop();
 						}}
-						disabled={skip + limit >= totalItems}
+						disabled={frontendPageNumber === totalPages}
 					>
 						<ArrowRightIcon />
 					</button>

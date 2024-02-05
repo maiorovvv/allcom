@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import NotFound from './components/NotFound/NotFound';
 import Layout from './features/Layout';
 import MyAccount from './features/MyAccount/MyAccount';
-import ProductDetails from './features/ProductDetails/ProductDetails';
+import ProductDetails from './features/products/ProductDetails/ProductDetails';
 import Shipping from './components/Shipping/Shipping';
 import Payment from './components/Payment/Payment';
 import Return from './components/Return/Return';
@@ -19,7 +19,7 @@ import RestorePassword from './components/LoginRegisterForgotPassword/RestorePas
 import RestorePasswordWait from './components/LoginRegisterForgotPassword/RestoreUserValidationWait';
 import RestoreEnterNewPAssword from './components/LoginRegisterForgotPassword/RestoreEnterNewPAssword';
 import UsersList from './features/MyAccount/components/UsersList';
-import ProductsList from './features/ProductsList/ProductsList';
+import ProductsList from './features/products/ProductsList/ProductsList';
 import AboutUs from './features/AboutUs/AboutUs';
 import AddProductPage from './features/products/AddProduct/AddProduct';
 import AddedSuccessPage from './features/products/AddedSuccessPage/AddedSuccessPage';
@@ -39,7 +39,7 @@ function App(): JSX.Element {
 						<Route path="users_list" element={<UsersList />} />
 					</Route>
 					<Route path="product/products_list" element={<ProductsList />} />
-					<Route path="products/details" element={<ProductDetails />} />
+					<Route path="products/details/:id" element={<ProductDetails />} />
 					<Route path="products/add_product" element={<AddProductPage />} />
 					<Route path="products/product_added_success" element={<AddedSuccessPage />} />
 					<Route path="shipping" element={<Shipping />} />

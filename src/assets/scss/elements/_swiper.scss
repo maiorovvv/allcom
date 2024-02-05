@@ -9,3 +9,13 @@
 .swiper-pagination-bullet {
 	border: none;
 }
+
+.swiper-button-next,
+.swiper-button-prev {
+	color: var(--secondary-color);
+}
+.swiper-wrapper {
+	display: flex;
+	align-items: center;
+}
+

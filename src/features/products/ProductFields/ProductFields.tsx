@@ -2,24 +2,34 @@ import { ChangeEvent, FC, memo } from 'react';
 import { FormikProps } from 'formik';
 import Select from 'react-select';
 import { useTranslation } from 'react-i18next';
-
 import FormikInputField from '../../../components/FormikInputField/FormikInputField';
 import Datepicker from '../../../components/Datepicker/Datepicker';
 import FormikTextAriaField from '../../../components/FormikTextAriaField/FormikTextAriaField';
 import { ProductFormValues } from '../../../types/product/ProductFormValues';
-import SwiperModalWindow from '../../../components/SwiperModalWindow/SwiperModalWindow';
+import SwiperModalWindow from '../../../components/Swiper/MediaSwiper';
 
 import styles from './ProductFields.module.scss';
 import Spinner from '../../../components/Spinner/Spinner';
+import { useAppSelector } from '../../../app/hooks';
+import { selectCategories } from '../../categories/selectors';
+import { getByCurrentLocale } from '../../categories/utilsCategories';
+import i18next from 'i18next';
 
-const DECIMAL_STEP = '0.01';
+const PARENT_ID_MAIN_CATEGORIES = 0;
 
-type Options = {
+export const DECIMAL_STEP = '0.01';
+
+export type CategoryOptions = {
 	value: number;
 	label: string;
 };
 
-interface PropsInterface {
+export type AreaOptions = {
+	value: string;
+	label: string;
+};
+
+export interface PropsInterface {
 	loadingImage?: boolean;
 	onDeleteImage: (index: number) => void;
 	onFileChange: (event: ChangeEvent<HTMLInputElement>) => Promise<void>;
@@ -29,6 +39,7 @@ interface PropsInterface {
 	setFieldValue: FormikProps<ProductFormValues>['setFieldValue'];
 	resizingError: string | undefined;
 }
+
 const ProductFields: FC<PropsInterface> = (props) => {
 	const {
 		linkList,
@@ -43,165 +54,296 @@ const ProductFields: FC<PropsInterface> = (props) => {
 
 	const { t } = useTranslation('product_fields');
 
-	const selectOptionsCategory: Options[] = [
-		{ value: 1, label: t('categories:category_1') },
-		{ value: 2, label: t('categories:category_2') },
-		{ value: 3, label: t('categories:category_3') },
-		{ value: 4, label: t('categories:category_4') },
-		{ value: 5, label: t('categories:category_5') },
-		{ value: 6, label: t('categories:category_6') },
-		{ value: 7, label: t('categories:category_7') },
-		{ value: 8, label: t('categories:category_8') },
-		{ value: 9, label: t('categories:category_9') },
+	const locale = i18next.language;
+
+	const mainCategories = useAppSelector(selectCategories).filter(
+		(item) => item.parentId !== PARENT_ID_MAIN_CATEGORIES
+	);
+
+	const selectOptionsCategory: CategoryOptions[] = [
+		...(mainCategories?.map((category) => ({
+			value: category.id,
+			label: `${category[getByCurrentLocale(locale)]}`,
+		})) || []),
 	];
 
-	const filterOptions = (selectedValue: number): Options[] => {
+	const filterOptions = (selectedValue: number): CategoryOptions[] => {
 		return selectOptionsCategory.filter(({ value }) => value === selectedValue);
 	};
 
-	const selectOptionsArea: Options[] = [
-		{ value: 1, label: 'R' },
-		{ value: 2, label: 'L' },
+	const selectOptionsArea: AreaOptions[] = [
+		{ value: 'R', label: t('RIGHT') },
+		{ value: 'L', label: t('LEFT') },
 	];
 
-	return (
-		<>
-			<div className={styles.container}>
-				<div className={styles.add_img}>
-					<h3>{t('product_foto')}</h3>
-					<input
-						className={`form-control ${styles.file_form}`}
-						name="product.images"
-						type="file"
-						id="formFileMultiple"
-						multiple
-						onChange={onFileChange}
-					/>
-					{loadingImage ? (
-						<div className="d-flex align-items-center justify-content-center h-100">
-							<Spinner />
-						</div>
-					) : (
-						<>
-							<SwiperModalWindow images={linkList} onDelete={onDeleteImage} />
-						</>
-					)}
-					{resizingError && <div className="warning_message--validation">{resizingError}</div>}
-				</div>
-				<div className={styles.product_info}>
-					<div className={styles.product_info__details}>
-						<h3 className="mb-3">{t('product_info')}</h3>
-						<FormikInputField
-							name="product.name"
-							placeholder={t('name')}
-							id="productName"
-							value={values.product.name}
-						/>
-						<FormikTextAriaField
-							name="product.description"
-							placeholder={t('description')}
-							id="description"
-							className={styles.description}
-							value={values.product.description}
-						/>
-						<div className="d-flex">
-							<FormikInputField
-								name="product.weight"
-								placeholder={t('weight')}
-								id="weight"
-								type="number"
-								step={DECIMAL_STEP}
-								value={values.product.weight}
-							/>
-							<FormikInputField
-								name="product.color"
-								placeholder={t('color')}
-								id="color"
-								value={values.product.color}
-							/>
-						</div>
-						<Select
-							defaultValue={selectOptionsCategory}
-							value={filterOptions(values.product.categoryId)}
-							name="product.categoryId"
-							options={selectOptionsCategory}
-							onChange={(option) =>
-								setFieldValue('product.categoryId', option ? option.value : null)
-							}
-						/>
-					</div>
-					<div className={styles.verticale}></div>
-					<div className={styles.product_info__auction}>
-						<h3 className="mb-3">{t('auction_info')}</h3>
-						<div className={styles.datepicker}>
-							<FormikInputField
-								id="startPrice"
-								name="auction.startPrice"
-								placeholder={t('start_price')}
-								type="number"
-								value={values.auction.startPrice}
-							/>
-							<Datepicker
-								id="startAt"
-								name="auction.startAt"
-								label={t('start_at')}
-								value={values.auction.startAt}
-								handleChange={handleChange}
-							/>
-							<Datepicker
-								id="plannedEndAt"
-								name="auction.plannedEndAt"
-								label={t('planned_end_at')}
-								value={values.auction.plannedEndAt}
-								handleChange={handleChange}
-							/>
-						</div>
-					</div>
-					<div className={styles.verticale}></div>
-					<div className={styles.product_info__storage}>
-						<h3 className="mb-3">{t('storage_info')}</h3>
-						<div className={styles.product_info__storage__item}>
-							<Select
-								id="area"
-								defaultValue={selectOptionsArea[0]}
-								value={selectOptionsArea.find((option) => option.label === values.storage.area)}
-								name="storage.area"
-								options={selectOptionsArea}
-								onChange={(option) => setFieldValue('storage.area', option ? option.value : null)}
-								theme={(theme) => ({
-									...theme,
-									spacing: {
-										...theme.spacing,
-										controlHeight: 48,
-									},
-								})}
-							/>
-							<FormikInputField
-								name="storage.rack"
-								id="rack"
-								type="number"
-								value={values.storage.rack}
-							/>
-							<FormikInputField
-								name="storage.section"
-								id="section"
-								type="number"
-								value={values.storage.section}
-							/>
-							<FormikInputField
-								name="storage.shelve"
-								id="shelve"
-								type="number"
-								value={values.storage.shelve}
-							/>
-							<button type="submit" name="submit" className={styles.btn}>
-								{t('btn')}
-							</button>
-						</div>
-					</div>
-				</div>
+	const addProductButton = (
+		<div className="d-flex justify-content-center pt-3">
+			<button
+				type="submit"
+				name="submit"
+				className={styles.container_btn}
+				data-testid="add_product-button"
+			>
+				{t('add_product')}
+			</button>
+		</div>
+	);
+
+	const shelf = (
+		<FormikInputField
+			name="storage.shelf"
+			id="shelf"
+			type="number"
+			value={values.storage.shelf}
+			data-testid="shelf"
+		/>
+	);
+
+	const section = (
+		<FormikInputField
+			name="storage.section"
+			id="section"
+			type="number"
+			value={values.storage.section}
+			data-testid="section"
+		/>
+	);
+
+	const rack = (
+		<FormikInputField
+			name="storage.rack"
+			id="rack"
+			type="number"
+			value={values.storage.rack}
+			data-testid="rack"
+		/>
+	);
+
+	const areaSelect = (
+		<Select
+			id="area"
+			data-testid="area_select"
+			defaultValue={selectOptionsArea[0]}
+			value={selectOptionsArea.filter(({ value }) => value === values.storage.area)}
+			name="storage.area"
+			options={selectOptionsArea}
+			onChange={(option) => setFieldValue('storage.area', option ? option.value : null)}
+			theme={(theme) => ({
+				...theme,
+				spacing: {
+					...theme.spacing,
+					controlHeight: 48,
+				},
+			})}
+		/>
+	);
+	const areaInput = (
+		<div>
+			<label htmlFor="area">{t('side')}</label>
+			<div className={styles.input}>{areaSelect}</div>
+		</div>
+	);
+
+	const rackInput = (
+		<div>
+			<label htmlFor="rack">{t('rack')}</label>
+			<div className={styles.input}>{rack}</div>
+		</div>
+	);
+
+	const sectionInput = (
+		<div>
+			<label htmlFor="section">{t('vertical_section')}</label>
+			<div className={styles.input}>{section}</div>
+		</div>
+	);
+
+	const shelfInput = (
+		<div>
+			<label htmlFor="shelf">{t('horizontal_shelf')}</label>
+			<div>{shelf}</div>
+		</div>
+	);
+	const storage = (
+		<div className={styles.sub_container}>
+			<div className="login_register--divide">
+				<span className="login_register--divide__text text-uppercase">{t('storage_info')}</span>
 			</div>
-		</>
+			<div className="row">
+				<div className="col">{areaInput}</div>
+			</div>
+			<div className="row">
+				<div className="col">{rackInput}</div>
+			</div>
+			<div className="row">
+				<div className="col">{sectionInput}</div>
+			</div>
+			<div className="row">
+				<div className="col">{shelfInput}</div>
+			</div>
+		</div>
+	);
+
+	const endAt = (
+		<Datepicker
+			id="plannedEndAt"
+			name="auction.plannedEndAt"
+			label={t('planned_end_at')}
+			value={values.auction.plannedEndAt}
+			handleChange={handleChange}
+			data-testid="auction.plannedEndAt"
+		/>
+	);
+
+	const startAt = (
+		<Datepicker
+			id="startAt"
+			name="auction.startAt"
+			label={t('start_at')}
+			value={values.auction.startAt}
+			handleChange={handleChange}
+			data-testid="auction.startAt"
+		/>
+	);
+
+	const startPrice = (
+		<FormikInputField
+			id="startPrice"
+			name="auction.startPrice"
+			placeholder={t('start_price')}
+			type="number"
+			//value={values.auction.startPrice}
+			data-testid="startPrice"
+		/>
+	);
+
+	const auction = (
+		<div className={styles.sub_container}>
+			<div className="login_register--divide mb-5">
+				<span className="login_register--divide__text text-uppercase">{t('auction_info')}</span>
+			</div>
+			<div className={styles.auction}>
+				{startPrice}
+				{startAt}
+				{endAt}
+			</div>
+		</div>
+	);
+
+	const categorySelect = (
+		<Select
+			placeholder={t('category')}
+			defaultValue={selectOptionsCategory}
+			value={filterOptions(values.categoryId)}
+			name="categoryId"
+			options={selectOptionsCategory}
+			onChange={(option) => setFieldValue('categoryId', option ? option.value : null)}
+			data-testid="categoryId_select"
+			className={styles.category}
+		/>
+	);
+
+	const weightANDcolor = (
+		<div className="row">
+			<div className="col pe-2">
+				<FormikInputField
+					name="weight"
+					placeholder={t('weight')}
+					id="weight"
+					type="number"
+					step={DECIMAL_STEP}
+					value={values.weight}
+					data-testid="weight_select"
+				/>
+			</div>
+			<div className="col ps-2">
+				<FormikInputField
+					name="color"
+					placeholder={t('color')}
+					id="color"
+					value={values.color}
+					data-testid="color_select"
+				/>
+			</div>
+		</div>
+	);
+
+	const descriptionProduct = (
+		<FormikTextAriaField
+			name="description"
+			placeholder={t('description')}
+			id="description"
+			className={styles.description}
+			value={values.description}
+			data-testid="description"
+		/>
+	);
+
+	const nameProduct = (
+		<FormikInputField
+			name="name"
+			placeholder={t('name')}
+			id="productName"
+			value={values.name}
+			data-testid="productName"
+		/>
+	);
+
+	const product = (
+		<div className={` ${styles.sub_container}`}>
+			<div className="login_register--divide mb-4">
+				<span className="login_register--divide__text text-uppercase">{t('product_info')}</span>
+			</div>
+			<div>
+				{nameProduct}
+				{descriptionProduct}
+				{weightANDcolor}
+				{categorySelect}
+			</div>
+		</div>
+	);
+
+	const photoInputContainer = (
+		<div className={styles.sub_container}>
+			<div className="login_register--divide mb-5">
+				<span className="login_register--divide__text text-uppercase">{t('product_photo')}</span>
+			</div>
+			<input
+				className={`form-control ${styles.file_form}`}
+				name="images"
+				type="file"
+				id="formFileMultiple"
+				multiple
+				onChange={onFileChange}
+				data-testid="images"
+			/>
+			{loadingImage ? (
+				<div
+					className="d-flex align-items-center justify-content-center"
+					data-testid="loadingImage"
+				>
+					<Spinner data-testid="Spinner" />
+				</div>
+			) : (
+				<SwiperModalWindow
+					images={linkList}
+					onDelete={onDeleteImage}
+					data-testid="SwiperModalWindow"
+				/>
+			)}
+			{resizingError && <div className="warning_message--validation mt-2 p-2">{resizingError}</div>}
+			{addProductButton}
+		</div>
+	);
+	return (
+		<div className={`pb-4 ${styles.container}`}>
+			<div className={`row ${styles.row}`}>
+				<div className="col-md-4 pb-3">{product}</div>
+				<div className="col-md-4 col-sm-6 pb-3">{storage}</div>
+				<div className="col-md-4 col-sm-6 pb-3">{auction}</div>
+			</div>
+			{photoInputContainer}
+		</div>
 	);
 };
 

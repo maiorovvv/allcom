@@ -1,32 +1,68 @@
-import { FC, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { FC, useEffect, useState } from 'react';
 import Select from 'react-select';
+import { useTranslation } from 'react-i18next';
 
-type Options = {
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { RootState } from '../../../app/store';
+import { loadAllCategories } from '../../categories/CategoriesSlice';
+import { getByCurrentLocale } from '../../categories/utilsCategories';
+import i18next from 'i18next';
+import { selectCategories } from '../../categories/selectors';
+
+interface CategorySelectProps {
+	handleCategoryChange: (value: number) => void;
+}
+
+type Option = {
 	value: number;
 	label: string;
 };
 
-const CategorySelect: FC = (): JSX.Element => {
+const INITIAL_SELECTED_OPTION_INDEX = 0;
+const PARENT_ID_MAIN_CATEGORIES = 0;
+
+const CategorySelect: FC<CategorySelectProps> = ({ handleCategoryChange }): JSX.Element => {
+	const locale = i18next.language;
+
 	const { t } = useTranslation('categories');
-	const selectOptions: Options[] = [
-		{ value: 1, label: t('category_1') },
-		{ value: 2, label: t('category_2') },
-		{ value: 3, label: t('category_3') },
-		{ value: 4, label: t('category_4') },
-		{ value: 5, label: t('category_5') },
-		{ value: 6, label: t('category_6') },
-		{ value: 7, label: t('category_7') },
-		{ value: 8, label: t('category_8') },
-		{ value: 9, label: t('category_9') },
+
+	const mainCategories = useAppSelector(selectCategories).filter(
+		(item) => item.parentId === PARENT_ID_MAIN_CATEGORIES
+	);
+	const dispatch = useAppDispatch();
+
+	const selectOptions: Option[] = [
+		{ value: 0, label: t('default_select') },
+		...(mainCategories?.map((category) => ({
+			value: category.id,
+			label: `${category[getByCurrentLocale(locale)]}`,
+		})) || []),
 	];
-	const [selectedOptionState, setSelectedOption] = useState<Options | null>(selectOptions[0]);
+
+	const [selectedOptionState, setSelectedOption] = useState<Option | null>(
+		selectOptions[INITIAL_SELECTED_OPTION_INDEX]
+	);
+
+	const filterOptions = (selectedValue = INITIAL_SELECTED_OPTION_INDEX): Option[] => {
+		return selectOptions.filter(({ value }) => value === selectedValue);
+	};
+
+	const handleSelectChange = (selectedOption: Option | null): void => {
+		setSelectedOption(selectedOption);
+		if (handleCategoryChange && selectedOption) {
+			handleCategoryChange(selectedOption.value);
+		}
+	};
+
+	useEffect(() => {
+		dispatch(loadAllCategories());
+	}, []);
 
 	return (
 		<Select
 			options={selectOptions}
-			value={selectedOptionState}
-			onChange={(selectedOption) => setSelectedOption(selectedOption)}
+			value={filterOptions(selectedOptionState?.value)}
+			onChange={(selectedOption) => handleSelectChange(selectedOption)}
 			classNamePrefix="header_custom_select"
 			data-testid="selected-category"
 		/>

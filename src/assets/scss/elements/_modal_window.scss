@@ -47,7 +47,8 @@
 
 .modal_window {
 	position: relative;
-	width: 55vw;
+	width: 60%;
+	min-height: 45%;
 	background-color: var(--white-color);
 	display: flex;
 	transition: 0.6s all;
@@ -132,7 +133,7 @@
 			font-size: 1.3rem;
 		}
 	}
-	&__detailsInformation {
+	&__details_information {
 		display: flex;
 		flex-direction: column;
 		font-size: 1.6rem;
@@ -145,6 +146,7 @@
 		}
 		&--item {
 			width: 10rem;
+			font-weight: 600;
 		}
 	}
 	&__buttons {
@@ -213,8 +215,6 @@
 		justify-content: space-between;
 		flex-direction: column;
 	}
-	@media only screen and (max-width) {
-	}
 }
 
 .modal_window__timer {
@@ -227,11 +227,24 @@
 		font-size: 1.6rem;
 		font-weight: 500;
 		color: var(--text-gray-color);
+		margin-right: 2rem;
 		@media only screen and (max-width: 768px) {
 			margin-right: 1rem;
 		}
 		@media only screen and (max-width: 479px) {
 			display: none;
+		}
+	}
+	&--start {
+		font-size: 2rem;
+		color: var(--text-gray-color);
+		margin-right: 3rem;
+		&__format {
+			font-size: 1.8rem;
+			background-color: var(--background-timer-color);
+			width: fit-content;
+			padding-inline: 2rem;
+			border-radius: var(--border-radius);
 		}
 	}
 }

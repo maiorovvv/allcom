@@ -3,16 +3,63 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import * as api from './api';
 import ProductState from '../../types/product/ProductState';
 import { ProductFormValues } from '../../types/product/ProductFormValues';
-import { ProductResponseDto } from '../../types/product/ProductResponseDto';
+import { ProductDto } from '../../types/product/ProductApiResponse';
+
+interface LoadProductsParams {
+	category_id?: number;
+	search_query?: string;
+	page_number?: number;
+}
 
 const initialState: ProductState = {
 	products: [],
+	productById: {
+		id: 0,
+		name: '',
+		description: '',
+		weight: 0,
+		color: '',
+		categoryId: 0,
+		state: '',
+		imageLinks: [],
+		lastCreatedAuction: {
+			id: 0,
+			startPrice: 0,
+			startAt: '',
+			currentPlannedEndAt: '',
+			createdAt: '',
+		},
+		storage: {
+			id: 0,
+			area: '',
+			rack: 0,
+			section: 0,
+			shelf: 0,
+			productId: 0,
+		},
+	},
+	number: 0,
+	totalPages: 0,
 	loading: false,
+	loadingAllProducts: false,
+	loadingProductById: false,
 	error: undefined,
 };
 
 export const createProduct = createAsyncThunk('products/createProduct', (data: ProductFormValues) =>
 	api.createProduct(data)
+);
+
+export const loadAllProducts = createAsyncThunk(
+	'productsHome/loadProducts',
+	({ category_id = 0, search_query, page_number }: LoadProductsParams) =>
+		api.getAllProducts(category_id, search_query, page_number)
+);
+
+export const loadProductById = createAsyncThunk(
+	'product/loadProduct',
+
+	(product_id: number) => api.getProductById(product_id)
 );
 
 export const productsSlice = createSlice({
@@ -22,13 +69,20 @@ export const productsSlice = createSlice({
 		resetError: (state) => {
 			state.error = undefined;
 		},
+		filterProductById: (state, action) => {
+			const productId = action.payload;
+			const res = state.products.find((item) => item.id === productId);
+			if (res) {
+				state.productById = res;
+			}
+		},
 	},
 	extraReducers: (builder) => {
 		builder
 			.addCase(createProduct.pending, (state: { loading: boolean }) => {
 				state.loading = true;
 			})
-			.addCase(createProduct.fulfilled, (state, action: PayloadAction<ProductResponseDto>) => {
+			.addCase(createProduct.fulfilled, (state, action: PayloadAction<ProductDto>) => {
 				if (action.payload.error) {
 					state.error = action.payload.error || 'Unknown error occurred';
 					state.products = [];
@@ -41,10 +95,36 @@ export const productsSlice = createSlice({
 			.addCase(createProduct.rejected, (state, action) => {
 				state.loading = false;
 				state.error = action.error.message || 'Unknown error occurred';
+			})
+
+			.addCase(loadAllProducts.fulfilled, (state, action) => {
+				state.products = action.payload.content;
+				state.totalPages = action.payload.totalPages;
+				state.number = action.payload.number;
+				state.loadingAllProducts = false;
+			})
+			.addCase(loadAllProducts.pending, (state) => {
+				state.loadingAllProducts = true;
+			})
+			.addCase(loadAllProducts.rejected, (state, action) => {
+				state.loadingAllProducts = false;
+				state.error = action.error.message || 'Unknown error occurred';
+			})
+
+			.addCase(loadProductById.pending, (state) => {
+				state.loadingProductById = true;
+			})
+			.addCase(loadProductById.fulfilled, (state, action) => {
+				state.productById = action.payload;
+				state.loadingProductById = false;
+			})
+			.addCase(loadProductById.rejected, (state, action) => {
+				state.loadingProductById = false;
+				state.error = action.error.message || 'Unknown error occurred';
 			});
 	},
 });
 
-export const { resetError } = productsSlice.actions;
+export const { resetError, filterProductById } = productsSlice.actions;
 
 export default productsSlice.reducer;
