@@ -285,10 +285,6 @@
 		"horizontal_shelf": "Shelf", 
 		"RIGHT": "RIGHT", 
 		"LEFT": "LEFT"
-	}
-		"storage_info": "Storage Info",
-		"btn": "Add Product",
-		"product_foto": "Product Photo"
 	},
 	"faq": {
 		"faq":"FAQ",
