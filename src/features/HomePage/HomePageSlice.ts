@@ -1,32 +1,40 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import * as api from './api';
-import ProductState from './types/ProductsState';
+import HomePageState from './types/HomePageSate';
 
-const initialState: ProductState = {
+interface LoadProductsParams {
+	category_id?: number | null;
+	search_query?: string | null;
+	page_number?: number | null;
+}
+
+const initialState: HomePageState = {
 	products: [],
+	loadingAllProducts: false,
+	error: '',
+	number: 0,
+	totalPages: 0,
 	productById: {
 		id: 0,
-		title: '',
+		name: '',
 		description: '',
-		price: 0,
-		brand: '',
-		category: '',
-		thumbnail: '',
-		images: [],
-		time: 0,
+		weight: 0,
 		color: '',
-		weight: '',
+		categoryId: 0,
+		imageLinks: [],
+		lastCreatedAuction: {
+			id: 0,
+			startPrice: 0,
+			startAt: '',
+			currentPlannedEndAt: '',
+		},
 	},
-	totalItems: 0,
-	skip: 0,
-	limit: 0,
-	loadingAllProducts: false,
-	productsInPoster: [],
-	loadingProducsInPoster: false,
 };
 
-export const loadAllProducts = createAsyncThunk('productsHome/loadProducts', (skip: number) =>
-	api.getAllProducts(skip)
+export const loadAllProducts = createAsyncThunk(
+	'productsHome/loadProducts',
+	({ category_id = null, search_query = null, page_number = null }: LoadProductsParams) =>
+		api.getAllProducts(category_id, search_query, page_number)
 );
 
 export const loadProductsInPoster = createAsyncThunk('productsHome/loadProductsInPoster', () =>
@@ -39,8 +47,7 @@ export const HomePageSlice = createSlice({
 	reducers: {
 		filterProductById: (state, action) => {
 			const productId = action.payload;
-			const res = state.products.find((product) => product.id === productId);
-
+			const res = state.products.find((item) => item.id === productId);
 			if (res) {
 				state.productById = res;
 			}
@@ -49,28 +56,27 @@ export const HomePageSlice = createSlice({
 	extraReducers(builder) {
 		builder
 			.addCase(loadAllProducts.fulfilled, (state, action) => {
-				state.products = action.payload.products;
-				state.totalItems = action.payload.total;
-				state.skip = action.payload.skip;
-				state.limit = action.payload.limit;
+				state.products = action.payload.content;
 				state.loadingAllProducts = false;
+				state.totalPages = action.payload.totalPages;
+				state.number = action.payload.number;
 			})
 			.addCase(loadAllProducts.pending, (state) => {
 				state.loadingAllProducts = true;
 			})
 			.addCase(loadAllProducts.rejected, (state) => {
 				state.loadingAllProducts = false;
-			})
-			.addCase(loadProductsInPoster.fulfilled, (state, action) => {
-				state.productsInPoster = action.payload.products;
-				state.loadingProducsInPoster = false;
-			})
-			.addCase(loadProductsInPoster.pending, (state) => {
-				state.loadingProducsInPoster = true;
-			})
-			.addCase(loadProductsInPoster.rejected, (state) => {
-				state.loadingProducsInPoster = true;
 			});
+		// .addCase(loadProductsInPoster.fulfilled, (state, action) => {
+		// 	// state.productsInPoster = action.payload.products;
+		// 	state.loadingProducsInPoster = false;
+		// })
+		// .addCase(loadProductsInPoster.pending, (state) => {
+		// 	state.loadingProducsInPoster = true;
+		// })
+		// .addCase(loadProductsInPoster.rejected, (state) => {
+		// 	state.loadingProducsInPoster = true;
+		// });
 	},
 });
 

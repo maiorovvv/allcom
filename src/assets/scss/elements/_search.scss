@@ -5,10 +5,11 @@
 	&__input {
 		min-width: 100%;
 		margin-bottom: 3rem;
-		height: 45px;
-		padding: 5px 30px 5px 5px;
-		font-size: 1.8rem;
+		height: 5rem;
+		padding: 5px 30px 5px 10px;
+		font-size: 1.6rem;
     border: 2px solid var(--border-color);
+		border-radius: var(--border-radius);
 		&:focus {
 			border-color: var(--secondary-color);
       opacity: 0.7;
@@ -17,7 +18,9 @@
   &__icon {
     position: absolute;
     top: 12px;
-    right: 10px;
+    right: 16px;
+		width: 25px;
+		height: 25px;
     color: var(--light-color2);
   }
 }

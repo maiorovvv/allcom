@@ -13,6 +13,7 @@
 		"color": "color",
 		"weight": "weight",
 		"category": "category",
+		"start_at": "Start At",
 		"left_time": "Left until closing",
 		"add_to_wishlist": "Add to wishlist"
 	},
@@ -29,20 +30,24 @@
 		"weight": "weight",
 		"wishlist": "Wishlist"
 	},
-	"ProductDetails": {
+	"product_details": {
 		"link_back_to_home": "Back To Home",
 		"product_details": "Product Details",
 		"add_to_card": "add to card",
-		"by_it_now": "by it now",
-		"wishlist": "Wishlist",
+		"bet_now": "BET NOW",
+		"add_to_wishlist": "Add to wishlist",
 		"color": "Color",
-		"price": "Price",
-		"brand": "Brand",
+		"weight": "Weight",
 		"category": "Category",
 		"shipping": "Shipping",
 		"payment": "Payment",
 		"return": "Return",
-		"support": "Support"
+		"support": "Support",
+		"current_price": "CURRENT BID:",
+		"tax": "Tax",
+		"is_confirm": "Confirm action",
+		"start_at": "Start At",
+		"left_time": "Left until closing"
 	},
 	"Shipping": {
 		"in_developing": "In developing..."
@@ -110,15 +115,7 @@
 		"add_product": "Add Product"
 	},
 	"categories": {
-		"category_1": "Laptops and computers",
-		"category_2": "Smartphones, TV and electronics",
-		"category_3": "Large household appliances",
-		"category_4": "Home and clothing care",
-		"category_5": "Built-in technology",
-		"category_6": "Kitchen appliances",
-		"category_7": "beauty and health",
-		"category_8": "Furniture",
-		"category_9": "Clothing, shoes and accessories"
+		"default_select": "Product category"
 	},
 	"404-page": {
 		"content_title": "Opps! We did not find this page",

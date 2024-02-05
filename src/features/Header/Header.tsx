@@ -22,9 +22,16 @@ import LinesIcon from '../../img/svg/3lines.svg?react';
 import CartIconOffcanvas from '../../img/svg/cart_icon_offcanvas.svg?react';
 import SearchIcon from '../../img/svg/search_icon.svg?react';
 import CategoriesIcon from '../../img/svg/categories_icon.svg?react';
+import Search from '../../components/Search/Search';
+import { loadAllProducts } from '../HomePage/HomePageSlice';
+
+const DEFAULT_CATEGORY_ID = 0;
+const BACKEND_FIRST_PAGE_NUMBER = 0;
 
 const Header: React.FC = () => {
 	const { t } = useTranslation('header');
+
+	const dispatch = useAppDispatch();
 
 	const productsInMyAuctions = useAppSelector(
 		(state: RootState) => state.myAuctions.productsInMyAuctions
@@ -35,7 +42,24 @@ const Header: React.FC = () => {
 	const [searchBoxIsActive, setSearchBoxIsActive] = useState<boolean>(false);
 	const [isScrolled, setIsScrolled] = useState<boolean>(false);
 
-	const dispatch = useAppDispatch();
+	const [selectCategory, setSelectCategory] = useState<number>(DEFAULT_CATEGORY_ID);
+	const handleCategoryChange = (category_id: number): void => {
+		setSelectCategory(category_id);
+		dispatch(loadAllProducts({ category_id }));
+	};
+
+	const headerSearch = (value: string): void => {
+		if (selectCategory === DEFAULT_CATEGORY_ID) {
+			dispatch(loadAllProducts({ search_query: value }));
+		}
+		dispatch(
+			loadAllProducts({
+				category_id: selectCategory,
+				search_query: value,
+				page_number: BACKEND_FIRST_PAGE_NUMBER,
+			})
+		);
+	};
 
 	useEffect(() => {
 		dispatch(loadProductsFromMyAuctions());
@@ -51,7 +75,7 @@ const Header: React.FC = () => {
 
 	useEffect(() => {
 		const handleScroll = (): void => {
-			if (window.scrollY > 20) {
+			if (window.scrollY > 100) {
 				setIsScrolled(true);
 			} else {
 				setIsScrolled(false);
@@ -59,6 +83,10 @@ const Header: React.FC = () => {
 		};
 		window.addEventListener('scroll', handleScroll);
 	}, []);
+
+	const overlay = (
+		<div className="header__overlay" onClick={() => setOffcanvasIsActive((prev) => !prev)}></div>
+	);
 
 	const upArrowToStartButton = (
 		<button
@@ -81,26 +109,7 @@ const Header: React.FC = () => {
 			<CrossIcon />
 		</button>
 	);
-	const searchButtonPopup = (
-		<button
-			className="predictive__search--button"
-			aria-label="search button"
-			type="submit"
-			data-testid="searchButtonPopup"
-		>
-			<SearchIcon />
-		</button>
-	);
-	const searchInputPopup = (
-		<label>
-			<input
-				className="predictive__search--input"
-				placeholder={t('search_here')}
-				type="text"
-				data-testid="searchInputPopup"
-			></input>
-		</label>
-	);
+	const searchInputPopup = <Search textPlaceholder={t('search_here')} search={headerSearch} />;
 	const wishlistBottom = (
 		<li className="offcanvas__stikcy--toolbar__list" data-testid="wishlistBottom">
 			<NavLink
@@ -201,10 +210,14 @@ const Header: React.FC = () => {
 		</li>
 	);
 	const registerSidepanel = (
-		<li className="offcanvas__menu_li" data-testid="registerSidepanel">
-			<a className="header__menu--link" href="/register" data-testid="registerSidepanel_link">
+		<li
+			className="offcanvas__menu_li"
+			data-testid="registerSidepanel"
+			onClick={() => setOffcanvasIsActive((prev) => !prev)}
+		>
+			<NavLink className="header__menu--link" to="/register" data-testid="registerSidepanel_link">
 				{t('register')}{' '}
-			</a>
+			</NavLink>
 		</li>
 	);
 	const faqSidepanel = (
@@ -222,21 +235,22 @@ const Header: React.FC = () => {
 		</li>
 	);
 	const aboutUsSidepanel = (
-		<li className="offcanvas__menu_li" data-testid="aboutUsSidepanel">
-			<a className="header__menu--link" href="/about_us" data-testid="aboutUsSidepanel_link">
+		<li
+			className="offcanvas__menu_li"
+			data-testid="aboutUsSidepanel"
+			onClick={() => setOffcanvasIsActive((prev) => !prev)}
+		>
+			<NavLink className="header__menu--link" to="about_us" data-testid="aboutUsSidepanel_link">
 				{t('about_us')}{' '}
-			</a>
+			</NavLink>
 		</li>
 	);
 	const closeSidepanelButton = (
-		<button
-			onClick={() => setOffcanvasIsActive(!offcanvasIsActive)}
+		<CrossIcon
 			className="offcanvas__close--btn"
-			data-offcanvas
+			onClick={() => setOffcanvasIsActive(!offcanvasIsActive)}
 			data-testid="closeSidepanelButton"
-		>
-			close
-		</button>
+		/>
 	);
 	const logoSidepanel = (
 		<div className="offcanvas__logo" data-testid="logoSidepanel">
@@ -285,7 +299,7 @@ const Header: React.FC = () => {
 	);
 	const search = (
 		<li
-			className="header__account--items header__account2--items  header__account--search__items d-none d-lg-block"
+			className="header__account2--items  header__account--search__items d-none d-lg-block"
 			data-testid="search"
 		>
 			<div
@@ -293,7 +307,6 @@ const Header: React.FC = () => {
 				onClick={() => setSearchBoxIsActive(!searchBoxIsActive)}
 			>
 				<SearchIcon data-testid="search_icon" />
-				<span className="visually-hidden">Search</span>
 			</div>
 		</li>
 	);
@@ -380,26 +393,7 @@ const Header: React.FC = () => {
 			</NavLink>
 		</li>
 	);
-	const searchButton = (
-		<button
-			className="header__search--button bg__secondary text-white"
-			type="submit"
-			aria-label="search button"
-			data-testid="searchButton"
-		>
-			<SearchIcon />
-		</button>
-	);
-	const searchInput = (
-		<label>
-			<input
-				className="header__search--input"
-				placeholder={t('keyword_here')}
-				data-testid="searchInput"
-				type="text"
-			></input>
-		</label>
-	);
+	const searchInput = <Search textPlaceholder={t('keyword_here')} search={headerSearch} />;
 	const siteLogo = (
 		<div className="main__logo">
 			<h1 className="main__logo--title">
@@ -431,13 +425,13 @@ const Header: React.FC = () => {
 							{hamburger}
 							{siteLogo}
 							<div className="header__search--widget header__sticky--none d-none d-lg-block">
-								<form className="d-flex header__search--form z-50" data-testid="header" action="#">
-									<CategorySelect data-testid="CategorySelect" />
-									<div className="header__search--box">
-										{searchInput}
-										{searchButton}
-									</div>
-								</form>
+								<div className="header__search">
+									<CategorySelect
+										data-testid="CategorySelect"
+										handleCategoryChange={handleCategoryChange}
+									/>
+									<div className="header__search--input">{searchInput}</div>
+								</div>
 							</div>
 							<div className="header__account header__sticky--none">
 								<ul className="d-flex">
@@ -499,15 +493,13 @@ const Header: React.FC = () => {
 				<div className={`predictive__search--box ${searchBoxIsActive ? 'active_window' : ''}`}>
 					<div className="predictive__search--box__inner">
 						<h2 className="predictive__search--title">{t('search_products')}</h2>
-						<form className="predictive__search--form" action="#">
-							{searchInputPopup}
-							{searchButtonPopup}
-						</form>
+						{searchInputPopup}
 					</div>
 					{searchCloseButton}
 				</div>
 			</header>
 			{upArrowToStartButton}
+			{offcanvasIsActive && overlay}
 		</>
 	);
 };

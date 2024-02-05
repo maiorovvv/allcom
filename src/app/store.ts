@@ -7,6 +7,7 @@ import productsReducer from '../features/products/productsSlice';
 import myAuctionsReducer from '../features/MyAccount/components/MyAuctions/myAuctionsSlice';
 import homePageReduser from '../features/HomePage/HomePageSlice';
 import authReducer from '../features/auth/authSlice';
+import CategoriesReduser from '../features/categories/CategoriesSlice';
 
 export const store = configureStore({
 	reducer: {
@@ -17,6 +18,7 @@ export const store = configureStore({
 		myAuctions: myAuctionsReducer,
 		homePage: homePageReduser,
 		auth: authReducer,
+		categories: CategoriesReduser,
 	},
 });
 

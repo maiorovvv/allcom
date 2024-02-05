@@ -1,18 +1,41 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import * as api from './api';
-import ProductState from './types/ProductDetailState';
-import ProductDetails from './types/ProductDetails';
+import { ProductDetailState } from './types/ProductDetailState';
 
-const initialState: ProductState = {
-	product: {} as ProductDetails,
+const initialState: ProductDetailState = {
+	product: {
+		id: 0,
+		name: '',
+		description: '',
+		weight: 0,
+		color: '',
+		categoryId: 0,
+		state: '',
+		imageLinks: [],
+		lastCreatedAuction: {
+			id: 0,
+			startPrice: 0,
+			startAt: '',
+			plannedEndAt: '',
+			currentPlannedEndAt: '',
+			actualEndAt: '',
+			state: '',
+			productId: 0,
+			winnerId: 0,
+			lastBetAmount: 0,
+			updatedAt: '',
+			createdAt: '',
+		},
+	},
 	loading: false,
+	error: undefined,
 };
 
 export const loadProduct = createAsyncThunk(
 	'product/loadProduct',
 
-	() => api.getAll()
+	(product_id: number) => api.getProduct(product_id)
 );
 
 export const productsSlice = createSlice({
@@ -28,8 +51,9 @@ export const productsSlice = createSlice({
 				state.product = action.payload;
 				state.loading = false;
 			})
-			.addCase(loadProduct.rejected, (state) => {
+			.addCase(loadProduct.rejected, (state, action) => {
 				state.loading = false;
+				state.error = action.error.message || 'Unknown error occurred';
 			});
 	},
 });

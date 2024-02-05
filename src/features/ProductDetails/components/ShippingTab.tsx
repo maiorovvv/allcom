@@ -7,7 +7,7 @@ import imageReturn from '../../../img/other/return.png';
 import imageSupport from '../../../img/other/support.png';
 
 const ShippingTab: React.FC = (): JSX.Element => {
-	const { t } = useTranslation('ProductDetails');
+	const { t } = useTranslation('product_details');
 	return (
 		<section className="shipping__section2 shipping__style3 section--padding pt-0">
 			<div className="container">

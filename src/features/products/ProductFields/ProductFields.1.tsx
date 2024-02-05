@@ -1,13 +1,15 @@
 import { FC } from 'react';
 import Select from 'react-select';
 import { useTranslation } from 'react-i18next';
+
 import FormikInputField from '../../../components/FormikInputField/FormikInputField';
 import Datepicker from '../../../components/Datepicker/Datepicker';
 import FormikTextAriaField from '../../../components/FormikTextAriaField/FormikTextAriaField';
-import SwiperModalWindow from '../../../components/SwiperModalWindow/SwiperModalWindow';
-import styles from './ProductFields.module.scss';
 import Spinner from '../../../components/Spinner/Spinner';
 import { PropsInterface, CategoryOptions, AreaOptions, DECIMAL_STEP } from './ProductFields';
+import MediaSwiper from '../../../components/Swiper/MediaSwiper';
+
+import styles from './ProductFields.module.scss';
 
 export const ProductFields: FC<PropsInterface> = (props) => {
 	const {
@@ -230,7 +232,7 @@ export const ProductFields: FC<PropsInterface> = (props) => {
 						</div>
 					) : (
 						<>
-							<SwiperModalWindow
+							<MediaSwiper
 								images={linkList}
 								onDelete={onDeleteImage}
 								data-testid="SwiperModalWindow"

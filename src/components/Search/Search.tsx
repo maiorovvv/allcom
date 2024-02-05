@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 
 import SearchIcon from '../../img/svg/search_icon.svg?react';
 
@@ -8,10 +8,22 @@ interface SearchProps {
 }
 
 const Search: FC<SearchProps> = ({ search, textPlaceholder }): JSX.Element => {
+	const [searchValue, setSearchValue] = useState<string>('');
+
 	const sanitizeUserInput = (value: string): string => {
 		const sanitizedInput = value.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
 
 		return sanitizedInput;
+	};
+
+	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+		const inputValue = event.target.value;
+		setSearchValue(inputValue);
+
+		setTimeout(() => {
+			const sanitizedValue = sanitizeUserInput(inputValue);
+			search(sanitizedValue);
+		}, 300);
 	};
 
 	return (
@@ -21,10 +33,7 @@ const Search: FC<SearchProps> = ({ search, textPlaceholder }): JSX.Element => {
 					className="search__input"
 					type="text"
 					placeholder={textPlaceholder}
-					onChange={(event) => {
-						const sanitizedValue = sanitizeUserInput(event.target.value);
-						search(sanitizedValue);
-					}}
+					onChange={(event) => handleInputChange(event)}
 				/>
 				<SearchIcon className="search__icon" />
 			</div>

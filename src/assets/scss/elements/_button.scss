@@ -2,6 +2,7 @@
 	padding: 1rem 4rem;
 	text-align: center;
 	border: none;
+	border-radius: var(--border-radius);
 	color: var(--white-color);
 	background-color: var(--secondary-color);
 	&:hover {
