@@ -1,28 +1,35 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';
 import i18next from 'i18next';
 
-import { useAppSelector } from '../../app/hooks';
-import { RootState } from '../../app/store';
-import Spinner from '../../components/Spinner/Spinner';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import Spinner from '../../../components/Spinner/Spinner';
 import ShippingTab from './components/ShippingTab';
-import SwiperProduct from '../../components/Swiper/SwiperInModalWindow/SwiperProduct';
-import Timer from '../../components/Timer/Timer';
-import ConfirmationModal from '../../components/ConfirmationModal/ConfirmationModal';
-import { getNameCategory } from '../categories/utilsCategories';
+import SwiperProduct from '../../../components/Swiper/SwiperProduct/SwiperProduct';
+import Timer from '../../../components/Timer/Timer';
+import ConfirmationModal from '../../../components/ConfirmationModal/ConfirmationModal';
+import { getNameCategory } from '../../categories/utilsCategories';
 
-import HeartIcon from '../../img/svg/heart.svg?react';
+import HeartIcon from '../../../img/svg/heart.svg?react';
+import { loadProductById } from '../../products/productsSlice';
+import { selectLoadingProductById, selectProductById } from '../../products/selectors';
+import { selectCategories } from '../../categories/selectors';
 
 const ProductDetails: FC = (): JSX.Element => {
 	const locale = i18next.language;
 	const { t } = useTranslation('product_details');
 
+	const { id } = useParams();
+
+	const dispatch = useAppDispatch();
+
 	const [confirmationModalActive, setConfirmationModalActive] = useState<boolean>(false);
 
-	const loading = useAppSelector((state: RootState) => state.product.loading);
-	const product = useAppSelector((state: RootState) => state.product.product);
-	const categories = useAppSelector((state: RootState) => state.categories.categories);
+	const loading = useAppSelector(selectLoadingProductById);
+	const product = useAppSelector(selectProductById);
+	const categories = useAppSelector(selectCategories);
 
 	const {
 		name,
@@ -41,6 +48,12 @@ const ProductDetails: FC = (): JSX.Element => {
 	const currentPlannedEnd = moment(currentPlannedEndAt);
 	const formattedDate = moment(startAt).format('YYYY-MM-DD HH:mm:ss');
 	const timeUntilCurrentPlannedEnd = currentPlannedEnd.diff(moment(), 'seconds');
+
+	useEffect(() => {
+		if (id) {
+			dispatch(loadProductById(Number(id)));
+		}
+	}, [id]);
 
 	if (loading)
 		return (

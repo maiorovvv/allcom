@@ -23,7 +23,7 @@ const Search: FC<SearchProps> = ({ search, textPlaceholder }): JSX.Element => {
 		setTimeout(() => {
 			const sanitizedValue = sanitizeUserInput(inputValue);
 			search(sanitizedValue);
-		}, 300);
+		}, 500);
 	};
 
 	return (
@@ -32,6 +32,7 @@ const Search: FC<SearchProps> = ({ search, textPlaceholder }): JSX.Element => {
 				<input
 					className="search__input"
 					type="text"
+					value={searchValue}
 					placeholder={textPlaceholder}
 					onChange={(event) => handleInputChange(event)}
 				/>

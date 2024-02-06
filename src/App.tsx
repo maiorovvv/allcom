@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import NotFound from './components/NotFound/NotFound';
 import Layout from './features/Layout';
 import MyAccount from './features/MyAccount/MyAccount';
-import ProductDetails from './features/ProductDetails/ProductDetails';
+import ProductDetails from './features/products/ProductDetails/ProductDetails';
 import Shipping from './components/Shipping/Shipping';
 import Payment from './components/Payment/Payment';
 import Return from './components/Return/Return';
@@ -18,7 +18,8 @@ import RegisterPage from './components/LoginRegisterForgotPassword/RegisterPage'
 import RestorePassword from './components/LoginRegisterForgotPassword/RestorePassword';
 import RestorePasswordWait from './components/LoginRegisterForgotPassword/RestoreUserValidationWait';
 import RestoreEnterNewPAssword from './components/LoginRegisterForgotPassword/RestoreEnterNewPAssword';
-import UsersList from './features/MyAccount/components/UsersList/UsersList';
+import UsersList from './features/MyAccount/components/UsersList';
+import ProductsList from './features/products/ProductsList/ProductsList';
 import AboutUs from './features/AboutUs/AboutUs';
 import Contact from './features/Contact/Contact';
 import FAQ from './features/FAQ/FAQ';
@@ -40,10 +41,10 @@ function App(): JSX.Element {
 						<Route path="my_auctions" element={<MyAuctions />} />
 						<Route path="users_list" element={<UsersList />} />
 					</Route>
-					<Route path="products/details" element={<ProductDetails />} />
+					<Route path="product/products_list" element={<ProductsList />} />
+					<Route path="products/details/:id" element={<ProductDetails />} />
 					<Route path="products/add_product" element={<AddProductPage />} />
 					<Route path="products/product_added_success" element={<AddedSuccessPage />} />
-
 					<Route path="shipping" element={<Shipping />} />
 					<Route path="payment" element={<Payment />} />
 					<Route path="return" element={<Return />} />

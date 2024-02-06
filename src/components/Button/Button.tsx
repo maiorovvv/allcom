@@ -1,22 +1,33 @@
 import { FC } from 'react';
 
-interface ButtonProps {
-	btnType: boolean;
+type ButtonType = boolean | number;
+
+interface ButtonProps<T extends ButtonType> {
+	btnValue: T;
 	text: string;
 	widthBtn?: string;
-	heigthBtn?: string;
+	heightBtn?: string;
 	isConfirm?: boolean;
-	onClickBtn: (flag: boolean) => void;
+	onClickBtn: (value: T) => void;
 }
 
-const Button: FC<ButtonProps> = ({ btnType, text, widthBtn, onClickBtn, isConfirm }) => {
+const Button: FC<ButtonProps<ButtonType>> = ({
+	btnValue,
+	text,
+	widthBtn,
+	onClickBtn,
+	isConfirm,
+	heightBtn,
+}) => {
 	const buttonStyle = {
 		width: widthBtn,
+		height: heightBtn,
 	};
 
 	const handleClick = (): void => {
-		onClickBtn(btnType);
+		onClickBtn(btnValue);
 	};
+
 	return (
 		<button
 			className={`button ${isConfirm ? 'button__confirm' : ''}`}

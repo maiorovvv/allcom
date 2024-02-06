@@ -23,10 +23,9 @@ import CartIconOffcanvas from '../../img/svg/cart_icon_offcanvas.svg?react';
 import SearchIcon from '../../img/svg/search_icon.svg?react';
 import CategoriesIcon from '../../img/svg/categories_icon.svg?react';
 import Search from '../../components/Search/Search';
-import { loadAllProducts } from '../HomePage/HomePageSlice';
+import { loadAllProducts } from '../products/productsSlice';
 
 const DEFAULT_CATEGORY_ID = 0;
-const BACKEND_FIRST_PAGE_NUMBER = 0;
 
 const Header: React.FC = () => {
 	const { t } = useTranslation('header');
@@ -56,7 +55,6 @@ const Header: React.FC = () => {
 			loadAllProducts({
 				category_id: selectCategory,
 				search_query: value,
-				page_number: BACKEND_FIRST_PAGE_NUMBER,
 			})
 		);
 	};
