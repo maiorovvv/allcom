@@ -1,6 +1,4 @@
 import * as React from 'react';
-
-import '../../assets/scss/elements/_faq.scss';
 import { useTranslation } from 'react-i18next';
 
 const FAQPage: React.FC = () => {

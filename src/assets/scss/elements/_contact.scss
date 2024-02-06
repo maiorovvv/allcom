@@ -1,9 +1,3 @@
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #f9f9f9;
-}
-
 .contact-page {
   position: relative;
   padding: 25px;
@@ -11,7 +5,7 @@ body {
   margin: 10px;
   background-color: #f9f9f9;
   max-width: 1350px; 
-  color: #333;
+  color: var(--primary-color);
   box-shadow: var(--border-box-shadow);
   width: 75%;
   margin: 20px auto;

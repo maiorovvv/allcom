@@ -17,13 +17,13 @@ const Footer: React.FC = (): JSX.Element => {
 	);
 	const privacyPolicy = (
 		<li className="footer__widget--menu__list">
-			<a
+			<NavLink
 				className="footer__widget--menu__text"
-				href="/privacy-policy"
+				to="/privacy_policy"
 				data-testid="link_privacy-policy"
 			>
 				{t('privacy_policy')}
-			</a>
+			</NavLink>
 		</li>
 	);
 	const portfolio = (

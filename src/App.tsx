@@ -24,6 +24,7 @@ import Contact from './features/Contact/Contact';
 import FAQ from './features/FAQ/FAQ';
 import AddProductPage from './features/products/AddProduct/AddProduct';
 import AddedSuccessPage from './features/products/AddedSuccessPage/AddedSuccessPage';
+import PrivacyPolicy from './features/PrivacyPolicy/PrivacyPolicy';
 
 function App(): JSX.Element {
 	return (
@@ -55,6 +56,7 @@ function App(): JSX.Element {
 					<Route path="about_us" element={<AboutUs />} />
 					<Route path="contact" element={<Contact />} />
 					<Route path="faq" element={<FAQ />} />
+					<Route path="privacy_policy" element={<PrivacyPolicy />} />
 					<Route path="*" element={<NotFound />} />
 				</Route>
 			</Routes>
