@@ -31,6 +31,7 @@ import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from './app/hooks';
 import { authCheck } from './features/auth/authSlice';
 import { selectIsAuthenticated } from './features/auth/selectors';
+import Greetings from './main/Greetings';
 
 function App(): JSX.Element {
 	const isAuth = useAppSelector(selectIsAuthenticated);
@@ -53,6 +54,8 @@ function App(): JSX.Element {
 						<Route path="about_me" element={<AboutMe />} />
 						<Route path="change_password" element={<ChangePassword />} />
 						<Route path="my_auctions" element={<MyAuctions />} />
+						<Route path="users_list" element={<UsersList />} />
+						<Route path="greetings" element={<Greetings />} />
 					</Route>
 					<Route path="/user/users_list" element={<UsersList />} />
 					<Route path="product/products_list" element={<ProductsList />} />
