@@ -11,7 +11,7 @@ const AddedSuccessPage: FC = (): JSX.Element => {
 			<div>
 				<NavLink to="/">{t('link_back_to_home')}</NavLink>
 				<NavLink to="/products">{t('link_to_product_list')}</NavLink>
-				<NavLink to="/products/add_product">{t('link_add_product')}</NavLink>
+				<NavLink to="/products/add">{t('link_add_product')}</NavLink>
 			</div>
 		</div>
 	);

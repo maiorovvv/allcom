@@ -50,6 +50,10 @@ export const createProduct = createAsyncThunk('products/createProduct', (data: P
 	api.createProduct(data)
 );
 
+export const updateProduct = createAsyncThunk('products/updateProduct', (data: ProductFormValues) =>
+	api.updateProduct(data)
+);
+
 export const loadAllProducts = createAsyncThunk(
 	'productsHome/loadProducts',
 	({ category_id = 0, search_query, page_number }: LoadProductsParams) =>
@@ -97,11 +101,30 @@ export const productsSlice = createSlice({
 				state.error = action.error.message || 'Unknown error occurred';
 			})
 
+			.addCase(updateProduct.pending, (state) => {
+				state.loadingProductById = true;
+			})
+			.addCase(updateProduct.fulfilled, (state, action: PayloadAction<ProductDto>) => {
+				if (action.payload.error) {
+					state.error = action.payload.error || 'Unknown error occurred';
+					state.products = [];
+				} else {
+					state.products.push(action.payload);
+					state.error = undefined;
+				}
+				state.loadingProductById = false;
+			})
+			.addCase(updateProduct.rejected, (state, action) => {
+				state.loadingProductById = false;
+				state.error = action.error.message || 'Unknown error occurred';
+			})
+
 			.addCase(loadAllProducts.fulfilled, (state, action) => {
 				state.products = action.payload.content;
 				state.totalPages = action.payload.totalPages;
 				state.number = action.payload.number;
 				state.loadingAllProducts = false;
+				state.error = undefined;
 			})
 			.addCase(loadAllProducts.pending, (state) => {
 				state.loadingAllProducts = true;
@@ -117,6 +140,7 @@ export const productsSlice = createSlice({
 			.addCase(loadProductById.fulfilled, (state, action) => {
 				state.productById = action.payload;
 				state.loadingProductById = false;
+				state.error = undefined;
 			})
 			.addCase(loadProductById.rejected, (state, action) => {
 				state.loadingProductById = false;

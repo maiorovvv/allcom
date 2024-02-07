@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { RootState } from '../../app/store';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useAppDispatch, useAppSelector, useIsAdmin } from '../../app/hooks';
 import { loadProducts as loadProductsFromMyAuctions } from '../MyAccount/components/MyAuctions/myAuctionsSlice';
 import { loadProducts } from '../user/wishProducts/productsSlice';
 
@@ -26,11 +26,15 @@ import Search from '../../components/Search/Search';
 import { loadAllProducts } from '../products/productsSlice';
 
 const DEFAULT_CATEGORY_ID = 0;
+import { selectIsAuthenticated, selectUser } from '../auth/selectors';
 
 const Header: React.FC = () => {
 	const { t } = useTranslation('header');
 
 	const dispatch = useAppDispatch();
+	const isAuth = useAppSelector(selectIsAuthenticated);
+	const user = useAppSelector(selectUser);
+	const isAdmin = useIsAdmin();
 
 	const productsInMyAuctions = useAppSelector(
 		(state: RootState) => state.myAuctions.productsInMyAuctions
@@ -171,64 +175,50 @@ const Header: React.FC = () => {
 			</NavLink>
 		</li>
 	);
-	const loginRegisterSidepanelButton = (
-		<div className="offcanvas__account--items" data-testid="loginRegisterSidepanelButton">
-			<a
-				className="offcanvas__account--items__btn d-flex align-items-center"
-				href="/login"
-				data-testid="loginRegisterSidepanelButton_link"
-			>
-				<span className="offcanvas__account--items__icon">
-					<Human2Icon />
-				</span>
-				<span className="offcanvas__account--items__label">Login / Register</span>
-			</a>
-		</div>
-	);
-	const auctionSidepanel = (
-		<li className="offcanvas__menu_li" data-testid="auctionSidepanel">
+
+	const productsListSidepanel = (
+		<li className="offcanvas__menu_li" data-testid="productsListSidepanel">
 			<a
 				className="header__menu--link"
-				href="/user/my_account/my_auctions"
-				data-testid="auctionSidepanel_link"
+				href="/product/products_list"
+				data-testid="productsListSidepanel_link"
 			>
-				{t('auction')}{' '}
+				{t('products_list')}
 			</a>
 		</li>
 	);
+
+	const usersListSidepanel = (
+		<li className="offcanvas__menu_li" data-testid="usersListSidepanel">
+			<a
+				className="header__menu--link"
+				href="/user/users_list"
+				data-testid="usersListSidepanel_link"
+			>
+				{t('users_list')}
+			</a>
+		</li>
+	);
+
 	const addProductSidepanel = (
 		<li className="offcanvas__menu_li" data-testid="addProductSidepanel">
-			<a
-				className="header__menu--link"
-				href="/products/add_product"
-				data-testid="addProductSidepanel_link"
-			>
-				{t('app_product')}{' '}
+			<a className="header__menu--link" href="/products/add" data-testid="addProductSidepanel_link">
+				{t('app_product')}
 			</a>
 		</li>
 	);
-	const registerSidepanel = (
-		<li
-			className="offcanvas__menu_li"
-			data-testid="registerSidepanel"
-			onClick={() => setOffcanvasIsActive((prev) => !prev)}
-		>
-			<NavLink className="header__menu--link" to="/register" data-testid="registerSidepanel_link">
-				{t('register')}{' '}
-			</NavLink>
-		</li>
-	);
+
 	const faqSidepanel = (
 		<li className="offcanvas__menu_li" data-testid="faqSidepanel">
 			<a className="header__menu--link" href="/faq" data-testid="faqSidepanel_link">
-				{t('faq')}{' '}
+				{t('faq')}
 			</a>
 		</li>
 	);
 	const contactSidepanel = (
 		<li className="offcanvas__menu_li" data-testid="contactSidepanel">
 			<a className="header__menu--link" href="/contact" data-testid="contactSidepanel_link">
-				{t('contact_us')}{' '}
+				{t('contact_us')}
 			</a>
 		</li>
 	);
@@ -239,7 +229,7 @@ const Header: React.FC = () => {
 			onClick={() => setOffcanvasIsActive((prev) => !prev)}
 		>
 			<NavLink className="header__menu--link" to="about_us" data-testid="aboutUsSidepanel_link">
-				{t('about_us')}{' '}
+				{t('about_us')}
 			</NavLink>
 		</li>
 	);
@@ -322,6 +312,39 @@ const Header: React.FC = () => {
 			</a>
 		</li>
 	);
+
+	const addProductHideLink = (
+		<li className="header__menu--items style2" data-testid="addProductHideLink">
+			<a className="header__menu--link" href="/products/add" data-testid="addProductHideLink_link">
+				{t('app_product')}
+			</a>
+		</li>
+	);
+
+	const usersListHideLink = (
+		<li className="header__menu--items style2" data-testid="usersListHideLink">
+			<a
+				className="header__menu--link"
+				href="/user/users_list"
+				data-testid="usersListHideLink_link"
+			>
+				{t('users_list')}
+			</a>
+		</li>
+	);
+
+	const productsListHideLink = (
+		<li className="header__menu--items style2" data-testid="productsListHideLink">
+			<a
+				className="header__menu--link"
+				href="/product/products_list"
+				data-testid="productsListHideLink_link"
+			>
+				{t('products_list')}
+			</a>
+		</li>
+	);
+
 	const faqHideLink = (
 		<li className="header__menu--items style2" data-testid="faq">
 			<a className="header__menu--link" href="/faq" data-testid="faq_link">
@@ -343,6 +366,7 @@ const Header: React.FC = () => {
 			</a>
 		</li>
 	);
+
 	const wishlistTop = (
 		<li className="header__account--items" data-testid="wishlistTop">
 			<NavLink
@@ -377,19 +401,53 @@ const Header: React.FC = () => {
 			</NavLink>
 		</li>
 	);
+
 	const myAccountTop = (
 		<li className="header__account--items" data-testid="myAccountTop">
 			<NavLink
 				className={({ isActive }) =>
 					isActive ? 'active__nav_link header__account--btn' : 'header__account--btn cont_icons'
 				}
-				to="/user/my_account/about_me"
+				to={isAuth ? '/user/my_account/about_me' : '/login'}
 				data-testid="myAccountTop_link"
 			>
 				<HumanIcon />
-				<span className="header__account--btn__text">{t('my_account')}</span>
+				<span className="header__account--btn__text">
+					{isAuth ? (
+						<>
+							{user?.firstName} {user?.lastName}
+						</>
+					) : (
+						<>
+							<span className="header__account--btn__text">{t('login')}</span>
+						</>
+					)}
+				</span>
 			</NavLink>
 		</li>
+	);
+
+	const loginRegisterSidepanelButton = (
+		<div className="offcanvas__account--items" data-testid="loginRegisterSidepanelButton">
+			<a
+				className="offcanvas__account--items__btn d-flex align-items-center"
+				href={isAuth ? '/user/my_account/about_me' : '/login'}
+				data-testid="loginRegisterSidepanelButton_link"
+			>
+				<span className="offcanvas__account--items__icon">
+					<Human2Icon />
+				</span>
+				<span className="offcanvas__account--items__label">
+					{isAuth ? (
+						<>
+							{user?.firstName} {user?.lastName}
+						</>
+					) : (
+						t('login')
+					)}
+				</span>
+			</a>
+		</div>
 	);
 	const searchInput = <Search textPlaceholder={t('keyword_here')} search={headerSearch} />;
 	const siteLogo = (
@@ -434,8 +492,8 @@ const Header: React.FC = () => {
 							<div className="header__account header__sticky--none">
 								<ul className="d-flex">
 									{myAccountTop}
-									{wishlistTop}
-									{cartTop}
+									{isAuth && wishlistTop}
+									{isAuth && cartTop}
 								</ul>
 							</div>
 							<div className="header__menu d-none header__sticky--block d-lg-block">
@@ -444,8 +502,11 @@ const Header: React.FC = () => {
 										{aboutUsHideLink}
 										{contactHideLink}
 										{faqHideLink}
-										{registerHideLink}
-										{auctionHideLink}
+										{!isAuth && registerHideLink}
+										{isAuth && isAdmin && addProductHideLink}
+										{isAuth && isAdmin && productsListHideLink}
+										{isAuth && isAdmin && usersListHideLink}
+										{/* {auctionHideLink} */}
 									</ul>
 								</nav>
 							</div>
@@ -460,6 +521,7 @@ const Header: React.FC = () => {
 						</div>
 					</div>
 				</div>
+
 				<NavBarHeader />
 				<div className={`offcanvas__header ${offcanvasIsActive ? 'open' : ''}`}>
 					<div className="offcanvas__inner">
@@ -469,9 +531,9 @@ const Header: React.FC = () => {
 								{aboutUsSidepanel}
 								{contactSidepanel}
 								{faqSidepanel}
-								{registerSidepanel}
-								{auctionSidepanel}
-								{addProductSidepanel}
+								{isAuth && isAdmin && addProductSidepanel}
+								{isAuth && isAdmin && productsListSidepanel}
+								{isAuth && isAdmin && usersListSidepanel}
 							</ul>
 							{loginRegisterSidepanelButton}
 							{/* //TODO isOpen={''} */}

@@ -2,21 +2,26 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import * as api from './api';
 import UserState from './types/UserState';
 
+interface LoadUsersParams {
+	limit?: number;
+	skip?: number;
+}
+
 const initialState: UserState = {
-	user: null,
-	loading: false,
+	user: undefined,
 	users: [],
 	loadingAllUsers: false,
-	limit: 0,
-	skip: 0,
-	totalUsers: 0,
+	totalPages: 0,
+	number: 0,
+	loading: false,
 	error: '',
 };
 
 export const loadUser = createAsyncThunk('user/loadUser', () => api.getUserProfile());
 
-export const loadLimitedUsers = createAsyncThunk('user/loadLimitedUsers', (skip: number) =>
-	api.getUsersWithLimitAndSkip(skip)
+export const loadLimitedUsers = createAsyncThunk(
+	'user/loadLimitedUsers',
+	({ limit, skip }: LoadUsersParams) => api.getUsersWithLimitAndSkip(limit, skip)
 );
 
 export const loadDefaultUsers = createAsyncThunk('user/loadDefaultUser', () =>
@@ -48,10 +53,9 @@ export const userSlice = createSlice({
 				state.loadingAllUsers = true;
 			})
 			.addCase(loadLimitedUsers.fulfilled, (state, action) => {
-				state.users = action.payload.users;
-				state.limit = action.payload.limit;
-				state.skip = action.payload.skip;
-				state.totalUsers = action.payload.total;
+				state.users = action.payload.content;
+				state.totalPages = action.payload.totalPages;
+				state.number = action.payload.number;
 				state.loadingAllUsers = false;
 			})
 			.addCase(loadLimitedUsers.rejected, (state, action) => {
@@ -60,18 +64,12 @@ export const userSlice = createSlice({
 			})
 			.addCase(getFoundUser.fulfilled, (state, action) => {
 				state.users = action.payload.users;
-				state.limit = action.payload.limit;
-				state.skip = action.payload.skip;
-				state.totalUsers = action.payload.total;
 			})
 			.addCase(getFoundUser.rejected, (state, action) => {
 				state.error = action.error.message;
 			})
 			.addCase(loadDefaultUsers.fulfilled, (state, action) => {
 				state.users = action.payload.users;
-				state.limit = action.payload.limit;
-				state.skip = action.payload.skip;
-				state.totalUsers = action.payload.total;
 			})
 			.addCase(loadDefaultUsers.rejected, (state, action) => {
 				state.error = action.error.message;

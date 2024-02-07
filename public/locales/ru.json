@@ -1,7 +1,7 @@
 {
 	"home_page": {
 		"header": "Products",
-		"view_product": "ПОСМОТРЕТЬ ПРОДУКТ",
+		"view_product": "ПОСМОТРЕТЬ ТОВАР",
 		"category": "Категория",
 		"auctions": "Аукционы",
 		"preview": "Предпросмотр",
@@ -25,14 +25,14 @@
 		"continue_shopping": "продолжить покупки",
 		"color": "цвет",
 		"price": "цена",
-		"product": "продукт",
-		"view_all_products": "просмотреть все продукты",
+		"product": "товар",
+		"view_all_products": "просмотреть все товары",
 		"weight": "вес",
 		"wishlist": "Избранное"
 	},
 	"product_details": {
 		"link_back_to_home": "Вернуться на главную",
-		"product_details": "Детали продукта",
+		"product_details": "Детали товара",
 		"add_to_card": "добавить в корзину",
 		"bet_now": "СДЕЛАТЬ СТАВКУ",
 		"add_to_wishlist": "В избранное",
@@ -63,7 +63,7 @@
 	},
 	"my_auctions": {
 		"continue_shopping": "продолжить покупки",
-		"product": "продукт",
+		"product": "товар",
 		"price": "цена",
 		"clear_my_auctions": "очистить"
 	},
@@ -103,21 +103,22 @@
 		"contact_us": "Контакты",
 		"faq": "Вопросы",
 		"auction": "Аукцион",
+		"users_list": "Пользователи",
 		"app_product": "Добавить товар",
 		"categories": "Категории",
 		"search": "Поиск",
 		"my_auctions": "Мои аукционы",
 		"wishlist": "Избранное",
 		"my_account": "Мой Аккаунт",
-		"search_products": "Поиск продуктов",
+		"search_products": "Поиск товаров",
 		"search_here": "Поищи здесь",
 		"all_categories": "Все категории",
 		"keyword_here": "Ключевое слово здесь...",
 		"add_product": "Добавить товар",
-		"products_list": "Продукты"
+		"products_list": "Товары"
 	},
 	"categories": {
-		"default_select": "Категории продуктов"
+		"default_select": "Категории товаров"
 	},
 	"404-page": {
 		"content_title": "Упс! Мы не нашли эту страницу",
@@ -128,18 +129,18 @@
 		"my_profile": "Мой профиль",
 		"log_out": "Выйти",
 		"wishlist": "Избранное",
-		"dashboard": "Недамборд",
+		"dashboard": "Дашборд",
 		"change_password": "Изменить пароль",
 		"my_auctions": "Мои аукционы",
 		"about_me": "Обо мне",
-		"users_list": "Пользователи",
-		"products_list": "Продукты"
+		"products_list": "Товары"
 	},
 	"about_me": {
 		"submit": "Отправить",
 		"account_details": "Детали учетной записи",
 		"first_name": "Имя",
 		"last_name": "Фамилия",
+		"phone": "Телефон",
 		"user_name": "Имя пользователя",
 		"about_me": "Обо мне",
 		"address": "Адрес",
@@ -159,7 +160,7 @@
 		"placeholder_password": "Пароль",
 		"remember_me": "Запомнить меня",
 		"forgot_your_password": "Забыли Ваш Пароль?",
-		"login": "Авторизоваться",
+		"login": "Войти",
 		"or": "ИЛИ",
 		"dont_have_account": "У вас нет учетной записи?",
 		"sign_up_now": "Зарегистрироваться сейчас",
@@ -265,7 +266,7 @@
 		"current_price": "Текущая цена",
 		"starting_price": "Стартовая цена",
 		"edit": "Изменить",
-		"search_placeholder": "введите название продукта...",
+		"search_placeholder": "введите название товара...",
 		"tooltip_edit": "изменить данные о товаре"
 	},
 	"about_us": {
@@ -292,7 +293,7 @@
 		"start_at": "Начало",
 		"planned_end_at": "Конец",
 		"storage_info": "Склад",
-		"add_product": "Добавить продукт",
+		"add_product": "Добавить товар",
 		"product_photo": "Фото товара",
 		"side": "Сторона стеллажа",
 		"rack": "Номер стеллажа",

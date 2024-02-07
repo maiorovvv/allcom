@@ -27,6 +27,11 @@ export default defineConfig({
 				secure: false,
 				ws: true, // Важно для WebSocket
 			},
+			'/api': {
+				target: 'http://127.0.0.1:8080',
+				changeOrigin: true,
+				secure: false,
+			},
 			// Вы можете добавить другие маршруты прокси здесь
 		},
 		open: true,

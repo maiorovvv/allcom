@@ -11,7 +11,6 @@ interface Props {
 	label: string;
 	value: string;
 	handleChange: FormikProps<ProductFormValues>['handleChange'];
-	rows?: number;
 	className?: string;
 }
 
@@ -22,7 +21,6 @@ const Datepicker: FC<Props> = (props) => {
 		<Form.Group className={className} controlId={`form${id}`}>
 			<Form.Label>{label}</Form.Label>
 			<Form.Control
-				id={id}
 				name={name}
 				type="datetime-local"
 				value={value}

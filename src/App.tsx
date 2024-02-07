@@ -26,8 +26,22 @@ import FAQ from './features/FAQ/FAQ';
 import AddProductPage from './features/products/AddProduct/AddProduct';
 import AddedSuccessPage from './features/products/AddedSuccessPage/AddedSuccessPage';
 import PrivacyPolicy from './features/PrivacyPolicy/PrivacyPolicy';
+import EditProduct from './features/products/EditProduct/EditProduct';
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from './app/hooks';
+import { authCheck } from './features/auth/authSlice';
+import { selectIsAuthenticated } from './features/auth/selectors';
 
 function App(): JSX.Element {
+	const isAuth = useAppSelector(selectIsAuthenticated);
+	const dispatch = useAppDispatch();
+
+	useEffect(() => {
+		if (!isAuth) {
+			dispatch(authCheck());
+		}
+	}, [dispatch, isAuth]);
+
 	return (
 		<>
 			<Routes>
@@ -39,11 +53,12 @@ function App(): JSX.Element {
 						<Route path="about_me" element={<AboutMe />} />
 						<Route path="change_password" element={<ChangePassword />} />
 						<Route path="my_auctions" element={<MyAuctions />} />
-						<Route path="users_list" element={<UsersList />} />
 					</Route>
+					<Route path="/user/users_list" element={<UsersList />} />
 					<Route path="product/products_list" element={<ProductsList />} />
 					<Route path="products/details/:id" element={<ProductDetails />} />
-					<Route path="products/add_product" element={<AddProductPage />} />
+					<Route path="products/add" element={<AddProductPage />} />
+					<Route path="products/edit/:productId" element={<EditProduct />} />
 					<Route path="products/product_added_success" element={<AddedSuccessPage />} />
 					<Route path="shipping" element={<Shipping />} />
 					<Route path="payment" element={<Payment />} />

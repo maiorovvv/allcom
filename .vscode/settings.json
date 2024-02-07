@@ -23,6 +23,7 @@
 		"libphonenumber",
 		"maintitle",
 		"offcanvas",
+		"Pageable",
 		"poster",
 		"predeploy",
 		"reduxjs",

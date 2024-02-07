@@ -3,9 +3,14 @@ import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 
 import SetLanguage from '../Header/SetLanguage/SetLanguage';
+import { useAppSelector, useIsAdmin } from '../../app/hooks';
+import { selectIsAuthenticated, selectUser } from '../auth/selectors';
 
 const NavBarHeader: FC = (): JSX.Element => {
 	const { t } = useTranslation('header');
+	const isAdmin = useIsAdmin();
+	const isAuth = useAppSelector(selectIsAuthenticated);
+	const user = useAppSelector(selectUser);
 
 	const chooseLanguageButton = (
 		<div
@@ -36,10 +41,16 @@ const NavBarHeader: FC = (): JSX.Element => {
 				className={({ isActive }) =>
 					isActive ? 'active__nav_link header__menu--link' : 'header__menu--link'
 				}
-				to="/login"
+				to={isAuth ? '/user/my_account/about_me' : '/login'}
 				data-testid="login_link"
 			>
-				{t('login')}
+				{isAuth ? (
+					<>
+						{user?.firstName} {user?.lastName}
+					</>
+				) : (
+					t('login')
+				)}
 			</NavLink>
 		</li>
 	);
@@ -78,7 +89,7 @@ const NavBarHeader: FC = (): JSX.Element => {
 				className={({ isActive }) =>
 					isActive ? 'active__nav_link header__menu--link' : 'header__menu--link'
 				}
-				to="/products/add_product"
+				to="/products/add"
 				data-testid="add_product_link"
 			>
 				{t('add_product')}
@@ -112,6 +123,19 @@ const NavBarHeader: FC = (): JSX.Element => {
 			</NavLink>
 		</li>
 	);
+
+	const usersList = (
+		<li className="header__menu--items style2">
+			<NavLink
+				className={({ isActive }) =>
+					isActive ? 'active__nav_link header__menu--link' : 'header__menu--link'
+				}
+				to="/user/users_list"
+			>
+				{t('users_list')}
+			</NavLink>
+		</li>
+	);
 	return (
 		<div className="header__bottom">
 			<div className="container-fluid">
@@ -123,10 +147,11 @@ const NavBarHeader: FC = (): JSX.Element => {
 									{aboutUs}
 									{contact}
 									{faq}
-									{login}
-									{registration}
-									{addNewProduct}
-									{productsList}
+									{!isAuth && login}
+									{!isAuth && registration}
+									{isAuth && isAdmin && addNewProduct}
+									{isAuth && isAdmin && productsList}
+									{isAuth && isAdmin && usersList}
 								</ul>
 							</nav>
 						</div>

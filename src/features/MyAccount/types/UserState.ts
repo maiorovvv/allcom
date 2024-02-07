@@ -1,12 +1,11 @@
-import User from './User';
+import UserDto from './User';
 
 export default interface UserState {
-	user: User | null;
+	user?: UserDto;
+	users: UserDto[];
 	error?: string;
 	loading?: boolean;
-	users: User[];
 	loadingAllUsers: boolean;
-	limit: number;
-	skip: number;
-	totalUsers: number;
+	totalPages: number;
+	number: number;
 }
