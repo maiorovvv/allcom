@@ -22,6 +22,7 @@ const ISO_DATE_LENGTH = 16;
 
 const AddProductPage: FC = () => {
 	const dispatch = useAppDispatch();
+	const loading = useAppSelector(selectLoading);
 
 	function getNextMondayAtNoonAfterWeeks(weeks: number): string {
 		const now = new Date();
@@ -113,6 +114,7 @@ const AddProductPage: FC = () => {
 								setFieldValue={setFieldValue}
 								resizingError={resizingError}
 								loadingImage={isFileLoading}
+								loading={loading}
 							/>
 						</Form>
 					</>

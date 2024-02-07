@@ -36,6 +36,49 @@ export async function createProduct(data: ProductFormValues): Promise<ProductDto
 	return response;
 }
 
+export async function updateProduct(data: ProductFormValues): Promise<ProductDto> {
+	const formData = new FormData();
+	if (data.id !== undefined) {
+		formData.append('id', data.id.toString());
+	}
+	formData.append('name', data.name);
+	formData.append('description', data.description);
+	formData.append('weight', data.weight.toString());
+	formData.append('color', data.color);
+	formData.append('categoryId', data.categoryId.toString());
+	if (data.imageLinks !== undefined) {
+		data.imageLinks.forEach((link) => {
+			formData.append('imageLinks', link);
+		});
+	}
+	if (data.imagesToRemove !== undefined) {
+		data.imagesToRemove.forEach((link) => {
+			formData.append('imagesToRemove', link);
+		});
+	}
+	formData.append('auction', JSON.stringify(data.auction));
+	formData.append('storage', JSON.stringify(data.storage));
+	data.images?.forEach((image, index) => {
+		formData.append(`images[${index}]`, image);
+	});
+
+	const res = await fetch(apiConfig.updateProductEndpoint, {
+		method: 'PUT',
+		headers: {
+			Accept: 'application/json',
+		},
+		body: formData,
+	});
+
+	if (res.status >= 400) {
+		const jsonResponse: ResponseData = await res.json();
+		const message = jsonResponse.message;
+		throw new Error(message);
+	}
+	const response = await res.json();
+	return response;
+}
+
 export async function getAllProducts(
 	category_id: number,
 	search_query = '',

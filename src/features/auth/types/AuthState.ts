@@ -1,6 +1,7 @@
-import User from './User';
+import UserShortDTO from './UserShortDTO';
 export default interface AuthState {
 	isAuthenticated: boolean;
-	user?: User;
-	token?: string;
+	user?: UserShortDTO;
+	loading: boolean;
+	error?: string;
 }

@@ -1,4 +1,13 @@
 .users_list {
+	&__container {
+		width: 80%;
+		margin: 2rem auto;
+		position: relative;
+	}
+	&__table {
+		margin: 0 auto;
+		text-align: center;
+	}
 	&__info {
 		height: 5rem;
 		border-bottom: 1px solid var(--border-color2);

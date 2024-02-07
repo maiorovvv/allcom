@@ -2,18 +2,19 @@ import { ChangeEvent, FC, memo } from 'react';
 import { FormikProps } from 'formik';
 import Select from 'react-select';
 import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+
 import FormikInputField from '../../../components/FormikInputField/FormikInputField';
 import Datepicker from '../../../components/Datepicker/Datepicker';
 import FormikTextAriaField from '../../../components/FormikTextAriaField/FormikTextAriaField';
 import { ProductFormValues } from '../../../types/product/ProductFormValues';
 import SwiperModalWindow from '../../../components/Swiper/MediaSwiper';
-
-import styles from './ProductFields.module.scss';
 import Spinner from '../../../components/Spinner/Spinner';
 import { useAppSelector } from '../../../app/hooks';
 import { selectCategories } from '../../categories/selectors';
 import { getByCurrentLocale } from '../../categories/utilsCategories';
-import i18next from 'i18next';
+
+import styles from './ProductFields.module.scss';
 
 const PARENT_ID_MAIN_CATEGORIES = 0;
 
@@ -29,8 +30,9 @@ export type AreaOptions = {
 	label: string;
 };
 
-export interface PropsInterface {
-	loadingImage?: boolean;
+interface PropsInterface {
+	loadingImage: boolean;
+	loading: boolean;
 	onDeleteImage: (index: number) => void;
 	onFileChange: (event: ChangeEvent<HTMLInputElement>) => Promise<void>;
 	linkList: string[];
@@ -50,6 +52,7 @@ const ProductFields: FC<PropsInterface> = (props) => {
 		setFieldValue,
 		resizingError,
 		loadingImage,
+		loading,
 	} = props;
 
 	const { t } = useTranslation('product_fields');
@@ -335,6 +338,15 @@ const ProductFields: FC<PropsInterface> = (props) => {
 			{addProductButton}
 		</div>
 	);
+
+	if (loading) {
+		return (
+			<div className="text-center min-vh-100 d-flex align-items-center justify-content-center">
+				<Spinner />
+			</div>
+		);
+	}
+
 	return (
 		<div className={`pb-4 ${styles.container}`}>
 			<div className={`row ${styles.row}`}>

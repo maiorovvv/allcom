@@ -45,8 +45,7 @@ const ProductsList: FC = (): JSX.Element => {
 	};
 
 	const edit = (product_id: number): void => {
-		// dispatch(getProductById(product_id));
-		navigate('/');
+		navigate(`/products/edit/${product_id}`);
 	};
 
 	return (
