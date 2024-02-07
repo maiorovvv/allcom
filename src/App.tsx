@@ -21,8 +21,11 @@ import RestoreEnterNewPAssword from './components/LoginRegisterForgotPassword/Re
 import UsersList from './features/MyAccount/components/UsersList';
 import ProductsList from './features/products/ProductsList/ProductsList';
 import AboutUs from './features/AboutUs/AboutUs';
+import Contact from './features/Contact/Contact';
+import FAQ from './features/FAQ/FAQ';
 import AddProductPage from './features/products/AddProduct/AddProduct';
 import AddedSuccessPage from './features/products/AddedSuccessPage/AddedSuccessPage';
+import PrivacyPolicy from './features/PrivacyPolicy/PrivacyPolicy';
 
 function App(): JSX.Element {
 	return (
@@ -52,6 +55,9 @@ function App(): JSX.Element {
 					<Route path="restore_password_wait" element={<RestorePasswordWait />} />
 					<Route path="restore_password_new" element={<RestoreEnterNewPAssword />} />
 					<Route path="about_us" element={<AboutUs />} />
+					<Route path="contact" element={<Contact />} />
+					<Route path="faq" element={<FAQ />} />
+					<Route path="privacy_policy" element={<PrivacyPolicy />} />
 					<Route path="*" element={<NotFound />} />
 				</Route>
 			</Routes>
