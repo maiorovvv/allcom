@@ -1,8 +1,7 @@
 .faq-container {
   max-width: 600px;
   margin: 20px auto;
-  background-color: #f9f9f9;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   color: var(--primary-color);
   box-shadow: var(--border-box-shadow);
   padding: 20px;
@@ -17,11 +16,11 @@
   font-size: 18px;
   margin-bottom: 10px;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   border: 1px solid var(--border-color);
   transition: var(--transition);
   &:hover {
-  background-color: #ddd;
+  background-color: var(--faq-question-background);
   }
 }
 
@@ -31,24 +30,21 @@
 }
 
 .faq-question.expanded {
-  background-color: #ccc; 
+  background-color: var(--faq-question-background); 
 }
 
 .faq-question.expanded + .faq-answer {
   display: block;
 }
-.bietschritte-table {
+.faq-bietschritte-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
 }
 
-.bietschritte-table th, .bietschritte-table td {
-  border: 1px solid #ddd;
+.faq-bietschritte-table th, .faq-bietschritte-table td {
+  border: 1px solid var(--border-color2);
+  border-radius: var(--border-radius);
   padding: 8px;
   text-align: left;
-}
-
-.bietschritte-table th {
-  background-color: #f2f2f2;
 }

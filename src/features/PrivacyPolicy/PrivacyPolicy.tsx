@@ -17,14 +17,14 @@ const PrivacyPolicy: React.FC = () => {
 			question:
 				'Name und Kontaktdaten des für die Verarbeitung Verantwortlichen sowie des betrieblichen Datenschutzbeauftragten',
 			answer: (
-				<ul className=".ul-privacy-policy">
+				<ul>
 					<li>
 						Diese Datenschutz-Information gilt für die Datenverarbeitung durch: Allcom
 						Wilhelminenhofstraße 93, 12459 Berlin
 					</li>
 					<li>
 						Tel.: 0162 00 154 / Fax: 0162 00 154 /
-						<a href="http://allcom.itvm.com.ua:5173/" className="policy-link-color">
+						<a href="http://allcom.itvm.com.ua:5173/" className="privacy-policy-link-color">
 							E-Mail: kontakt@allcom.de
 						</a>
 					</li>
@@ -38,10 +38,10 @@ const PrivacyPolicy: React.FC = () => {
 			question:
 				'Erhebung und Speicherung personenbezogener Daten sowie Art und Zweck von deren Verwendung',
 			answer: (
-				<ul className=".ul-privacy-policy">
+				<ul>
 					<li>a. Beim Besuch der Website Beim Aufrufen unserer Website:</li>
 					<li>
-						<a href="http://allcom.itvm.com.ua:5173/" className="policy-link-color">
+						<a href="http://allcom.itvm.com.ua:5173/" className="privacy-policy-link-color">
 							https://www.Allcom.de
 						</a>
 					</li>
@@ -118,7 +118,7 @@ const PrivacyPolicy: React.FC = () => {
 		{
 			question: 'Weitergabe von Daten',
 			answer: (
-				<ul className=".ul-privacy-policy">
+				<ul>
 					<li>
 						Eine Übermittlung Ihrer persönlichen Daten an Dritte zu anderen als den im Folgenden
 						aufgeführten Zwecken findet nicht statt. Wir geben Ihre persönlichen Daten nur an Dritte
@@ -148,7 +148,7 @@ const PrivacyPolicy: React.FC = () => {
 		{
 			question: 'Cookies',
 			answer: (
-				<ul className=".ul-privacy-policy">
+				<ul>
 					<li>
 						Wir setzen auf unserer Seite Cookies ein. Hierbei handelt es sich um kleine Dateien, die
 						Ihr Browser automatisch erstellt und die auf Ihrem Endgerät (Laptop, Tablet, Smartphone
@@ -209,7 +209,7 @@ const PrivacyPolicy: React.FC = () => {
 		{
 			question: 'Analyse-Tools',
 			answer: (
-				<ul className=".ul-privacy-policy">
+				<ul>
 					<li>
 						a. Tracking-Tools Die im Folgenden aufgeführten und von uns eingesetzten
 						Tracking-Maßnahmen werden auf Grundlage des Art. 6 Abs. 1 S. 1 lit. f DSGVO
@@ -239,7 +239,7 @@ const PrivacyPolicy: React.FC = () => {
 					<li>
 						<a
 							href="https://policies.google.com/privacy?hl=de-DE&fg=1"
-							className="policy-link-color"
+							className="privacy-policy-link-color"
 						>
 							https://www.google.de/
 						</a>
@@ -288,7 +288,10 @@ const PrivacyPolicy: React.FC = () => {
 						installieren
 					</li>
 					<li>
-						<a href="https://tools.google.com/dlpage/gaoptout" className="policy-link-color">
+						<a
+							href="https://tools.google.com/dlpage/gaoptout"
+							className="privacy-policy-link-color"
+						>
 							https://www.google.de/gaoptout
 						</a>
 					</li>
@@ -310,7 +313,7 @@ const PrivacyPolicy: React.FC = () => {
 					<li>
 						<a
 							href="https://www.google.com/intl/de_ALL/analytics/support/index.html"
-							className="policy-link-color"
+							className="privacy-policy-link-color"
 						>
 							https://www.google.de/analytics
 						</a>
@@ -343,7 +346,7 @@ const PrivacyPolicy: React.FC = () => {
 					<li>
 						<a
 							href="https://support.google.com/analytics/answer/6004245?hl=de"
-							className="policy-link-color"
+							className="privacy-policy-link-color"
 						>
 							https://www.google.de/analytics/support
 						</a>
@@ -373,7 +376,7 @@ const PrivacyPolicy: React.FC = () => {
 		{
 			question: 'Betroffenenrechte',
 			answer: (
-				<ul className=".ul-privacy-policy">
+				<ul>
 					<h3>Sie haben das Recht:</h3>
 					<li>
 						• gemäß Art. 15 DSGVO Auskunft über Ihre von uns verarbeiteten personenbezogenen Daten
@@ -424,7 +427,7 @@ const PrivacyPolicy: React.FC = () => {
 		{
 			question: 'Widerspruchsrecht',
 			answer: (
-				<ul className=".ul-privacy-policy">
+				<ul>
 					<li>
 						Sofern Ihre personenbezogenen Daten auf Grundlage von berechtigten Interessen gemäß Art.
 						6 Abs. 1 S. 1 lit. f DSGVO verarbeitet werden, haben Sie das Recht, gemäß Art. 21 DSGVO
@@ -438,7 +441,7 @@ const PrivacyPolicy: React.FC = () => {
 						Widerspruchsrecht Gebrauch machen, genügt eine
 					</li>
 					<li>
-						<a href="http://allcom.itvm.com.ua:5173/" className="policy-link-color">
+						<a href="http://allcom.itvm.com.ua:5173/" className="privacy-policy-link-color">
 							E-Mail an info@allcom.de.
 						</a>
 					</li>
@@ -448,7 +451,7 @@ const PrivacyPolicy: React.FC = () => {
 		{
 			question: 'Datensicherheit',
 			answer: (
-				<ul className=".ul-privacy-policy">
+				<ul>
 					<li>
 						Wir verwenden innerhalb des Website-Besuchs das verbreitete SSL-Verfahren (Secure Socket
 						Layer) in Verbindung mit der jeweils höchsten Verschlüsselungsstufe, die von Ihrem
@@ -480,7 +483,7 @@ const PrivacyPolicy: React.FC = () => {
 		{
 			question: 'Plugins und Tools',
 			answer: (
-				<ul className=".ul-privacy-policy">
+				<ul>
 					<li>a. Weitere Plugins und Tools</li>
 					<li>
 						b. Google Web Fonts Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten so
@@ -503,13 +506,16 @@ const PrivacyPolicy: React.FC = () => {
 					</li>
 					<li>Weitere Informationen zu Google Web Fonts finden Sie unter:</li>
 					<li>
-						<a href="https://developers.google.com/fonts/faq" className="policy-link-color">
+						<a href="https://developers.google.com/fonts/faq" className="privacy-policy-link-color">
 							https://developers.google.com/fonts/faq
 						</a>
 					</li>
 					<li>und in der Datenschutzerklärung von Google:</li>
 					<li>
-						<a href="https://www.google.com/policies/privacy/" className="policy-link-color">
+						<a
+							href="https://www.google.com/policies/privacy/"
+							className="privacy-policy-link-color"
+						>
 							https://www.google.com/policies/privacy/
 						</a>
 					</li>
@@ -519,7 +525,7 @@ const PrivacyPolicy: React.FC = () => {
 		{
 			question: 'Newsletter',
 			answer: (
-				<ul className=".ul-privacy-policy">
+				<ul>
 					<h3>Newsletterdaten</h3>
 					<li>
 						Wenn Sie den auf der Website angebotenen Newsletter beziehen möchten, benötigen wir von
@@ -557,7 +563,7 @@ const PrivacyPolicy: React.FC = () => {
 		{
 			question: 'Aktualität und Änderung dieser Datenschutzerklärung',
 			answer: (
-				<ul className=".ul-privacy-policy">
+				<ul>
 					<li>Diese Datenschutzerklärung ist aktuell gültig und hat den Stand August 2023.</li>
 					<li>
 						Durch die Weiterentwicklung unserer Website und Angebote darüber oder aufgrund
@@ -566,7 +572,7 @@ const PrivacyPolicy: React.FC = () => {
 					</li>
 					<li>Die jeweils aktuelle Datenschutzerklärung kann jederzeit auf der Website unter:</li>
 					<li>
-						<a href="http://allcom.itvm.com.ua:5173/" className="policy-link-color">
+						<a href="http://allcom.itvm.com.ua:5173/" className="privacy-policy-link-color">
 							https://www.allcom.de/datenschutz
 						</a>
 					</li>

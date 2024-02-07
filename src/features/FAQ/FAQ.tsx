@@ -76,7 +76,7 @@ const FAQPage: React.FC = () => {
 			answer: (
 				<div>
 					<p>{t('answer_16_1')}</p>
-					<table className="bietschritte-table">
+					<table className="faq-bietschritte-table">
 						<thead>
 							<tr>
 								<th>{t('answer_16_2')}</th>

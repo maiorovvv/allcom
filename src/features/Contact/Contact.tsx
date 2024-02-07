@@ -5,9 +5,9 @@ const Contact: React.FC = () => {
 	const { t } = useTranslation('contact');
 	return (
 		<div className="contact-page">
-			<h1 className="h1-contact"> {t('contact_h1')} </h1>
+			<h1 className="contact-h1"> {t('contact_h1')} </h1>
 			<div className="contact-container">
-				<div className="left-content-contact">
+				<div className="contact-left-content">
 					<span> {t('contact_span')}</span>
 					<p>
 						<strong> {t('contact_strong')}</strong>
@@ -17,7 +17,7 @@ const Contact: React.FC = () => {
 						<li> {t('contact_li_2')}</li>
 					</ul>
 				</div>
-				<div className="right-content-contact">
+				<div className="contact-right-content">
 					<h2>{t('contact_h2')}</h2>
 					<p>{t('contact_p_1')}</p>
 					<p>{t('contact_p_2')}</p>
