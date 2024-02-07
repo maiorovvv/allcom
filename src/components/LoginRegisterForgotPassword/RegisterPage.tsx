@@ -80,7 +80,7 @@ const RegisterPage: FC = (): JSX.Element => {
 				if (payload.message) {
 					console.error(payload.message);
 				} else {
-					navigate('user/my_account/greetings');
+					navigate('/user/my_account/greetings');
 				}
 			})
 			.catch(() => {});
