@@ -39,7 +39,7 @@ const Product: FC<ProductProps> = ({ product, setActiveWindow, getProductById, c
 	return (
 		<div className="home_page__items">
 			<div className="home_page__items--thumbnail">
-				<img src={imageLinks[0]} alt="product-img"></img>
+				{imageLinks.length > 0 && <img src={imageLinks[0]} alt="product-img"></img>}
 				<NavLink className="home_page__btn" to={`products/details/${id}`}>
 					<span>{t('view_product')}</span>
 				</NavLink>
