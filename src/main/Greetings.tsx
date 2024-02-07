@@ -2,23 +2,19 @@ import * as React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Button } from 'react-bootstrap';
+import { useAppSelector } from '../app/hooks';
+import { selectUser } from '../features/auth/selectors';
 
-interface GreetingsProps {
-	firstName: string;
-	lastName: string;
-}
-
-const Greetings: React.FC<GreetingsProps> = ({ firstName, lastName }) => {
+const Greetings: React.FC = () => {
 	const { t } = useTranslation('greetings');
+	const user = useAppSelector(selectUser);
 	return (
 		<div>
-			<h2 className="h2">
-				{t('greetings')}, {firstName} {lastName}!
-			</h2>
+			<h3 className="h3">
+				{t('greetings')}, {user?.firstName} {user?.lastName}!
+			</h3>
 			<h3 className="h3">{t('greetings_h3')}</h3>
 			<p className="p">{t('greetings_p_1')}</p>
-
-			<p className="p">{t('greetings_p_2')}</p>
 			<p className="p">
 				{t('greetings_p_3')}
 				<br /> Allcom
