@@ -302,7 +302,7 @@
 		"category": "Category"
 	},
 	"faq": {
-		"faq":"FAQ",
+		"faq": "FAQ",
 		"question_1": "How can I participate in the auction?",
 		"answer_1": "To participate in the auction, you need to register online once. For this, we require your completed 'Participant Application' form. All further necessary documents are to be submitted to our office upon receiving the first purchase.",
 		"question_2": "Can individuals participate in the auction?",
@@ -337,20 +337,28 @@
 		"answer_16_1": "From bidding increment",
 		"answer_16_2": "From",
 		"answer_16_3": "Bidding increment"
-		},
-		"contact": {
-			"contact_h1": "Contacts",
-			"contact_span": "You can contact us anytime, either by phone or email, during our business hours from Monday to Friday from 9:00 to 18:00.",
-			"contact_strong": "Frequently Asked Questions:",
-			"contact_li_1": "Cancellation of Bets (Bets cannot be canceled!)",
-			"contact_li_2": "Activation takes 1-2 days and will not be expedited if you send us a message.",
-			"contact_h2": "Contact",
-			"contact_p_1": "Allcom Auction",
-			"contact_p_2": "Wilhelminenhofstraße 93",
-			"contact_p_3": "12459 Berlin",
-			"contact_h3_1": "Phone-Fax",
-			"contact_p_4": "T: +49 (70) 58 333",
-			"contact_h3_2": "Email",
-			"contact_p_5": "contact(at)Allcom.de"
-		}
+	},
+	"contact": {
+		"contact_h1": "Contacts",
+		"contact_span": "You can contact us anytime, either by phone or email, during our business hours from Monday to Friday from 9:00 to 18:00.",
+		"contact_strong": "Frequently Asked Questions:",
+		"contact_li_1": "Cancellation of Bets (Bets cannot be canceled!)",
+		"contact_li_2": "Activation takes 1-2 days and will not be expedited if you send us a message.",
+		"contact_h2": "Contact",
+		"contact_p_1": "Allcom Auction",
+		"contact_p_2": "Wilhelminenhofstraße 93",
+		"contact_p_3": "12459 Berlin",
+		"contact_h3_1": "Phone-Fax",
+		"contact_p_4": "T: +49 (70) 58 333",
+		"contact_h3_2": "Email",
+		"contact_p_5": "contact(at)Allcom.de"
+	},
+	"greetings": {
+		"link_back_to_home": "Back To Home",
+		"greetings": "Good afternoon",
+		"greetings_h3": "Thank you for registering on our auction platform!",
+		"greetings_p_1": "After successful verification, your account will be activated and you will be able to use all the features of our auction platform.",
+		"greetings_p_2": "We are happy to help you if you have any questions. Thank you for your trust in our platform.",
+		"greetings_p_3": "Best regards,"
+	}
 }
