@@ -10,7 +10,7 @@ const Greetings: React.FC = () => {
 	const user = useAppSelector(selectUser);
 	return (
 		<div>
-			<h3 className="h3">
+			<h3 className="h3" style={{ textAlign: 'center' }}>
 				{t('greetings')}, {user?.firstName} {user?.lastName}!
 			</h3>
 			<h3 className="h3">{t('greetings_h3')}</h3>
