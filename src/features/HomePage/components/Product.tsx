@@ -34,7 +34,7 @@ const Product: FC<ProductProps> = ({
 		name,
 		categoryId,
 		imageLinks,
-		lastCreatedAuction: { startPrice, startAt, currentPlannedEndAt },
+		lastCreatedAuction: { lastBetAmount, startAt, currentPlannedEndAt },
 	} = product;
 
 	const locale = i18next.language;
@@ -43,7 +43,7 @@ const Product: FC<ProductProps> = ({
 	const currentPlannedEnd = moment(currentPlannedEndAt);
 	const formattedDate = moment(startAt).format('YYYY-MM-DD HH:mm:ss');
 	const timeUntilCurrentPlannedEnd = currentPlannedEnd.diff(moment(), 'seconds');
-	const price = auction.productId == product.id ? auction.lastBetAmount : startPrice;
+	const price = auction.productId == product.id ? auction.lastBetAmount : lastBetAmount;
 
 	return (
 		<div className="home_page__items">

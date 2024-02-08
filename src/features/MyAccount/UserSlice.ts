@@ -7,6 +7,11 @@ interface LoadUsersParams {
 	skip?: number;
 }
 
+interface StatusUserParams {
+	user_id: number;
+	status: boolean;
+}
+
 const initialState: UserState = {
 	user: undefined,
 	users: [],
@@ -19,13 +24,19 @@ const initialState: UserState = {
 
 export const loadUser = createAsyncThunk('user/loadUser', () => api.getUserProfile());
 
-export const loadLimitedUsers = createAsyncThunk(
-	'user/loadLimitedUsers',
-	({ limit, skip }: LoadUsersParams) => api.getUsersWithLimitAndSkip(limit, skip)
+export const loadAllUsers = createAsyncThunk(
+	'user/loadAllUsers',
+	({ limit, skip }: LoadUsersParams) => api.getAllUsers(limit, skip)
 );
 
-export const loadDefaultUsers = createAsyncThunk('user/loadDefaultUser', () =>
-	api.getUsersWithLimitAndSkip()
+export const changeCheckedStatus = createAsyncThunk(
+	'user/changeCheckedStatus',
+	({ user_id, status }: StatusUserParams) => api.changeCheckedStatus(user_id, status)
+);
+
+export const changeBlockedStatus = createAsyncThunk(
+	'user/changeBlockedStatus',
+	({ user_id, status }: StatusUserParams) => api.changeCheckedStatus(user_id, status)
 );
 
 export const getFoundUser = createAsyncThunk('user/foundUser', (name: string) =>
@@ -49,29 +60,55 @@ export const userSlice = createSlice({
 				state.loading = false;
 				state.error = action.error.message;
 			})
-			.addCase(loadLimitedUsers.pending, (state) => {
+			.addCase(loadAllUsers.pending, (state) => {
 				state.loadingAllUsers = true;
 			})
-			.addCase(loadLimitedUsers.fulfilled, (state, action) => {
+			.addCase(loadAllUsers.fulfilled, (state, action) => {
 				state.users = action.payload.content;
 				state.totalPages = action.payload.totalPages;
 				state.number = action.payload.number;
 				state.loadingAllUsers = false;
 			})
-			.addCase(loadLimitedUsers.rejected, (state, action) => {
+			.addCase(loadAllUsers.rejected, (state, action) => {
 				state.loadingAllUsers = false;
 				state.error = action.error.message;
 			})
+
+			.addCase(changeCheckedStatus.fulfilled, (state, action) => {
+				const { id, checked } = action.payload;
+				const userIndex = state.users.findIndex((user) => user.id === id);
+
+				if (userIndex !== -1) {
+					const updatedUser = { ...state.users[userIndex], checked };
+					state.users[userIndex] = updatedUser;
+				}
+
+				// const updatedUser = { ...state.users[4], checked };
+				// state.users[4] = updatedUser;
+			})
+			.addCase(changeCheckedStatus.rejected, (state, action) => {
+				state.error = action.error.message;
+			})
+
+			.addCase(changeBlockedStatus.fulfilled, (state, action) => {
+				const { id, blocked } = action.payload;
+				const userIndex = state.users.findIndex((user) => user.id === id);
+
+				if (userIndex !== -1) {
+					const updatedUser = { ...state.users[userIndex], blocked };
+					state.users[userIndex] = updatedUser;
+				}
+				// const updatedUser = { ...state.users[3], blocked: state.users[3].blocked ? false : true };
+				// state.users[3] = updatedUser;
+			})
+			.addCase(changeBlockedStatus.rejected, (state, action) => {
+				state.error = action.error.message;
+			})
+
 			.addCase(getFoundUser.fulfilled, (state, action) => {
 				state.users = action.payload.users;
 			})
 			.addCase(getFoundUser.rejected, (state, action) => {
-				state.error = action.error.message;
-			})
-			.addCase(loadDefaultUsers.fulfilled, (state, action) => {
-				state.users = action.payload.users;
-			})
-			.addCase(loadDefaultUsers.rejected, (state, action) => {
 				state.error = action.error.message;
 			});
 	},

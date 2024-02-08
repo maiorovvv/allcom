@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useAppDispatch, useAppSelector, useIsAdmin } from '../../../app/hooks';
 import { RootState } from '../../../app/store';
-import { getFoundUser, loadDefaultUsers, loadLimitedUsers } from '../UserSlice';
+import { changeBlockedStatus, changeCheckedStatus, getFoundUser, loadAllUsers } from '../UserSlice';
 import Spinner from '../../../components/Spinner/Spinner';
 import Pagination from '../../../components/Pagination/Pagination';
 import ConfirmationModal from '../../../components/ConfirmationModal/ConfirmationModal';
@@ -13,6 +14,12 @@ import Search from '../../../components/Search/Search';
 import SortAZIcon from '../../../img/svg/sortAZ.svg?react';
 import SortZAIcon from '../../../img/svg/sortZA.svg?react';
 import { selectIsAuthenticated } from '../../auth/selectors';
+
+interface UserData {
+	id: number;
+	user_name: string;
+	status: boolean;
+}
 
 const UsersList: FC = (): JSX.Element => {
 	const { t } = useTranslation('users_list');
@@ -25,28 +32,35 @@ const UsersList: FC = (): JSX.Element => {
 	const loadingAllUsers = useAppSelector((state: RootState) => state.userDate.loadingAllUsers);
 	const dispatch = useAppDispatch();
 
-	const [userStatus, setUserStatus] = useState<boolean>(false);
-	const [userName, setUserName] = useState<string>('');
-	const onConfirm = (selection: boolean): void => {};
 	const [confirmationModalActive, setConfirmationModal] = useState<boolean>(false);
+
+	const [userData, setUserData] = useState<UserData>({
+		id: -1,
+		user_name: '',
+		status: false,
+	});
+
+	const onConfirm = (selection: boolean): void => {
+		if (selection) {
+			dispatch(changeBlockedStatus({ user_id: userData.id, status: userData.status }));
+		}
+	};
 
 	useEffect(() => {
 		if (isAuth && isAdmin) {
-			dispatch(loadLimitedUsers({ limit: 5, skip: 0 }));
+			dispatch(loadAllUsers({ limit: 5, skip: 0 }));
 		}
 	}, [isAuth]);
 
 	const loadUsersForPage = (skip: number): void => {
-		dispatch(loadLimitedUsers({ limit: 5, skip }));
+		dispatch(loadAllUsers({ limit: 5, skip }));
 	};
 
-	const search = (value: string): void => {
-		if (value === '') {
-			dispatch(loadDefaultUsers());
-		} else {
-			dispatch(getFoundUser(value));
-		}
+	const setCheckedStatus = (user_id: number, status: boolean): void => {
+		dispatch(changeCheckedStatus({ user_id, status }));
 	};
+
+	const search = (value: string): void => {};
 
 	const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
 	// const usersSort = (): void => {
@@ -61,9 +75,9 @@ const UsersList: FC = (): JSX.Element => {
 
 	return (
 		<>
-			<div className="products_list__container">
+			<div className="users_list__container">
 				<Search search={search} textPlaceholder={t('search_placeholder')} />
-				<table className="users_list">
+				<table className="users_list__table">
 					<thead>
 						<tr>
 							<th className="users_list__item">
@@ -77,9 +91,9 @@ const UsersList: FC = (): JSX.Element => {
 									</div>
 								</div>
 							</th>
-							<th className="users_list__item">{t('email')}</th>
-							<th className="users_list__item">{t('phone')}</th>
-							<th className="users_list__item">{t('address')}</th>
+							<th className="users_list__item--email">{t('email')}</th>
+							<th className="users_list__item--phone">{t('phone')}</th>
+							<th className="users_list__item--address">{t('address')}</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -93,6 +107,7 @@ const UsersList: FC = (): JSX.Element => {
 									phoneNumber,
 									address: { street, houseNumber, city, postIndex },
 									blocked,
+									checked,
 								}) => (
 									<tr className="users_list__info" key={id}>
 										<td className="users_list__info--name">
@@ -107,21 +122,38 @@ const UsersList: FC = (): JSX.Element => {
 										<td>
 											{street} {houseNumber}, {city}, {postIndex}
 										</td>
-										<td>
+										<td className="users_list__info--status">
 											<Tooltip text={t('tooltip_set_status')}>
 												<div
 													className={`users_list__status
 											${blocked ? 'users_list__status--active' : 'users_list__status--blocked'}`}
 													onClick={() => {
 														setConfirmationModal((prev) => !prev);
-														setUserName(`${lastName}, ${firstName}`);
-														setUserStatus(blocked);
+														setUserData({
+															id,
+															user_name: `${lastName}, ${firstName}`,
+															status: !blocked,
+														});
 													}}
 												>
 													{blocked ? t('activate') : t('block')}
 												</div>
 											</Tooltip>
 										</td>
+										{checked === false && (
+											<td className="users_list__info--status">
+												<Tooltip text={t('tooltip_set_checked_status')}>
+													<div
+														className="users_list__status users_list__status--confirm_user"
+														onClick={() => {
+															setCheckedStatus(id, !checked);
+														}}
+													>
+														{t('confirm_user')}
+													</div>
+												</Tooltip>
+											</td>
+										)}
 									</tr>
 								)
 							)}
@@ -136,9 +168,9 @@ const UsersList: FC = (): JSX.Element => {
 			<ConfirmationModal
 				confirmationModalActive={confirmationModalActive}
 				setConfirmationModal={setConfirmationModal}
-				text={t(`${userStatus ? 'text_activate' : 'text_block'}`)}
+				text={t(`${userData.status ? 'text_activate' : 'text_block'}`)}
 				onConfirm={onConfirm}
-				name={userName}
+				value={userData.user_name}
 			/>
 		</>
 	);

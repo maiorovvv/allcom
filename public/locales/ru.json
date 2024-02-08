@@ -33,8 +33,6 @@
 	"product_details": {
 		"link_back_to_home": "Вернуться на главную",
 		"product_details": "Детали товара",
-		"add_to_card": "добавить в корзину",
-		"bet_now": "СДЕЛАТЬ СТАВКУ",
 		"add_to_wishlist": "В избранное",
 		"color": "Цвет",
 		"weight": "Вес",
@@ -43,11 +41,15 @@
 		"payment": "Оплата",
 		"return": "Возврат",
 		"support": "Поддержка",
-		"current_price": "АКТУАЛЬНАЯ СТАВКА:",
+		"wishlist": "Избранное"
+	},
+	"auction": {
 		"tax": "Налог",
-		"is_confirm": "Подтвердите действие",
+		"bet_now": "СДЕЛАТЬ СТАВКУ",
+		"is_confirm": "Cделать ставку",
 		"start_at": "Начало с",
-		"left_time": "До закрытия"
+		"left_time": "До закрытия",
+		"current_price": "АКТУАЛЬНАЯ СТАВКА:"
 	},
 	"Shipping": {
 		"in_developing": "В разработке..."
@@ -247,6 +249,8 @@
 		"phone": "Телефон",
 		"address": "Адрес",
 		"tooltip_set_status": "заблокировать или разблокировать пользователя",
+		"tooltip_set_checked_status": "подтвердить активацию пользователя",
+		"confirm_user": "Подтвердить",
 		"text_block": "Заблокировать пользователя",
 		"text_activate": "Разблокировать пользователя",
 		"activate": "Активировать",
@@ -280,7 +284,8 @@
 	"product_added_success_page": {
 		"link_back_to_home": "Вернуться на главную",
 		"link_to_product_list": "К списку товаров",
-		"link_add_product": "Добавить новый товар"
+		"link_add_product": "Добавить новый товар",
+		"added_successfully": "Товар успешно добавлен!"
 	},
 	"product_fields": {
 		"product_info": "Товар",

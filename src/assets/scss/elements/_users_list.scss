@@ -5,8 +5,9 @@
 		position: relative;
 	}
 	&__table {
-		margin: 0 auto;
 		text-align: center;
+		margin: 0 auto;
+		width: 100%;
 	}
 	&__info {
 		height: 5rem;
@@ -15,11 +16,17 @@
 		&:hover {
 			background-color: var(--ofwhite-color);
 		}
+		&--name {
+			text-align: left;
+			width: 20rem;
+		}
+		&--status {
+			width: 10rem;
+		}
 	}
 	&__item {
-		width: 30rem;
 		&--name {
-			display: flex;
+			display: inline;
 			width: fit-content;
 			cursor: pointer;
 			transition: var(--transition);
@@ -27,11 +34,16 @@
 				color: var(--secondary-color);
 			}
 			&__sort_icon {
-				margin-left: .5rem;
+				display: inline;
+				margin-left: 0.5rem;
 			}
 		}
-		&--status {
-			width: 5rem;
+		&--email,
+		&--phone {
+			width: 20rem;
+		}
+		&--address {
+			width: 30rem;
 		}
 	}
 	&__status {
@@ -40,18 +52,25 @@
 		color: var(--white-color);
 		transition: var(--transition);
 		cursor: pointer;
-		min-width: 10rem;
-		text-align: center;
 		&--active {
+			border-radius: var(--border-radius);
 			background-color: green;
 			&:hover {
 				background-color: rgb(1, 94, 1);
 			}
 		}
 		&--blocked {
+			border-radius: var(--border-radius);
 			background-color: red;
 			&:hover {
 				background-color: rgb(202, 4, 4);
+			}
+		}
+		&--confirm_user {
+			border-radius: var(--border-radius);
+			background-color: green;
+			&:hover {
+				background-color: rgb(1, 94, 1);
 			}
 		}
 	}

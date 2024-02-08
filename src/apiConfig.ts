@@ -20,4 +20,6 @@ export default {
 	findUserByEmailEndpoint: `/api/users/foundUserByEmail/`,
 	updateUserEndpoint: `/api/users/updateUser/`,
 	changeUserStatusEndpoint: `/api/users/changeStatus/`,
+	changeUserBlockedStatusEndpoint: '/api/users/changeBlockedStatus/',
+	changeUserCheckedStatusEndpoint: '/api/users/changeCredentialStatus/',
 };

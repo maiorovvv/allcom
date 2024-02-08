@@ -33,8 +33,6 @@
 	"product_details": {
 		"link_back_to_home": "Back To Home",
 		"product_details": "Product Details",
-		"add_to_card": "add to card",
-		"bet_now": "BET NOW",
 		"add_to_wishlist": "Add to wishlist",
 		"color": "Color",
 		"weight": "Weight",
@@ -43,11 +41,15 @@
 		"payment": "Payment",
 		"return": "Return",
 		"support": "Support",
-		"current_price": "CURRENT BID:",
+		"wishlist": "Wishlist"
+	},
+	"auction": {
 		"tax": "Tax",
-		"is_confirm": "Confirm action",
+		"bet_now": "BET NOW",
+		"is_confirm": "Bet now",
 		"start_at": "Start At",
-		"left_time": "Left until closing"
+		"left_time": "Left until closing",
+		"current_price": "CURRENT BET:"
 	},
 	"Shipping": {
 		"in_developing": "In developing..."
@@ -245,6 +247,8 @@
 		"phone": "Phone",
 		"address": "Address",
 		"tooltip_set_status": "block or unblock a user",
+		"tooltip_set_checked_status": "confirm user activation",
+		"confirm_user": "Сonfirm",
 		"text_block": "Block user",
 		"text_activate": "Unblock user",
 		"activate": "Activate",
@@ -278,7 +282,8 @@
 	"product_added_success_page": {
 		"link_back_to_home": "Back To Home",
 		"link_to_product_list": "To List of Products",
-		"link_add_product": "Add new Product"
+		"link_add_product": "Add new Product",
+		"added_successfully": "Product added successfully!"
 	},
 	"product_fields": {
 		"product_info": "Product",
