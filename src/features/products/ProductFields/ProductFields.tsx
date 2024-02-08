@@ -16,8 +16,6 @@ import { getByCurrentLocale } from '../../categories/utilsCategories';
 
 import styles from './ProductFields.module.scss';
 
-const PARENT_ID_MAIN_CATEGORIES = 0;
-
 export const DECIMAL_STEP = '0.01';
 
 export type CategoryOptions = {
@@ -40,6 +38,7 @@ interface PropsInterface {
 	handleChange: FormikProps<ProductFormValues>['handleChange'];
 	setFieldValue: FormikProps<ProductFormValues>['setFieldValue'];
 	resizingError: string | undefined;
+	submitButtonName: string;
 }
 
 const ProductFields: FC<PropsInterface> = (props) => {
@@ -53,15 +52,14 @@ const ProductFields: FC<PropsInterface> = (props) => {
 		resizingError,
 		loadingImage,
 		loading,
+		submitButtonName,
 	} = props;
 
 	const { t } = useTranslation('product_fields');
 
 	const locale = i18next.language;
 
-	const mainCategories = useAppSelector(selectCategories).filter(
-		(item) => item.parentId !== PARENT_ID_MAIN_CATEGORIES
-	);
+	const mainCategories = useAppSelector(selectCategories);
 
 	const selectOptionsCategory: CategoryOptions[] = [
 		...(mainCategories?.map((category) => ({
@@ -79,15 +77,15 @@ const ProductFields: FC<PropsInterface> = (props) => {
 		{ value: 'L', label: t('LEFT') },
 	];
 
-	const addProductButton = (
+	const submitButton = (
 		<div className="d-flex justify-content-center pt-3">
 			<button
 				type="submit"
 				name="submit"
 				className={styles.container_btn}
-				data-testid="add_product-button"
+				data-testid={`${submitButtonName}-button`}
 			>
-				{t('add_product')}
+				{t(submitButtonName)}
 			</button>
 		</div>
 	);
@@ -215,7 +213,7 @@ const ProductFields: FC<PropsInterface> = (props) => {
 			name="auction.startPrice"
 			placeholder={t('start_price')}
 			type="number"
-			//value={values.auction.startPrice}
+			value={values.auction.startPrice}
 			data-testid="startPrice"
 		/>
 	);
@@ -334,8 +332,6 @@ const ProductFields: FC<PropsInterface> = (props) => {
 					data-testid="SwiperModalWindow"
 				/>
 			)}
-			{resizingError && <div className="warning_message--validation mt-2 p-2">{resizingError}</div>}
-			{addProductButton}
 		</div>
 	);
 
@@ -355,6 +351,8 @@ const ProductFields: FC<PropsInterface> = (props) => {
 				<div className="col-md-4 col-sm-6 pb-3">{auction}</div>
 			</div>
 			{photoInputContainer}
+			{resizingError && <div className="warning_message--validation mt-2 p-2">{resizingError}</div>}
+			{submitButton}
 		</div>
 	);
 };

@@ -115,6 +115,7 @@ const AddProductPage: FC = () => {
 								resizingError={resizingError}
 								loadingImage={isFileLoading}
 								loading={loading}
+								submitButtonName="add_product"
 							/>
 						</Form>
 					</>

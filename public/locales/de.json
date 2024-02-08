@@ -113,7 +113,8 @@
 		"search_here": "Suche Hier",
 		"all_categories": "Alle Kategorien",
 		"keyword_here": "Stichwort hier...",
-		"products_list": "Producte"
+		"products_list": "Producte",
+		"add_product": "Produkt hinzufügen"
 	},
 	"categories": {
 		"default_select": "Produktkategorie"
@@ -291,6 +292,7 @@
 		"planned_end_at": "Geplantes Ende um",
 		"storage_info": "Speicher",
 		"add_product": "Produkt hinzufügen",
+		"save": "Änderungen speichern",
 		"product_photo": "Produktfoto",
 		"side": "Seite",
 		"rack": "Regalnummer",

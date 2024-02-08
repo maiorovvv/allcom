@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -16,6 +18,11 @@ import {
 	selectTotalPages,
 } from '../products/selectors';
 import { filterProductById, loadAllProducts } from '../products/productsSlice';
+
+import * as Stomp from 'stompjs';
+// eslint-disable-next-line import/extensions
+import * as SockJS from 'sockjs-client/dist/sockjs.js';
+import { AuctionWsDto } from '../../types/auction';
 
 const HomePage: FC = (): JSX.Element => {
 	const { t } = useTranslation('home_page');
@@ -38,8 +45,27 @@ const HomePage: FC = (): JSX.Element => {
 		dispatch(loadAllProducts({ page_number }));
 	};
 
+	const [auction, setAuction] = useState<AuctionWsDto>({} as AuctionWsDto);
 	useEffect(() => {
 		dispatch(loadAllProducts({}));
+		const socket = new SockJS('/ws');
+		const client = Stomp.over(socket);
+
+		client.connect({}, (frame) => {
+			console.log('Connected: ', frame);
+
+			client.subscribe(`/topic/auction/info`, (auctionData) => {
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+				setAuction(JSON.parse(auctionData.body));
+			});
+		});
+
+		return () => {
+			if (client) {
+				client.disconnect();
+				console.log('Disconnected');
+			}
+		};
 	}, []);
 
 	if (loadingAllProducts) {
@@ -68,6 +94,7 @@ const HomePage: FC = (): JSX.Element => {
 									setActiveWindow={setActiveWindow}
 									getProductById={getProductById}
 									categories={categories}
+									auction={auction}
 								/>
 							))}
 					</div>
