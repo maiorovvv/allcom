@@ -59,9 +59,9 @@ function App(): JSX.Element {
 					</Route>
 					<Route path="/user/users_list" element={<UsersList />} />
 					<Route path="product/products_list" element={<ProductsList />} />
-					<Route path="products/details/:id" element={<ProductDetails />} />
 					<Route path="products/add" element={<AddProductPage />} />
 					<Route path="products/edit/:productId" element={<EditProduct />} />
+					<Route path="products/details/:productID" element={<ProductDetails />} />
 					<Route path="products/product_added_success" element={<AddedSuccessPage />} />
 					<Route path="shipping" element={<Shipping />} />
 					<Route path="payment" element={<Payment />} />

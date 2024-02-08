@@ -9,14 +9,14 @@ interface ModalProps {
 	setConfirmationModal: (flag: boolean) => void;
 	text: string;
 	onConfirm: (confirmed: boolean) => void;
-	name?: string;
+	value?: string;
 }
 const ConfirmationModal: FC<ModalProps> = ({
 	confirmationModalActive,
 	setConfirmationModal,
 	text,
 	onConfirm,
-	name,
+	value,
 }): JSX.Element | null => {
 	const { t } = useTranslation('confirmation_modal');
 
@@ -42,11 +42,24 @@ const ConfirmationModal: FC<ModalProps> = ({
 					onClick={() => setConfirmationModal(false)}
 				/>
 				<p className="confirmation_modal__text">
-					{t(`${text}`)} <strong>{name}</strong>
+					{text} <strong>{value}</strong>
 				</p>
 				<div className="confirmation_modal__buttons">
-					<Button btnValue={true} text={t('yes')} onClickBtn={() => handleClick} isConfirm={true} />
-					<Button btnValue={false} text={t('no')} onClickBtn={() => handleClick} />
+					<Button
+						btnValue={true}
+						text={t('yes')}
+						onClickBtn={() => handleClick(true)}
+						isConfirm={true}
+						widthBtn="15rem"
+						heightBtn="5rem"
+					/>
+					<Button
+						btnValue={false}
+						text={t('no')}
+						onClickBtn={() => handleClick(false)}
+						widthBtn="15rem"
+						heightBtn="5rem"
+					/>
 				</div>
 			</div>
 		</div>

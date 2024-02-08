@@ -1,0 +1,53 @@
+.auction {
+	&__time {
+		font-size: 1.8rem;
+		margin-block: 2rem;
+		&__start {
+			background-color: var(--background-timer-color);
+			width: fit-content;
+			padding-inline: 2rem;
+			border-radius: var(--border-radius);
+		}
+	}
+	&__price {
+		display: flex;
+		margin-block: 2rem;
+		@media only screen and (max-width: 479px) {
+			font-size: 1.4rem;
+		}
+		&--actual {
+			font-weight: 600;
+			margin-left: 3rem;
+			font-size: 2.5rem !important;
+			@media only screen and (min-width: 992px) {
+				font-size: 2rem;
+			}
+			@media only screen and (max-width: 479px) {
+				font-size: 1.8rem !important;
+			}
+		}
+		&--aufgeld {
+			margin-left: 1rem;
+			font-size: 1rem;
+			background-color: var(--background-aufgeld-color);
+			border-radius: 10px;
+			padding: 0 5px 0 5px;
+			text-align: right;
+			min-width: 40px;
+			width: fit-content;
+			text-align: center;
+			cursor: default;
+		}
+	}
+	&__btn {
+		width: 100%;
+		padding: 1rem;
+		border: none;
+		color: var(--white-color);
+		border-radius: var(--border-radius);
+		background-color: var(--secondary-color);
+		&:hover {
+			background-color: var(--hover-btn-color);
+		}
+	}
+}

@@ -42,7 +42,7 @@ const ModalWindowProduct: FC<ModalWindowProps> = ({
 		color,
 		weight,
 		imageLinks,
-		lastCreatedAuction: { startPrice, startAt, currentPlannedEndAt },
+		lastCreatedAuction: { lastBetAmount, startAt, currentPlannedEndAt },
 	} = productById;
 
 	const currentPlannedEnd = moment(currentPlannedEndAt);
@@ -67,7 +67,8 @@ const ModalWindowProduct: FC<ModalWindowProps> = ({
 							<div className="modal_window__auction_info">
 								<div className="modal_window__actual_price">
 									{t('actual_price')}
-									<span className="modal_window__price">{startPrice} &euro;</span>
+									{/* <span className="modal_window__price">{startPrice} &euro;</span> */}
+									<span className="modal_window__price">{lastBetAmount} &euro;</span>
 								</div>
 								<div className="modal_window__timer">
 									{timeUntilCurrentPlannedEnd > 0 ? (

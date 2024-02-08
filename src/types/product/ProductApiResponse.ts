@@ -19,10 +19,10 @@ export interface LastCreatedAuctionDto {
 	plannedEndAt?: string;
 	currentPlannedEndAt: string;
 	actualEndAt?: string;
-	state?: string;
+	state: string;
 	productId?: number;
 	winnerId?: number;
-	lastBetAmount?: number;
+	lastBetAmount: number;
 	updatedAt?: string;
 	createdAt: string;
 }

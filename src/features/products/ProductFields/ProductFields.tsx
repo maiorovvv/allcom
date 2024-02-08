@@ -59,10 +59,10 @@ const ProductFields: FC<PropsInterface> = (props) => {
 
 	const locale = i18next.language;
 
-	const mainCategories = useAppSelector(selectCategories);
+	const categories = useAppSelector(selectCategories);
 
 	const selectOptionsCategory: CategoryOptions[] = [
-		...(mainCategories?.map((category) => ({
+		...(categories?.map((category) => ({
 			value: category.id,
 			label: `${category[getByCurrentLocale(locale)]}`,
 		})) || []),

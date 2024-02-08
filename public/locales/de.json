@@ -33,8 +33,6 @@
 	"product_details": {
 		"link_back_to_home": "Zurück zur Startseite",
 		"product_details": "Produktdetails",
-		"add_to_card": "in den Warenkorb",
-		"bet_now": "JETZT BIETEN",
 		"add_to_wishlist": "Auf den Merkzettel",
 		"color": "Farbe",
 		"weight": "Gewicht",
@@ -43,11 +41,15 @@
 		"payment": "Zahlung",
 		"return": "Zurückkehren",
 		"support": "Unterstützung",
-		"current_price": "AKTUELLES GEBOT:",
+		"wishlist": "Mein Merkzettel"
+	},
+	"auction": {
 		"tax": "Aufgeld",
-		"is_confirm": "Aktion bestätigen",
+		"bet_now": "JETZT BIETEN",
+		"is_confirm": "Jetzt bieten",
 		"start_at": "Anfangen bei",
-		"left_time": "Bis zum Ende"
+		"left_time": "Bis zum Ende",
+		"current_price": "AKTUELLES GEBOT:"
 	},
 	"Shipping": {
 		"in_developing": "In Bearbeitung..."
@@ -245,6 +247,8 @@
 		"phone": "Telefon",
 		"address": "Adresse",
 		"tooltip_set_status": "einen Benutzer sperren oder entsperren",
+		"tooltip_set_checked_status": "Bestätigen Sie die Benutzeraktivierung",
+		"confirm_user": "Bestätigen",
 		"text_block": "Benutzer blockieren",
 		"text_activate": "Nutzer entblockieren",
 		"activate": "Activieren",
@@ -278,7 +282,8 @@
 	"product_added_success_page": {
 		"link_back_to_home": "Zurück zur Startseite",
 		"link_to_product_list": "Zur Produktliste",
-		"link_add_product": "Neues Produkt hinzufügen"
+		"link_add_product": "Neues Produkt hinzufügen",
+		"added_successfully": "Produkt erfolgreich hinzugefügt!"
 	},
 	"product_fields": {
 		"product_info": "Produkt",

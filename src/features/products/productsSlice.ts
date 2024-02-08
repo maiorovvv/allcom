@@ -28,6 +28,8 @@ const initialState: ProductState = {
 			startAt: '',
 			currentPlannedEndAt: '',
 			createdAt: '',
+			lastBetAmount: 0,
+			state: '',
 		},
 		storage: {
 			id: 0,
