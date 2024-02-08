@@ -144,6 +144,7 @@ const EditProduct: FC = () => {
 								resizingError={resizingError}
 								loadingImage={isFileLoading}
 								loading={loading}
+								submitButtonName="save"
 							/>
 						</Form>
 					</>

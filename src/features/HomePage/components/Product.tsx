@@ -12,15 +12,23 @@ import Tooltip from '../../../components/Tooltip/Tooltip';
 
 import HeartIcon from '../../../img/svg/heart.svg?react';
 import EyeIcon from '../../../img/svg/eye.svg?react';
+import { AuctionWsDto } from '../../../types/auction';
 
 interface ProductProps {
 	product: ProductDto;
 	categories: CategoriesDto[];
 	setActiveWindow: (flag: boolean) => void;
 	getProductById: (product_id: number) => void;
+	auction: AuctionWsDto;
 }
 
-const Product: FC<ProductProps> = ({ product, setActiveWindow, getProductById, categories }) => {
+const Product: FC<ProductProps> = ({
+	product,
+	setActiveWindow,
+	getProductById,
+	categories,
+	auction,
+}) => {
 	const {
 		id,
 		name,
@@ -35,6 +43,7 @@ const Product: FC<ProductProps> = ({ product, setActiveWindow, getProductById, c
 	const currentPlannedEnd = moment(currentPlannedEndAt);
 	const formattedDate = moment(startAt).format('YYYY-MM-DD HH:mm:ss');
 	const timeUntilCurrentPlannedEnd = currentPlannedEnd.diff(moment(), 'seconds');
+	const price = auction.productId == product.id ? auction.lastBetAmount : startPrice;
 
 	return (
 		<div className="home_page__items">
@@ -72,7 +81,7 @@ const Product: FC<ProductProps> = ({ product, setActiveWindow, getProductById, c
 				</span>
 				<h3 className="home_page__items--content__title">{name}</h3>
 				<div className="home_page__items--priceAndTimer">
-					<span className="home_page__current__price">{startPrice} &euro;</span>
+					<span className="home_page__current__price">{price} &euro;</span>
 					{timeUntilCurrentPlannedEnd > 0 ? (
 						<Timer time={timeUntilCurrentPlannedEnd} />
 					) : (
