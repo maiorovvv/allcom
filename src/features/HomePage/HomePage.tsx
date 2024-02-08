@@ -46,7 +46,6 @@ const HomePage: FC = (): JSX.Element => {
 	};
 
 	const [auction, setAuction] = useState<AuctionWsDto>({} as AuctionWsDto);
-	// const [stompClient, setStompClient] = useState<Stomp.Client | null>(null);
 	useEffect(() => {
 		dispatch(loadAllProducts({}));
 		const socket = new SockJS('/ws');
@@ -60,8 +59,6 @@ const HomePage: FC = (): JSX.Element => {
 				setAuction(JSON.parse(auctionData.body));
 			});
 		});
-
-		// setStompClient(client);
 
 		return () => {
 			if (client) {
