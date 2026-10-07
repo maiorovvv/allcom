@@ -13,3 +13,8 @@ export const selectNumberPage = (state: RootState): number => state.products.num
 export const selectLoadingProductById = (state: RootState): boolean =>
 	state.products.loadingProductById;
 export const selectProductById = (state: RootState): ProductDto => state.products.productById;
+
+export const selectProductsOnePerCategory = (state: RootState): ProductDto[] =>
+	state.products.productsOnePerCategory;
+export const selectLoadingProductsOnePerCategory = (state: RootState): boolean =>
+	state.products.loadingProductsOnePerCategory;

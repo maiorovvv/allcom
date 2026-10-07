@@ -13,6 +13,8 @@ import Tooltip from '../../../components/Tooltip/Tooltip';
 import HeartIcon from '../../../img/svg/heart.svg?react';
 import EyeIcon from '../../../img/svg/eye.svg?react';
 import { AuctionWsDto } from '../../../types/auction';
+import { useAppSelector } from '../../../app/hooks';
+import { selectIsAuthenticated } from '../../auth/selectors';
 
 interface ProductProps {
 	product: ProductDto;
@@ -44,6 +46,7 @@ const Product: FC<ProductProps> = ({
 	const formattedDate = moment(startAt).format('YYYY-MM-DD HH:mm:ss');
 	const timeUntilCurrentPlannedEnd = currentPlannedEnd.diff(moment(), 'seconds');
 	const price = auction.productId == product.id ? auction.lastBetAmount : lastBetAmount;
+	const isAuth = useAppSelector(selectIsAuthenticated);
 
 	return (
 		<div className="home_page__items">
@@ -53,13 +56,15 @@ const Product: FC<ProductProps> = ({
 					<span>{t('view_product')}</span>
 				</NavLink>
 				<ul className="home_page__items--action">
-					<li className="home_page__items--action__list">
-						<Tooltip text={t('add_to_wishlist')}>
-							<button className="home_page__items--action__btn">
-								<HeartIcon className="home_page__items--action__btn--svg" />
-							</button>
-						</Tooltip>
-					</li>
+					{isAuth && (
+						<li className="home_page__items--action__list">
+							<Tooltip text={t('add_to_wishlist')}>
+								<button className="home_page__items--action__btn">
+									<HeartIcon className="home_page__items--action__btn--svg" />
+								</button>
+							</Tooltip>
+						</li>
+					)}
 					<li className="home_page__items--action__list">
 						<Tooltip text={t('preview')}>
 							<button

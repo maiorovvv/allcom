@@ -4,16 +4,17 @@ import { useTranslation } from 'react-i18next';
 
 import { useAppDispatch, useAppSelector, useIsAdmin } from '../../../app/hooks';
 import { RootState } from '../../../app/store';
-import { changeBlockedStatus, changeCheckedStatus, getFoundUser, loadAllUsers } from '../UserSlice';
+import { changeBlockedStatus, changeCheckedStatus, findUserById, loadAllUsers } from '../UserSlice';
 import Spinner from '../../../components/Spinner/Spinner';
 import Pagination from '../../../components/Pagination/Pagination';
 import ConfirmationModal from '../../../components/ConfirmationModal/ConfirmationModal';
 import Tooltip from '../../../components/Tooltip/Tooltip';
 import Search from '../../../components/Search/Search';
+import { selectIsAuthenticated } from '../../auth/selectors';
 
 import SortAZIcon from '../../../img/svg/sortAZ.svg?react';
 import SortZAIcon from '../../../img/svg/sortZA.svg?react';
-import { selectIsAuthenticated } from '../../auth/selectors';
+import EditUser from './EditUser';
 
 interface UserData {
 	id: number;
@@ -24,21 +25,19 @@ interface UserData {
 const UsersList: FC = (): JSX.Element => {
 	const { t } = useTranslation('users_list');
 
-	const isAuth = useAppSelector(selectIsAuthenticated);
-	const isAdmin = useIsAdmin();
-	const users = useAppSelector((state: RootState) => state.userDate.users);
-	const totalPages = useAppSelector((state: RootState) => state.userDate.totalPages);
-	const numberPage = useAppSelector((state: RootState) => state.userDate.number);
-	const loadingAllUsers = useAppSelector((state: RootState) => state.userDate.loadingAllUsers);
 	const dispatch = useAppDispatch();
 
-	const [confirmationModalActive, setConfirmationModal] = useState<boolean>(false);
+	const isAuth = useAppSelector(selectIsAuthenticated);
+	const isAdmin = useIsAdmin();
+	const users = useAppSelector((state: RootState) => state.userData.users);
+	const totalPages = useAppSelector((state: RootState) => state.userData.totalPages);
+	const numberPage = useAppSelector((state: RootState) => state.userData.number);
+	const loadingAllUsers = useAppSelector((state: RootState) => state.userData.loadingAllUsers);
 
-	const [userData, setUserData] = useState<UserData>({
-		id: -1,
-		user_name: '',
-		status: false,
-	});
+	const [confirmationModalActive, setConfirmationModal] = useState<boolean>(false);
+	const [editUserModalActive, setEditUserModalActive] = useState<boolean>(false);
+	const [userData, setUserData] = useState<UserData>({} as UserData);
+	const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
 
 	const onConfirm = (selection: boolean): void => {
 		if (selection) {
@@ -61,10 +60,6 @@ const UsersList: FC = (): JSX.Element => {
 	};
 
 	const search = (value: string): void => {};
-
-	const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
-	// const usersSort = (): void => {
-	// }
 
 	if (loadingAllUsers)
 		return (
@@ -122,6 +117,19 @@ const UsersList: FC = (): JSX.Element => {
 										<td>
 											{street} {houseNumber}, {city}, {postIndex}
 										</td>
+										<td className="users_list__edit">
+											<Tooltip text={t('change_placeholder')}>
+												<div
+													className="users_list__edit--btn"
+													onClick={() => {
+														dispatch(findUserById(id));
+														setEditUserModalActive((prev) => !prev);
+													}}
+												>
+													{t('change')}
+												</div>
+											</Tooltip>
+										</td>
 										<td className="users_list__info--status">
 											<Tooltip text={t('tooltip_set_status')}>
 												<div
@@ -168,9 +176,13 @@ const UsersList: FC = (): JSX.Element => {
 			<ConfirmationModal
 				confirmationModalActive={confirmationModalActive}
 				setConfirmationModal={setConfirmationModal}
-				text={t(`${userData.status ? 'text_activate' : 'text_block'}`)}
+				text={t(`${userData.status ? 'text_block' : 'text_activate'}`)}
 				onConfirm={onConfirm}
 				value={userData.user_name}
+			/>
+			<EditUser
+				editUserModalActive={editUserModalActive}
+				setEditUserModalActive={setEditUserModalActive}
 			/>
 		</>
 	);

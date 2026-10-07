@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 import Spinner from '../../components/Spinner/Spinner';
 import Product from './components/Product';
-// import Poster from './components/Poster/Poster';
+import Poster from './components/Poster/Poster';
 import Pagination from '../../components/Pagination/Pagination';
 import ModalWindowProduct from './components/ModalWindow/ModalWindowProduct';
 import { selectCategories } from '../categories/selectors';
@@ -78,7 +78,7 @@ const HomePage: FC = (): JSX.Element => {
 
 	return (
 		<div className="home_page__container">
-			{/* <Poster /> */}
+			<Poster />
 			<div className="container-fluid">
 				<div className="home_page__title">
 					<h2 className="home_page__title--h2">{t('auctions')}</h2>

@@ -18,7 +18,8 @@
 		"add_to_wishlist": "Add to wishlist"
 	},
 	"poster": {
-		"bet_now": "BET NOW"
+		"view_product": "VIEW PRODUCT",
+		"start_at": "Start At"
 	},
 	"products": {
 		"add_to_cart": "add to cart",
@@ -253,7 +254,20 @@
 		"text_activate": "Unblock user",
 		"activate": "Activate",
 		"block": "Block",
-		"search_placeholder": "enter last name or first name..."
+		"search_placeholder": "enter last name or first name...",
+		"change": "Change",
+		"change_placeholder": "change user data"
+	},
+	"edit_user": {
+		"first_name": "First name",
+		"last_name": "Last name",
+		"phone": "Phone",
+		"email": "Email",
+		"street": "Street",
+		"house_number": "House number",
+		"city": "Sity",
+		"save": "Save",
+		"post_index": "Post index"
 	},
 	"confirmation_modal": {
 		"yes": "Confirm",

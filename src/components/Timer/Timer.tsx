@@ -9,9 +9,11 @@ interface TimeLeft {
 }
 interface TimeProps {
 	time: number;
+	font_size?: string;
+	wigth?: string;
 }
 
-const Timer: FC<TimeProps> = ({ time }): JSX.Element => {
+const Timer: FC<TimeProps> = ({ time, font_size, wigth }): JSX.Element => {
 	const { t } = useTranslation('timer');
 
 	const seconds = useRef(time);
@@ -66,7 +68,7 @@ const Timer: FC<TimeProps> = ({ time }): JSX.Element => {
 	return (
 		<>
 			{seconds.current ? (
-				<div className={timerClass}>
+				<div className={timerClass} style={{ fontSize: font_size, width: wigth, maxWidth: wigth }}>
 					<div className="timer__item_days">
 						{timeLeft.days} {t('days', { count: timeLeft.days })}
 					</div>

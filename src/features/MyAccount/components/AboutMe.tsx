@@ -19,8 +19,8 @@ const AboutMe: FC = (): JSX.Element => {
 		}
 	}, [isAuth]);
 
-	const loading = useAppSelector((state: RootState) => state.userDate.loading);
-	const userData = useAppSelector((state: RootState) => state.userDate.user);
+	const loading = useAppSelector((state: RootState) => state.userData.loading);
+	const userData = useAppSelector((state: RootState) => state.userData.user);
 
 	if (loading)
 		return (

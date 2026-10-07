@@ -1,8 +1,23 @@
 import UserDto, { UserApiResponse, UsersResponse } from './types/User';
 import apiConfig from '../../apiConfig';
+import { UserFormValues } from './types/UserFormValues';
+
+interface ResponseData {
+	message?: string;
+}
 
 export async function getUserProfile(): Promise<UserDto> {
 	const res = await fetch(apiConfig.getUserProfileEndpoint, {
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	});
+
+	return res.json();
+}
+
+export async function getUserById(user_id: number): Promise<UserDto> {
+	const res = await fetch(`${apiConfig.getUserByIdEndpoint}${user_id}`, {
 		headers: {
 			'Content-Type': 'application/json',
 		},
@@ -24,6 +39,7 @@ export async function changeCheckedStatus(user_id: number, status: boolean): Pro
 	const res = await fetch(
 		`${apiConfig.changeUserCheckedStatusEndpoint}${user_id}?isChecked=${String(status)}`,
 		{
+			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
 			},
@@ -36,6 +52,7 @@ export async function changeBlockedStatus(user_id: number, status: boolean): Pro
 	const res = await fetch(
 		`${apiConfig.changeUserBlockedStatusEndpoint}${user_id}?isBlocked=${String(status)}`,
 		{
+			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
 			},
@@ -51,4 +68,22 @@ export async function searchUser(email: string): Promise<UsersResponse> {
 		},
 	});
 	return res.json();
+}
+
+export async function updateUser(user_id: number, data: UserFormValues): Promise<UserDto> {
+	const res = await fetch(`${apiConfig.updateUserEndpoint}${user_id}`, {
+		method: 'PUT',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(data),
+	});
+
+	if (res.status >= 400) {
+		const jsonResponse: ResponseData = await res.json();
+		const message = jsonResponse.message;
+		throw new Error(message);
+	}
+	const response = await res.json();
+	return response;
 }

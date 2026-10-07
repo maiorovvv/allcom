@@ -1,7 +1,7 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 
 import userProductsReducer from '../features/user/wishProducts/productsSlice';
-import userDateReducer from '../features/MyAccount/UserSlice';
+import userDataReducer from '../features/MyAccount/UserSlice';
 import productsReducer from '../features/products/productsSlice';
 import myAuctionsReducer from '../features/MyAccount/components/MyAuctions/myAuctionsSlice';
 import authReducer from '../features/auth/authSlice';
@@ -10,7 +10,7 @@ import CategoriesReducer from '../features/categories/CategoriesSlice';
 export const store = configureStore({
 	reducer: {
 		userProducts: userProductsReducer,
-		userDate: userDateReducer,
+		userData: userDataReducer,
 		products: productsReducer,
 		myAuctions: myAuctionsReducer,
 		auth: authReducer,

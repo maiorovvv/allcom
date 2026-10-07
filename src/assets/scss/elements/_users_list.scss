@@ -54,24 +54,40 @@
 		cursor: pointer;
 		&--active {
 			border-radius: var(--border-radius);
-			background-color: green;
+			background-color: var(--success-btn-color);
 			&:hover {
-				background-color: rgb(1, 94, 1);
+				background-color: var(--hover-success-btn-color);
 			}
 		}
 		&--blocked {
 			border-radius: var(--border-radius);
-			background-color: red;
+			background-color: var(--danger-btn-color);
 			&:hover {
-				background-color: rgb(202, 4, 4);
+				background-color: var(--hover-danger-btn-color);
 			}
 		}
 		&--confirm_user {
 			border-radius: var(--border-radius);
-			background-color: green;
+			background-color: var(--success-btn-color);
 			&:hover {
-				background-color: rgb(1, 94, 1);
+				background-color: var(--hover-success-btn-color);
 			}
+		}
+	}
+}
+
+.users_list__edit {
+	width: 5rem;
+	cursor: pointer;
+	&--btn {
+		margin: 0 auto;
+		padding: 5px;
+		color: var(--white-color);
+		border-radius: var(--border-radius);
+		background-color: #40a9e1;
+		transition: var(--transition);
+		&:hover {
+			background-color: #3087b5;
 		}
 	}
 }

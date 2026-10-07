@@ -1,10 +1,11 @@
 import UserDto from './User';
 
 export default interface UserState {
-	user?: UserDto;
+	user: UserDto;
 	users: UserDto[];
 	error?: string;
-	loading?: boolean;
+	loading: boolean;
+	loadingUpdateUserById: boolean;
 	loadingAllUsers: boolean;
 	totalPages: number;
 	number: number;

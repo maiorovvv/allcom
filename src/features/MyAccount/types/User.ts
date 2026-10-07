@@ -13,6 +13,7 @@ export default interface UserDto {
 	address: AddressDto;
 	checked: boolean;
 	blocked: boolean;
+	error?: string;
 }
 
 export interface AddressDto {

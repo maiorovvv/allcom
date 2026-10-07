@@ -1,9 +1,9 @@
+import { ProductDto } from './../../types/user/UserApiResponse';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import * as api from './api';
 import ProductState from '../../types/product/ProductState';
 import { ProductFormValues } from '../../types/product/ProductFormValues';
-import { ProductDto } from '../../types/product/ProductApiResponse';
 
 interface LoadProductsParams {
 	category_id?: number;
@@ -13,6 +13,7 @@ interface LoadProductsParams {
 
 const initialState: ProductState = {
 	products: [],
+	productsOnePerCategory: [],
 	productById: {
 		id: 0,
 		name: '',
@@ -45,6 +46,7 @@ const initialState: ProductState = {
 	loading: false,
 	loadingAllProducts: false,
 	loadingProductById: false,
+	loadingProductsOnePerCategory: false,
 	error: undefined,
 };
 
@@ -66,6 +68,12 @@ export const loadProductById = createAsyncThunk(
 	'product/loadProduct',
 
 	(product_id: number) => api.getProductById(product_id)
+);
+
+export const loadProductsOnePerCategory = createAsyncThunk(
+	'product/loadProductsOnePerCategory',
+
+	() => api.loadProductsOnePerCategory()
 );
 
 export const productsSlice = createSlice({
@@ -133,6 +141,19 @@ export const productsSlice = createSlice({
 			})
 			.addCase(loadAllProducts.rejected, (state, action) => {
 				state.loadingAllProducts = false;
+				state.error = action.error.message || 'Unknown error occurred';
+			})
+
+			.addCase(loadProductsOnePerCategory.fulfilled, (state, action) => {
+				state.productsOnePerCategory = action.payload;
+				state.loadingProductsOnePerCategory = false;
+				state.error = undefined;
+			})
+			.addCase(loadProductsOnePerCategory.pending, (state) => {
+				state.loadingProductsOnePerCategory = true;
+			})
+			.addCase(loadProductsOnePerCategory.rejected, (state, action) => {
+				state.loadingProductsOnePerCategory = false;
 				state.error = action.error.message || 'Unknown error occurred';
 			})
 

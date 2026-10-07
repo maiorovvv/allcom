@@ -99,6 +99,18 @@ export async function getAllProducts(
 	return response;
 }
 
+export async function loadProductsOnePerCategory(): Promise<ProductDto[]> {
+	const res = await fetch(`${apiConfig.getProductsOnePerCategoryEndpoint}`);
+
+	if (res.status >= 400) {
+		const jsonResponse: ResponseData = await res.json();
+		const message = jsonResponse.message;
+		throw new Error(message);
+	}
+	const response = await res.json();
+	return response;
+}
+
 export async function getProductById(product_id: number): Promise<ProductDto> {
 	const res = await fetch(`${apiConfig.getProductByIdEndpoint}${product_id}`);
 
